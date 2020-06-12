@@ -3,7 +3,7 @@
 This app creates workouts based on user selected muscle group, time domain and workout type. 
 
 ## Working Prototype
-You can access a working prototype of the React app here: https://legoinventory.herokuapp.com/ and Node app here: 
+You can access a working prototype of the React app here: https://legoinventory.herokuapp.com/ and Node app here: https://workout-creator-server.herokuapp.com/
 
 
 ## User Stories
@@ -106,6 +106,7 @@ The app's functionality includes:
     * is_chest (boolean: true or false)
     * is_core (boolean: true or false)
     * is_cardio (boolean: true or false)
+    * is_advanced (boolean: true or false)
 
 * workouts
     * id
