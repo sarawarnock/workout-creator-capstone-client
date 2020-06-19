@@ -1,4 +1,7 @@
 /* *********************************** */
+* {
+    text-align: center;
+}
 
 main {
     box-sizing: border-box;
@@ -9,16 +12,12 @@ main {
     float: left;
 }
 
-button {
+.big-btn {
     margin: 20px;
     padding: 30px;
 }
 
 /* *********************************** */
-
-* {
-    text-align: center;
-}
 
 .login-form {
     text-align: center;
@@ -74,4 +73,13 @@ label {
 
 input {
     margin: 10px;
+}
+
+table {
+    text-align: center;
+    width: 100%;
+}
+
+.new-workout {
+    border: 1px solid black;
 }

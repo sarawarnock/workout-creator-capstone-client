@@ -87,7 +87,22 @@ The app's functionality includes:
         * workout id
         * set of exercises based on the workout repetition type (with the random time between the interval start and stop) and filtered by the muscle groups; and the numbers reps related to the total amount of time (except from the ENOMs)
 
-## Business Objects (database structure)
+## Front-end Structure - React Components Map
+* __Index.js__ (stateless)
+    * __App.js__ (stateful)
+        * __LandingPage.js__ (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the __App.js__
+            * __Login.js__ (stateful) -
+            * __Register.js__ (stateful) -
+        * __Navbar.js__ (stateless) -
+        * __PersonalizedHomePage.js__ (stateless) -
+            * __ChangePassword.js__ (stateful) -
+        * __PastWorkouts.js__ (stateless) -
+            * __ViewPastWorkout.js__ (stateless) -
+        * __CreateNewWorkout.js__ (stateful) -
+        * __NewWorkoutCreated.js__ (stateless) -
+
+
+## Back End Structure - Business Objects (database structure)
 
 * users
     * id
