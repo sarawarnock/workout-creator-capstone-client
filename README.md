@@ -102,7 +102,7 @@ The app's functionality includes:
             * __Register.js__ (stateful) -
         * __Navbar.js__ (stateless) -
         * __PersonalizedHomePage.js__ (stateless) -
-            * __ChangePassword.js__ (stateful) -
+            * __ForgotPassword.js__ (stateful) -
         * __PastWorkouts.js__ (stateless) -
             * __ViewPastWorkout.js__ (stateless) -
         * __CreateNewWorkout.js__ (stateful) -
