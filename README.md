@@ -60,12 +60,19 @@ This app is for two types of users; a visitor, and a logged-in user
 Landing/Login Page 
 :-------------------------:
 ![Landing Page](/github-images/wireframes/landing-page.jpg) 
+Sign Up Page
 ![Sign Up Page](/github-images/wireframes/sign-up.jpg)
+Login Page
 ![Login Page](/github-images/wireframes/user-login.jpg)
+Forgot Password Page
 ![Forgot Password Page](/github-images/wireframes/forgot-password.jpg)
+Personalized Home Page
 ![Personalized Home Page](/github-images/wireframes/personalized-home-page.jpg)
+Create Workout Page
 ![Create Workout Page](/github-images/wireframes/create-workout.jpg)
+Past Workouts Page
 ![Past Workouts Page](/github-images/wireframes/past-workouts.jpg)
+New Workout Created Page
 ![New Workout Created Page](/github-images/wireframes/new-workout.jpg)
 
 
