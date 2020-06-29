@@ -29,17 +29,27 @@ This app is for two types of users; a visitor, and a logged-in user
 * I want to log in to my account
 * So I can create a workout or view my saved workouts
 
+#### Navbar
+* As a user with an account
+* I want to be able to nagivate to different sections of the app
+* So I can easily see all of my personal info
+
 #### Personal Home Page
 * As a user with an account
 * I want to have a personal homepage with buttons for “Saved Workouts” and “New Workout”
 * So I can redo an old workout, or create a new workout
 
-#### Saved Workouts Page
+#### Past Workouts Page
 * As a user with an account
 * I want to view my past workouts
 * So I can use them again
 
-#### New Workout
+#### View Past Workout
+* As a user with an account
+* I want to view a specific past workout when I click the "View" button in my Past Workouts list
+* So I can do a past workout again
+
+#### Create New Workout
 * As a user with an account
 * I want to create a new workout → I want to choose the length and the body parts I want to work
 * So I can have a complete workout
@@ -53,7 +63,6 @@ This app is for two types of users; a visitor, and a logged-in user
 * As a user with an account
 * I want to update/change my password when I forget it
 * So that I can log back into my account
-
 
 
 ### Wireframes
