@@ -106,16 +106,17 @@ The app's functionality includes:
 ## Front-end Structure - React Components Map
 * __Index.js__ (stateless)
     * __App.js__ (stateful)
-        * __LandingPage.js__ (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the __App.js__
-            * __Login.js__ (stateful) -
-            * __Register.js__ (stateful) -
-        * __Navbar.js__ (stateless) -
-        * __PersonalizedHomePage.js__ (stateless) -
-            * __ForgotPassword.js__ (stateful) -
-        * __PastWorkouts.js__ (stateless) -
-            * __ViewPastWorkout.js__ (stateless) -
-        * __CreateNewWorkout.js__ (stateful) -
-        * __NewWorkoutCreated.js__ (stateless) -
+        * __header.js__ (stateless)
+        * __landing-page.js__ (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the __App.js__
+            * __login.js__ (stateful) -
+            * __sign-up.js__ (stateful) -
+        * __navbar.js__ (stateless) -
+        * __personalized-home-page.js__ (stateless) -
+            * __forgot-password.js__ (stateful) -
+        * __past-workouts.js__ (stateless) -
+            * __view-past-workout.js__ (stateless) -
+        * __create-new-workout.js__ (stateful) -
+        * __new-workout-created.js__ (stateless) -
 
 
 ## Back End Structure - Business Objects (database structure)

@@ -9,6 +9,15 @@ import NewWorkoutCreated from './new-workout-created'
 import Header from './header'
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      first_name: '',
+    }
+  }
+  
   render() {
     return (
       <div className="App">
