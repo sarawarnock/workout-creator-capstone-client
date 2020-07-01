@@ -1,9 +1,8 @@
 import React from 'react';
 
-export default function ViewPastWorkouts(props) {
+export default function ViewPastWorkout(props) {
   return (
     <div className="App">
-      <p>View Past Workout</p>
       <main class="main">
             <h1>Workout Name</h1>
             <h2>EMOM 10</h2>

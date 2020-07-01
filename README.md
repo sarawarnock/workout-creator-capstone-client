@@ -117,6 +117,7 @@ The app's functionality includes:
             * __view-past-workout.js__ (stateless) -
         * __create-new-workout.js__ (stateful) -
         * __new-workout-created.js__ (stateless) -
+        * __button.js__ (stateless -)
 
 
 ## Back End Structure - Business Objects (database structure)

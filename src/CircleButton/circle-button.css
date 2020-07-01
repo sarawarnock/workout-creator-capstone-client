@@ -1,0 +1,26 @@
+.NavCircleButton {
+    /* background-color: #FFB677; */
+    /* background-color: #F06143; */
+    background-color: #EB46C2;
+    border-radius: 50px;
+    border: 0;
+    color: white;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    height: 60px;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+  }
+  
+  a.NavCircleButton {
+    padding: 8px 8px 8px 8px;
+  }
+  
+  .NavCircleButton:hover {
+    cursor: pointer;
+  }
+
+  /* color ideas: #EB46C2, #2439D6, #32F5B1 */

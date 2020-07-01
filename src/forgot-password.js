@@ -1,6 +1,9 @@
 import React from 'react';
 
 export default class ForgotPassword extends React.Component {
+  
+  //Need a POST request here to post new password
+
   render() {
     return (
       <div className="App">

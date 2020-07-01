@@ -1,0 +1,81 @@
+.App {
+    text-align: center;
+    background-color:  black;
+    color: white;
+    width: 100%;
+  }
+
+.nav-link {
+    list-style-type: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    color: white;
+}
+  
+.workouts-table {
+    margin-left: auto; 
+    margin-right: auto;
+    table-layout: fixed;
+    padding: 20px;
+}
+  
+.tb-name {
+    width: 30%;
+}
+  
+.tb-date {
+    width: 30%;
+}
+  
+.tb-view {
+    width: 30%;
+}
+
+h1 {
+    color: #32F5B1;
+}
+
+h2 {
+    color: #EB46C2;
+}
+
+input {
+    color: #EB46C2;
+}
+
+.workout-time {
+    color: white;
+}
+
+/* .time {
+    border: 1px solid white;
+} */
+
+button {
+	/* box-shadow:inset 0px 1px 0px 0px #2439D6; */
+	/* background:linear-gradient(to bottom, #2439D6 5%, #2439D6 100%); */
+	background-color: #2439D6;
+	border-radius:6px;
+	border:1px solid #2439D6;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2439D6;
+}
+button:hover {
+	background:linear-gradient(to bottom, #32F5B1 5%, #32F5B1 100%);
+	background-color: #2439D6;
+}
+button:active {
+	position:relative;
+	top:1px;
+}

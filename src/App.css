@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.nav-link {
+  list-style-type: none;
+}
+
+.workouts-table {
+  margin-left: auto; 
+  margin-right: auto;
+  table-layout: fixed;
+  padding: 20px;
+}
+
+.tb-name {
+  width: 30%;
+}
+
+.tb-date {
+  width: 30%;
+}
+
+.tb-view {
+  width: 30%;
+}
+
+/* color ideas: #EB46C2, #2439D6, #32F5B1 */

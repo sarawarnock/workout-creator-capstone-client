@@ -1,13 +1,40 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+import ErrorBoundary from './error-boundary'
+import ValidationError from './validation-error'
 
 export default class SignUp extends React.Component {
   state = {
       error: null,
-      params: {
-        email: '',
-        password: '',
-        first_name: '',
+      email: {
+        value: '',
+        touched: false
+      },
+      password: {
+        value: '',
+        touched: false
+      },
+      first_name: {
+        value: '',
+        touched: false
+      },
+      errors: {
+        email: 'You must enter a valid email',
+        password: 'You must enter a valid password',
+        first_name: 'You must enter a valid name'
       }
+  }
+
+  updateEmail(email) {
+    this.setState({ email: {value: email, touched: true } })
+  }
+
+  updatePassword(password) {
+    this.setState({ password: { value: password, touched: true } })
+  }
+
+  updateFirstname(firstName) {
+    this.setState({ first_name: { value: firstName, touched: true } })
   }
 
   validateEmail(inputEmail) {
@@ -37,6 +64,7 @@ export default class SignUp extends React.Component {
     if(!inputFirstName.match(firstNameFormat)) {
       outputFirstName = ''
     }
+    return outputFirstName
   }
 
   handleSubmit = ev => {
@@ -48,28 +76,30 @@ export default class SignUp extends React.Component {
       data[value[0]] = value[1]
     }
 
-    let { email, password, first_name } = data
-    if (this.validateEmail(email) === '') {
-      this.setState({
-          error: 'email is not valid'
-      })
-    }
+    // let { email, password, first_name } = data
+    // if (this.validateEmail(email) === '') {
+    //   this.setState({
+    //       error: 'email is not valid'
+    //   })
+    // }
 
-    if (this.validatePassword(password) === '') {
-      this.setState({
-          error: 'password is not valid'
-      })
-    }
+    // if (this.validatePassword(password) === '') {
+    //   this.setState({
+    //       error: 'password is not valid'
+    //   })
+    // }
 
-    if (this.validatateFirstName(first_name) === '') {
-      this.setState({
-        error: 'first name is not valid'
-      })
-    }
+    // if (this.validatateFirstName(first_name) === '') {
+    //   this.setState({
+    //     error: 'first name is not valid'
+    //   })
+    // }
 
     this.setState({
       params: data
     })
+
+    //POST request to API endpoint (/users)
 
     //make sure the state gets populated with the input data
     console.log(this.state.params)
@@ -78,8 +108,8 @@ export default class SignUp extends React.Component {
   render() {
     const errorMessage = this.state.error ? <p className="error-message">{this.state.error}</p> : false
     return (
+      <ErrorBoundary>
       <div className="App">
-        <p>Sign Up</p>
         <main>
             <h1>Sign Up</h1>
                 <form className="sign-up-form" onSubmit={this.handleSubmit}>
@@ -118,10 +148,16 @@ export default class SignUp extends React.Component {
                 <button className="small-btn" type="Submit">Sign Up!</button>
                 <div>
                     <h2>Already have an account?</h2>
-                    <button className="small-btn">Sign In</button>
+                    <button className="small-btn">
+                      <Link
+                        to='/login'>
+                      Login
+                      </Link>
+                    </button>
                 </div>
         </main>
       </div>
+      </ErrorBoundary>
     );
   }
 }
