@@ -9,13 +9,13 @@ export default class LandingPage extends React.Component {
           <h1>Workout Creator</h1>
             <p>Create your own metabolic-conditoning workout</p>
             <p>Choose how long you want to workout for and the muscle groups you want to work, and we'll do the rest!</p>
-          <button>
+          <button className="big-btn">
             <Link 
               to='/sign-up'
             > Sign Up
             </Link>
           </button>
-          <button>
+          <button className="big-btn">
           <Link
             to='/login'>
               Login

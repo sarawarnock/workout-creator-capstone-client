@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function PastWorkouts(props) {
   return (
     <div className="App">
-      <main class="main">
+      <main className="main">
             <h1>Past Workouts</h1>
             <table className="workouts-table">
                 <tr>
@@ -19,7 +19,13 @@ export default function PastWorkouts(props) {
                     {/* This button will link to the ViewPastWorkout
                     component, depending on the workout_id */}
                     <th>
-                        <button>View</button>
+                        <button>
+                          <Link
+                            to="/past-workouts/:workout_id"
+                          >
+                            View
+                          </Link>
+                        </button>
                     </th>
                 </tr>
             </table>
@@ -29,7 +35,6 @@ export default function PastWorkouts(props) {
               <button>Create Workout</button>
             </Link>
         </main>
-      <ViewPastWorkout />
     </div>
   );
 }

@@ -7,12 +7,12 @@ export default function PersonalizedHomePage(props) {
     <div className="App">
       <main>
             <h1>Home</h1>
-            <div class="workout-btn">
+            <div className="workout-btn">
               {/* Do I need these buttons? They are the same as in the Navbar */}
-                <button class="button">Past Workouts</button>
-                <button class="button">New Workout</button>
+                <button className="big-btn">Past Workouts</button>
+                <button className="big-btn">New Workout</button>
             </div>
-            <div class="acct-info">
+            <div className="acct-info">
             <h2>Account Information</h2>
                 <h3>Password</h3>
                 <Link

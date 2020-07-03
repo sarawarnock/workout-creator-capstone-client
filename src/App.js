@@ -23,8 +23,6 @@ class App extends React.Component {
     }
   }
 
-  //componentDidMount -- GET request?
-
   //renders the Navbar
   renderNav() {
     return (
@@ -65,14 +63,15 @@ class App extends React.Component {
           component={SignUp}
         />
         {/* Will need to use the workout_id here to specify which workout to view */}
-        {/* {['/', '/past-workouts/:workout_id'].map(path => (
+        {/* {['/', '/past-workouts/:workout_id'].map(path => ( */}
           <Route 
           exact
-          key={path}
-          path={path}
+          //key={path}
+          //path={path}
+          path='/past-workouts/:workout_id'
           component={ViewPastWorkout} 
         />
-        ))} */}
+        {/* ))} */}
         <Route 
           path='/forgot-password'
           component={ForgotPassword}
