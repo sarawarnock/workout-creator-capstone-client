@@ -12,6 +12,7 @@ import Login from './log-in';
 import SignUp from './sign-up';
 import ViewPastWorkout from './view-past-workout';
 import ForgotPassword from './forgot-password';
+import CreateNewWorkout2 from './2-create-new-workout-checkbox'
 
 class App extends React.Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class App extends React.Component {
         />
         <Route 
           path='/create-workout'
-          component={CreateNewWorkout}
+          component={CreateNewWorkout2}
         />
         <Route 
           exact

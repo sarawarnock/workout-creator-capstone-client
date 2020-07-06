@@ -118,44 +118,44 @@ export default class SignUp extends React.Component {
    //sent all the params to the final url
    //const url = searchURL + '?' + queryString
 
-   console.log(url)
+  //  console.log(url)
 
-    //define the API call parameters
-    const options = {
-        method: 'POST',
-        header: {
-            "Authorization": "",
-            "Content-Type": "application/json"
-        }
-    }
+  //   //define the API call parameters
+  //   const options = {
+  //       method: 'POST',
+  //       header: {
+  //           "Authorization": "",
+  //           "Content-Type": "application/json"
+  //       }
+  //   }
 
-    //useing the url and paramters above make the api call
-    fetch(url, options)
+  //   //useing the url and paramters above make the api call
+  //   fetch(url, options)
 
-        // if the api returns data ...
-        .then(res => {
-            if (!res.ok) {
-                throw new Error('Something went wrong, please try again later.')
-            }
-             // ... convert it to json
-             return res.json()
-        })
-            // use the json api output
-        .then(data => {
+  //       // if the api returns data ...
+  //       .then(res => {
+  //           if (!res.ok) {
+  //               throw new Error('Something went wrong, please try again later.')
+  //           }
+  //            // ... convert it to json
+  //            return res.json()
+  //       })
+  //           // use the json api output
+  //       .then(data => {
 
-          //check if there is meaningfull data
-          console.log(data);
-          // check if there are no results
-          if (data.totalItems === 0) {
-            throw new Error('No data found')
-        }
+  //         //check if there is meaningfull data
+  //         console.log(data);
+  //         // check if there are no results
+  //         if (data.totalItems === 0) {
+  //           throw new Error('No data found')
+  //       }
 
-      })
-        .catch(err => {
-          this.setState({
-            error: err.message
-        })
-      })
+  //     })
+  //       .catch(err => {
+  //         this.setState({
+  //           error: err.message
+  //       })
+  //     })
 }
 
   render() {

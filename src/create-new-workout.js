@@ -1,4 +1,5 @@
 import React from 'react';
+import Checkbox from './new-workout-checkbox'
 
 const OPTIONS = ['isArms', 'isLegs', 'isChest', 'isBack', 'isCore', 'isCardio', 'isAdvanced']
 
@@ -8,37 +9,37 @@ export default class CreateNewWorkout extends React.Component {
     this.state = {
       error: null,
       workoutTimeValue: '',
-      // workoutMuscleGroup: {
-      //   isArms: {
-      //     touched: false,
-      //   },
-      //   isLegs: {
-      //     touched: false,
-      //   },
-      //   isChest: {
-      //     touched: false,
-      //   },
-      //   isBack: {
-      //     touched: false,
-      //   },
-      //   isCore: {
-      //     touched: false,
-      //   },
-      //   isCardio: {
-      //     touched: false,
-      //   },
-      //   isAdvanced: {
-      //     touched: false,
-      //   }
-      // },
+      workoutMuscleGroup: {
+        isArms: {
+          checked: false,
+        },
+        isLegs: {
+          checked: false,
+        },
+        isChest: {
+          checked: false,
+        },
+        isBack: {
+          checked: false,
+        },
+        isCore: {
+          checked: false,
+        },
+        isCardio: {
+          checked: false,
+        },
+        isAdvanced: {
+          checked: false,
+        }
+      },
 
-      workoutMuscleGroup: OPTIONS.reduce(
-        (option, option) => ({
-          ...options, 
-          [option]: false
-        }),
-        {}
-      ),
+      // workoutMuscleGroup: OPTIONS.reduce(
+      //   (options, option) => ({
+      //     ...options, 
+      //     [option]: false
+      //   }),
+      //   {}
+      // ),
 
       workoutTypeValue: '',
       errors: {
@@ -47,34 +48,66 @@ export default class CreateNewWorkout extends React.Component {
         workoutTypeValue: 'You must select one option',
       }
     }
+
+    this.handleArmsChange = this.handleArmsChange.bind(this)
+    this.handleLegsChange = this.handleLegsChange.bind(this)
+    this.handleChestChange = this.handleChestChange.bind(this)
+    this.handleBackChange = this.handleBackChange.bind(this)
+    this.handleCoreChange = this.handleCoreChange.bind(this)
+    this.handleCardioChange = this.handleCardioChange.bind(this)
+    this.handleAdvancedChange = this.handleAdvancedChange.bind(this)
   }
 
   //need logic that says if user clicks "Arms" then change the state of ifArms to true
-  selectAllMuscleGroups = isSelected => {
-    Object.keys(this.state.workoutMuscleGroup).forEach(checkbox => {
-      this.setState(prevState => ({
-        workoutMuscleGroup: {
-          ...prevState.workoutMuscleGroup,
-          [checkbox]: isSelected
-        }
-      }));
-    });
+  // selectAllMuscleGroups = isSelected => {
+  //   Object.keys(this.state.workoutMuscleGroup).forEach(checkbox => {
+  //     this.setState(prevState => ({
+  //       workoutMuscleGroup: {
+  //         ...prevState.workoutMuscleGroup,
+  //         [checkbox]: isSelected
+  //       }
+  //     }));
+  //   });
+  // }
+
+  // handleCheckboxChange = changeEvent => {
+  //   const { name } = changeEvent.target;
+
+  //   this.setState(prevState => ({
+  //     workoutMuscleGroup: {
+  //       ...prevState.checkboxes,
+  //       [name]: !prevState.checkboxes[name]
+  //     }
+  //   }));
+  // };
+
+  handleArmsChange() {
+    this.setState({ workoutMuscleGroup: {isArms: {checked: true} }})
   }
 
-  selectAll = () => this.selectAllMuscleGroups(true);
+  handleLegsChange() {
+    this.setState({ workoutMuscleGroup: {isLegs: {checked: true} }})
+  }
 
-  deselectAll = () => this.selectAllMuscleGroups(false);
+  handleChestChange() {
+    this.setState({ workoutMuscleGroup: {isChest: {checked: true} }})
+  }
 
-  handleCheckboxChange = changeEvent => {
-    const { name } = changeEvent.target;
+  handleBackChange() {
+    this.setState({ workoutMuscleGroup: {isBack: {checked: true} }})
+  }
 
-    this.setState(prevState => ({
-      checkboxes: {
-        ...prevState.checkboxes,
-        [name]: !prevState.checkboxes[name]
-      }
-    }));
-  };
+  handleCoreChange() {
+    this.setState({ workoutMuscleGroup: {isCore: {checked: true} }})
+  }
+
+  handleCardioChange() {
+    this.setState({ workoutMuscleGroup: {isCardio: {checked: true} }})
+  }
+
+  handleAdvancedChange() {
+    this.setState({ workoutMuscleGroup: {isAdvanced: {checked: true} }})
+  }
 
   //handleSubmit - takes user right to the newly created workout 
   //is the handleSubmit a POST request? we are posting their responses but then getting the info back...?
@@ -82,11 +115,13 @@ export default class CreateNewWorkout extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    Object.keys(this.state.workoutMuscleGroup)
-      .filter(checkbox => this.state.workoutMuscleGroup[checkbox])
-      .forEach(checkbox => {
-        console.log(checkbox, "is selected.");
-    });
+    // Object.keys(this.state.workoutMuscleGroup)
+    //   .filter(checkbox => this.state.workoutMuscleGroup[checkbox])
+    //   .forEach(checkbox => {
+    //     console.log(checkbox, "is selected.");
+    // });
+
+    console.log(this.state);
 
     //create an object to store the search filters
     const data = {}
@@ -108,49 +143,49 @@ export default class CreateNewWorkout extends React.Component {
 
   //const searchURL = `${config.API_ENDPOINT}/sign-up`
 
-  const queryString = this.formatQueryParams(data)
+  // const queryString = this.formatQueryParams(data)
 
    //sent all the params to the final url
    //const url = searchURL + '?' + queryString
 
-   console.log(url)
+  //  console.log(url)
 
-    //define the API call parameters
-    const options = {
-        method: 'POST',
-        header: {
-            "Authorization": "",
-            "Content-Type": "application/json"
-        }
-    }
+  //   //define the API call parameters
+  //   const options = {
+  //       method: 'POST',
+  //       header: {
+  //           "Authorization": "",
+  //           "Content-Type": "application/json"
+  //       }
+  //   }
 
-    //useing the url and paramters above make the api call
-    fetch(url, options)
+  //   //useing the url and paramters above make the api call
+  //   fetch(url, options)
 
-        // if the api returns data ...
-        .then(res => {
-            if (!res.ok) {
-                throw new Error('Something went wrong, please try again later.')
-            }
-             // ... convert it to json
-             return res.json()
-        })
-            // use the json api output
-        .then(data => {
+  //       // if the api returns data ...
+  //       .then(res => {
+  //           if (!res.ok) {
+  //               throw new Error('Something went wrong, please try again later.')
+  //           }
+  //            // ... convert it to json
+  //            return res.json()
+  //       })
+  //           // use the json api output
+  //       .then(data => {
 
-          //check if there is meaningfull data
-          console.log(data);
-          // check if there are no results
-          if (data.totalItems === 0) {
-            throw new Error('No data found')
-        }
+  //         //check if there is meaningfull data
+  //         console.log(data);
+  //         // check if there are no results
+  //         if (data.totalItems === 0) {
+  //           throw new Error('No data found')
+  //       }
 
-      })
-        .catch(err => {
-          this.setState({
-            error: err.message
-        })
-      })
+  //     })
+  //       .catch(err => {
+  //         this.setState({
+  //           error: err.message
+  //       })
+  //     })
 }
   
   render() {
@@ -159,12 +194,12 @@ export default class CreateNewWorkout extends React.Component {
         <main className="main">
           <h1>Create New Workout</h1>
             <br />
-            <form>
+            <form onSubmit={this.handleSubmit}>
             {/* Just select one of these - need error message */}
             <h2>How long do you want to workout for?</h2>
               <div className="workout-time">
                 <label htmlFor="time-1">Less than 5 minutes</label>
-                <input type="radio" id="time-1"name="workoutTimeValue"/>
+                <input type="radio" id="time-1"name="workoutTimeValue" />
                 <label htmlFor="time-2">6-10 minutes</label>
                 <input type="radio" id="time-2" name="workoutTimeValue"/>
                 <label htmlFor="time-3">11-15 minutes</label>
@@ -182,19 +217,19 @@ export default class CreateNewWorkout extends React.Component {
             {/* Can select as many as user wants - need error message */}
             <h2>What muscle groups do you want to work?</h2>
                 <label htmlFor="isArms">Arms</label>
-                <input type="checkbox" id="isArms" name="workoutMuscleGroup" value="isArms" />
+                <input type="checkbox" id="isArms" name="workoutMuscleGroup" value="isArms" onClick={this.handleArmsChange} />
                 <label htmlFor="isLegs" >Legs</label>
-                <input type="checkbox" id="isLegs" name="workoutMuscleGroup" value="isLegs" />
+                <input type="checkbox" id="isLegs" name="workoutMuscleGroup" value="isLegs" onClick={this.handleLegsChange} />
                 <label htmlFor="isChest">Chest</label>
-                <input type="checkbox" id="isChest" name="workoutMuscleGroup" value="isChest" />
+                <input type="checkbox" id="isChest" name="workoutMuscleGroup" value="isChest" onClick={this.handleChestChange} />
                 <label htmlFor="isBack">Back</label>
-                <input type="checkbox" id="isBack" name="workoutMuscleGroup" value="isBack" />
+                <input type="checkbox" id="isBack" name="workoutMuscleGroup" value="isBack" onClick={this.handleBackChange} />
                 <label htmlFor="isCore">Core</label>
-                <input type="checkbox" id="isCore" name="workoutMuscleGroup" value="isCore" />
+                <input type="checkbox" id="isCore" name="workoutMuscleGroup" value="isCore" onClick={this.handleCoreChange} />
                 <label htmlFor="isCardio">Cardio</label>
-                <input type="checkbox" id="isCardio" name="workoutMuscleGroup" value="isCardio" />
+                <input type="checkbox" id="isCardio" name="workoutMuscleGroup" value="isCardio" onClick={this.handleCardioChange} />
                 <label htmlFor="isAdvanced">Advanced Movements</label>
-                <input type="checkbox" id="isAdvanced" name="workoutMuscleGroup" value="isAdvanced" />
+                <input type="checkbox" id="isAdvanced" name="workoutMuscleGroup" value="isAdvanced" onClick={this.handleAdvancedChange} />
 
                 <p className="error-msg">Must select at least one option</p>
             <br />
