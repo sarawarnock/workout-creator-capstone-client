@@ -170,7 +170,7 @@ class CreateNewWorkout2 extends Component {
                 <input type="radio" id="emom" name="workoutTypeValue" value="EMOM" onClick={this.handleTypeChange} />
                 <label htmlFor="amrap">AMRAP (As Many Rounds As Possible)</label>
                 <input type="radio" id="amrap" name="workoutTypeValue" value="AMRAP" />
-                <label htmlFor="rft">RFT (Rounds Fot Time)</label>
+                <label htmlFor="rft">RFT (Rounds For Time)</label>
                 <input type="radio" id="rft" name="workoutTypeValue" value="RFT" />    
                 </div>
                 <br />
