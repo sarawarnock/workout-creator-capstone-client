@@ -126,8 +126,7 @@ The app's functionality includes:
     * id
     * email
     * pass
-    * frist_name
-    * last_name
+    * first_name
 
 * exercises
     * id
@@ -153,7 +152,6 @@ The app's functionality includes:
     * workout_id
     * exercises_id
     * exercises_reps
-    * exercises_reps_break
 
 
 ## Technology

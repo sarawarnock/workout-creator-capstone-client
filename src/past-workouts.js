@@ -8,17 +8,20 @@ export default function PastWorkouts(props) {
       <main className="main">
             <h1>Past Workouts</h1>
             <table className="workouts-table">
+              <thead>
                 <tr>
                     <th className="tb-name">Name</th>
                     <th className="tb-date">Date</th>
                     <th className="tb-view">View Workout</th>
                 </tr>
+              </thead>
+              <tbody>
                 <tr>
-                    <th>Example Name: Workout 1</th>
-                    <th>March 21, 2020</th>
+                    <td>Example Name: Workout 1</td>
+                    <td>March 21, 2020</td>
                     {/* This button will link to the ViewPastWorkout
                     component, depending on the workout_id */}
-                    <th>
+                    <td>
                         <button>
                           <Link
                             to="/past-workouts/:workout_id"
@@ -26,8 +29,9 @@ export default function PastWorkouts(props) {
                             View
                           </Link>
                         </button>
-                    </th>
+                    </td>
                 </tr>
+                </tbody>
             </table>
             <Link
               to='/create-workout'
