@@ -1,5 +1,4 @@
 import React from 'react';
-import ForgotPassword from './forgot-password'
 import { Link } from 'react-router-dom'
 
 export default function PersonalizedHomePage(props) {
@@ -23,7 +22,6 @@ export default function PersonalizedHomePage(props) {
                 </Link>
             </div>
         </main>
-      {/* <ForgotPassword /> */}
     </div>
   );
 }

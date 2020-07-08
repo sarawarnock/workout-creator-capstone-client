@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import ErrorBoundary from './error-boundary'
 import ValidationError from './validation-error'
+import config from './config'
+//import AuthApiService from './services/auth-api-service'
 
 export default class SignUp extends React.Component {
   state = {
@@ -24,6 +26,12 @@ export default class SignUp extends React.Component {
         signUpFirstName: 'You must enter a valid name'
       }
   }
+
+  // formatQueryParams(params) {
+  //   const queryItems = Object.keys(params)
+  //       .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+  //   return queryItems.join('&')
+  // }
 
   updateEmail(email) {
     this.setState({ signUpEmail: {value: email, touched: true } })
@@ -106,56 +114,76 @@ export default class SignUp extends React.Component {
      
     // })
 
-  //   //POST request to API endpoint (/users)
+  //POST request to API endpoint (/users)
 
-  // //check if the state is populated with the search params data
-  // console.log(this.state)
+  //check if the state is populated with the search params data
+  console.log(this.state)
+  console.log(data.signUpEmail)
 
-  //const searchURL = `${config.API_ENDPOINT}/sign-up`
-
-  const queryString = this.formatQueryParams(data)
+  const searchURL = `${config.API_ENDPOINT}/users`
+  const user = {
+    email: data.signUpEmail,
+    password: data.signUpPassword,
+    first_name: data.signUpFirstName,
+  }
+  console.log(user)
+  // const queryString = this.formatQueryParams(data)
 
    //sent all the params to the final url
-   //const url = searchURL + '?' + queryString
+   // const url = searchURL + '?' + queryString
 
-  //  console.log(url)
+   console.log(searchURL)
 
-  //   //define the API call parameters
-  //   const options = {
-  //       method: 'POST',
-  //       header: {
-  //           "Authorization": "",
-  //           "Content-Type": "application/json"
-  //       }
-  //   }
+    //define the API call parameters
+    const options = {
+        method: 'POST',
+        header: {
+            "Authorization": "",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+    }
 
-  //   //useing the url and paramters above make the api call
-  //   fetch(url, options)
+    //useing the url and paramters above make the api call
+    fetch(searchURL, options)
 
-  //       // if the api returns data ...
-  //       .then(res => {
-  //           if (!res.ok) {
-  //               throw new Error('Something went wrong, please try again later.')
-  //           }
-  //            // ... convert it to json
-  //            return res.json()
-  //       })
-  //           // use the json api output
-  //       .then(data => {
+        // if the api returns data ...
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('Something went wrong, please try again later.')
+            }
+             // ... convert it to json
+             return res.json()
+        })
+          //use the json api output
+        .then(data => {
+          //check if there is meaningfull data
+          console.log(data);
+          // check if there are no results
+          if (data.totalItems === 0) {
+            throw new Error('No data found')
+        }
+      })
+        .catch(err => {
+          this.setState({
+            error: err.message
+        })
+      })
 
-  //         //check if there is meaningfull data
-  //         console.log(data);
-  //         // check if there are no results
-  //         if (data.totalItems === 0) {
-  //           throw new Error('No data found')
-  //       }
-
-  //     })
-  //       .catch(err => {
-  //         this.setState({
-  //           error: err.message
-  //       })
-  //     })
+  // AuthApiService.postUser({
+  //   email: data.signUpEmail.value,
+  //   password: data.signUpPassword.value,
+  //   first_name: data.signUpFirstName.value,
+  // })
+  //   .then(user => { 
+  //     signUpFirstName.value = ''
+  //     signUpEmail.value = ''
+  //     signUpPassword.value = ''
+  //     //this.props.onRegistrationSuccess()
+  // })
+  // .catch(res => {
+  //   this.setState({ error: res.error })
+  // })
 }
 
   render() {

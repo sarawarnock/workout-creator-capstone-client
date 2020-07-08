@@ -1,5 +1,4 @@
 import React from 'react';
-import ViewPastWorkout from './view-past-workout'
 import { Link } from 'react-router-dom'
 
 export default function PastWorkouts(props) {
