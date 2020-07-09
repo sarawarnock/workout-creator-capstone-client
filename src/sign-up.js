@@ -126,7 +126,7 @@ export default class SignUp extends React.Component {
     password: data.signUpPassword,
     first_name: data.signUpFirstName,
   }
-  console.log(user)
+  console.log(JSON.stringify(user))
   // const queryString = this.formatQueryParams(data)
 
    //sent all the params to the final url
@@ -141,15 +141,19 @@ export default class SignUp extends React.Component {
             "Authorization": "",
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(user)
+        body: user
     }
+
+    console.log(options);
 
     //useing the url and paramters above make the api call
     fetch(searchURL, options)
 
         // if the api returns data ...
+        
         .then(res => {
             if (!res.ok) {
+              res.json().then(console.log)
                 throw new Error('Something went wrong, please try again later.')
             }
              // ... convert it to json
@@ -168,6 +172,7 @@ export default class SignUp extends React.Component {
           this.setState({
             error: err.message
         })
+        console.log(err);
       })
 
   // AuthApiService.postUser({
