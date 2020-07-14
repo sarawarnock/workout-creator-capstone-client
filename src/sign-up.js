@@ -137,11 +137,11 @@ export default class SignUp extends React.Component {
     //define the API call parameters
     const options = {
         method: 'POST',
-        header: {
-            "Authorization": "",
+        headers: {
+            //"Authorization": "",
             "Content-Type": "application/json"
         },
-        body: user
+        body: JSON.stringify(user)
     }
 
     console.log(options);
@@ -153,7 +153,7 @@ export default class SignUp extends React.Component {
         
         .then(res => {
             if (!res.ok) {
-              res.json().then(console.log)
+              console.log(res)
                 throw new Error('Something went wrong, please try again later.')
             }
              // ... convert it to json
@@ -174,21 +174,6 @@ export default class SignUp extends React.Component {
         })
         console.log(err);
       })
-
-  // AuthApiService.postUser({
-  //   email: data.signUpEmail.value,
-  //   password: data.signUpPassword.value,
-  //   first_name: data.signUpFirstName.value,
-  // })
-  //   .then(user => { 
-  //     signUpFirstName.value = ''
-  //     signUpEmail.value = ''
-  //     signUpPassword.value = ''
-  //     //this.props.onRegistrationSuccess()
-  // })
-  // .catch(res => {
-  //   this.setState({ error: res.error })
-  // })
 }
 
   render() {
@@ -218,7 +203,7 @@ export default class SignUp extends React.Component {
                     <label htmlFor="password">Password</label>
                     <input 
                       name="signUpPassword"
-                      type="text" 
+                      type="password" 
                       id="password" 
                       placeholder="Password"
                       required

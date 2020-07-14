@@ -19,7 +19,7 @@ body {
 .navbar {
     color: white;
 }
-  
+
 .workouts-table {
     margin-left: auto; 
     margin-right: auto;
@@ -106,6 +106,7 @@ a:active {
 
 a:hover {
     text-decoration: underline;
+    color:  #EB46C2;
 }
 
 input {
@@ -114,4 +115,152 @@ input {
 
 label {
     margin: 5px;
+}
+
+@media screen and (max-width: 450px) {
+    .nav-link {
+        color: #EB46C2;
+    }
+    
+    .nav ul {
+        display: none;
+    }
+    
+    .nav label {
+        display: inline-block;
+        width: 100%; 
+        color: white;
+    }
+    
+    label[for="hamburger"] {
+        font-size: 30px;
+    }
+    
+    .nav ul li {
+        display: block;
+        cursor: pointer;
+    }
+    
+    .nav input:checked ~ ul {
+        display: block;
+    }
+    
+    .nav input {
+        visibility: hidden
+    }
+    
+    .nav label, #hamburger {
+        display: none;
+    }
+}
+
+
+@media screen and (min-width: 600px) {
+    .App {
+        display: grid;
+        grid-template-columns: 15% 35% 35% 15%;
+        /* grid-template-rows: 25% 25% 25% 25%; */
+        grid-template-areas: 
+        "header header . ."
+        "sidebar main main ."
+        /* ". question1 question2 question3"
+        ". answer1 answer2 answer3"
+        "button other other other" */
+        /* "sidebar form form ." */
+        ;
+    }
+
+    .nav-link {
+        list-style-type: none;
+        color: white;
+    }
+
+    .menu {
+        text-align: center;
+    }
+    
+    .navbar {
+        color: white;
+        align-self: start;
+    }
+
+    .navbar #hamburger {
+        display: none;
+    }
+
+    .navbar label, #hamburger {
+        display: none;
+    }
+
+    header {
+        grid-area: header;
+    }
+
+    nav {
+        display: grid;
+        grid-area: sidebar;
+        justify-self: end;
+    }
+
+    main {
+        display: grid;
+        grid-area: main;
+        padding: 10px;
+    }
+
+    /* form {
+        display: grid;
+        grid-area: main;
+    } */
+
+    label {
+        display: grid;
+        align-self: center;
+    }
+
+    /* input {
+        display: grid;
+        align-self: start;
+    } */
+
+    /* .workout-question-1 {
+        display: grid;
+        grid-area: question1;
+    } */
+
+    /* .workout-question-2 {
+        display: grid;
+        grid-area: question2;
+    }
+
+    .workout-question-3 {
+        display: grid;
+        grid-area: question3;
+    } */
+
+    /* .answer-1 {
+        display: grid;
+        grid-area: answer1;
+    } */
+
+   /*  .answer-2 {
+        display: grid;
+        grid-area: answer2;
+    }
+
+    answer-3 {
+        display: grid;
+        grid-area: answer3;
+    } */
+
+
+    /* label {
+        display: grid;
+        grid-area: answer;
+    } */
+
+    /* input, button {
+        grid-area: button;
+    } */
+
 }

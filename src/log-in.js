@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link  } from 'react-router-dom'
 import ValidationError from './validation-error'
+import config from './config'
+import AuthApiService from './services/auth-api-service'
+import TokenService from './services/token-service'
 
 export default class Login extends React.Component {
   state = {
@@ -18,6 +21,10 @@ export default class Login extends React.Component {
       loginPassword: 'You must enter a valid password',
     }
 }
+
+  handleLoginSuccess = () => {
+    window.location = '/user/home'
+  }
 
   // formatQueryParams(params) {
   //   const queryItems = Object.keys(params)
@@ -57,16 +64,35 @@ export default class Login extends React.Component {
     e.preventDefault();
     //create an object to store the search filters
     const data = {}
+    const { loginEmail, loginPassword } = e.target
+    AuthApiService.postLogin({
+      email: loginEmail.value,
+      password: loginPassword.value
+    })
+    .then(response => {
+      console.log('response ID', response)
+      loginEmail.value = ''
+      loginPassword.value = ''
+      TokenService.saveAuthToken(response.authToken) 
+      TokenService.saveUserId(response.userId)
+      window.location = '/user/home'
+    })
+    .then(response => {
+      console.log('response', response)
+    })
+    .catch(err => {
+      console.log(err)
+    });
 
     //get all the from data from the form component
-    const formData = new FormData(e.target)
+    //const formData = new FormData(e.target)
 
     //for each of the keys in form data populate it with form value
-    for (let value of formData) {
-        data[value[0]] = value[1]
-    }
-    console.log(data)
-    let {loginEmail, loginPassword} = data
+    // for (let value of formData) {
+    //     data[value[0]] = value[1]
+    // }
+    // console.log(data)
+    //let {loginEmail, loginPassword} = data
   
     if (this.validateEmail(loginEmail) === '') {
       this.setState({
@@ -79,33 +105,37 @@ export default class Login extends React.Component {
       })
     }
     //assigning the object from the form data to params in the state
-    // this.setState({
-    //     loginEmail.value: data.loginEmail,
-    //     loginPassword.value: data.loginPassword
-    // })
+    this.setState({
+        loginEmail: {
+          value: data.loginEmail
+        },
+        loginPassword: {
+          value: data.loginPassword
+        }
+    })
 
     //check if the state is populated with the search params data
     console.log(this.state)
 
-  //   const searchURL = `${config.API_ENDPOINT}/log-in`
+    //const searchURL = `${config.API_ENDPOINT}/users`
 
-  //   const queryString = this.formatQueryParams(data)
+    //const queryString = this.formatQueryParams(data)
 
-  //    //sent all the params to the final url
-  //   const url = searchURL + '?' + queryString
+     //sent all the params to the final url
+    //const url = searchURL + '?' + queryString
 
-  //   console.log(url)
+    // console.log(searchURL)
 
-  //   const options = {
-  //     method: 'GET',
-  //     header: {
-  //         "Authorization": "",
-  //         "Content-Type": "application/json"
-  //     }
-  // }
+    // const options = {
+    //   method: 'GET',
+    //   headers: {
+    //       //"Authorization": "",
+    //       "Content-Type": "application/json"
+    //   }
+    // }
 
-  // //useing the url and paramters above make the api call
-  // fetch(url, options)
+  //useing the url and paramters above make the api call
+  // fetch(searchURL, options)
 
   //     // if the api returns data ...
   //     .then(res => {
@@ -133,6 +163,9 @@ export default class Login extends React.Component {
   //   })
   }
 
+  //logic that says - if user email matches password combo in "users"
+  //show them their homepage
+
   render() {
     const emailError = this.validateEmail();
     const passwordError = this.validatePassword();
@@ -158,7 +191,7 @@ export default class Login extends React.Component {
                     <label htmlFor="password">Password</label>
                     <input 
                       name="loginPassword"
-                      type="text" 
+                      type="password" 
                       id="password"
                       placeholder="Password"
                       onChange={e => this.updatePassword(e.target.value)}
