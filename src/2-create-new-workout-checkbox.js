@@ -91,6 +91,8 @@ class CreateNewWorkout2 extends Component {
       total_length: data.workoutTimeValue, 
       workout_type: data.workoutTypeValue
     }
+
+    //if unchecked, comes back as undefined, not "off"
   
     console.log(payload)
   
@@ -146,34 +148,42 @@ class CreateNewWorkout2 extends Component {
           <div className="col-sm-12">
             <form onSubmit={this.handleFormSubmit}>
                 <h2 className="workout-question-1">Which muscle groups would you like to work?</h2>
-                  <div className="answer-1">
+                  <div className="checkbox">
                     {this.createCheckboxes()}
                   </div>
 
             <h2 className="workout-question-2">How long do you want to workout for?</h2>
               <div className="workout-time answer-2">
-                <label htmlFor="time-1">Less than 5 minutes</label>
                 <input type="radio" id="time-1"name="workoutTimeValue" value="Less than 5 minutes" onClick={this.handleTimeChange} />
-                <label htmlFor="time-2">6-10 minutes</label>
+                <label htmlFor="time-1">Less than 5 minutes</label>
+
                 <input type="radio" id="time-2" name="workoutTimeValue" value="6-10 minutes" />
-                <label htmlFor="time-3">11-15 minutes</label>
+                <label htmlFor="time-2">6-10 minutes</label>
+                
                 <input type="radio" id="time-3" name="workoutTimeValue" value="11-15 minutes" />
-                <label htmlFor="time-4">16-20 minutes</label>
+                <label htmlFor="time-3">11-15 minutes</label>
+                
                 <input type="radio" id="time-4" name="workoutTimeValue" value="16-20 minutes" />
-                <label htmlFor="time-5">21-25 minutes</label>
+                <label htmlFor="time-4">16-20 minutes</label>
+                
                 <input type="radio" id="time-5" name="workoutTimeValue" value="21-25 minutes" />
-                <label htmlFor="time-6">26-30 minutes</label>
+                <label htmlFor="time-5">21-25 minutes</label>
+                
                 <input type="radio" id="time-6" name="workoutTimeValue" value="26-30 minutes" />
+                <label htmlFor="time-6">26-30 minutes</label>
               </div>    
 
               <h2 className="workout-question-3">What style of workout would you like?</h2>
                 <div className="workout-type answer-3">
-                <label htmlFor="emom">EMOM (Every Minute On the Minute)</label>
+                
                 <input type="radio" id="emom" name="workoutTypeValue" value="EMOM" onClick={this.handleTypeChange} />
-                <label htmlFor="amrap">AMRAP (As Many Rounds As Possible)</label>
+                <label htmlFor="emom">EMOM (Every Minute On the Minute)</label>
+                
                 <input type="radio" id="amrap" name="workoutTypeValue" value="AMRAP" />
-                <label htmlFor="rft">RFT (Rounds For Time)</label>
-                <input type="radio" id="rft" name="workoutTypeValue" value="RFT" />    
+                <label htmlFor="amrap">AMRAP (As Many Rounds As Possible)</label>
+                
+                <input type="radio" id="rft" name="workoutTypeValue" value="RFT" />  
+                <label htmlFor="rft">RFT (Rounds For Time)</label>  
                 </div>
                 <br />
                 <button type="submit" className="small-btn">

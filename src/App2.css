@@ -47,8 +47,39 @@ h2 {
     color: #EB46C2;
 }
 
+label {
+    border: 1px solid white;
+    /* border-radius: 25px; */
+    margin: 10px;
+    font-size: 18px;
+}
+
 input {
     color: #EB46C2;
+    margin: 10px;
+}
+
+input:checked + label {
+    background-color: #32F5B1;
+    color: #2439D6;
+    font-weight: bolder;
+}
+
+.form-check-input:checked + label {
+    background-color: #32F5B1;
+}
+
+.checkbox:checked + label {
+    background-color: #32F5B1;
+}
+
+input[type="checkbox"]:checked + label {
+    box-shadow: 0 0 0 3px #EB46C2;
+    background-color: #32F5B1;
+}
+
+input[type="radio"] {
+    display: none;
 }
 
 .workout-time {
@@ -208,10 +239,10 @@ label {
         padding: 10px;
     }
 
-    /* form {
+    .row {
         display: grid;
         grid-area: main;
-    } */
+    }
 
     label {
         display: grid;

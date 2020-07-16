@@ -9,11 +9,11 @@ export default function NewWorkoutCreated(props) {
             <h1>New Workout</h1>
             <p>Here is your newest workout!</p>
             <h2>Time Domain</h2>
-            <button>Chosen Time Domain</button>
+            {/* <h3> {props.timeDomain} </h3> */}
             <h2>Muscle Groups</h2>
-            <button>Chosen Muscle Groups</button>
+            {/* <h3> {props.muscleGroup} </h3> */}
             <h2>Workout Type</h2>
-            <button>Chosen Workout Type</button>
+            {/* <h3> {props.workoutType} </h3> */}
             <br />
             <br />
             <div className="new-workout">
