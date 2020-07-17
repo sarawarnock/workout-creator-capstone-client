@@ -22,13 +22,13 @@ export default function Navbar(props) {
         </li>
       </ul> */}
 
-      <nav role="navigation" class="nav">
-                <label for="hamburger">&#9776;</label>
+      <nav role="navigation" className="nav">
+                <label htmlFor="hamburger">&#9776;</label>
                 <input type="checkbox" id="hamburger"/>
-                    <ul class="menu">
-                        <li class="nav-link cl-home"> <Link to='/home'>Home</Link></li>
-                        <li class="nav-link cl-create-workout"> <Link to='/create-workout'>Create Workout</Link></li>
-                        <li class="nav-link cl-past-workouts"><Link to='/past-workouts'>Past Workouts</Link></li>
+                    <ul className="menu">
+                        <li className="nav-link cl-home"> <Link to='/home'>Home</Link></li>
+                        <li className="nav-link cl-create-workout"> <Link to='/create-workout'>Create Workout</Link></li>
+                        <li className="nav-link cl-past-workouts"><Link to='/past-workouts'>Past Workouts</Link></li>
                 </ul>
             </nav>
     </div>

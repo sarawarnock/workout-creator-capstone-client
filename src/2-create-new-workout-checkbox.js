@@ -57,6 +57,17 @@ class CreateNewWorkout2 extends Component {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  checkString(inputString) {
+    let outputText = inputString;
+    if (inputString === undefined) {
+        outputText = "";
+    }
+    if (inputString == null) {
+        outputText = "";
+    }
+    return outputText;
+  }
+
   //POST to '/api/users' but randomize the data given the choices....
 
   handleFormSubmit = (e) => {
@@ -81,13 +92,13 @@ class CreateNewWorkout2 extends Component {
     console.log(data)
     
     let payload = {
-      is_advanced: data.Advanced,
-      is_arms: data.Arms,
-      is_back: data.Back,
-      is_cardio: data.Cardio,
-      is_chest: data.Chest,
-      is_core: data.Core,
-      is_legs: data.Legs,
+      is_advanced: this.checkString(data.Advanced),
+      is_arms: this.checkString(data.Arms),
+      is_back: this.checkString(data.Back),
+      is_cardio: this.checkString(data.Cardio),
+      is_chest: this.checkString(data.Chest),
+      is_core: this.checkString(data.Core),
+      is_legs: this.checkString(data.Legs),
       total_length: data.workoutTimeValue, 
       workout_type: data.workoutTypeValue
     }
@@ -154,23 +165,23 @@ class CreateNewWorkout2 extends Component {
 
             <h2 className="workout-question-2">How long do you want to workout for?</h2>
               <div className="workout-time answer-2">
-                <input type="radio" id="time-1"name="workoutTimeValue" value="Less than 5 minutes" onClick={this.handleTimeChange} />
-                <label htmlFor="time-1">Less than 5 minutes</label>
+                <input type="radio" id="time-1"name="workoutTimeValue" value="5 minutes" onClick={this.handleTimeChange} />
+                <label htmlFor="time-1">5 minutes</label>
 
-                <input type="radio" id="time-2" name="workoutTimeValue" value="6-10 minutes" />
-                <label htmlFor="time-2">6-10 minutes</label>
+                <input type="radio" id="time-2" name="workoutTimeValue" value="10 minutes" />
+                <label htmlFor="time-2">10 minutes</label>
                 
-                <input type="radio" id="time-3" name="workoutTimeValue" value="11-15 minutes" />
-                <label htmlFor="time-3">11-15 minutes</label>
+                <input type="radio" id="time-3" name="workoutTimeValue" value="15 minutes" />
+                <label htmlFor="time-3">15 minutes</label>
                 
-                <input type="radio" id="time-4" name="workoutTimeValue" value="16-20 minutes" />
-                <label htmlFor="time-4">16-20 minutes</label>
+                <input type="radio" id="time-4" name="workoutTimeValue" value="20 minutes" />
+                <label htmlFor="time-4">20 minutes</label>
                 
-                <input type="radio" id="time-5" name="workoutTimeValue" value="21-25 minutes" />
-                <label htmlFor="time-5">21-25 minutes</label>
+                <input type="radio" id="time-5" name="workoutTimeValue" value="25 minutes" />
+                <label htmlFor="time-5">25 minutes</label>
                 
-                <input type="radio" id="time-6" name="workoutTimeValue" value="26-30 minutes" />
-                <label htmlFor="time-6">26-30 minutes</label>
+                <input type="radio" id="time-6" name="workoutTimeValue" value="30 minutes" />
+                <label htmlFor="time-6">30 minutes</label>
               </div>    
 
               <h2 className="workout-question-3">What style of workout would you like?</h2>
@@ -182,8 +193,8 @@ class CreateNewWorkout2 extends Component {
                 <input type="radio" id="amrap" name="workoutTypeValue" value="AMRAP" />
                 <label htmlFor="amrap">AMRAP (As Many Rounds As Possible)</label>
                 
-                <input type="radio" id="rft" name="workoutTypeValue" value="RFT" />  
-                <label htmlFor="rft">RFT (Rounds For Time)</label>  
+                {/* <input type="radio" id="rft" name="workoutTypeValue" value="RFT" />  
+                <label htmlFor="rft">RFT (Rounds For Time)</label>   */}
                 </div>
                 <br />
                 <button type="submit" className="small-btn">
