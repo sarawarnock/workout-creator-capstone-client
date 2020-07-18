@@ -165,22 +165,22 @@ class CreateNewWorkout2 extends Component {
 
             <h2 className="workout-question-2">How long do you want to workout for?</h2>
               <div className="workout-time answer-2">
-                <input type="radio" id="time-1"name="workoutTimeValue" value="5 minutes" onClick={this.handleTimeChange} />
+                <input type="radio" id="time-1"name="workoutTimeValue" value="5" onClick={this.handleTimeChange} />
                 <label htmlFor="time-1">5 minutes</label>
 
-                <input type="radio" id="time-2" name="workoutTimeValue" value="10 minutes" />
+                <input type="radio" id="time-2" name="workoutTimeValue" value="10" />
                 <label htmlFor="time-2">10 minutes</label>
                 
-                <input type="radio" id="time-3" name="workoutTimeValue" value="15 minutes" />
+                <input type="radio" id="time-3" name="workoutTimeValue" value="15" />
                 <label htmlFor="time-3">15 minutes</label>
                 
-                <input type="radio" id="time-4" name="workoutTimeValue" value="20 minutes" />
+                <input type="radio" id="time-4" name="workoutTimeValue" value="20" />
                 <label htmlFor="time-4">20 minutes</label>
                 
-                <input type="radio" id="time-5" name="workoutTimeValue" value="25 minutes" />
+                <input type="radio" id="time-5" name="workoutTimeValue" value="25" />
                 <label htmlFor="time-5">25 minutes</label>
                 
-                <input type="radio" id="time-6" name="workoutTimeValue" value="30 minutes" />
+                <input type="radio" id="time-6" name="workoutTimeValue" value="30" />
                 <label htmlFor="time-6">30 minutes</label>
               </div>    
 
