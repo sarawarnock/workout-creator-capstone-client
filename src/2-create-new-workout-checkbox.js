@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Checkbox from './new-workout-checkbox';
 import config from './config'
+import NewWorkoutCreated from './new-workout-created'
+import CircleButton from './CircleButton/circle-button'
+import { Link } from 'react-router-dom'
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
@@ -15,7 +18,72 @@ class CreateNewWorkout2 extends Component {
     ),
     workoutTimeValue: '',
     workoutTypeValue: '',
+    workoutNameValue: '',
+    isSubmitted: false,
+    savedWorkouts: [],
+    savedWorkoutDetails: [],
+    savedExercises: [],
+    // workoutDetails: []
   };
+
+  componentDidMount(){
+    // console.log(this.state)
+    // const collectionId = this.props.match.params.collectionId;
+      console.log('component SavedWorkouts is mounting')
+
+      let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/1`;
+
+      fetch(getWorkoutUrl)
+          .then(response => response.json())
+          //map over the workouts by ID, returning each workout
+          //so that we can get the individual workout details for that workout, map over that to get the exercises
+          .then(workouts => {
+              console.log(workouts)
+              workouts.map((workout) => {
+                  // console.log(workout)
+                  //------mapping workouts to get workout details---------------------
+                  let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/${workout.id}`;
+
+                  fetch(getWorkoutDetailsUrl)
+                      .then(response => response.json())
+                      .then(workoutDetails => {
+                          // console.log(workoutDetails)
+                          workoutDetails.map((workoutDetail) => {
+                              // console.log(workoutDetail)
+                              //------mapping workout details to get exercises---------------------
+                              let getExercisesUrl = `${config.API_ENDPOINT}/exercises/${workoutDetail.exercises_id}`;
+                            // console.log(workoutDetail.exercises_id)
+                              fetch(getExercisesUrl)
+                                  .then(response => response.json())
+                                  .then(exercises => {
+                                         console.log(exercises)
+                                         //!!!!!!!!!!!!!!!!! 
+                                         //this map is not working - cannot log the exercise individually or the id
+                                        exercises.map((exercise, id) => {
+                                           console.log(exercise)
+                                           console.log(id)
+                                        })
+                                        this.setState({
+                                          savedExercises: exercises
+                                        });
+                                  })
+                                  .catch(error => this.setState({ error }))
+                              //---------------------------
+                            })
+                          this.setState({
+                              savedWorkoutDetails: workoutDetails
+                          });
+                          // console.log(this.state.savedWorkoutDetails)
+                      })
+                      .catch(error => this.setState({ error }))
+                  //---------------------------
+              })
+              this.setState({
+                  savedWorkouts: workouts
+              });
+          })
+          .catch(error => this.setState({ error }))
+  }
 
   selectAllCheckboxes = isSelected => {
     Object.keys(this.state.checkboxes).forEach(checkbox => {
@@ -48,6 +116,12 @@ class CreateNewWorkout2 extends Component {
   handleTypeChange = (e) => {
     this.setState({
       workoutTypeValue: e.target.value
+    })
+  }
+
+  handleNameChange = (e) => {
+    this.setState({
+      workoutNameValue: e.target.value
     })
   }
 
@@ -100,7 +174,9 @@ class CreateNewWorkout2 extends Component {
       is_core: this.checkString(data.Core),
       is_legs: this.checkString(data.Legs),
       total_length: data.workoutTimeValue, 
-      workout_type: data.workoutTypeValue
+      workout_type: data.workoutTypeValue,
+      workouts_name: data.workoutNameValue,
+      user_id: 1
     }
 
     //if unchecked, comes back as undefined, not "off"
@@ -131,13 +207,23 @@ class CreateNewWorkout2 extends Component {
           // check if there are no results
           if (data.totalItems === 0) {
             throw new Error('No data found')
-        }
-
+          }
+        //   this.setState({
+        //     workoutDetails: data.outputExercises
+        //   })
+          window.location = `/create-workout`
       })
         .catch(err => {
           this.setState({
             error: err.message
         })
+      })
+
+      this.setState({
+        workoutNameValue: data.workoutNameValue,
+        workoutTimeValue: data.workoutTimeValue,
+        workoutTypeValue: data.workoutTypeValue,
+        isSubmitted: true
       })
   };
 
@@ -153,6 +239,39 @@ class CreateNewWorkout2 extends Component {
   createCheckboxes = () => OPTIONS.map(this.createCheckbox);
 
   render() {
+    const listOfWorkouts = 
+    this.state.savedWorkouts.map((workout, id) => {
+  
+    return (
+      <div className="workouts-list" key={id}>
+        <h2> {workout.workouts_name} </h2>
+          <p> {workout.total_length} minutes</p>
+          <p> {workout.workout_type} </p>
+      </div>)
+    });
+
+    //I dont know that we need to show any of these since the info from the workout details table just gives exercise IDs
+    //But we do need the workout reps from this table
+    const showWorkoutDetails = 
+    this.state.savedWorkoutDetails.map((workoutDetails, id) => {
+    return (
+      <div className="workout-details" key={id}>
+       <p> {workoutDetails.exercise_reps} </p> 
+      </div>)
+    });
+
+    const showWorkoutExercises = 
+    this.state.savedExercises.map((exercises, id) => {
+    return (
+      <div className="workout-exercises" key={id}>
+
+        <h2> {exercises.title} </h2>
+          <p> {exercises.description} </p>
+      </div>)
+    });
+    //empty array
+    console.log(this.state.savedExercises)
+
     return (
       <div className="App">
         <div className="row mt-5">
@@ -197,11 +316,32 @@ class CreateNewWorkout2 extends Component {
                 <label htmlFor="rft">RFT (Rounds For Time)</label>   */}
                 </div>
                 <br />
+                <h2>Name Your Workout:</h2>
+                <div className="workouts-name">
+                  <input 
+                    name="workoutNameValue"
+                    type="text" 
+                    id="workouts-name-input"
+                    placeholder="Example: Workout 1"
+                    onChange={this.handleNameChange}
+                  />
+                </div>
+                <br />
                 <button type="submit" className="small-btn">
                   Submit
                 </button>
               {/* </div> */}
             </form>
+                {/* {listOfWorkouts} */}
+            {/* {this.state.isSubmitted && listOfWorkouts[listOfWorkouts.length - 1]} */}
+            {listOfWorkouts[listOfWorkouts.length - 1]}
+            <p> {showWorkoutDetails} </p>
+            <p> {showWorkoutExercises} </p>
+            {/* {this.state.isSubmitted  && <NewWorkoutCreated
+               workoutNameValue={this.state.workoutNameValue}
+               workoutTimeValue={this.state.workoutTimeValue}
+               workoutTypeValue={this.state.workoutTypeValue}
+             />} */}
           </div>
         </div>
       </div>

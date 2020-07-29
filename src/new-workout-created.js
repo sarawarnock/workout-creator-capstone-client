@@ -8,12 +8,13 @@ export default function NewWorkoutCreated(props) {
       <main className="main">
             <h1>New Workout</h1>
             <p>Here is your newest workout!</p>
+            <h2> {props.workoutNameValue} </h2>
             <h2>Time Domain</h2>
-            {/* <h3> {props.timeDomain} </h3> */}
+            <h3> {props.workoutTimeValue} </h3>
             <h2>Muscle Groups</h2>
-            {/* <h3> {props.muscleGroup} </h3> */}
+            <h3> {props.muscleGroup} </h3>
             <h2>Workout Type</h2>
-            {/* <h3> {props.workoutType} </h3> */}
+            <h3> {props.workoutTypeValue} </h3>
             <br />
             <br />
             <div className="new-workout">
@@ -23,9 +24,9 @@ export default function NewWorkoutCreated(props) {
                 <p>Minute 2: 10 V ups</p>
                 <p>Minute 3: 20 jumping lunges</p>
             </div>
-            <CircleButton onClick={props.history.goBack}>
+            {/* <CircleButton onClick={props.history.goBack}>
               Go Back
-            </CircleButton>
+            </CircleButton> */}
         </main>
     </div>
   );
