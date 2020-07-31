@@ -38,7 +38,7 @@ class CreateNewWorkout2 extends Component {
           //map over the workouts by ID, returning each workout
           //so that we can get the individual workout details for that workout, map over that to get the exercises
           .then(workouts => {
-              console.log(workouts)
+              //console.log(workouts)
               workouts.map((workout) => {
                   // console.log(workout)
                   //------mapping workouts to get workout details---------------------
@@ -49,39 +49,39 @@ class CreateNewWorkout2 extends Component {
                       .then(workoutDetails => {
                           // console.log(workoutDetails)
                           workoutDetails.map((workoutDetail) => {
-                              // console.log(workoutDetail)
+                               //console.log(workoutDetail)
                               //------mapping workout details to get exercises---------------------
                               let getExercisesUrl = `${config.API_ENDPOINT}/exercises/${workoutDetail.exercises_id}`;
-                            // console.log(workoutDetail.exercises_id)
                               fetch(getExercisesUrl)
                                   .then(response => response.json())
                                   .then(exercises => {
-                                         console.log(exercises)
-                                         //!!!!!!!!!!!!!!!!! 
-                                         //this map is not working - cannot log the exercise individually or the id
-                                        exercises.map((exercise, id) => {
-                                           console.log(exercise)
-                                           console.log(id)
+                                        //this brings up too many exercises - we want just the ones with the exercise id from the workout details
+                                         //console.log(exercises)
+                                         //this map is not working - cannot log the exercise individually
+                                         exercises.map(exercise => {
+                                           console.log(exercise.title)
+                                           console.log(exercise.description)
                                         })
                                         this.setState({
                                           savedExercises: exercises
                                         });
-                                  })
+                                         //console.log(exercises) ---- this does not work
+                                    })
                                   .catch(error => this.setState({ error }))
                               //---------------------------
                             })
                           this.setState({
                               savedWorkoutDetails: workoutDetails
                           });
-                          // console.log(this.state.savedWorkoutDetails)
-                      })
+                            // console.log(workoutDetails)
+                        })
                       .catch(error => this.setState({ error }))
                   //---------------------------
-              })
+                })
               this.setState({
                   savedWorkouts: workouts
               });
-          })
+            })
           .catch(error => this.setState({ error }))
   }
 
@@ -270,7 +270,7 @@ class CreateNewWorkout2 extends Component {
       </div>)
     });
     //empty array
-    console.log(this.state.savedExercises)
+    // console.log(this.state.savedExercises)
 
     return (
       <div className="App">
