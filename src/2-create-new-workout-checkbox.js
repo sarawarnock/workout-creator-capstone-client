@@ -31,6 +31,13 @@ class CreateNewWorkout2 extends Component {
     // const collectionId = this.props.match.params.collectionId;
       console.log('component SavedWorkouts is mounting')
 
+
+    //Promise.all([Promise1, Promise2, Promise3])
+    // .then(result) => {
+    // console.log(result)
+    // })
+    // .catch(error => console.log(`Error in promises ${error}`))
+
       let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/1`;
 
       fetch(getWorkoutUrl)
@@ -42,34 +49,13 @@ class CreateNewWorkout2 extends Component {
               workouts.map((workout) => {
                   // console.log(workout)
                   //------mapping workouts to get workout details---------------------
-                  let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/${workout.id}`;
+                  let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/${workout.id}`;
 
                   fetch(getWorkoutDetailsUrl)
                       .then(response => response.json())
                       .then(workoutDetails => {
-                          // console.log(workoutDetails)
-                          workoutDetails.map((workoutDetail) => {
-                               //console.log(workoutDetail)
-                              //------mapping workout details to get exercises---------------------
-                              let getExercisesUrl = `${config.API_ENDPOINT}/exercises/${workoutDetail.exercises_id}`;
-                              fetch(getExercisesUrl)
-                                  .then(response => response.json())
-                                  .then(exercises => {
-                                        //this brings up too many exercises - we want just the ones with the exercise id from the workout details
-                                         //console.log(exercises)
-                                         //this map is not working - cannot log the exercise individually
-                                         exercises.map(exercise => {
-                                           console.log(exercise.title)
-                                           console.log(exercise.description)
-                                        })
-                                        this.setState({
-                                          savedExercises: exercises
-                                        });
-                                         //console.log(exercises) ---- this does not work
-                                    })
-                                  .catch(error => this.setState({ error }))
-                              //---------------------------
-                            })
+                           console.log(workoutDetails)
+                          
                           this.setState({
                               savedWorkoutDetails: workoutDetails
                           });
@@ -244,7 +230,7 @@ class CreateNewWorkout2 extends Component {
   
     return (
       <div className="workouts-list" key={id}>
-        <h2> {workout.workouts_name} </h2>
+        <h2 className="workouts-list-name"> {workout.workouts_name} </h2>
           <p> {workout.total_length} minutes</p>
           <p> {workout.workout_type} </p>
       </div>)
@@ -256,19 +242,31 @@ class CreateNewWorkout2 extends Component {
     this.state.savedWorkoutDetails.map((workoutDetails, id) => {
     return (
       <div className="workout-details" key={id}>
-       <p> {workoutDetails.exercise_reps} </p> 
+       <p className="exercise-reps"> {workoutDetails.exercise_reps} </p> 
       </div>)
     });
 
-    const showWorkoutExercises = 
-    this.state.savedExercises.map((exercises, id) => {
-    return (
-      <div className="workout-exercises" key={id}>
-
-        <h2> {exercises.title} </h2>
-          <p> {exercises.description} </p>
-      </div>)
-    });
+    //savedExercises is an empty array
+    console.log(this.state)
+    console.log(this.state.savedExercises.length)
+    let showWorkoutExercises = ''
+    if (this.state.savedExercises.length == 0) {
+        console.log('HELLO')
+        showWorkoutExercises = 
+            <div className="workout-exercises">
+                <p> No Exercises </p>
+            </div>
+    } else {
+        showWorkoutExercises = 
+        this.state.savedExercises.map((exercises, id) => {
+        return (
+          <div className="workout-exercises" key={id}>
+    
+            <h4> {exercises.title} </h4>
+              <p> {exercises.description} </p>
+          </div>)
+        }); 
+    }
     //empty array
     // console.log(this.state.savedExercises)
 

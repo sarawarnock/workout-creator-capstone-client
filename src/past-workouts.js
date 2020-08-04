@@ -21,6 +21,8 @@ export default function PastWorkouts(props) {
                     {/* This button will link to the ViewPastWorkout
                     component, depending on the workout_id */}
                     <td>
+                      {/* Need to use props? to get the workout details down in the view-past-workout
+                      button  */}
                         <button>
                           <Link
                             to="/past-workouts/:workout_id"

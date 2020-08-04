@@ -148,6 +148,20 @@ label {
     margin: 5px;
 }
 
+.workouts-list {
+    font-size: 24px;
+}
+
+.workouts-list-name {
+    font-size: 28px;
+    text-decoration: underline;
+    color: #32F5B1;
+}
+
+.workout-details {
+    font-size: 20px;
+}
+
 @media screen and (max-width: 450px) {
     .nav-link {
         color: #EB46C2;
@@ -248,50 +262,4 @@ label {
         display: grid;
         align-self: center;
     }
-
-    /* input {
-        display: grid;
-        align-self: start;
-    } */
-
-    /* .workout-question-1 {
-        display: grid;
-        grid-area: question1;
-    } */
-
-    /* .workout-question-2 {
-        display: grid;
-        grid-area: question2;
-    }
-
-    .workout-question-3 {
-        display: grid;
-        grid-area: question3;
-    } */
-
-    /* .answer-1 {
-        display: grid;
-        grid-area: answer1;
-    } */
-
-   /*  .answer-2 {
-        display: grid;
-        grid-area: answer2;
-    }
-
-    answer-3 {
-        display: grid;
-        grid-area: answer3;
-    } */
-
-
-    /* label {
-        display: grid;
-        grid-area: answer;
-    } */
-
-    /* input, button {
-        grid-area: button;
-    } */
-
 }
