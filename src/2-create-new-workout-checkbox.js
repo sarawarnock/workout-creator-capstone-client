@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Checkbox from './new-workout-checkbox';
 import config from './config'
+import json from 'parse-json'
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
@@ -40,6 +41,7 @@ class CreateNewWorkout2 extends Component {
                       .then(workoutDetails => {
                           this.setState({
                               savedWorkoutDetails: workoutDetails
+                              //savedWorkoutDetails: [...this.state.savedWorkoutDetails, ...workoutDetails]
                           });
                             console.log(workoutDetails)
                         })
@@ -49,8 +51,7 @@ class CreateNewWorkout2 extends Component {
               this.setState({
                   savedWorkouts: workouts
               });
-            })
-          .catch(error => this.setState({ error }))
+        })
     }
 
   selectAllCheckboxes = isSelected => {
@@ -140,8 +141,6 @@ class CreateNewWorkout2 extends Component {
       user_id: 1
     }
 
-    //if unchecked, comes back as undefined, not "off"
-  
     console.log(payload)
   
     fetch(`${config.API_ENDPOINT}/workouts`, {
@@ -210,16 +209,43 @@ class CreateNewWorkout2 extends Component {
       </div>)
     });
 
-    console.log(this.state)
+    console.log(this.state.savedWorkoutDetails)
     //I dont know that we need to show any of these since the info from the workout details table just gives exercise IDs
     //But we do need the workout reps from this table
-     const showWorkoutDetails = 
-     this.state.savedWorkoutDetails.map((workoutDetails, id) => {
-     return (
-       <div className="workout-details" key={id}>
-        <p className="exercise-reps"> {workoutDetails.exercise_reps} </p> 
-       </div>)
+    // let showWorkoutDetailsTitle = this.state.savedWorkoutDetails.title
+    // let showWorkoutDetailsDescription = this.state.savedWorkoutDetails.description
+    // let showWorkoutDetailsReps = this.state.savedWorkoutDetails.exercise_reps
+    
+    // for (let i =0; i < this.state.savedWorkoutDetails.length; i++) {
+    //     showWorkoutDetailsTitle = this.state.savedWorkoutDetails[i].title
+    //     showWorkoutDetailsDescription = this.state.savedWorkoutDetails[i].description
+    //     showWorkoutDetailsReps = this.state.savedWorkoutDetails[i].exercise_reps
+    // } 
+    
+    let showWorkoutDetails = []
+    for (let i = 0; i < this.state.savedWorkoutDetails.length; i++) {
+        showWorkoutDetails.push(this.state.savedWorkoutDetails[i])
+        console.log(showWorkoutDetails)
+    }
+    showWorkoutDetails.map(workoutDetail => {
+        let workoutDetailTitle = workoutDetail.title
+        let workoutDetailReps = workoutDetail.exercise_reps
+        return (
+            <div className="workout-details">
+                <p> {workoutDetailReps} </p>
+                <p> {workoutDetailTitle} </p>
+            </div>
+        )
     });
+
+    
+
+    //  this.state.savedWorkoutDetails.map((workoutDetails, id) => {
+    //  return (
+    //    <div className="workout-details" key={id}>
+    //     <p className="exercise-reps"> {workoutDetails.exercise_reps} </p> 
+    //    </div>)
+    // });
 
     //savedExercises is an empty array
     // console.log(this.state)
@@ -307,7 +333,9 @@ class CreateNewWorkout2 extends Component {
             </form>
             {/* {this.state.isSubmitted && showWorkouts[showWorkouts.length - 1]} */}
             {showWorkouts[showWorkouts.length - 1]}
-            <p> {showWorkoutDetails} </p>
+            <p> Movement:  </p>
+            <p> Reps:  </p>
+            <p> Description:  </p>
           </div>
         </div>
       </div>
