@@ -5,8 +5,6 @@ import LandingPage from './landing-page'
 import Navbar from './navbar'
 import PersonalizedHomePage from './personalized-home-page'
 import PastWorkouts from './past-workouts'
-import CreateNewWorkout from './create-new-workout'
-import NewWorkoutCreated from './new-workout-created'
 import Header from './header'
 import Login from './log-in';
 import SignUp from './sign-up';

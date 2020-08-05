@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Checkbox from './new-workout-checkbox';
 import config from './config'
-import json from 'parse-json'
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
@@ -150,7 +149,6 @@ class CreateNewWorkout2 extends Component {
         },
         body: JSON.stringify(payload),
       })
-
         // if the api returns data ...
         .then(res => {
             if (!res.ok) {
@@ -161,16 +159,16 @@ class CreateNewWorkout2 extends Component {
         })
             // use the json api output
         .then(data => {
-
           //check if there is meaningfull data
           console.log(data);
           // check if there are no results
           if (data.totalItems === 0) {
             throw new Error('No data found')
           }
-        //   this.setState({
-        //     workoutDetails: data.outputExercises
-        //   })
+          this.setState({
+              savedWorkouts: [...this.state.savedWorkouts, data.workout],
+              savedWorkoutDetails: data.workoutDetails
+          });
         //  window.location = `/create-workout`
       })
         .catch(err => {

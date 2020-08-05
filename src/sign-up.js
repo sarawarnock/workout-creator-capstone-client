@@ -188,7 +188,7 @@ export default class SignUp extends React.Component {
                 <form className="sign-up-form" onSubmit={this.handleSubmit}>
                 
                     <div className="sign-up-email">
-                    <label htmlFor="email">Email</label>
+                    <label className ="user-label" htmlFor="email">Email</label>
                     <input 
                       name="signUpEmail"
                       type="text" 
@@ -200,7 +200,7 @@ export default class SignUp extends React.Component {
                     {this.state.signUpEmail.touched && <ValidationError message={emailError} />}
                     </div>
                     <div className="sign-up-password">
-                    <label htmlFor="password">Password</label>
+                    <label className ="user-label" htmlFor="password">Password</label>
                     <input 
                       name="signUpPassword"
                       type="password" 
@@ -212,7 +212,7 @@ export default class SignUp extends React.Component {
                     {this.state.signUpPassword.touched && <ValidationError message={passwordError} />}
                     </div>
                     <div className="sign-up-name">
-                    <label htmlFor="fname">First Name</label>
+                    <label className ="user-label" htmlFor="fname">First Name</label>
                     <input 
                       name="signUpFirstName"
                       type="text" 

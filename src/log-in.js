@@ -177,7 +177,7 @@ export default class Login extends React.Component {
                   className="login-form"
                   onSubmit={this.handleSubmit}
                 >
-                    <label htmlFor="email">Email</label>
+                    <label className ="user-label" htmlFor="email">Email</label>
                     <input 
                       name="loginEmail"
                       type="text" 
@@ -188,7 +188,7 @@ export default class Login extends React.Component {
                     />
                     {this.state.loginEmail.touched && <ValidationError message={emailError} />}
                     
-                    <label htmlFor="password">Password</label>
+                    <label className ="user-label" htmlFor="password">Password</label>
                     <input 
                       name="loginPassword"
                       type="password" 

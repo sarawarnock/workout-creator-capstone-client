@@ -54,9 +54,14 @@ label {
     font-size: 18px;
 }
 
+.user-label {
+    border: none;
+}
+
 input {
     color: #EB46C2;
     margin: 10px;
+    margin: 5px;
 }
 
 input:checked + label {
@@ -138,14 +143,6 @@ a:active {
 a:hover {
     text-decoration: underline;
     color:  #EB46C2;
-}
-
-input {
-    margin: 5px;
-}
-
-label {
-    margin: 5px;
 }
 
 .workouts-list {
