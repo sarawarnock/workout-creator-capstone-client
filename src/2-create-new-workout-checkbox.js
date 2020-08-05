@@ -43,7 +43,7 @@ class CreateNewWorkout2 extends Component {
                               savedWorkoutDetails: workoutDetails
                               //savedWorkoutDetails: [...this.state.savedWorkoutDetails, ...workoutDetails]
                           });
-                            console.log(workoutDetails)
+                            //console.log(workoutDetails)
                         })
                       .catch(error => this.setState({ error }))
                   //---------------------------
@@ -113,7 +113,7 @@ class CreateNewWorkout2 extends Component {
     Object.keys(this.state.checkboxes)
       .filter(checkbox => this.state.checkboxes[checkbox])
       .forEach(checkbox => {
-        console.log(checkbox, "is selected.");
+        //console.log(checkbox, "is selected.");
     });
 
     //create an object to store the search filters
@@ -171,7 +171,7 @@ class CreateNewWorkout2 extends Component {
         //   this.setState({
         //     workoutDetails: data.outputExercises
         //   })
-          window.location = `/create-workout`
+        //  window.location = `/create-workout`
       })
         .catch(err => {
           this.setState({
@@ -209,7 +209,7 @@ class CreateNewWorkout2 extends Component {
       </div>)
     });
 
-    console.log(this.state.savedWorkoutDetails)
+    //console.log(this.state.savedWorkoutDetails)
     //I dont know that we need to show any of these since the info from the workout details table just gives exercise IDs
     //But we do need the workout reps from this table
     // let showWorkoutDetailsTitle = this.state.savedWorkoutDetails.title
@@ -225,15 +225,17 @@ class CreateNewWorkout2 extends Component {
     let showWorkoutDetails = []
     for (let i = 0; i < this.state.savedWorkoutDetails.length; i++) {
         showWorkoutDetails.push(this.state.savedWorkoutDetails[i])
-        console.log(showWorkoutDetails)
+        //console.log(showWorkoutDetails)
     }
-    showWorkoutDetails.map(workoutDetail => {
+    showWorkoutDetails = showWorkoutDetails.map(workoutDetail => {
         let workoutDetailTitle = workoutDetail.title
         let workoutDetailReps = workoutDetail.exercise_reps
+        let workoutDetailDescription = workoutDetail.description
         return (
             <div className="workout-details">
                 <p> {workoutDetailReps} </p>
                 <p> {workoutDetailTitle} </p>
+                <p> {workoutDetailDescription} </p>
             </div>
         )
     });
@@ -333,9 +335,7 @@ class CreateNewWorkout2 extends Component {
             </form>
             {/* {this.state.isSubmitted && showWorkouts[showWorkouts.length - 1]} */}
             {showWorkouts[showWorkouts.length - 1]}
-            <p> Movement:  </p>
-            <p> Reps:  </p>
-            <p> Description:  </p>
+            <p> {showWorkoutDetails} </p>
           </div>
         </div>
       </div>
