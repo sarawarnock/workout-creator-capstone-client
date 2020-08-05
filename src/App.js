@@ -23,13 +23,14 @@ class App extends React.Component {
   }
 
   updateAppSavedWorkouts = newWorkout => {
-    this.state({
+    this.setState({
       appSavedWorkouts: [...this.state.appSavedWorkouts, newWorkout]
     })
   }
   
   //renders the Navbar
   renderNav() {
+    console.log(this.state.appSavedWorkouts)
     return (
       <div>
         <Navbar />
