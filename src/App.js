@@ -9,7 +9,6 @@ import Header from './header'
 import Login from './log-in';
 import SignUp from './sign-up';
 import ViewPastWorkout from './view-past-workout';
-import ForgotPassword from './forgot-password';
 import CreateNewWorkout2 from './2-create-new-workout-checkbox'
 
 class App extends React.Component {
@@ -19,9 +18,16 @@ class App extends React.Component {
       email: '',
       password: '',
       first_name: '',
+      appSavedWorkouts: []
     }
   }
 
+  updateAppSavedWorkouts = newWorkout => {
+    this.state({
+      appSavedWorkouts: [...this.state.appSavedWorkouts, newWorkout]
+    })
+  }
+  
   //renders the Navbar
   renderNav() {
     return (
@@ -46,7 +52,8 @@ class App extends React.Component {
         />
         <Route 
           path='/create-workout'
-          component={CreateNewWorkout2}
+          //component={CreateNewWorkout2}
+          render={(props) => <CreateNewWorkout2 {...props} saveNewWorkout={this.updateAppSavedWorkouts} />}
         />
         <Route 
           exact
@@ -71,10 +78,10 @@ class App extends React.Component {
           component={ViewPastWorkout} 
         />
         {/* ))} */}
-        <Route 
+        {/* <Route 
           path='/forgot-password'
           component={ForgotPassword}
-        />
+        /> */}
         {/* need to .map here too?
         once the workout gets created, it should go right to this page */}
         {/* <Route

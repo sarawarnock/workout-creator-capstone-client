@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Checkbox from './new-workout-checkbox';
 import config from './config'
+import ViewPastWorkout from './view-past-workout'
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
@@ -104,6 +105,8 @@ class CreateNewWorkout2 extends Component {
     return outputText;
   }
 
+
+
   //POST to '/api/users' but randomize the data given the choices....
 
   handleFormSubmit = (e) => {
@@ -169,6 +172,7 @@ class CreateNewWorkout2 extends Component {
               savedWorkouts: [...this.state.savedWorkouts, data.workout],
               savedWorkoutDetails: data.workoutDetails
           });
+          this.props.saveNewWorkout(data);
         //  window.location = `/create-workout`
       })
         .catch(err => {
@@ -238,7 +242,13 @@ class CreateNewWorkout2 extends Component {
         )
     });
 
-    
+    // const viewWorkout = 
+    // <ViewPastWorkout
+    //     title={this.state.savedWorkouts.workouts_name}
+    //     workoutTime={this.state.savedWorkouts.total_length}
+    //     workoutType={this.state.savedWorkouts.workout_type}
+        
+    // />
 
     //  this.state.savedWorkoutDetails.map((workoutDetails, id) => {
     //  return (

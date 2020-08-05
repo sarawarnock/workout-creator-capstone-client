@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import CircleButton from './CircleButton/circle-button'
 
 export default function PastWorkouts(props) {
   return (
@@ -39,6 +40,11 @@ export default function PastWorkouts(props) {
             >
               <button>Create Workout</button>
             </Link>
+            <div>
+              <CircleButton onClick={props.history.goBack}>
+                Go Back
+              </CircleButton>
+            </div>
         </main>
     </div>
   );
