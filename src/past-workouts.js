@@ -16,24 +16,26 @@ export default function PastWorkouts(props) {
                 </tr>
               </thead>
               <tbody>
+              {this.props.appSavedWorkouts.map(workout => {
+                return (
                 <tr>
-                    <td>Example Name: Workout 1</td>
-                    <td>March 21, 2020</td>
-                    {/* This button will link to the ViewPastWorkout
-                    component, depending on the workout_id */}
-                    <td>
-                      {/* Need to use props? to get the workout details down in the view-past-workout
+                  <td>{workout.title}</td>
+                  {/* This button will link to the ViewPastWorkout
+                  component, depending on the workout_id */}
+                  <td>
+                    {/* Need to use props? to get the workout details down in the view-past-workout
                       button  */}
-                        <button>
-                          <Link
-                            to="/past-workouts/:workout_id"
-                          >
-                            View
-                          </Link>
-                        </button>
-                    </td>
+                    <button>
+                      <Link
+                        to="/past-workouts/:workout_id"
+                      >
+                        View
+                      </Link>
+                    </button>
+                  </td>
                 </tr>
-                </tbody>
+              )})}
+              </tbody>
             </table>
             <Link
               to='/create-workout'

@@ -30,7 +30,6 @@ class App extends React.Component {
   
   //renders the Navbar
   renderNav() {
-    console.log(this.state.appSavedWorkouts)
     return (
       <div>
         <Navbar />
@@ -39,7 +38,8 @@ class App extends React.Component {
   }
 
   //renders all of the routes 
-  renderMainPages() {
+  renderMainPages = () => {
+    console.log(this.state.appSavedWorkouts)
     return (
       <div className="main-pages">
         <Route 
@@ -59,7 +59,8 @@ class App extends React.Component {
         <Route 
           exact
           path='/past-workouts'
-          component={PastWorkouts}
+          //component={PastWorkouts}
+          render={(props) => <PastWorkouts {...props} appSavedWorkouts={this.state.appSavedWorkouts} />}
         />
         <Route 
           path='/login'
