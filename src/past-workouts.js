@@ -24,7 +24,7 @@ export default function PastWorkouts(props) {
                   <td>
                     <button>
                       <Link
-                        to="/past-workouts/:workout_id"
+                        to={`/past-workouts/${workout.id}`}
                       >
                         View
                       </Link>
