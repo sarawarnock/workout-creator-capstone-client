@@ -5,9 +5,15 @@ export default function ViewPastWorkout(props) {
   return (
     <div className="App">
       <main className="main">
-            <h1>{props.title}</h1>
-            <h2>{props.workoutTime}</h2>
-            <h2> {props.workoutType} </h2>
+        {props.appSavedWorkoutDetails.map((workoutDetail, workouts_id )=> {
+          return (
+          <div>
+            <h1>{workoutDetail.title}</h1>
+            <h2>{workoutDetail.workoutTime}</h2>
+            <h2> {workoutDetail.workoutType} </h2>
+          </div>
+        )})}
+          
             <CircleButton onClick={props.history.goBack}>
           Go Back
         </CircleButton>

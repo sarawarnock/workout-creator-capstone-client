@@ -11,20 +11,17 @@ export default function PastWorkouts(props) {
               <thead>
                 <tr>
                     <th className="tb-name">Name</th>
-                    <th className="tb-date">Date</th>
+                    <th className="tb-id">Workout ID</th>
                     <th className="tb-view">View Workout</th>
                 </tr>
               </thead>
               <tbody>
-              {this.props.appSavedWorkouts.map(workout => {
+              {props.appSavedWorkouts.map(workout => {
                 return (
                 <tr>
-                  <td>{workout.title}</td>
-                  {/* This button will link to the ViewPastWorkout
-                  component, depending on the workout_id */}
+                  <td>{workout.workouts_name}</td>
+                  <td> {workout.id} </td>
                   <td>
-                    {/* Need to use props? to get the workout details down in the view-past-workout
-                      button  */}
                     <button>
                       <Link
                         to="/past-workouts/:workout_id"
