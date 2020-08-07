@@ -81,7 +81,7 @@ export default class SignUp extends React.Component {
 handleSubmit = (event) => {
   event.preventDefault();
   const { signUpEmail, signUpPassword, signUpFirstName } = event.target;
-  // console.log('email:', signUpEmail.value, 'password:', signUpPassword.value);
+  console.log('email:', signUpEmail.value, 'password:', signUpPassword.value);
   this.setState({ error: null })
   AuthApiService.postUser({
       email: signUpEmail.value,
@@ -95,7 +95,7 @@ handleSubmit = (event) => {
       signUpPassword.value = ''
       TokenService.saveAuthToken(response.authToken)
       TokenService.saveUserId(response.id)
-      window.location = '/login'
+      //window.location = '/login'
   }) 
 
   .catch(res => {

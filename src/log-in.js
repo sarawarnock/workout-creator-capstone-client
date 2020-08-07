@@ -19,7 +19,8 @@ export default class Login extends React.Component {
     errors: {
       loginEmail: 'You must enter a valid email',
       loginPassword: 'You must enter a valid password',
-    }
+    },
+    sessionUser: ''
 }
 
   handleLoginSuccess = () => {
@@ -75,10 +76,14 @@ export default class Login extends React.Component {
       loginPassword.value = ''
       TokenService.saveAuthToken(response.authToken) 
       TokenService.saveUserId(response.userId)
-      window.location = '/home'
+      //window.location = '/home'
     })
     .then(response => {
       console.log('response', response)
+      this.setState({
+        sessionUser: response.userId
+      })
+      console.log(this.state.sessionUser)
     })
     .catch(err => {
       console.log(err)
