@@ -14,6 +14,9 @@ const AuthApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
+      .catch(err => {
+        console.log('error:', err)
+      })
   },
   postUser(user) {
     return fetch(`${config.API_ENDPOINT}/users`, {
@@ -28,6 +31,9 @@ const AuthApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
+      .catch(err => {
+        console.log('error:', err)
+      })
     },
 }
 

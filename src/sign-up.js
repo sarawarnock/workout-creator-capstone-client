@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import ErrorBoundary from './error-boundary'
 import ValidationError from './validation-error'
 import config from './config'
-//import AuthApiService from './services/auth-api-service'
+import AuthApiService from './services/auth-api-service'
+import TokenService from './services/token-service'
 
 export default class SignUp extends React.Component {
   state = {
@@ -75,106 +76,155 @@ export default class SignUp extends React.Component {
     } return ' '
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    //create an object to store the search filters
-    const data = {}
-    //get all the from data from the form component
-    const formData = new FormData(e.target)
+//-------------------------------------------------------------------------------------
 
-    //for each of the keys in form data populate it with form value
-    for (let value of formData) {
-        data[value[0]] = value[1]
-    }
-    console.log(data)
+handleSubmit = (event) => {
+  event.preventDefault();
+  const { signUpEmail, signUpPassword, signUpFirstName } = event.target;
+  // console.log('email:', signUpEmail.value, 'password:', signUpPassword.value);
+  this.setState({ error: null })
+  AuthApiService.postUser({
+      email: signUpEmail.value,
+      password: signUpPassword.value,
+      first_name: signUpFirstName.value
+  })
 
-    let { signUpEmail, signUpFirstName, signUpPassword } = data
-    if (this.validateEmail(signUpEmail) === '') {
-      this.setState({
-          error: 'email is not valid'
-      })
-    }
+  .then(response => {
+      console.log('email:', response)
+      signUpEmail.value = ''
+      signUpPassword.value = ''
+      TokenService.saveAuthToken(response.authToken)
+      TokenService.saveUserId(response.id)
+      window.location = '/login'
+  }) 
 
-    if (this.validatePassword(signUpPassword) === '') {
-      this.setState({
-          error: 'password is not valid'
-      })
-    }
+  .catch(res => {
+      this.setState({ error: res.error })
+  })  
 
-    if (this.validatateFirstName(signUpFirstName) === '') {
-      this.setState({
-        error: 'first name is not valid'
-      })
-    }
-
-    // this.setState({
-    //   signUpEmail.value: data.signUpEmail, 
-    //   signUpFirstName.value : data.signUpFirstName,
-    //   signUpPassword.value: data.signUpPassword
-     
-    // })
-
-  //POST request to API endpoint (/users)
-
-  //check if the state is populated with the search params data
-  console.log(this.state)
-  console.log(data.signUpEmail)
-
-  const searchURL = `${config.API_ENDPOINT}/users`
-  const user = {
-    email: data.signUpEmail,
-    password: data.signUpPassword,
-    first_name: data.signUpFirstName,
-  }
-  console.log(JSON.stringify(user))
-  // const queryString = this.formatQueryParams(data)
-
-   //sent all the params to the final url
-   // const url = searchURL + '?' + queryString
-
-   console.log(searchURL)
-
-    //define the API call parameters
-    const options = {
-        method: 'POST',
-        headers: {
-            //"Authorization": "",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(user)
-    }
-
-    console.log(options);
-
-    //useing the url and paramters above make the api call
-    fetch(searchURL, options)
-
-        // if the api returns data ...
-        
-        .then(res => {
-            if (!res.ok) {
-              console.log(res)
-                throw new Error('Something went wrong, please try again later.')
-            }
-             // ... convert it to json
-             return res.json()
-        })
-          //use the json api output
-        .then(data => {
-          //check if there is meaningfull data
-          console.log(data);
-          // check if there are no results
-          if (data.totalItems === 0) {
-            throw new Error('No data found')
-        }
-      })
-        .catch(err => {
-          this.setState({
-            error: err.message
-        })
-        console.log(err);
-      })
+ //let { signUpEmail, signUpFirstName, signUpPassword } = data
+    // if (this.validateEmail(signUpEmail) === '') {
+    //    this.setState({
+    //        error: 'email is not valid'
+    //    })
+    //  }
+ 
+    //  if (this.validatePassword(signUpPassword) === '') {
+    //    this.setState({
+    //        error: 'password is not valid'
+    //    })
+    //  }
+ 
+    //  if (this.validatateFirstName(signUpFirstName) === '') {
+    //    this.setState({
+    //      error: 'first name is not valid'
+    //    })
+    //  }
 }
+
+//--------------------------------------------------------------------------------------
+//   handleSubmit = (e) => {
+//     e.preventDefault();
+//     //create an object to store the search filters
+//     const data = {}
+//     //get all the from data from the form component
+//     const formData = new FormData(e.target)
+
+//     //for each of the keys in form data populate it with form value
+//     for (let value of formData) {
+//         data[value[0]] = value[1]
+//     }
+//     console.log(data)
+
+//     let { signUpEmail, signUpFirstName, signUpPassword } = data
+//     if (this.validateEmail(signUpEmail) === '') {
+//       this.setState({
+//           error: 'email is not valid'
+//       })
+//     }
+
+//     if (this.validatePassword(signUpPassword) === '') {
+//       this.setState({
+//           error: 'password is not valid'
+//       })
+//     }
+
+//     if (this.validatateFirstName(signUpFirstName) === '') {
+//       this.setState({
+//         error: 'first name is not valid'
+//       })
+//     }
+
+//     // this.setState({
+//     //   signUpEmail.value: data.signUpEmail, 
+//     //   signUpFirstName.value : data.signUpFirstName,
+//     //   signUpPassword.value: data.signUpPassword
+     
+//     // })
+
+//   //POST request to API endpoint (/users)
+
+//   //check if the state is populated with the search params data
+//   console.log(this.state)
+//   console.log(data.signUpEmail)
+
+//   const searchURL = `${config.API_ENDPOINT}/users`
+//   const user = {
+//     email: data.signUpEmail,
+//     password: data.signUpPassword,
+//     first_name: data.signUpFirstName,
+//   }
+//   console.log(JSON.stringify(user))
+//   // const queryString = this.formatQueryParams(data)
+
+//    //sent all the params to the final url
+//    // const url = searchURL + '?' + queryString
+
+//    console.log(searchURL)
+
+//     //define the API call parameters
+//     const options = {
+//         method: 'POST',
+//         headers: {
+//             //"Authorization": "",
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(user)
+//     }
+
+//     console.log(options);
+
+//     //useing the url and paramters above make the api call
+//     fetch(searchURL, options)
+
+//         // if the api returns data ...
+        
+//         .then(res => {
+//             if (!res.ok) {
+//               console.log(res)
+//                 throw new Error('Something went wrong, please try again later.')
+//             }
+//              // ... convert it to json
+//              return res.json()
+//         })
+//           //use the json api output
+//         .then(data => {
+//           //check if there is meaningfull data
+//           console.log(data);
+//           // check if there are no results
+//           if (data.totalItems === 0) {
+//             throw new Error('No data found')
+//         }
+//         window.location = '/home'
+//       })
+//         .catch(err => {
+//           this.setState({
+//             error: err.message
+//         })
+//         console.log(err);
+//       })
+// }
+//--------------------------------------------------------------------------------------
 
   render() {
     const emailError = this.validateEmail();

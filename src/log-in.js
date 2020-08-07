@@ -75,7 +75,7 @@ export default class Login extends React.Component {
       loginPassword.value = ''
       TokenService.saveAuthToken(response.authToken) 
       TokenService.saveUserId(response.userId)
-      window.location = '/user/home'
+      window.location = '/home'
     })
     .then(response => {
       console.log('response', response)
