@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Checkbox from './new-workout-checkbox';
 import config from './config'
-import ViewPastWorkout from './view-past-workout'
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
@@ -235,9 +234,9 @@ class CreateNewWorkout2 extends Component {
         let workoutDetailDescription = workoutDetail.description
         return (
             <div className="workout-details">
-                <p> {workoutDetailReps} </p>
-                <p> {workoutDetailTitle} </p>
-                <p> {workoutDetailDescription} </p>
+                <p key="reps"> {workoutDetailReps} </p>
+                <p key="title"> {workoutDetailTitle} </p>
+                <p key="desc"> {workoutDetailDescription} </p>
             </div>
         )
     });

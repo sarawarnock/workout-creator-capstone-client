@@ -19,6 +19,9 @@ const TokenService = {
   saveUserId(userId) {
     return window.sessionStorage.setItem('user_id', userId);
   },
+  saveUserName(first_name) {
+    return window.sessionStorage.setItem('first_name', first_name)
+  },
   getUserId(user_id) {
     return window.sessionStorage.getItem('user_id', user_id)
   }

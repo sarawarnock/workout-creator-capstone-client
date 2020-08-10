@@ -21,6 +21,7 @@
   
   .NavCircleButton:hover {
     cursor: pointer;
+    color: white;
   }
 
   /* color ideas: #EB46C2, #2439D6, #32F5B1 */

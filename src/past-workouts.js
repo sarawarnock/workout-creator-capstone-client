@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import CircleButton from './CircleButton/circle-button'
 
+//Display workouts where userId == session storage userId 
+
 export default function PastWorkouts(props) {
   return (
     <div className="App">

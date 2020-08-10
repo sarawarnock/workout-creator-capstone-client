@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link  } from 'react-router-dom'
 import ValidationError from './validation-error'
-import config from './config'
 import AuthApiService from './services/auth-api-service'
 import TokenService from './services/token-service'
 
@@ -41,6 +40,12 @@ export default class Login extends React.Component {
     this.setState({ loginPassword: { value: password, touched: true } })
   }
 
+  updateSessionUser(userId) {
+    this.setState({
+      sessionUser: userId
+    })
+  }
+
   validateEmail(inputEmail) {
     if (inputEmail == undefined) {
        inputEmail = this.state.loginEmail.value.trim();
@@ -64,114 +69,82 @@ export default class Login extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     //create an object to store the search filters
-    const data = {}
-    const { loginEmail, loginPassword } = e.target
-    AuthApiService.postLogin({
-      email: loginEmail.value,
-      password: loginPassword.value
-    })
-    .then(response => {
-      console.log('response ID', response)
-      loginEmail.value = ''
-      loginPassword.value = ''
-      TokenService.saveAuthToken(response.authToken) 
-      TokenService.saveUserId(response.userId)
-      //window.location = '/home'
-    })
-    .then(response => {
-      console.log('response', response)
-      this.setState({
-        sessionUser: response.userId
-      })
-      console.log(this.state.sessionUser)
-    })
-    .catch(err => {
-      console.log(err)
-    });
+     const data = {}
+    // const { loginEmail, loginPassword } = e.target
+    
 
     //get all the from data from the form component
-    //const formData = new FormData(e.target)
+    const formData = new FormData(e.target)
 
     //for each of the keys in form data populate it with form value
-    // for (let value of formData) {
-    //     data[value[0]] = value[1]
-    // }
-    // console.log(data)
-    //let {loginEmail, loginPassword} = data
+    for (let value of formData) {
+        data[value[0]] = value[1]
+    }
+    console.log(data)
+    let {loginEmail, loginPassword} = data
   
     if (this.validateEmail(loginEmail) === '') {
       this.setState({
-          error: 'email is not valid'
+        error: 'You must enter a valid email'
       })
     }
     if (this.validatePassword(loginPassword) === '') {
       this.setState({
-          error: 'password is not valid'
+        error: 'You must enter a valid password'
       })
     }
     //assigning the object from the form data to params in the state
     this.setState({
         loginEmail: {
-          value: data.loginEmail
+          value: loginEmail
         },
         loginPassword: {
-          value: data.loginPassword
+          value: loginPassword
         }
     })
 
     //check if the state is populated with the search params data
     console.log(this.state)
 
-    //const searchURL = `${config.API_ENDPOINT}/users`
-
-    //const queryString = this.formatQueryParams(data)
-
-     //sent all the params to the final url
-    //const url = searchURL + '?' + queryString
-
-    // console.log(searchURL)
-
-    // const options = {
-    //   method: 'GET',
-    //   headers: {
-    //       //"Authorization": "",
-    //       "Content-Type": "application/json"
-    //   }
-    // }
-
-  //useing the url and paramters above make the api call
-  // fetch(searchURL, options)
-
-  //     // if the api returns data ...
-  //     .then(res => {
-  //         if (!res.ok) {
-  //             throw new Error('Something went wrong, please try again later.')
-  //         }
-  //          // ... convert it to json
-  //          return res.json()
-  //     })
-  //         // use the json api output
-  //     .then(data => {
-
-  //       //check if there is meaningfull data
-  //       console.log(data);
-  //       // check if there are no results
-  //       if (data.totalItems === 0) {
-  //         throw new Error('No user found')
-  //     }
-
-  //   })
-  //     .catch(err => {
-  //       this.setState({
-  //         error: err.message
-  //     })
-  //   })
+    AuthApiService.postLogin({
+      email: loginEmail,
+      password: loginPassword
+    })
+    .then(response => {
+      if (response === undefined) {
+        console.log('empty response')
+        this.setState({
+          error: 'Email and/or password are not valid'
+        })
+        console.log(this.state)
+      }
+      else {
+        console.log('response ID', response)
+        TokenService.saveAuthToken(response.authToken) 
+        TokenService.saveUserId(response.userId)
+        TokenService.saveUserName(response.first_name)
+        window.location = `/home`
+        this.updateSessionUser(response.userId)
+        console.log(this.state.sessionUser)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+      this.setState({
+        error: 'Email and/or password are not valid'
+      })
+    });
   }
 
   //logic that says - if user email matches password combo in "users"
   //show them their homepage
 
   render() {
+    let validationError = ''
+    if (this.state.error != '') {
+      validationError = this.state.error
+    }
+    
     const emailError = this.validateEmail();
     const passwordError = this.validatePassword();
     return (
@@ -182,6 +155,7 @@ export default class Login extends React.Component {
                   className="login-form"
                   onSubmit={this.handleSubmit}
                 >
+                  {validationError}
                     <label className ="user-label" htmlFor="email">Email</label>
                     <input 
                       name="loginEmail"
@@ -203,21 +177,12 @@ export default class Login extends React.Component {
                       required
                     /> 
                     {this.state.loginPassword.touched && <ValidationError message={passwordError} />}
-                    <button 
-                  className="small-btn"
-                  type="submit"
-                >
-                  Log In
-                </button>
+                    <button className="small-btn" type="submit"> Log In </button>
                 </form>
                 <div>
                     <h2>Don't have an account yet?</h2>
-                    <Link
-                      to='/sign-up'
-                    >
-                      <button 
-                        className="small-btn"
-                      >Sign Up</button>
+                    <Link to='/sign-up'>
+                      <button className="small-btn">Sign Up</button>
                     </Link>
                 </div>
         </main>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import config from './config'
 import './App2.css';
 import LandingPage from './landing-page'
@@ -11,6 +11,7 @@ import Login from './log-in';
 import SignUp from './sign-up';
 import ViewPastWorkout from './view-past-workout';
 import CreateNewWorkout2 from './2-create-new-workout-checkbox'
+import NotFoundPage from './not-found-page'
 
 class App extends React.Component {
   constructor(props) {
@@ -20,8 +21,15 @@ class App extends React.Component {
       password: '',
       first_name: '',
       appSavedWorkouts: [],
-      appSavedWorkoutDetails: []
+      appSavedWorkoutDetails: [],
+      sessionUser: ''
     }
+  }
+
+  updateSessionUser(userId) {
+    this.setState({
+      sessionUser: userId
+    })
   }
 
   //------------------------------------------------
@@ -80,39 +88,40 @@ class App extends React.Component {
     console.log(this.state.appSavedWorkoutDetails)
     return (
       <div className="main-pages">
+      <Switch>        
         <Route 
           exact
           path='/'
           component={LandingPage}
         />
         <Route 
-          path='/home'
+          exact
+          path={`/home`}
           component={PersonalizedHomePage}
         />
         <Route 
+          exact
           path='/create-workout'
-          //component={CreateNewWorkout2}
           render={(props) => <CreateNewWorkout2 {...props} saveNewWorkout={this.updateAppSavedWorkouts} />}
         />
         <Route 
           exact
           path='/past-workouts'
-          //component={PastWorkouts}
           render={(props) => <PastWorkouts {...props} appSavedWorkouts={this.state.appSavedWorkouts} 
             appSavedWorkoutDetails={this.state.appSavedWorkoutDetails}
           />}
         />
         <Route 
+          exact
           path='/login'
           component={Login}
         />
         <Route 
+          exact
           path='/sign-up'
           component={SignUp}
         />
-        {/* Will need to use the workout_id here to specify which workout to view */}
-        {/* {['/', '/past-workouts/:workout_id'].map(path => ( */}
-          <Route 
+        <Route 
           exact
           //key={path}
           //path={path}
@@ -120,18 +129,10 @@ class App extends React.Component {
           render={(props) => <ViewPastWorkout {...props}
           appSavedWorkoutDetails={this.state.appSavedWorkoutDetails} />}
         />
-        {/* ))} */}
-        {/* <Route 
-          path='/forgot-password'
-          component={ForgotPassword}
-        /> */}
-        {/* need to .map here too?
-        once the workout gets created, it should go right to this page */}
-        {/* <Route
-          exact 
-          path='/:workout_id'
-          component={NewWorkoutCreated}
-        /> */}
+        <Route 
+          component={NotFoundPage}
+        />
+      </Switch>
       </div>
     )
   }

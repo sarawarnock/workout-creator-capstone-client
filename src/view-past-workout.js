@@ -10,15 +10,13 @@ export default function ViewPastWorkout(props) {
           if (props.match.params.workout_id == workoutDetail.workouts_id) {
             return (
               <div>
-                <h2>{workoutDetail.exercise_reps}</h2>
-                <h3>{workoutDetail.title}</h3>
-                <h3> {workoutDetail.description} </h3>
+                <h2 key="reps">{workoutDetail.exercise_reps}</h2>
+                <h3 key="title">{workoutDetail.title}</h3>
+                <h3 key="desc">{workoutDetail.description}</h3>
               </div>
             )
           }})
-          }
-            
-          
+          }            
             <CircleButton onClick={props.history.goBack}>
           Go Back
         </CircleButton>

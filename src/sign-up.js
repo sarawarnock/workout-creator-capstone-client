@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import ErrorBoundary from './error-boundary'
 import ValidationError from './validation-error'
-import config from './config'
 import AuthApiService from './services/auth-api-service'
 import TokenService from './services/token-service'
 
@@ -25,7 +24,8 @@ export default class SignUp extends React.Component {
         signUpEmail: 'You must enter a valid email',
         signUpPassword: 'You must enter a valid password',
         signUpFirstName: 'You must enter a valid name'
-      }
+      },
+      sessionUser: ''
   }
 
   // formatQueryParams(params) {
@@ -44,6 +44,12 @@ export default class SignUp extends React.Component {
 
   updateFirstName(firstName) {
     this.setState({ signUpFirstName: { value: firstName, touched: true } })
+  }
+
+  updateSessionUser(userId) {
+    this.setState({
+      sessionUser: userId
+    })
   }
 
   validateEmail(inputEmail) {
@@ -94,8 +100,10 @@ handleSubmit = (event) => {
       signUpEmail.value = ''
       signUpPassword.value = ''
       TokenService.saveAuthToken(response.authToken)
-      TokenService.saveUserId(response.id)
-      //window.location = '/login'
+      TokenService.saveUserId(response.userId)
+      TokenService.saveUserName(response.first_name)
+      this.updateSessionUser(response.userId)
+      window.location = `/home/${response.userId}`
   }) 
 
   .catch(res => {
