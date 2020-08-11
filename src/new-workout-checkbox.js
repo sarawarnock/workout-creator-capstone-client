@@ -1,8 +1,9 @@
 import React from "react";
 
 const Checkbox = ({ label, isSelected, onCheckboxChange }) => (
-  <div className="form-check">
-    <label>
+  <div className="App">
+    <div className="row">
+    <label className={isSelected ? 'selected-checkbox' : ''}>
       <input
         type="checkbox"
         name={label}
@@ -12,6 +13,7 @@ const Checkbox = ({ label, isSelected, onCheckboxChange }) => (
       />
       {label}
     </label>
+    </div>
   </div>
 );
 

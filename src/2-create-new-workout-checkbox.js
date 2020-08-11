@@ -275,7 +275,7 @@ class CreateNewWorkout2 extends Component {
 
     return (
       <div className="App">
-        <div className="row mt-5">
+        <div className="row">
           <div className="col-sm-12">
             <form onSubmit={this.handleFormSubmit}>
                 <h2 className="workout-question-1">Which muscle groups would you like to work?</h2>
