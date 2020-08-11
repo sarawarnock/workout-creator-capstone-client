@@ -81,8 +81,8 @@ Create Workout Page
 ![Create Workout Page](/github-images/wireframes/create-workout.jpg)
 Past Workouts Page
 ![Past Workouts Page](/github-images/wireframes/past-workouts.jpg)
-New Workout Created Page
-![New Workout Created Page](/github-images/wireframes/new-workout.jpg)
+View Past Workout Page
+![View Past Workout Page](/github-images/wireframes/view-past-workout.jpg)
 
 
 ## Screenshots
@@ -96,12 +96,12 @@ The app's functionality includes:
 * Every User has the ability to create a workout 
 * the form to choose and create a workout
     * inputs
-        * time interval (3-5, 6-10, 11-15, 16-20)
-        * workout repetition type (AMRAP (As Many Rounds As Possible), EMOM (Every Minute On the Minute), RFT (Rounds For Time))
-        * muscle groups (arms, legs, back, chest, core, cardio)
+        * time interval (5, 10, 15, 20, 25, 30 minutes)
+        * workout repetition type (AMRAP (As Many Rounds As Possible), EMOM (Every Minute On the Minute))
+        * muscle groups (arms, legs, back, chest, core, cardio, advanced movements)
     * output
         * workout id
-        * set of exercises based on the workout repetition type (with the random time between the interval start and stop) and filtered by the muscle groups; and the numbers reps related to the total amount of time (except from the ENOMs)
+        * a set of exercises that get selected based upon the muscles groups chosen in the input, a randomized number of repetitions, based upon the time interval and type of workout.
 
 ## Front-end Structure - React Components Map
 * __Index.js__ (stateless)
@@ -112,7 +112,6 @@ The app's functionality includes:
             * __sign-up.js__ (stateful) -
         * __navbar.js__ (stateless) -
         * __personalized-home-page.js__ (stateless) -
-            * __forgot-password.js__ (stateful) -
         * __past-workouts.js__ (stateless) -
             * __view-past-workout.js__ (stateless) -
         * __create-new-workout.js__ (stateful) -
@@ -145,6 +144,7 @@ The app's functionality includes:
     * user_id
     * workouts_name
     * total_legth (time)
+    * workout_type
 
 
 * workout_details
@@ -167,7 +167,7 @@ App is built to be usable on mobile devices, as well as responsive across mobile
 
 ## Development Roadmap
 This is v1.0 of the app, but future enhancements are expected to include:
-* 
+* Forgot Password 
 
 ## How to run it
 Use command line to navigate into the project folder and run the following in terminal

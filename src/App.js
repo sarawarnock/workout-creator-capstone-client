@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom'
 import config from './config'
+import TokenService from './services/token-service'
 import './App2.css';
 import LandingPage from './landing-page'
 import Navbar from './navbar'
@@ -35,7 +36,7 @@ class App extends React.Component {
   //------------------------------------------------
   componentDidMount(){
     //get workouts by user ID
-    let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/1`;
+    let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/${TokenService.getUserId()}`;
     fetch(getWorkoutUrl)
         .then(response => response.json())
         //map over the workouts by ID, returning each workout
@@ -46,13 +47,13 @@ class App extends React.Component {
             });
       })
 
+      //get all workout details for all workouts to use in Past Workouts component
       let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/`;
         fetch(getWorkoutDetailsUrl)
         .then(response => response.json())
         .then(workoutDetails => {
             this.setState({
               appSavedWorkoutDetails: workoutDetails
-                //savedWorkoutDetails: [...this.state.savedWorkoutDetails, ...workoutDetails]
             });
         })
         .catch(error => this.setState({ error }))
@@ -77,13 +78,6 @@ class App extends React.Component {
 
   //renders all of the routes 
   renderMainPages = () => {
-
-    // let appWorkoutDetails = []
-    // for (let i = 0; i < this.state.appSavedWorkoutDetails.length; i++) {
-    //   appWorkoutDetails.push(this.state.appSavedWorkoutDetails[i])
-    //   console.log(appWorkoutDetails)
-    // }
-
     console.log(this.state.appSavedWorkouts)
     console.log(this.state.appSavedWorkoutDetails)
     return (
@@ -106,7 +100,7 @@ class App extends React.Component {
         />
         <Route 
           exact
-          path='/past-workouts'
+          path={`/past-workouts/${this.state.sessionUser}`}
           render={(props) => <PastWorkouts {...props} appSavedWorkouts={this.state.appSavedWorkouts} 
             appSavedWorkoutDetails={this.state.appSavedWorkoutDetails}
           />}

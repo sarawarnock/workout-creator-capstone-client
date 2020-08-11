@@ -25,13 +25,7 @@ export default class Login extends React.Component {
   handleLoginSuccess = () => {
     window.location = '/user/home'
   }
-
-  // formatQueryParams(params) {
-  //   const queryItems = Object.keys(params)
-  //       .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-  //   return queryItems.join('&')
-  // }
-
+  
   updateEmail(email) {
     this.setState({ loginEmail: {value: email, touched: true } })
   }

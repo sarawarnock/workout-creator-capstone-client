@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Checkbox from './new-workout-checkbox';
 import config from './config'
+import TokenService from './services/token-service.js';
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
@@ -19,13 +20,21 @@ class CreateNewWorkout2 extends Component {
     isSubmitted: false,
     savedWorkouts: [],
     savedWorkoutDetails: [],
-    // workoutDetails: []
+    sessionUser: ''
   };
 
-  componentDidMount(){
+  updateSessionUser(userId) {
+    this.setState({
+      sessionUser: userId
+    })
+  }
+
+  componentDidMount() {
+      this.updateSessionUser(sessionStorage.user_id)
+      let user = this.state.sessionUser
       console.log('component SavedWorkouts is mounting')
       //get workouts by user ID
-      let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/1`;
+      let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/${TokenService.getUserId()}`;
       fetch(getWorkoutUrl)
           .then(response => response.json())
           //map over the workouts by ID, returning each workout
@@ -50,7 +59,7 @@ class CreateNewWorkout2 extends Component {
               this.setState({
                   savedWorkouts: workouts
               });
-        })
+            })
     }
 
   selectAllCheckboxes = isSelected => {
@@ -104,10 +113,7 @@ class CreateNewWorkout2 extends Component {
     return outputText;
   }
 
-
-
   //POST to '/api/users' but randomize the data given the choices....
-
   handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -139,7 +145,7 @@ class CreateNewWorkout2 extends Component {
       total_length: data.workoutTimeValue, 
       workout_type: data.workoutTypeValue,
       workouts_name: data.workoutNameValue,
-      user_id: 1
+      user_id: sessionStorage.user_id
     }
 
     console.log(payload)
@@ -210,19 +216,6 @@ class CreateNewWorkout2 extends Component {
       </div>)
     });
 
-    //console.log(this.state.savedWorkoutDetails)
-    //I dont know that we need to show any of these since the info from the workout details table just gives exercise IDs
-    //But we do need the workout reps from this table
-    // let showWorkoutDetailsTitle = this.state.savedWorkoutDetails.title
-    // let showWorkoutDetailsDescription = this.state.savedWorkoutDetails.description
-    // let showWorkoutDetailsReps = this.state.savedWorkoutDetails.exercise_reps
-    
-    // for (let i =0; i < this.state.savedWorkoutDetails.length; i++) {
-    //     showWorkoutDetailsTitle = this.state.savedWorkoutDetails[i].title
-    //     showWorkoutDetailsDescription = this.state.savedWorkoutDetails[i].description
-    //     showWorkoutDetailsReps = this.state.savedWorkoutDetails[i].exercise_reps
-    // } 
-    
     let showWorkoutDetails = []
     for (let i = 0; i < this.state.savedWorkoutDetails.length; i++) {
         showWorkoutDetails.push(this.state.savedWorkoutDetails[i])
@@ -234,9 +227,9 @@ class CreateNewWorkout2 extends Component {
         let workoutDetailDescription = workoutDetail.description
         return (
             <div className="workout-details">
-                <p key="reps"> {workoutDetailReps} </p>
-                <p key="title"> {workoutDetailTitle} </p>
-                <p key="desc"> {workoutDetailDescription} </p>
+                <h2 key="reps" className="exercise-reps"> {workoutDetailReps} </h2>
+                <h3 key="title" className="exercise-title"> {workoutDetailTitle} </h3>
+                <h3 key="desc" className="exercise-desc"> {workoutDetailDescription} </h3>
             </div>
         )
     });
@@ -335,14 +328,14 @@ class CreateNewWorkout2 extends Component {
                   />
                 </div>
                 <br />
-                <button type="submit" className="small-btn">
+                <button type="submit" className="big-btn">
                   Submit
                 </button>
               {/* </div> */}
             </form>
             {/* {this.state.isSubmitted && showWorkouts[showWorkouts.length - 1]} */}
             {showWorkouts[showWorkouts.length - 1]}
-            <p> {showWorkoutDetails} </p>
+            {showWorkoutDetails}
           </div>
         </div>
       </div>

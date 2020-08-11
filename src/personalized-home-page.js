@@ -7,7 +7,6 @@ export default function PersonalizedHomePage(props) {
       <main>
             <h1>Home</h1>
             <div className="workout-btn">
-              {/* Do I need these buttons? They are the same as in the Navbar */}
                 <button className="big-btn">
                   <Link to='/past-workouts'>
                     Past Workouts
@@ -20,9 +19,9 @@ export default function PersonalizedHomePage(props) {
                 </button>
             </div>
             <div className="acct-info">
-            <h2>Account Information</h2>
-                <h3>Email: </h3>
-                <h3>Password: </h3>
+            {/* <h2>Account Information</h2>
+                <h3>Email: {props.email} </h3>
+                <h3>Password: {props.password} </h3> */}
                 {/* <Link
                   to='/forgot-password'
                 >
