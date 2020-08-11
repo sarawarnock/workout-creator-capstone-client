@@ -103,7 +103,7 @@ handleSubmit = (event) => {
       TokenService.saveUserId(response.userId)
       TokenService.saveUserName(response.first_name)
       this.updateSessionUser(response.userId)
-      window.location = `/home/${response.userId}`
+      window.location = `/home`
   }) 
 
   .catch(res => {
