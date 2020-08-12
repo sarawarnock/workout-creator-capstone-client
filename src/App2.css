@@ -7,17 +7,43 @@ body {
     background-color:  black;
     color: white;
     width: 100%;
-  }
+    display: grid;
+    grid-template-columns: 15% 35% 35% 15%;
+    grid-template-areas: 
+    ". nav nav ."
+    "header header header header"
+    "main main main main"
+}
+
+header {
+    grid-area: header;
+}
+
+nav {
+    display: grid;
+    grid-area: nav;
+    justify-self: center;
+}
+
+main {
+    display: grid;
+    grid-area: main;
+    padding: 10px;
+}
+
+.row {
+    display: grid;
+    grid-area: main;
+}
 
 .nav-link {
     list-style-type: none;
     color: white;
-    /* display: flex;
-    flex-direction: column; */
 }
 
 .navbar {
     color: white;
+    align-self: start;
 }
 
 .nav {
@@ -53,8 +79,9 @@ h2 {
 }
 
 label {
+    display: grid;
+    align-self: center;
     border: 1px solid white;
-    /* border-radius: 25px; */
     margin: 10px;
     padding: 10px;
     font-size: 18px;
@@ -87,8 +114,6 @@ input[type="radio"] {
 }
 
 button {
-	/* box-shadow:inset 0px 1px 0px 0px #2439D6; */
-	/* background:linear-gradient(to bottom, #2439D6 5%, #2439D6 100%); */
 	background-color: #2439D6;
 	border-radius:6px;
 	border:1px solid #2439D6;
@@ -96,7 +121,6 @@ button {
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	/* font-size:15px; */
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
@@ -170,7 +194,8 @@ a:hover {
         display: grid;
         grid-template-columns: 15% 35% 35% 15%;
         grid-template-areas: 
-        "header sidebar . ."
+        ". nav nav ."
+        ". header header ."
         ". main main ."
     }
 
@@ -180,7 +205,7 @@ a:hover {
 
     nav {
         display: grid;
-        grid-area: sidebar;
+        grid-area: nav;
         justify-self: center;
     }
 
@@ -195,10 +220,11 @@ a:hover {
         grid-area: main;
     }
 
-    .nav ul {
-        display: none;
+    .nav-link {
+        list-style-type: none;
+        color: white;
     }
-    
+
     .nav label {
         display: inline-block;
         width: 100%; 
@@ -209,27 +235,18 @@ a:hover {
         display: block;
         cursor: pointer;
     }
-    
-    .nav input:checked ~ ul {
-        display: block;
-    }
-    
-    .nav input {
-        visibility: hidden
-    }
 
     label {
         display: grid;
         align-self: center;
         border: 1px solid white;
-        border-radius: 25px;
         margin: 10px;
         padding: 10px;
         font-size: 18px;
     }
 }  */
 
-/* @media screen and (min-width: 600px) { */
+@media screen and (min-width: 600px) {
     .App {
         display: grid;
         grid-template-columns: 15% 35% 35% 15%;
@@ -277,4 +294,4 @@ a:hover {
         display: grid;
         align-self: center;
     }
-/* } */
+}
