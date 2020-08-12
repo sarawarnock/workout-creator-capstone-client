@@ -12,8 +12,8 @@ body {
 .nav-link {
     list-style-type: none;
     color: white;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 .navbar {
@@ -63,12 +63,6 @@ label {
 .user-label {
     border: none;
 }
-
-/* input {
-    color: #EB46C2;
-    margin: 10px;
-    height: auto;
-} */
 
 input:checked + label {
     background-color: #32F5B1;
@@ -127,13 +121,6 @@ button:active {
     margin: 10px;
 }
 
-.logout-btn {
-    /* display: block;
-    width: 100px; */
-    text-align: center;
-    margin: 0 auto;
-}
-
 a {
     color: white;
     text-decoration: none;
@@ -161,6 +148,8 @@ a:hover {
 
 .workout-details {
     font-size: 20px;
+    padding: 10px;
+    margin: 10px;
 }
 
 .exercise-reps {
@@ -176,16 +165,41 @@ a:hover {
     font-size: 18px;
 }
 
-/* @media screen and (max-width: 450px) {
-    /* .nav-link {
-        color: #EB46C2;
-    } */
-    
-    /* .nav ul {
+/* @media screen and (max-width: 600px) {
+    .App {
+        display: grid;
+        grid-template-columns: 15% 35% 35% 15%;
+        grid-template-areas: 
+        "header sidebar . ."
+        ". main main ."
+    }
+
+    header {
+        grid-area: header;
+    }
+
+    nav {
+        display: grid;
+        grid-area: sidebar;
+        justify-self: center;
+    }
+
+    main {
+        display: grid;
+        grid-area: main;
+        padding: 10px;
+    }
+
+    .row {
+        display: grid;
+        grid-area: main;
+    }
+
+    .nav ul {
         display: none;
-    } */
+    }
     
-    /* .nav label {
+    .nav label {
         display: inline-block;
         width: 100%; 
         color: white;
@@ -205,23 +219,17 @@ a:hover {
     }
 
     label {
+        display: grid;
+        align-self: center;
         border: 1px solid white;
-        /* border-radius: 25px; */
-        /* margin: 10px;
+        border-radius: 25px;
+        margin: 10px;
         padding: 10px;
         font-size: 18px;
-    } */
-
-    /* input {
-        height: 300px;
     }
+}  */
 
-    .selected-checkbox {
-        height: 200px;
-    } */
-/* } */ 
-
-@media screen and (min-width: 600px) {
+/* @media screen and (min-width: 600px) { */
     .App {
         display: grid;
         grid-template-columns: 15% 35% 35% 15%;
@@ -269,4 +277,4 @@ a:hover {
         display: grid;
         align-self: center;
     }
-}
+/* } */

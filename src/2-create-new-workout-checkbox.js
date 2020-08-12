@@ -219,7 +219,6 @@ class CreateNewWorkout2 extends Component {
     let showWorkoutDetails = []
     for (let i = 0; i < this.state.savedWorkoutDetails.length; i++) {
         showWorkoutDetails.push(this.state.savedWorkoutDetails[i])
-        //console.log(showWorkoutDetails)
     }
     showWorkoutDetails = showWorkoutDetails.map(workoutDetail => {
         let workoutDetailTitle = workoutDetail.title
@@ -233,45 +232,6 @@ class CreateNewWorkout2 extends Component {
             </div>
         )
     });
-
-    // const viewWorkout = 
-    // <ViewPastWorkout
-    //     title={this.state.savedWorkouts.workouts_name}
-    //     workoutTime={this.state.savedWorkouts.total_length}
-    //     workoutType={this.state.savedWorkouts.workout_type}
-        
-    // />
-
-    //  this.state.savedWorkoutDetails.map((workoutDetails, id) => {
-    //  return (
-    //    <div className="workout-details" key={id}>
-    //     <p className="exercise-reps"> {workoutDetails.exercise_reps} </p> 
-    //    </div>)
-    // });
-
-    //savedExercises is an empty array
-    // console.log(this.state)
-    // console.log(this.state.savedExercises.length)
-    // let showWorkoutExercises = ''
-    // if (this.state.savedExercises.length == 0) {
-    //     console.log('HELLO')
-    //     showWorkoutExercises = 
-    //         <div className="workout-exercises">
-    //             <p> No Exercises </p>
-    //         </div>
-    // } else {
-    //     showWorkoutExercises = 
-    //     this.state.savedExercises.map((exercises, id) => {
-    //     return (
-    //       <div className="workout-exercises" key={id}>
-    
-    //         <h4> {exercises.title} </h4>
-    //           <p> {exercises.description} </p>
-    //       </div>)
-    //     }); 
-    // }
-    //empty array
-    // console.log(this.state.savedExercises)
 
     return (
       <div className="App">
@@ -331,9 +291,7 @@ class CreateNewWorkout2 extends Component {
                 <button type="submit" className="big-btn">
                   Submit
                 </button>
-              {/* </div> */}
             </form>
-            {/* {this.state.isSubmitted && showWorkouts[showWorkouts.length - 1]} */}
             {showWorkouts[showWorkouts.length - 1]}
             {showWorkoutDetails}
           </div>

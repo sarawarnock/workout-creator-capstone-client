@@ -258,7 +258,7 @@ handleSubmit = (event) => {
                     {this.state.signUpEmail.touched && <ValidationError message={emailError} />}
                     </div>
                     <div className="sign-up-password">
-                    <label className ="user-label" htmlFor="password">Password</label>
+                    <label className ="user-label" htmlFor="password">Password (one capital letter and one number needed)</label>
                     <input 
                       name="signUpPassword"
                       type="password" 
