@@ -3,7 +3,7 @@
 This app creates workouts based on user selected muscle group, time domain and workout type. 
 
 ## Working Prototype
-You can access a working prototype of the React app here: https://legoinventory.herokuapp.com/ and Node app here: https://workout-creator-server.herokuapp.com/
+You can access a working prototype of the React app here: https://workout-creator-capstone-client.vercel.app/ and Node app here: https://workout-creator-server.herokuapp.com/
 
 
 ## User Stories

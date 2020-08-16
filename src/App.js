@@ -34,9 +34,15 @@ class App extends React.Component {
   }
 
   //------------------------------------------------
+  //this loads right away and an error comes up because there is no session id if the user has not logged in or signed up  
   componentDidMount(){
     //get workouts by user ID
-    let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/${TokenService.getUserId()}`;
+    let getWorkoutUrl = ''
+    if (sessionStorage.user_id == undefined) {
+      getWorkoutUrl = `${config.API_ENDPOINT}/workouts`
+    } else 
+    getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/${TokenService.getUserId()}`;
+    console.log(sessionStorage.user_id)
     fetch(getWorkoutUrl)
         .then(response => response.json())
         //map over the workouts by ID, returning each workout
@@ -100,7 +106,7 @@ class App extends React.Component {
         />
         <Route 
           exact
-          path={`/past-workouts/${this.state.sessionUser}`}
+          path={`/past-workouts`}
           render={(props) => <PastWorkouts {...props} appSavedWorkouts={this.state.appSavedWorkouts} 
             appSavedWorkoutDetails={this.state.appSavedWorkoutDetails}
           />}

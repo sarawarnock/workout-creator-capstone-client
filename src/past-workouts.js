@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import CircleButton from './CircleButton/circle-button'
 
 export default function PastWorkouts(props) {
+  if (props.appSavedWorkouts.length === 0) {
+    return 'Sorry, no workouts to display!'
+  } else
   return (
     <div className="App">
       <main className="main">
