@@ -28,12 +28,6 @@ export default class SignUp extends React.Component {
       sessionUser: ''
   }
 
-  // formatQueryParams(params) {
-  //   const queryItems = Object.keys(params)
-  //       .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-  //   return queryItems.join('&')
-  // }
-
   updateEmail(email) {
     this.setState({ signUpEmail: {value: email, touched: true } })
   }

@@ -5,7 +5,7 @@ import TokenService from './services/token-service.js';
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
-class CreateNewWorkout2 extends Component {
+class CreateNewWorkout extends Component {
   state = {
     checkboxes: OPTIONS.reduce(
       (options, option) => ({
@@ -31,7 +31,7 @@ class CreateNewWorkout2 extends Component {
 
   componentDidMount() {
       this.updateSessionUser(sessionStorage.user_id)
-      let user = this.state.sessionUser
+    
       console.log('component SavedWorkouts is mounting')
       //get workouts by user ID
       let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/${TokenService.getUserId()}`;
@@ -113,7 +113,7 @@ class CreateNewWorkout2 extends Component {
     return outputText;
   }
 
-  //POST to '/api/users' but randomize the data given the choices....
+  //POST to '/api/workouts' but randomize the data given the choices
   handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -272,7 +272,7 @@ class CreateNewWorkout2 extends Component {
                 
                 <input type="radio" id="amrap" name="workoutTypeValue" value="AMRAP" />
                 <label htmlFor="amrap">AMRAP (As Many Rounds As Possible)</label>
-                
+
                 </div>
                 <br />
                 <h2>Name Your Workout:</h2>
@@ -299,4 +299,4 @@ class CreateNewWorkout2 extends Component {
   }
 }
 
-export default CreateNewWorkout2;
+export default CreateNewWorkout;

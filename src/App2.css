@@ -156,13 +156,11 @@ a {
 }
 
 a:active {
-    /* color: #EB46C2; */
     text-decoration: underline;
 }
 
 a:hover {
     text-decoration: underline;
-    /* color:  #EB46C2; */
 }
 
 .workouts-list {

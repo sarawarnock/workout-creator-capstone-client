@@ -16,8 +16,6 @@ export default class Navbar extends React.Component {
     return (
       <div className="navbar">
         <nav role="navigation" className="nav">
-                  {/* <label htmlFor="hamburger">&#9776;</label>
-                  <input type="checkbox" id="hamburger"/> */}
           {TokenService.hasAuthToken() ? <div className='nav-token'>
             <ul className="menu">
               <li className="nav-link cl-home"> <Link to='/home'>Home</Link></li>

@@ -11,7 +11,7 @@ import Header from './header'
 import Login from './log-in';
 import SignUp from './sign-up';
 import ViewPastWorkout from './view-past-workout';
-import CreateNewWorkout2 from './2-create-new-workout-checkbox'
+import CreateNewWorkout from './create-new-workout'
 import NotFoundPage from './not-found-page'
 
 class App extends React.Component {
@@ -22,21 +22,13 @@ class App extends React.Component {
       password: '',
       first_name: '',
       appSavedWorkouts: [],
-      appSavedWorkoutDetails: [],
-      sessionUser: ''
+      appSavedWorkoutDetails: []
     }
   }
 
-  updateSessionUser(userId) {
-    this.setState({
-      sessionUser: userId
-    })
-  }
-
-  //------------------------------------------------
-  //this loads right away and an error comes up because there is no session id if the user has not logged in or signed up  
   componentDidMount(){
     //get workouts by user ID
+    //if the user has not logged in, get all past workouts, once user logs in, get their past workouts
     let getWorkoutUrl = ''
     if (sessionStorage.user_id == undefined) {
       getWorkoutUrl = `${config.API_ENDPOINT}/workouts`
@@ -52,7 +44,6 @@ class App extends React.Component {
                 appSavedWorkouts: workouts
             });
       })
-
       //get all workout details for all workouts to use in Past Workouts component
       let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/`;
         fetch(getWorkoutDetailsUrl)
@@ -64,8 +55,6 @@ class App extends React.Component {
         })
         .catch(error => this.setState({ error }))
   }
-  
-  //---------------------------------------------------
 
   updateAppSavedWorkouts = newWorkout => {
     this.setState({
@@ -102,7 +91,7 @@ class App extends React.Component {
         <Route 
           exact
           path='/create-workout'
-          render={(props) => <CreateNewWorkout2 {...props} saveNewWorkout={this.updateAppSavedWorkouts} />}
+          render={(props) => <CreateNewWorkout {...props} saveNewWorkout={this.updateAppSavedWorkouts} />}
         />
         <Route 
           exact
@@ -123,8 +112,6 @@ class App extends React.Component {
         />
         <Route 
           exact
-          //key={path}
-          //path={path}
           path='/past-workouts/:workout_id'
           render={(props) => <ViewPastWorkout {...props}
           appSavedWorkoutDetails={this.state.appSavedWorkoutDetails} />}

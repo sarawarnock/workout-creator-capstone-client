@@ -1,13 +1,61 @@
-import React from './node_modules/react'
-import ReactDOM from './node_modules/react-dom'
-import { BrowserRouter } from './node_modules/react-router-dom'
+import React from 'react'
+import ReactDOM from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
+import renderer from 'react-test-renderer'
 import App from '../app'
+import CreateNewWorkout from '../create-new-workout'
+import PastWorkouts from '../past-workouts'
+import ViewPastWorkout from '../view-past-workout'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe('Workout Creator app', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+});
+
+describe('New Workout component', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<CreateNewWorkout />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  it('renders the UI as expected', () => {
+    const tree = renderer
+      .create(<CreateNewWorkout />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();  
+  });
+})
+
+describe('Past Workouts componenet', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<PastWorkouts />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  it('renders the UI as expected', () => {
+    const tree = renderer
+      .create(<PastWorkouts />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();  
+  });
+})
+
+describe('View Past Workouts componenet', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<ViewPastWorkout />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  it('renders the UI as expected', () => {
+    const tree = renderer
+      .create(<ViewPastWorkout />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();  
+  });
 });

@@ -175,9 +175,7 @@ export default class Login extends React.Component {
                 </form>
                 <div>
                     <h2>Don't have an account yet?</h2>
-                    <Link to='/sign-up'>
-                      <button className="small-btn">Sign Up</button>
-                    </Link>
+                    <Link to='/sign-up'><button className="small-btn">Sign Up</button></Link>
                 </div>
         </main>
       </div>
