@@ -93,10 +93,10 @@ handleSubmit = (event) => {
       console.log('email:', response)
       signUpEmail.value = ''
       signUpPassword.value = ''
-      TokenService.saveAuthToken(response.authToken)
-      TokenService.saveUserId(response.userId)
+      //TokenService.saveAuthToken(response.authToken)
+      TokenService.saveUserId(response.id)
       TokenService.saveUserName(response.first_name)
-      this.updateSessionUser(response.userId)
+      this.updateSessionUser(response.id)
       window.location = `/home`
   }) 
 
