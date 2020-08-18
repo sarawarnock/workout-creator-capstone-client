@@ -1,7 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import renderer from 'react-test-renderer';
+
 import { BrowserRouter } from 'react-router-dom'
-import renderer from 'react-test-renderer'
 import App from '../app'
 import CreateNewWorkout from '../create-new-workout'
 import PastWorkouts from '../past-workouts'

@@ -178,7 +178,7 @@ class CreateNewWorkout extends Component {
               savedWorkoutDetails: data.workoutDetails
           });
           this.props.saveNewWorkout(data);
-        //  window.location = `/create-workout`
+          window.location = `/past-workouts`
       })
         .catch(err => {
           this.setState({
@@ -206,6 +206,8 @@ class CreateNewWorkout extends Component {
   createCheckboxes = () => OPTIONS.map(this.createCheckbox);
 
   render() {
+    console.log(this.state.savedWorkouts)
+    console.log(this.state.savedWorkoutDetails)
     const showWorkouts = 
     this.state.savedWorkouts.map((workout, id) => {
     return (
@@ -220,7 +222,11 @@ class CreateNewWorkout extends Component {
     for (let i = 0; i < this.state.savedWorkoutDetails.length; i++) {
         showWorkoutDetails.push(this.state.savedWorkoutDetails[i])
     }
-    showWorkoutDetails = showWorkoutDetails.map(workoutDetail => {
+
+    console.log(showWorkoutDetails)
+
+    if (showWorkoutDetails.length !== 0) {
+      showWorkoutDetails = showWorkoutDetails.map(workoutDetail => {
         let workoutDetailTitle = workoutDetail.title
         let workoutDetailReps = workoutDetail.exercise_reps
         let workoutDetailDescription = workoutDetail.description
@@ -231,8 +237,19 @@ class CreateNewWorkout extends Component {
                 <h3 key="desc" className="exercise-desc"> {workoutDetailDescription} </h3>
             </div>
         )
-    });
+      });
 
+      console.log(showWorkoutDetails)
+
+    }
+    else {
+      showWorkoutDetails = `
+        <div className="workout-details">
+          <h3 key="title" className="exercise-title"> No Workout Details </h3>
+        </div>
+      `
+    }
+    
     return (
       <div className="App">
         <div className="row">
@@ -290,8 +307,8 @@ class CreateNewWorkout extends Component {
                   Submit
                 </button>
             </form>
-            {showWorkouts[showWorkouts.length - 1]}
-            {showWorkoutDetails}
+            {/* {showWorkouts[showWorkouts.length - 1]}
+            {showWorkoutDetails} */}
           </div>
         </div>
       </div>

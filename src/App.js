@@ -73,8 +73,8 @@ class App extends React.Component {
 
   //renders all of the routes 
   renderMainPages = () => {
-    console.log(this.state.appSavedWorkouts)
-    console.log(this.state.appSavedWorkoutDetails)
+    // console.log(this.state.appSavedWorkouts)
+    // console.log(this.state.appSavedWorkoutDetails)
     return (
       <div className="main-pages">
       <Switch>        
