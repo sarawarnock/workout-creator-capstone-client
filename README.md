@@ -169,6 +169,22 @@ The app's functionality includes:
 
 ## API Documentation
 API Documentation details: 
+* get all users => /api/users
+* get users by id => /api/users/:user_id
+* get all exercises => /api/exercises
+* get exercise by id => /api/exercises/:exercise_id
+* get all workouts => /api/workouts
+* get workouts by user id => /api/workouts/user/:user_id
+* get workout details => /api/workoutdetails
+* get workout details by id => /api/workoutdetails/:workoutdetail_id
+* get workout details by workout id => /api/workoutdetails/:workout_id
+* get workout details and exercises => /api/workoutdetails/workout/
+* get workout details and exercises by workout id => /api/workoutdetails/workout/:workout_id
+* post new user => /api/users
+* post new exercise => /api/exercises
+* post new workout => /api/workouts
+* post new workout details => /api/workoutdetails
+* post auth login => /api/auth/login
 
 ## Responsive
 App is built to be usable on mobile devices, as well as responsive across mobile, tablet, laptop, and desktop screen resolutions.
