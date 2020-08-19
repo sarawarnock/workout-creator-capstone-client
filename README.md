@@ -88,7 +88,15 @@ View Past Workout Page
 ## Screenshots
 Landing/Login Page 
 :-------------------------:
-![Landing Page](/github-images/screenshots/landing-page.jpg)  
+![Landing Page](/github-images/screenshots/landing-page.png)
+Sign Up Page
+![Sign Up Page](/github-images/screenshots/sign-up.png) 
+Login Page
+![Login Page](/github-images/screenshots/log-in.png) 
+Create Workout Page
+![Create Workout Page](/github-images/screenshots/create-workout.png) 
+Past Workouts Page
+![Past Workouts Page](/github-images/screenshots/past-workouts.png) 
 
 
 ## Functionality
