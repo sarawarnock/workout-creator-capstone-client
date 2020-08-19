@@ -2,6 +2,7 @@ import React from 'react';
 import CircleButton from './CircleButton/circle-button'
 
 export default function ViewPastWorkout(props) {
+  console.log(props.history.goBack)
   return (
     <div className="App">
       <main className="main">

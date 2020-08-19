@@ -36,16 +36,14 @@ const testWorkoutDetailsArray = [
   {
     description: 'Test description',
     exercise_reps: 10,
-    exercises_id: 1,
+    exercises_id: 2,
     title: 'test title',
     workouts_id: 1
   }
 ]
 
-const match = { params: () => {} }
-const history = { 
-  goBack: () => {}
-}
+const params =  () => {}
+const goBack = () => {}
 
 describe('Workout Creator app', () => {
   it('renders without crashing', () => {
@@ -75,12 +73,18 @@ describe('New Workout component', () => {
 describe('Past Workouts componenet', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<PastWorkouts appSavedWorkouts={testWorkoutsArray} match={ { params: () => {} } } />, div);
+    ReactDOM.render(
+      <BrowserRouter history={goBack}>
+        <PastWorkouts appSavedWorkouts={testWorkoutsArray} match= { params }  />
+      </BrowserRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders the UI as expected', () => {
     const tree = renderer
-      .create(<PastWorkouts appSavedWorkouts={testWorkoutsArray} match={ { params: () => {} } } />)
+      .create(
+        <BrowserRouter history={goBack}>
+          <PastWorkouts appSavedWorkouts={testWorkoutsArray} match={ params } />
+        </BrowserRouter>)
       .toJSON();
     expect(tree).toMatchSnapshot();  
   });
@@ -89,12 +93,18 @@ describe('Past Workouts componenet', () => {
 describe('View Past Workouts componenet', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<ViewPastWorkout appSavedWorkoutDetails={testWorkoutDetailsArray} history={ { goBack: () => {} } }  />, div);
+    ReactDOM.render(
+      <BrowserRouter>
+        <ViewPastWorkout appSavedWorkoutDetails={testWorkoutDetailsArray} history={goBack} match={{ params }} />
+      </BrowserRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders the UI as expected', () => {
     const tree = renderer
-      .create(<ViewPastWorkout appSavedWorkoutDetails={testWorkoutDetailsArray} history={ { goBack: () => {} } } />)
+      .create(
+        <BrowserRouter>
+          <ViewPastWorkout appSavedWorkoutDetails={testWorkoutDetailsArray} history={goBack} match={{ params }} />
+        </BrowserRouter>)
       .toJSON();
     expect(tree).toMatchSnapshot();  
   });
