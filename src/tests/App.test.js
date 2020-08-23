@@ -94,7 +94,7 @@ describe('View Past Workouts componenet', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <BrowserRouter>
+      <BrowserRouter >
         <ViewPastWorkout appSavedWorkoutDetails={testWorkoutDetailsArray} history={goBack} match={{ params }} />
       </BrowserRouter>, div);
     ReactDOM.unmountComponentAtNode(div);

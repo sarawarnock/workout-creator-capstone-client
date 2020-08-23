@@ -42,11 +42,11 @@ export default function PastWorkouts(props) {
             >
               <button>Create Workout</button>
             </Link>
-            <div>
-              {/* <CircleButton onClick={props.history.goBack}>
+            {/* <div>
+              <CircleButton onClick={props.history.goBack}>
                 Go Back
-              </CircleButton> */}
-            </div>
+              </CircleButton>
+            </div> */}
         </main>
     </div>
   );

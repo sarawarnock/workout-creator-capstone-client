@@ -18,17 +18,6 @@ export default function PersonalizedHomePage(props) {
                   </Link>
                 </button>
             </div>
-            <div className="acct-info">
-            {/* <h2>Account Information</h2>
-                <h3>Email: {props.email} </h3>
-                <h3>Password: {props.password} </h3> */}
-                {/* <Link
-                  to='/forgot-password'
-                >
-                  <button
-                  >Change</button>
-                </Link> */}
-            </div>
         </main>
     </div>
   );

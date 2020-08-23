@@ -130,9 +130,6 @@ export default class Login extends React.Component {
     });
   }
 
-  //logic that says - if user email matches password combo in "users"
-  //show them their homepage
-
   render() {
     let validationError = ''
     if (this.state.error != '') {

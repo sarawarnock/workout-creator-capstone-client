@@ -381,7 +381,6 @@ exports[`Past Workouts componenet renders the UI as expected 1`] = `
         Create Workout
       </button>
     </a>
-    <div />
   </main>
 </div>
 `;
