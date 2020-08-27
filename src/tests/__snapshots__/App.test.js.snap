@@ -1,5 +1,150 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Header component renders the UI as expected 1`] = `
+<div
+  className="App"
+>
+  <main
+    className="main"
+  >
+    <h1>
+      MyMetcon Workout Creator
+    </h1>
+  </main>
+</div>
+`;
+
+exports[`Landing Page component renders the UI as expected 1`] = `
+<div
+  className="App"
+>
+  <main
+    className="main"
+  >
+    <h1>
+      Workout Creator
+    </h1>
+    <p>
+      Create your own metabolic-conditoning workout
+    </p>
+    <p>
+      Choose how long you want to workout for and the muscle groups you want to work, and we'll do the rest!
+    </p>
+    <button
+      className="big-btn"
+    >
+       
+      <a
+        href="/sign-up"
+        onClick={[Function]}
+      >
+         Sign Up 
+      </a>
+    </button>
+    <button
+      className="big-btn"
+    >
+       
+      <a
+        href="/login"
+        onClick={[Function]}
+      >
+         Login
+      </a>
+       
+    </button>
+    <p>
+      To login: 
+    </p>
+    <p>
+      email: testuser@gmail.com
+    </p>
+    <p>
+      password: Testpassword1
+    </p>
+  </main>
+</div>
+`;
+
+exports[`Login component renders the UI as expected 1`] = `
+<div
+  className="App"
+>
+  <main>
+    <h1>
+      Log In
+    </h1>
+    <form
+      className="login-form"
+      onSubmit={[Function]}
+    >
+      <label
+        className="user-label"
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <input
+        id="email"
+        name="loginEmail"
+        onChange={[Function]}
+        placeholder="Email"
+        required={true}
+        type="text"
+      />
+      <label
+        className="user-label"
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        id="password"
+        name="loginPassword"
+        onChange={[Function]}
+        placeholder="Password"
+        required={true}
+        type="password"
+      />
+      <button
+        className="small-btn"
+        type="submit"
+      >
+         Log In 
+      </button>
+    </form>
+    <div>
+      <h2>
+        Don't have an account yet?
+      </h2>
+      <a
+        href="/sign-up"
+        onClick={[Function]}
+      >
+        <button
+          className="small-btn"
+        >
+          Sign Up
+        </button>
+      </a>
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Navbar component renders the UI as expected 1`] = `
+<div
+  className="navbar"
+>
+  <nav
+    className="nav"
+    role="navigation"
+  >
+    
+  </nav>
+</div>
+`;
+
 exports[`New Workout component renders the UI as expected 1`] = `
 <div
   className="App"
@@ -298,6 +443,14 @@ exports[`New Workout component renders the UI as expected 1`] = `
 </div>
 `;
 
+exports[`Not Found component renders the UI as expected 1`] = `
+<div>
+  <h1>
+    Page Not Found!
+  </h1>
+</div>
+`;
+
 exports[`Past Workouts componenet renders the UI as expected 1`] = `
 <div
   className="App"
@@ -381,6 +534,134 @@ exports[`Past Workouts componenet renders the UI as expected 1`] = `
         Create Workout
       </button>
     </a>
+  </main>
+</div>
+`;
+
+exports[`Personal Home Page component renders the UI as expected 1`] = `
+<div
+  className="App"
+>
+  <main>
+    <h1>
+      Home
+    </h1>
+    <div
+      className="workout-btn"
+    >
+      <button
+        className="big-btn"
+      >
+        <a
+          href="/past-workouts"
+          onClick={[Function]}
+        >
+          Past Workouts
+        </a>
+      </button>
+      <button
+        className="big-btn"
+      >
+        <a
+          href="/create-workout"
+          onClick={[Function]}
+        >
+          New Workout
+        </a>
+      </button>
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Sign Up component renders the UI as expected 1`] = `
+<div
+  className="App"
+>
+  <main>
+    <h1>
+      Sign Up
+    </h1>
+    <form
+      className="sign-up-form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="sign-up-email"
+      >
+        <label
+          className="user-label"
+          htmlFor="email"
+        >
+          Email
+        </label>
+        <input
+          id="email"
+          name="signUpEmail"
+          onChange={[Function]}
+          placeholder="Email"
+          required={true}
+          type="text"
+        />
+      </div>
+      <div
+        className="sign-up-password"
+      >
+        <label
+          className="user-label"
+          htmlFor="password"
+        >
+          Password (one capital letter and one number needed)
+        </label>
+        <input
+          id="password"
+          name="signUpPassword"
+          onChange={[Function]}
+          placeholder="Password"
+          required={true}
+          type="password"
+        />
+      </div>
+      <div
+        className="sign-up-name"
+      >
+        <label
+          className="user-label"
+          htmlFor="fname"
+        >
+          First Name
+        </label>
+        <input
+          id="fname"
+          name="signUpFirstName"
+          onChange={[Function]}
+          placeholder="First Name"
+          required={true}
+          type="text"
+        />
+      </div>
+      <button
+        className="small-btn"
+        type="submit"
+      >
+        Sign Up!
+      </button>
+    </form>
+    <div>
+      <h2>
+        Already have an account?
+      </h2>
+      <button
+        className="small-btn"
+      >
+        <a
+          href="/login"
+          onClick={[Function]}
+        >
+          Login
+        </a>
+      </button>
+    </div>
   </main>
 </div>
 `;

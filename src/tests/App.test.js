@@ -4,9 +4,16 @@ import renderer from 'react-test-renderer';
 
 import { BrowserRouter } from 'react-router-dom'
 import App from '../app'
+import Login from '../log-in'
+import SignUp from '../sign-up'
+import NotFound from '../not-found-page'
 import CreateNewWorkout from '../create-new-workout'
 import PastWorkouts from '../past-workouts'
 import ViewPastWorkout from '../view-past-workout'
+import PersonalizedHomePage from '../personalized-home-page'
+import Navbar from '../navbar'
+import Header from '../header'
+import LandingPage from '../landing-page'
 
 const testWorkoutsArray = [
   {
@@ -105,6 +112,146 @@ describe('View Past Workouts componenet', () => {
         <BrowserRouter>
           <ViewPastWorkout appSavedWorkoutDetails={testWorkoutDetailsArray} history={goBack} match={{ params }} />
         </BrowserRouter>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();  
+  });
+});
+
+describe('Login component', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+    <BrowserRouter>
+      <Login />
+    </BrowserRouter>, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  it('renders the UI as expected', () => {
+    const tree = renderer
+      .create(
+      <BrowserRouter>
+        <Login />
+      </BrowserRouter>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();  
+  });
+});
+
+describe('Sign Up component', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+    <BrowserRouter>
+      <SignUp />
+    </BrowserRouter>, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  it('renders the UI as expected', () => {
+    const tree = renderer
+      .create(
+      <BrowserRouter>
+        <SignUp />
+      </BrowserRouter>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();  
+  });
+});
+
+describe('Not Found component', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+    <BrowserRouter>
+      <NotFound />
+    </BrowserRouter>, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  it('renders the UI as expected', () => {
+    const tree = renderer
+      .create(
+      <BrowserRouter>
+        <NotFound />
+      </BrowserRouter>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();  
+  });
+});
+
+describe('Header component', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+    <BrowserRouter>
+      <Header />
+    </BrowserRouter>, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  it('renders the UI as expected', () => {
+    const tree = renderer
+      .create(
+      <BrowserRouter>
+        <Header />
+      </BrowserRouter>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();  
+  });
+});
+
+describe('Navbar component', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+    <BrowserRouter>
+      <Navbar />
+    </BrowserRouter>, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  it('renders the UI as expected', () => {
+    const tree = renderer
+      .create(
+      <BrowserRouter>
+        <Navbar />
+      </BrowserRouter>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();  
+  });
+});
+
+describe('Personal Home Page component', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+    <BrowserRouter>
+      <PersonalizedHomePage />
+    </BrowserRouter>, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  it('renders the UI as expected', () => {
+    const tree = renderer
+      .create(
+      <BrowserRouter>
+        <PersonalizedHomePage />
+      </BrowserRouter>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();  
+  });
+});
+
+describe('Landing Page component', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+    <BrowserRouter>
+      <LandingPage />
+    </BrowserRouter>, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  it('renders the UI as expected', () => {
+    const tree = renderer
+      .create(
+      <BrowserRouter>
+        <LandingPage />
+      </BrowserRouter>)
       .toJSON();
     expect(tree).toMatchSnapshot();  
   });
