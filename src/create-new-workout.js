@@ -71,8 +71,8 @@ class CreateNewWorkout extends Component {
         }
       }));
     });
-  };
-
+  }
+  
   handleCheckboxChange = changeEvent => {
     const { name } = changeEvent.target;
 
