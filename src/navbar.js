@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import TokenService from './services/token-service'
+import { Link } from 'react-router-dom';
+import TokenService from './services/token-service';
 
 export default class Navbar extends React.Component {
   logOutClick = () => {
@@ -9,9 +9,9 @@ export default class Navbar extends React.Component {
     TokenService.getUserId = (id) => {
       console.log(id)
     }
-
     window.location='/'
   }
+
   render() {
     return (
       <div className="navbar">

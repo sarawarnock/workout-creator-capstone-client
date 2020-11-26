@@ -127,11 +127,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <nav className="app-nav"> {this.renderNav()} </nav>
         <header>
             <Link to='/'>
               <Header />
             </Link>
+            <nav className="app-nav"> {this.renderNav()} </nav>
         </header>
 
         <main>
