@@ -1,20 +1,14 @@
 .App {
     text-align: center;
     color: black;
-    width: 100%;
-    /* display: grid; */
-    /* grid-template-columns: 15% 35% 35% 15%;
-    grid-template-areas: 
-        ". nav nav ."
-        "header header header header"
-        "main main main main" */
 }
 
+/* HEADER AREA */
 header {
-    /* grid-area: header; */
+    display: fixed;
+    top: 0;
     width: 100%;
-    display: flex;
-    padding: 15px;
+    padding: 50px;
 }
 
 header nav {
@@ -23,10 +17,16 @@ header nav {
     align-items: center;
 }
 
+.home-link {
+    width: 300px;
+    text-align: left;
+}
+
 h2 {
-    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: normal;
     font-size: 48px;
-    font-weight: 400;
+    line-height: 57px;
 }
 
 nav {
@@ -35,11 +35,48 @@ nav {
     justify-self: center;
 }
 
+.header-links {
+    height: 50px;
+    width: 120px;
+    border-radius: 100px;
+    background-color: #C4C4C4;
+    padding: 10px 20px;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.signup {
+    margin-right: 50px;
+}
+
+/* MAIN PAGE */
 main {
-    display: grid;
-    grid-area: main;
     padding: 10px;
 }
+
+h1 {
+    font-family: Helvetica Neue;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 59px;
+    margin-bottom: 25px;
+}
+
+.landing-text {
+    margin: 0 auto;
+    width: 589px;
+    text-align: left;
+}
+
+main p {
+    font-family: Helvetica Neue;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+}
+
 
 .menu {
     text-align: center;
@@ -150,27 +187,6 @@ button:active {
 .big-btn {
     font-size: 32px;
     margin: 10px;
-}
-
-a {
-    color: black;
-    text-decoration: none;
-}
-
-a:active {
-    text-decoration: underline;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.header-links {
-    height: 50px;
-    width: 120px;
-    border-radius: 30px;
-    background-color: #C4C4C4;
-    padding: 5px 15px;
 }
 
 .workouts-list {

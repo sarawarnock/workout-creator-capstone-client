@@ -22,7 +22,7 @@ export default class Header extends Component {
   renderLogInLink() {
     return (
       <>
-        <Link className="header-links"
+        <Link className="header-links signup"
           to='/sign-up'>Sign Up</Link>
         <Link className="header-links"
           to='/login'>Login</Link>
@@ -35,7 +35,7 @@ export default class Header extends Component {
       <>
         <header>
           <nav>
-            <Link to='/'>
+            <Link className="home-link" to='/'>
               <h2>Build Stronger Workouts</h2>
             </Link>
             <div className="app-nav">
