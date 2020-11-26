@@ -10,6 +10,8 @@ export default class LandingPage extends React.Component {
           <p>1. Create your own metabolic-conditioning workout</p>
           <p>2. Choose how long you want to workout for and the muscle groups you want to work, and we'll do the rest!</p>
         </div>
+        <Link to="/create-workout"
+          className="try-it-link">Let's try it</Link>
         </main>
     );
   }

@@ -38,7 +38,7 @@ nav {
 .header-links {
     height: 50px;
     width: 120px;
-    border-radius: 100px;
+    border-radius: 30px;
     background-color: #C4C4C4;
     padding: 10px 20px;
     font-size: 24px;
@@ -60,11 +60,10 @@ h1 {
     font-weight: 500;
     font-size: 48px;
     line-height: 59px;
-    margin-bottom: 25px;
 }
 
 .landing-text {
-    margin: 0 auto;
+    margin: 25px auto 35px;
     width: 589px;
     text-align: left;
 }
@@ -77,6 +76,15 @@ main p {
     line-height: 29px;
 }
 
+.try-it-link {
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: #C4C4C4;
+    padding: 10px 40px;
+    font-size: 24px;
+    line-height: 29px;
+}
 
 .menu {
     text-align: center;
