@@ -1,11 +1,11 @@
 body {
-    background-color: black;
+    background-color: rgb(234, 233, 229);
 }
 
 .App {
     text-align: center;
-    background-color:  black;
-    color: white;
+    background-color:  rgb(234, 233, 229);
+    color: black;
     width: 100%;
     display: grid;
     grid-template-columns: 15% 35% 35% 15%;
@@ -73,10 +73,6 @@ main {
   
 .tb-view {
     width: 30%;
-}
-
-h1 {
-    color: #32F5B1;
 }
 
 h2 {
