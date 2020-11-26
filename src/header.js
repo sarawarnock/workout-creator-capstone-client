@@ -11,7 +11,7 @@ export default class Header extends Component {
   renderLogOutLink() {
     return (
       <>
-        <Link to="/" 
+        <Link to="/past-workouts" 
           className="workouts header-links"
         >
           Workouts
@@ -22,7 +22,7 @@ export default class Header extends Component {
         >
           Logout
         </Link>
-    </>
+      </>
     )
   }
 
