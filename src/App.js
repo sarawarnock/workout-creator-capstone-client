@@ -1,18 +1,20 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom'
-import config from './config'
-import TokenService from './services/token-service'
+import { Route, Link, Switch } from 'react-router-dom';
 import './App2.css';
-import LandingPage from './landing-page'
-import Navbar from './navbar'
-import PersonalizedHomePage from './personalized-home-page'
-import PastWorkouts from './past-workouts'
-import Header from './header'
+
+import LandingPage from './landing-page';
+import Navbar from './navbar';
+import PersonalizedHomePage from './personalized-home-page';
+import PastWorkouts from './past-workouts';
+import Header from './header';
 import Login from './log-in';
 import SignUp from './sign-up';
 import ViewPastWorkout from './view-past-workout';
-import CreateNewWorkout from './create-new-workout'
-import NotFoundPage from './not-found-page'
+import CreateNewWorkout from './create-new-workout';
+import NotFoundPage from './not-found-page';
+
+import config from './config';
+import TokenService from './services/token-service';
 
 class App extends React.Component {
   constructor(props) {
