@@ -1,4 +1,5 @@
-import config from '../config'
+import config from '../config';
+import jwtDecode from 'jwt-decode';
 
 const TokenService = {
   saveAuthToken(token) {
@@ -25,6 +26,6 @@ const TokenService = {
   getUserId(user_id) {
     return window.sessionStorage.getItem('user_id', user_id)
   }
-}
+};
 
-export default TokenService
+export default TokenService;

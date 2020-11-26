@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import TokenService from './services/token-service';
-import Navbar from './navbar';
+// import Navbar from './navbar';
 
 export default class Header extends Component {
 
   handleLogOut = () => {
     TokenService.clearAuthToken();
-    TokenService.clearCallbackBeforeExpiry();
   }
 
   renderLogOutLink() {
-    <Link to="/" 
-      className="logout"
-      onClick={this.handleLogOut}
-    >
-      Logout
-    </Link>
+    return (
+      <>
+        <Link to="/" 
+          className="workouts header-links"
+        >
+          Workouts
+        </Link>
+        <Link to="/" 
+          className="logout header-links"
+          onClick={this.handleLogOut}
+        >
+          Logout
+        </Link>
+    </>
+    )
   }
 
   renderLogInLink() {
