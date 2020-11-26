@@ -22,9 +22,10 @@ export default class Header extends Component {
   renderLogInLink() {
     return (
       <>
-        <button className="small-btn logout-btn">
-          <Link to="/" onClick={this.logOutClick}>Log Out</Link>
-        </button>
+        <Link className="header-links"
+          to='/sign-up'>Sign Up</Link>
+        <Link className="header-links"
+          to='/login'>Login</Link>
       </>
     )
   }

@@ -2,17 +2,25 @@
     text-align: center;
     color: black;
     width: 100%;
-    display: grid;
-    grid-template-columns: 15% 35% 35% 15%;
+    /* display: grid; */
+    /* grid-template-columns: 15% 35% 35% 15%;
     grid-template-areas: 
         ". nav nav ."
         "header header header header"
-        "main main main main"
+        "main main main main" */
 }
 
 header {
     /* grid-area: header; */
     width: 100%;
+    display: flex;
+    padding: 15px;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 h2 {
@@ -145,7 +153,7 @@ button:active {
 }
 
 a {
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
@@ -155,6 +163,14 @@ a:active {
 
 a:hover {
     text-decoration: underline;
+}
+
+.header-links {
+    height: 50px;
+    width: 120px;
+    border-radius: 30px;
+    background-color: #C4C4C4;
+    padding: 5px 15px;
 }
 
 .workouts-list {
@@ -243,7 +259,7 @@ a:hover {
     }
 }  */
 
-@media screen and (min-width: 600px) {
+/* @media screen and (min-width: 600px) {
     .App {
         display: grid;
         grid-template-columns: 15% 35% 35% 15%;
@@ -266,16 +282,6 @@ a:hover {
         align-self: start;
     }
 
-    header {
-        grid-area: header;
-    }
-
-    nav {
-        display: grid;
-        grid-area: sidebar;
-        justify-self: center;
-    }
-
     main {
         display: grid;
         grid-area: main;
@@ -291,4 +297,4 @@ a:hover {
         display: grid;
         align-self: center;
     }
-}
+} */
