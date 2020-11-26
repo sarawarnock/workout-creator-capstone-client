@@ -3,7 +3,6 @@ import { Route, Link, Switch } from 'react-router-dom';
 import './App2.css';
 
 import LandingPage from './landing-page';
-import Navbar from './navbar';
 import PersonalizedHomePage from './personalized-home-page';
 import PastWorkouts from './past-workouts';
 import Header from './header';
@@ -63,15 +62,6 @@ class App extends React.Component {
       appSavedWorkouts: [...this.state.appSavedWorkouts, newWorkout]
     })
   }
-  
-  //renders the Navbar
-  renderNav() {
-    return (
-      <div>
-        <Navbar />
-      </div>
-    )
-  }
 
   //renders all of the routes 
   renderMainPages = () => {
@@ -127,13 +117,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header>
-            <Link to='/'>
-              <Header />
-            </Link>
-            <nav className="app-nav"> {this.renderNav()} </nav>
-        </header>
-
+        <Header />
         <main>
           {this.renderMainPages()}
         </main>

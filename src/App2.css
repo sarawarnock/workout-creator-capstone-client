@@ -1,18 +1,24 @@
 .App {
     text-align: center;
-    background-color:  rgb(234, 233, 229);
     color: black;
     width: 100%;
     display: grid;
     grid-template-columns: 15% 35% 35% 15%;
     grid-template-areas: 
-    ". nav nav ."
-    "header header header header"
-    "main main main main"
+        ". nav nav ."
+        "header header header header"
+        "main main main main"
 }
 
 header {
-    grid-area: header;
+    /* grid-area: header; */
+    width: 100%;
+}
+
+h2 {
+    font-family: 'Helvetica Neue';
+    font-size: 48px;
+    font-weight: 400;
 }
 
 nav {
