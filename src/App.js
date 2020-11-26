@@ -141,5 +141,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// 1å
