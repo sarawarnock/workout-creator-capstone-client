@@ -4,7 +4,7 @@ export default function Header(props) {
   return (
     <div className="App">
       <main className="main">
-        <h1>MyMetcon Workout Creator</h1>
+        <h2>Build Stronger workouts</h2>
       </main>
     </div>
   );

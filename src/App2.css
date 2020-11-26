@@ -1,7 +1,3 @@
-body {
-    background-color: rgb(234, 233, 229);
-}
-
 .App {
     text-align: center;
     background-color:  rgb(234, 233, 229);
@@ -73,10 +69,6 @@ main {
   
 .tb-view {
     width: 30%;
-}
-
-h2 {
-    color: #EB46C2;
 }
 
 label {
