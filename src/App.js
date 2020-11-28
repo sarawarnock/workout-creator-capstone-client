@@ -6,7 +6,8 @@ import LandingPage from './landing-page';
 import PersonalizedHomePage from './personalized-home-page';
 import PastWorkouts from './past-workouts';
 import Header from './header';
-import Login from './log-in';
+// import Login from './log-in';
+import LoginRoute from './login-route';
 import SignUp from './sign-up';
 import ViewPastWorkout from './view-past-workout';
 import CreateNewWorkout from './create-new-workout';
@@ -93,7 +94,7 @@ class App extends React.Component {
         <Route 
           exact
           path='/login'
-          component={Login}
+          component={LoginRoute}
         />
         <Route 
           exact

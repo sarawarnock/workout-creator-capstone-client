@@ -98,7 +98,7 @@ export default class Login extends React.Component {
     })
 
     //check if the state is populated with the search params data
-    console.log(this.state)
+    // console.log(this.state)
 
     AuthApiService.postLogin({
       email: loginEmail,
