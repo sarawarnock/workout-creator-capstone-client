@@ -32,18 +32,17 @@ export default class LoginForm extends Component {
                     className="login-form"
                     onSubmit={this.handleSubmitJwtAuth}
                 >
-                    <div className="user-inp">
-                        <label className ="user-label" htmlFor="email">Username</label>
+                    <div className="user-inp inp-cont">
+                        <label className ="form-label" htmlFor="email">Username</label>
                         <input 
                             name="loginEmail"
                             type="text" 
                             id="email"
-                            onChange={e => this.updateEmail(e.target.value)}
                             required
                         />
                     </div>
-                    <div className="pass-inp">
-                        <label className ="user-label" htmlFor="password">Password</label>
+                    <div className="pass-inp inp-cont">
+                        <label className ="form-label" htmlFor="password">Password</label>
                         <input 
                             name="loginPassword"
                             type="password" 

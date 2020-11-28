@@ -88,7 +88,35 @@ main p {
 }
 
 /* LOGIN / SIGN UP */
+.form-container {
+    margin: 0 auto;
+}
 
+.inp-cont {
+    margin: 0 auto;
+    /* text-align: left; */
+}
+
+.form-label {
+    font-size: 24px;
+    line-height: 29px;
+    border: none;
+}
+
+.login-form input {
+    width: 403px;
+    height: 80px;
+    background: #C4C4C4;
+    opacity: 0.9;
+    font-size: 24px;
+    line-height: 29px;
+    padding: 0 10px;
+    border: none;
+}
+
+.login-form input:-webkit-autofill {
+    background-color: #C4C4C4;
+}
 
 .menu {
     text-align: center;
