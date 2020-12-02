@@ -4,7 +4,7 @@ export const nullUser = {};
 export const nullWorkOut = {};
 export const nullUserWorkOuts = [];
 
-const WorkoutContext = React.createContext({
+const WorkOutContext = React.createContext({
     error: null,
     user: nullUser,
     workout: nullWorkOut,
@@ -14,17 +14,17 @@ const WorkoutContext = React.createContext({
     setError: () => {},
     clearError: () => {},
     setWorkout: () => {},
-    clearWorkout: () => {},
+    clearWorkOut: () => {},
     setUser: () => {},
     clearUser: () => {},
     setWorkOutsList: () => {},
-    clearWorkoutsList: () => {},
+    clearWorkOutsList: () => {},
     toggleActive: () => {},
 });
 
-export default Context;
+export default WorkOutContext;
 
-export class WorkoutContext extends Component {
+export class WorkOutProvider extends Component {
     state = {
         error: null,
         user: nullUser,
@@ -46,8 +46,8 @@ export class WorkoutContext extends Component {
         this.setState({ workout });
     };
 
-    clearWorkout = () => {
-        this.setWorkout(nullWorkout);
+    clearWorkOut = () => {
+        this.setWorkout(nullWorkOut);
     };
 
     setUser = user => {
@@ -62,7 +62,7 @@ export class WorkoutContext extends Component {
         this.setState({ workouts });
     };
 
-    clearWorkoutsList = () => {
+    clearWorkOutsList = () => {
         this.setWorkOutsList({ nullUserWorkOuts });
     };
 
@@ -81,18 +81,18 @@ export class WorkoutContext extends Component {
             setError: this.setError,
             clearError: this.clearError,
             setWorkout: this.setWorkout,
-            clearWorkout: this.clearWorkout,
+            clearWorkOut: this.clearWorkOut,
             setUser: this.setUser,
             clearUser: this.clearUser,
             setWorkoutsList: this.setWorkOutsList,
-            clearWorkoutsList: this.clearWorkoutsList,
+            clearWorkOutsList: this.clearWorkOutsList,
             toggleActive: this.toggleActive
         };
 
         return (
-            <WorkoutContext.Provider value={value}>
+            <WorkOutContext.Provider value={value}>
                 {this.props.children}
-            </WorkoutContext.Provider>
+            </WorkOutContext.Provider>
         );
     }
 }

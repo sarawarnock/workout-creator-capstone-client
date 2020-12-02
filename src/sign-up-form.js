@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import AuthApiService from './services/auth-api-service-lf';
 
 export default class SignUpForm extends Component {
@@ -20,12 +21,14 @@ export default class SignUpForm extends Component {
         AuthApiService.postUser(newUser)
         .then(res => {
             AuthApiService.postLogin({
-                username: username.value,
-                password: password.value,
+                email: signUpEmail.value,
+                password: signUpPassword.value,
+                first_name: signUpFirstName.value
             })
             .then(user => {
-                username.value = ''
-                password.value = ''
+                signUpEmail.value = ''
+                signUpPassword.value = ''
+                signUpFirstName.value = ''
                 this.props.onSubmitSuccess()
             })
         })

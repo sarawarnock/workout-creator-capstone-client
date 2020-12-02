@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App-lf';
 import { BrowserRouter } from 'react-router-dom';
+import { WorkOutProvider } from './context';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <WorkOutProvider>
+      <App />
+    </WorkOutProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );
