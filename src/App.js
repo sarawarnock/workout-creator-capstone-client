@@ -14,7 +14,7 @@ import CreateNewWorkout from './create-new-workout';
 import NotFoundPage from './not-found-page';
 
 import config from './config';
-import TokenService from './services/token-service';
+import TokenService from './services/token-service-lf';
 
 class App extends React.Component {
   constructor(props) {
