@@ -5,7 +5,7 @@ export default class LandingPage extends React.Component {
   render() {
     return (
       <main className="main">
-        <h2>Create Metcon Workouts</h2>
+        <h2>Create a metcon workout</h2>
         <div className="landing-text">
           <p>What is metcon? Metcon is short for metabolic conditioning a term that incorporates short bouts of higher-intensity training designed to increase metabolic demand and increase energy usage.</p>
           <p>1. Create your own metabolic-conditioning workout</p>
