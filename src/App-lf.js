@@ -9,54 +9,37 @@ import PastWorkouts from './past-workouts';
 import Header from './header';
 // import Login from './log-in';
 import LoginRoute from './login-route';
-import SignUp from './sign-up';
+import SignUpRoute from './sign-up-route';
 import ViewPastWorkout from './view-past-workout';
 import CreateNewWorkout from './create-new-workout';
 import NotFoundPage from './not-found-page';
 
 import config from './config';
 import TokenService from './services/token-service-lf';
+import AuthApiService from './services/auth-api-service-lf';
+import IdleService from './services/idle-service-lf';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
-      first_name: '',
-      appSavedWorkouts: [],
-      appSavedWorkoutDetails: []
-    }
+        loggedIn: false,
+        error: false,
+    };
+  }
+  
+  static getDerivedStateFromError(error) {
+    return { error: true };
   }
 
   componentDidMount(){
-    //get workouts by user ID
-    //if the user has not logged in, get all past workouts, once user logs in, get their past workouts
-    let getWorkoutUrl = ''
-    if (sessionStorage.user_id == undefined) {
-      getWorkoutUrl = `${config.API_ENDPOINT}/workouts`
-    } else 
-    getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/${TokenService.getUserId()}`;
-    console.log(sessionStorage.user_id)
-    fetch(getWorkoutUrl)
-        .then(response => response.json())
-        //map over the workouts by ID, returning each workout
-        //so that we can get the individual workout details for that workout (including the exercises)
-        .then(workouts => {
-            this.setState({
-                appSavedWorkouts: workouts
-            });
-      })
-      //get all workout details for all workouts to use in Past Workouts component
-      let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/`;
-        fetch(getWorkoutDetailsUrl)
-        .then(response => response.json())
-        .then(workoutDetails => {
-            this.setState({
-              appSavedWorkoutDetails: workoutDetails
-            });
-        })
-        .catch(error => this.setState({ error }))
+    localStorage.clear();
+    IdleService.setIdleCallback(this.logoutFromIdle);
+    if (TokenService.hasAuthToken()) {
+    IdleService.regiserIdleTimerResets();
+    TokenService.queueCallbackBeforeExpiry(() => {
+        AuthApiService.postRefreshToken();
+    });
   }
 
   updateAppSavedWorkouts = newWorkout => {
