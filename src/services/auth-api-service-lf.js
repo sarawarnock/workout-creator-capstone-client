@@ -76,7 +76,6 @@ const AuthApiService = {
             this.context.setError(err);
         });
     },
-    
 }
 
 export default AuthApiService
