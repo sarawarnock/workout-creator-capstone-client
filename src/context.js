@@ -51,18 +51,22 @@ export class WorkOutProvider extends Component {
     };
 
     setUser = user => {
+        console.log('setting context user:', user);
         this.setState({ user });
     };
 
     clearUser = () => {
+        console.log('clearing context user');
         this.setState(nullUser);
     };
 
     setWorkOutsList = workouts => {
+        console.log('setting context workouts:', workouts);
         this.setState({ workouts });
     };
 
     clearWorkOutsList = () => {
+        console.log('clearing workouts list');
         this.setWorkOutsList({ nullUserWorkOuts });
     };
 

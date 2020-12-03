@@ -10,6 +10,7 @@ export default class SignUpRoute extends Component {
     }
 
     handleSubmitSuccess = () => {
+        console.log('running habndleSubmitSuccess');
         const { location, history } = this.props;
         const destination = (location.state || {}).from || 'user/home';
         history.push(destination);

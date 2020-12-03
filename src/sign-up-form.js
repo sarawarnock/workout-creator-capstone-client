@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import WorkOutContext from './context';
 import AuthApiService from './services/auth-api-service-lf';
 
 export default class SignUpForm extends Component {
     static defaultProps = {
         onSubmitSuccess: () => {}
     }
+
+    static contextType = WorkOutContext;
+
 
     state = { error: null };
 
@@ -20,6 +24,8 @@ export default class SignUpForm extends Component {
         }
         AuthApiService.postUser(newUser)
         .then(res => {
+            console.log(`sign up form sending user to context`, res)
+            this.context.setUser(res)
             AuthApiService.postLogin({
                 email: signUpEmail.value,
                 password: signUpPassword.value,

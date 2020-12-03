@@ -22,6 +22,7 @@ const AuthApiService = {
             })
     },
     postLogin(credentials) {
+        console.log('auth-api-service posting login', credentials);
         return fetch(`${config.API_ENDPOINT}/auth/login`, {
             method: 'POST',
             headers: {
@@ -50,6 +51,7 @@ const AuthApiService = {
         });
     },
     postRefreshToken() {
+        console.log('auth-api-service refreshing token');
         return fetch(`${config.API_ENDPOINT}/auth/refresh`, {
             method: 'POST',
             headers: {
