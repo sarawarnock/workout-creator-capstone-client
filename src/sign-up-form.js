@@ -14,9 +14,9 @@ export default class SignUpForm extends Component {
         const { signUpEmail, signUpPassword, signUpFirstName } = ev.target;
         this.setState({ error: null });
         const newUser = {
-            signUpEmail: signUpEmail.value,
-            signUpPassword: signUpPassword.value,
-            signUpFirstName: signUpFirstName.value
+            email: signUpEmail.value,
+            password: signUpPassword.value,
+            first_name: signUpFirstName.value
         }
         AuthApiService.postUser(newUser)
         .then(res => {
@@ -79,7 +79,7 @@ export default class SignUpForm extends Component {
                 </form>
                 <div>
                     <h3>Already have an account?</h3>
-                    <Link className="link"
+                    <Link className="login-link"
                         to='/login'>
                     Login
                     </Link>
