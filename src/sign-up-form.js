@@ -7,7 +7,7 @@ export default class SignUpForm extends Component {
         onSubmitSuccess: () => {}
     }
 
-    static = { error: null };
+    state = { error: null };
 
     handleSubmit = ev => {
         ev.preventDefault();
