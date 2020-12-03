@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Checkbox from './new-workout-checkbox';
 import config from './config'
-import TokenService from './services/token-service.js';
+import TokenService from './services/token-service-lf';
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 

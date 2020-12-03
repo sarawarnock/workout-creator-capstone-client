@@ -4,21 +4,22 @@ import IdleService from './idle-service-lf';
 
 const AuthApiService = {
     postUser(user) {
-    return fetch(`${config.API_ENDPOINT}/users`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-        },
-        body: JSON.stringify(user),
-        })
-        .then(res =>
-            (!res.ok)
-            ? res.json().then(e => Promise.reject(e))
-            : res.json()
-        )
-        .catch(err => {
-            console.log('error:', err)
-        })
+        console.log('auth-api-service posting user:', user);
+        return fetch(`${config.API_ENDPOINT}/users`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(user),
+            })
+            .then(res =>
+                (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+            )
+            .catch(err => {
+                console.log('error:', err)
+            })
     },
     postLogin(credentials) {
         return fetch(`${config.API_ENDPOINT}/auth/login`, {
