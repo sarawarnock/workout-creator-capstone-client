@@ -20,7 +20,7 @@ import IdleService from './services/idle-service-lf';
 
 import WorkoutContext from './context';
 
-class App extends React.Component {
+class App extends Component {
 
     static contextType = WorkoutContext;
 

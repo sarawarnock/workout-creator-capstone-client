@@ -38,7 +38,7 @@ export default class SignUpForm extends Component {
     }
 
     render() {
-        const { error } = this.state;
+        // const { error } = this.state;
         return (
             <>
                 <form

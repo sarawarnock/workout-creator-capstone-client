@@ -11,8 +11,6 @@ export default class LoginForm extends Component {
     handleSubmitJwtAuth = ev => {
         ev.preventDefault();
         const { loginEmail, loginPassword } = ev.target;
-        console.log('email:', loginEmail);
-        console.log('pw:', loginPassword);
         AuthApiService.postLogin({
             email: loginEmail.value,
             password: loginPassword.value
