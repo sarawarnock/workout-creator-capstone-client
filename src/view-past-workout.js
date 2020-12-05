@@ -1,5 +1,8 @@
 import React from 'react';
 import CircleButton from './CircleButton/circle-button'
+import { Link } from 'react-router-dom'
+import WorkOutContext from './context';
+import WorkoutApiService from './services/workout-api-service'
 
 export default function ViewPastWorkout(props) {
   return (
@@ -23,3 +26,49 @@ export default function ViewPastWorkout(props) {
     </div>
   );
 }
+
+// export default class ViewPastWorkout extends React.Component {
+//     static contextType = WorkOutContext
+
+//     componentDidMount() {
+//         console.log(this.context)
+//         WorkoutApiService.getWorkoutDetails()
+//             .then(this.context.setWorkout)
+//     }
+
+//     render() {
+//         const workouts = this.context.state.workout
+//         return (
+//             <>
+//                 <h2>Past Workouts</h2>
+//                 <table className="workouts-table">
+//                 <thead>
+//                     <tr>
+//                         <th className="tb-name">Name</th>
+//                         <th className="tb-id">Workout ID</th>
+//                         <th className="tb-view">View Workout</th>
+//                     </tr>
+//                 </thead>
+//                 <tbody>
+//                 {workouts.map(workout => {
+//                     return (
+//                     <tr>
+//                     <td>{workout.workouts_name}</td>
+//                     <td> {workout.id} </td>
+//                     <td>
+//                         <button>
+//                         <Link
+//                             to={`/past-workouts/${workout.id}`}
+//                         >
+//                             View
+//                         </Link>
+//                         </button>
+//                     </td>
+//                     </tr>
+//                 )})}
+//                 </tbody>
+//                 </table>
+//             </>
+//         )
+//     }
+// }
