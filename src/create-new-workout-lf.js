@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Checkbox from './new-workout-checkbox';
 import config from './config'
+import TokenService from './services/token-service-lf';
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
@@ -19,9 +20,7 @@ class CreateNewWorkout extends Component {
     isSubmitted: false,
     savedWorkouts: [],
     savedWorkoutDetails: [],
-    sessionUser: '',
-    currentStep: 0
-
+    sessionUser: ''
   };
 
   updateSessionUser(userId) {
@@ -30,54 +29,6 @@ class CreateNewWorkout extends Component {
     })
   }
 
-  _next() {
-    let currentStep = this.state.currentStep
-    currentStep = currentStep >= 2 ? 3 : currentStep + 1
-    this.setState({
-      currentStep: currentStep
-    })
-  }
-
-  _prev() {
-    let currentStep = this.state.currentStep
-    currentStep = currentStep <= 1 ? 1 : currentStep - 1
-    this.setState({
-      currentStep: currentStep
-    })
-  }
-
-  get previousButton() {
-    let currentStep = this.state.currentStep;
-    if (currentStep !== 1) {
-      return (
-        <button
-          className="btn btn-secondary"
-          type="button" onClick={this._prev}
-        >
-          Previous
-        </button>
-      )
-    }
-    return null;
-  }
-
-  get nextButton() {
-    let currentStep = this.state.currentStep;
-    if (currentStep < 3) {
-      return (
-        <button
-          className="btn btn-primary"
-          type="button" onClick={this._next}
-        >
-          Next
-        </button>
-      )
-    }
-    return null
-  }
-
-
-  //***** Do I need this if the workout is being saved and then viewed in the Past Workouts component? */
   componentDidMount() {
       this.updateSessionUser(sessionStorage.user_id)
     
@@ -255,9 +206,9 @@ class CreateNewWorkout extends Component {
   createCheckboxes = () => OPTIONS.map(this.createCheckbox);
 
   render() {
-    //console.log(this.state.savedWorkouts)
-    //console.log(this.state.savedWorkoutDetails)
-    //const showWorkouts = 
+    console.log(this.state.savedWorkouts)
+    console.log(this.state.savedWorkoutDetails)
+    const showWorkouts = 
     this.state.savedWorkouts.map((workout, id) => {
     return (
       <div className="workouts-list" key={id}>
@@ -304,7 +255,7 @@ class CreateNewWorkout extends Component {
         <div className="row">
           <div className="col-sm-12">
             <form onSubmit={this.handleFormSubmit}>
-                {/* <h2 className="workout-question-1">Which muscle groups would you like to work?</h2>
+                <h2 className="workout-question-1">Which muscle groups would you like to work?</h2>
                   <div className="checkbox">
                     {this.createCheckboxes()}
                   </div>
@@ -328,9 +279,9 @@ class CreateNewWorkout extends Component {
                 
                 <input type="radio" id="time-6" name="workoutTimeValue" value="30" />
                 <label htmlFor="time-6">30 minutes</label>
-              </div>     */}
+              </div>    
 
-              {/* <h2 className="workout-question-3">What style of workout would you like?</h2>
+              <h2 className="workout-question-3">What style of workout would you like?</h2>
                 <div className="workout-type answer-3">
                 
                 <input type="radio" id="emom" name="workoutTypeValue" value="EMOM" onClick={this.handleTypeChange} />
@@ -339,21 +290,8 @@ class CreateNewWorkout extends Component {
                 <input type="radio" id="amrap" name="workoutTypeValue" value="AMRAP" />
                 <label htmlFor="amrap">AMRAP (As Many Rounds As Possible)</label>
 
-                </div> */}
-                <MuscleGroup
-                  currentStep={this.state.currentStep}
-                />
-
-                <TimeQuest 
-                  currentStep={this.state.currentStep}
-                />
-
-                <TypeQuest 
-                  currentStep={this.state.currentStep}
-                />
-
+                </div>
                 <br />
-                {/* Need logic that says - "if logged in, name workout" */}
                 <h2>Name Your Workout:</h2>
                 <div className="workouts-name">
                   <input 
@@ -364,8 +302,6 @@ class CreateNewWorkout extends Component {
                     onChange={this.handleNameChange}
                   />
                 </div>
-                {this.previousButton}
-                {this.nextButton}
                 <br />
                 <button type="submit" className="big-btn">
                   Submit

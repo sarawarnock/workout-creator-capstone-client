@@ -21,7 +21,7 @@ export default class SignUp extends React.Component {
         touched: false
       },
       errors: {
-        signUpEmail: 'You must enter a valid email',
+        signUpEmail: 'You must enter a valid username',
         signUpPassword: 'You must enter a valid password',
         signUpFirstName: 'You must enter a valid name'
       },
@@ -52,7 +52,7 @@ export default class SignUp extends React.Component {
     }
     const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!inputEmail.match(mailFormat)) {
-      return 'Valid email is required'
+      return 'Valid username is required'
     } return ' '
   }
 
@@ -115,12 +115,11 @@ handleSubmit = (event) => {
                 <form className="sign-up-form" onSubmit={this.handleSubmit}>
                 
                     <div className="sign-up-email">
-                    <label className ="user-label" htmlFor="email">Email</label>
+                    <label className ="user-label" htmlFor="email">Username</label>
                     <input 
                       name="signUpEmail"
                       type="text" 
                       id="email" 
-                      placeholder="Email"
                       required
                       onChange={e => this.updateEmail(e.target.value)}
                     />
@@ -153,7 +152,7 @@ handleSubmit = (event) => {
                     <button className="small-btn" type="submit">Sign Up!</button>
                 </form>
                 <div>
-                    <h2>Already have an account?</h2>
+                    <h3>Already have an account?</h3>
                     <button
                     className="small-btn">
                       <Link
