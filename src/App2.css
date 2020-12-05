@@ -1,22 +1,32 @@
-body {
-    background-color: black;
-}
-
 .App {
     text-align: center;
-    background-color:  black;
-    color: white;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 15% 35% 35% 15%;
-    grid-template-areas: 
-    ". nav nav ."
-    "header header header header"
-    "main main main main"
+    color: black;
 }
 
+/* HEADER AREA */
 header {
-    grid-area: header;
+    display: fixed;
+    top: 0;
+    width: 100%;
+    padding: 50px;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-link {
+    width: 300px;
+    text-align: left;
+}
+
+h2 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 57px;
 }
 
 nav {
@@ -25,10 +35,87 @@ nav {
     justify-self: center;
 }
 
+.header-links {
+    height: 50px;
+    width: 120px;
+    border-radius: 30px;
+    background-color: #C4C4C4;
+    padding: 10px 20px;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.signup, .workouts {
+    margin-right: 50px;
+}
+
+/* MAIN PAGE */
 main {
-    display: grid;
-    grid-area: main;
     padding: 10px;
+}
+
+h1 {
+    font-family: Helvetica Neue;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 59px;
+}
+
+.landing-text {
+    margin: 25px auto 85px;
+    width: 589px;
+    text-align: left;
+}
+
+main p {
+    font-family: Helvetica Neue;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 25px;
+}
+
+.link {
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: #C4C4C4;
+    padding: 10px 40px;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+/* LOGIN / SIGN UP */
+.form-container {
+    margin: 0 auto;
+}
+
+.inp-cont {
+    margin: 0 auto;
+    /* text-align: left; */
+}
+
+.form-label {
+    font-size: 24px;
+    line-height: 29px;
+    border: none;
+}
+
+.login-form input {
+    width: 403px;
+    height: 80px;
+    background: #C4C4C4;
+    opacity: 0.9;
+    font-size: 24px;
+    line-height: 29px;
+    padding: 0 10px;
+    border: none;
+}
+
+.login-form input:-webkit-autofill {
+    background-color: #C4C4C4;
 }
 
 .menu {
@@ -73,14 +160,6 @@ main {
   
 .tb-view {
     width: 30%;
-}
-
-h1 {
-    color: #32F5B1;
-}
-
-h2 {
-    color: #EB46C2;
 }
 
 label {
@@ -148,19 +227,6 @@ button:active {
 .big-btn {
     font-size: 32px;
     margin: 10px;
-}
-
-a {
-    color: white;
-    text-decoration: none;
-}
-
-a:active {
-    text-decoration: underline;
-}
-
-a:hover {
-    text-decoration: underline;
 }
 
 .workouts-list {
@@ -249,7 +315,7 @@ a:hover {
     }
 }  */
 
-@media screen and (min-width: 600px) {
+/* @media screen and (min-width: 600px) {
     .App {
         display: grid;
         grid-template-columns: 15% 35% 35% 15%;
@@ -272,16 +338,6 @@ a:hover {
         align-self: start;
     }
 
-    header {
-        grid-area: header;
-    }
-
-    nav {
-        display: grid;
-        grid-area: sidebar;
-        justify-self: center;
-    }
-
     main {
         display: grid;
         grid-area: main;
@@ -297,4 +353,4 @@ a:hover {
         display: grid;
         align-self: center;
     }
-}
+} */

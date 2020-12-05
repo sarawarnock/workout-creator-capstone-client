@@ -4,19 +4,17 @@ import { Link } from 'react-router-dom'
 export default class LandingPage extends React.Component {
   render() {
     return (
-      <div className="App">
-        <main className="main">
-          <h1>Workout Creator</h1>
-            <p>Create your own metabolic-conditoning workout</p>
-            <p>Choose how long you want to workout for and the muscle groups you want to work, and we'll do the rest!</p>
-          <button className="big-btn"> <Link to='/sign-up'> Sign Up </Link>
-          </button>
-          <button className="big-btn"> <Link to='/login'> Login</Link> </button>
-          <p>To login: </p>
-            <p>email: testuser@gmail.com</p>
-            <p>password: Testpassword1</p>
+      <main className="main">
+        <h2>Create a metcon workout</h2>
+        <div className="landing-text">
+          <p>What is metcon? Metcon is short for metabolic conditioning a term that incorporates short bouts of higher-intensity training designed to increase metabolic demand and increase energy usage.</p>
+          <p>1. Create your own metabolic-conditioning workout</p>
+          <p>2. Choose what muscle groups you want to work, the duration of your workout, and a unique workout with instructions will be created.</p> 
+          <p>3. Create an account to save your workouts and keep track of your progress!</p>
+        </div>
+        <Link to="/create-workout"
+          className="try-it-link link">Let's try it</Link>
         </main>
-      </div>
     );
   }
 }

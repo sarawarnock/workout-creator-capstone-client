@@ -16,7 +16,7 @@ export default class Login extends React.Component {
       touched: false
     },
     errors: {
-      loginEmail: 'You must enter a valid email',
+      loginEmail: 'You must enter a valid username',
       loginPassword: 'You must enter a valid password',
     },
     sessionUser: ''
@@ -46,7 +46,7 @@ export default class Login extends React.Component {
     }
     const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!inputEmail.match(mailFormat)) {
-      return 'Valid email is required'
+      return 'Valid username is required'
     } return ' '
   }
 
@@ -98,7 +98,7 @@ export default class Login extends React.Component {
     })
 
     //check if the state is populated with the search params data
-    console.log(this.state)
+    // console.log(this.state)
 
     AuthApiService.postLogin({
       email: loginEmail,
@@ -147,12 +147,11 @@ export default class Login extends React.Component {
                   onSubmit={this.handleSubmit}
                 >
                   {validationError}
-                    <label className ="user-label" htmlFor="email">Email</label>
+                    <label className ="user-label" htmlFor="email">Username</label>
                     <input 
                       name="loginEmail"
                       type="text" 
                       id="email"
-                      placeholder="Email"
                       onChange={e => this.updateEmail(e.target.value)}
                       required
                     />
@@ -171,7 +170,7 @@ export default class Login extends React.Component {
                     <button className="small-btn" type="submit"> Log In </button>
                 </form>
                 <div>
-                    <h2>Don't have an account yet?</h2>
+                    <h3>Don't have an account yet?</h3>
                     <Link to='/sign-up'><button className="small-btn">Sign Up</button></Link>
                 </div>
         </main>
