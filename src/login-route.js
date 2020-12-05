@@ -12,7 +12,7 @@ export default class LoginRoute extends Component {
  
     handleSubmitSuccess = () => {
         const { location, history } = this.props;
-        const destination = (location.state || {}).from || 'user/home';
+        const destination = (location.state || {}).from || '/home';
         history.push(destination);
     }
 

@@ -5,12 +5,12 @@ import './App2.css';
 
 import LandingPage from './landing-page';
 import PersonalizedHomePage from './personalized-home-page';
-import PastWorkouts from './past-workouts';
+import PastWorkouts from './past-workouts-sw';
 import Header from './header';
 import LoginRoute from './login-route';
 import SignUpRoute from './sign-up-route';
 import ViewPastWorkout from './view-past-workout';
-import CreateNewWorkout from './create-new-workout';
+import CreateNewWorkout from './create-new-workout-lf';
 import NotFoundPage from './not-found-page';
 
 import config from './config';
@@ -85,10 +85,9 @@ class App extends Component {
                         <Route 
                             exact
                             path={`/past-workouts`}
-                            render={(props) => <PastWorkouts {...props} appSavedWorkouts={this.state.appSavedWorkouts} 
-                            appSavedWorkoutDetails={this.state.appSavedWorkoutDetails}
-                        />}
+                            component={PastWorkouts}
                         />
+            
                         <Route 
                             exact
                             path='/login'
@@ -102,8 +101,7 @@ class App extends Component {
                         <Route 
                             exact
                             path='/past-workouts/:workout_id'
-                            render={(props) => <ViewPastWorkout {...props}
-                            appSavedWorkoutDetails={this.state.appSavedWorkoutDetails} />}
+                            component={ViewPastWorkout}
                         />
                         <Route 
                             component={NotFoundPage}
