@@ -13,3 +13,28 @@ getLoggedInAuthor() {
                 : res.json()    
         );
 },
+
+componentDidMount() {
+        this.context.clearError();
+        if(TokenService.hasAuthToken()){
+            AuthorApiService.getLoggedInAuthor()
+                .then(this.context.setUser)
+                .catch(this.context.setError);
+        }
+}
+
+Server code for getting the logged in user from the authors-router:
+
+authorsRouter
+    .route('/user/loggedin')
+    .all(requireAuth)
+    .get((req, res, next) => {        
+        AuthorsService.getByUsername(
+            req.app.get('db'),
+            req.user.username
+        )
+        .then(author => {
+            res.json(AuthorsService.serializeAuthor(author));
+        })
+        .catch(next);
+    });
