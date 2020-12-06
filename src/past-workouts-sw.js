@@ -9,7 +9,7 @@ export default class PastWorkouts extends React.Component {
 
     componentDidMount() {
         const { user } = this.context
-        console.log(this.context)
+        console.log(this.context.user)
         WorkoutApiService.getWorkoutsById(user.id)
             .then(this.context.setWorkOutsList)
     }

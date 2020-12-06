@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import WorkOutContext from './context';
 import AuthApiService from './services/auth-api-service-lf';
 
 export default class LoginForm extends Component {
+    static contextType = WorkOutContext
     static defaultProps = {
         onSubmitSuccess: () => {}
     }
@@ -11,6 +13,11 @@ export default class LoginForm extends Component {
     handleSubmitJwtAuth = ev => {
         ev.preventDefault();
         const { loginEmail, loginPassword } = ev.target;
+        const user = {
+            email: loginEmail.value,
+            password: loginPassword.value
+        }
+        this.context.setUser(user)
         AuthApiService.postLogin({
             email: loginEmail.value,
             password: loginPassword.value
