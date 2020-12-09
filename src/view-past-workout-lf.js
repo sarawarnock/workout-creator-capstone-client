@@ -23,46 +23,40 @@ export default class ViewPastWorkout extends React.Component {
         this.context.clearWorkOut();
     }
 
-    // renderWorkOut() {
-    //     const { workout = [] } = this.context;
-    //     console.log(workout);
-
-    //     return (
-    //         <>
-    //         {workout.map(detail => {
-    //             return (
-    //                 <div>
-    //                     <h2 key="reps">{detail.exercise_reps}</h2>
-    //                     <h3 key="title">{detail.title}</h3>
-    //                     <h3 key="desc">{detail.description}</h3>
-    //                 </div>
-    //             )}
-    //         )}
-    //         </>
-    //     )
-    // }
-
-    render() {
-        // const { error } = this.context;
+    renderWorkOut() {
         const { workout } = this.context;
         console.log(workout);
         if (workout.length === 0) {
             return (
                 <div>
-                    Loading
+                    Loading...
                 </div>
             )
         }
-        return ( <>
-            {workout.map((detail, index) => {
-                return (
-                    <div key={index}>
-                        <h2 key="reps">{detail.exercise_reps}</h2>
-                        <h3 key="title">{detail.title}</h3>
-                        <h3 key="desc">{detail.description}</h3>
-                    </div>
+
+        return ( 
+            <>
+                {workout.map((detail, index) => {
+                    return (
+                        <div key={index}>
+                            <h2 key="reps">{detail.exercise_reps}</h2>
+                            <h3 key="title">{detail.title}</h3>
+                            <h3 key="desc">{detail.description}</h3>
+                        </div>
+                    )}
                 )}
-            )}
+            </>
+        )
+    }
+
+    render() {
+        const { error } = this.context;
+        return ( 
+            <>
+                {error
+                    ? <h2>There was an error try again</h2>
+                    : this.renderArticles()
+                }
             </>
         )
     }
