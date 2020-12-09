@@ -37,18 +37,18 @@ export default class PastWorkouts extends React.Component {
                 <tbody>
                 {workouts.map(workout => {
                     return (
-                    <tr>
-                    <td>{workout.workouts_name}</td>
-                    <td> {workout.id} </td>
-                    <td>
-                        <button>
-                        <Link
-                            to={`/past-workouts/${workout.id}`}
-                        >
-                            View
-                        </Link>
-                        </button>
-                    </td>
+                    <tr key={workout.id}>
+                        <td>{workout.workouts_name}</td>
+                        <td> {workout.id} </td>
+                        <td>
+                            <button>
+                            <Link 
+                                to={`/past-workouts/${workout.id}`}
+                            >
+                                View
+                            </Link>
+                            </button>
+                        </td>
                     </tr>
                 )})}
                 </tbody>

@@ -9,7 +9,7 @@ import PastWorkouts from './past-workouts-sw';
 import Header from './header';
 import LoginRoute from './login-route';
 import SignUpRoute from './sign-up-route';
-import ViewPastWorkout from './view-past-workout';
+import ViewPastWorkout from './view-past-workout-lf';
 import CreateNewWorkout from './create-new-workout-lf';
 import NotFoundPage from './not-found-page';
 
