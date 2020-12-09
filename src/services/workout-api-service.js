@@ -13,14 +13,16 @@ const WorkoutApiService = {
             }
         })
         .then(res => 
+            // console.log(res)
             (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()    
         );
     },
 
-    getWorkoutDetails() {
-        let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/`;
+    getWorkoutDetails(id) {
+        console.log('getworkoutDetails fetching with id:', id);
+        let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/${id}`;
         return fetch(getWorkoutDetailsUrl, {
             method: 'GET',
             headers: {
@@ -28,11 +30,12 @@ const WorkoutApiService = {
                 'authorization': `bearer ${TokenService.getAuthToken()}`
             }
         })
-        .then(res => {
+        .then(res => 
+            // console.log('res', res)
             (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
-        })
+        )
     }
 }
 

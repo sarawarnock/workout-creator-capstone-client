@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export const nullUser = {};
-export const nullWorkOut = {};
+export const nullWorkOut = [];
 export const nullUserWorkOuts = [];
 export const nullWorkouts = [];
 

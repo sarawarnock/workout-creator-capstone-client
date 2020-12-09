@@ -16,6 +16,7 @@ export default class PastWorkouts extends React.Component {
 
     render() {
         const { workouts } = this.context
+        console.log('workouts', workouts);
         if (workouts.length === 0) {
             return (
                 <div>
@@ -41,13 +42,11 @@ export default class PastWorkouts extends React.Component {
                         <td>{workout.workouts_name}</td>
                         <td> {workout.id} </td>
                         <td>
-                            <button>
                             <Link 
                                 to={`/past-workouts/${workout.id}`}
                             >
                                 View
                             </Link>
-                            </button>
                         </td>
                     </tr>
                 )})}
