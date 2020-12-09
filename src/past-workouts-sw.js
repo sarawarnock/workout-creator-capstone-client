@@ -2,16 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import WorkOutContext from './context';
 import WorkoutApiService from './services/workout-api-service'
-import ViewPastWorkout from './view-past-workout'
+// import ViewPastWorkout from './view-past-workout'
 
 export default class PastWorkouts extends React.Component {
     static contextType = WorkOutContext
 
     componentDidMount() {
-        const { user } = this.context
-        console.log(this.context)
-        WorkoutApiService.getWorkoutsById(user.id)
+        this.context.clearError()
+        WorkoutApiService.getWorkoutsById()
             .then(this.context.setWorkOutsList)
+            .catch(this.context.setError);
     }
 
     render() {

@@ -13,7 +13,7 @@ import ViewPastWorkout from './view-past-workout';
 import CreateNewWorkout from './create-new-workout-lf';
 import NotFoundPage from './not-found-page';
 
-import config from './config';
+// import config from './config';
 import TokenService from './services/token-service-lf';
 import AuthApiService from './services/auth-api-service-lf';
 import IdleService from './services/idle-service-lf';
@@ -37,7 +37,6 @@ class App extends Component {
     }
 
     componentDidMount(){
-        console.log('context', this.context);
         localStorage.clear();
         IdleService.setIdleCallback(this.logoutFromIdle);
         if (TokenService.hasAuthToken()) {
@@ -80,7 +79,7 @@ class App extends Component {
                         <Route 
                             exact
                             path='/create-workout'
-                            render={(props) => <CreateNewWorkout {...props} saveNewWorkout={this.updateAppSavedWorkouts} />}
+                            component={CreateNewWorkout}
                         />
                         <Route 
                             exact
