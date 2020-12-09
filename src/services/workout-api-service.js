@@ -3,8 +3,8 @@ import config from '../config';
 import TokenService from './token-service-lf'
 
 const WorkoutApiService = {
-    getWorkoutsById(id) {
-        let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/${id}`;
+    getWorkoutsById() {
+        let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/loggedin`;
         return fetch(getWorkoutUrl, {
             method: 'GET',
             headers: {
