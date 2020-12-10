@@ -78,17 +78,6 @@ class App extends Component {
                         />
                         <Route 
                             exact
-                            path='/create-workout'
-                            component={CreateNewWorkout}
-                        />
-                        <Route 
-                            exact
-                            path={`/past-workouts`}
-                            component={PastWorkouts}
-                        />
-            
-                        <Route 
-                            exact
                             path='/login'
                             component={LoginRoute}
                         />
@@ -96,6 +85,16 @@ class App extends Component {
                             exact
                             path='/sign-up'
                             component={SignUpRoute}
+                        />
+                        <Route 
+                            exact
+                            path='/create-workout'
+                            component={CreateNewWorkout}
+                        />
+                        <Route 
+                            exact
+                            path={`/past-workouts`}
+                            component={PastWorkouts}
                         />
                         <Route 
                             exact

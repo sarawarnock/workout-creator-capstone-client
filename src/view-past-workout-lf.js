@@ -55,7 +55,7 @@ export default class ViewPastWorkout extends React.Component {
             <>
                 {error
                     ? <h2>There was an error try again</h2>
-                    : this.renderArticles()
+                    : this.renderWorkOut()
                 }
             </>
         )
