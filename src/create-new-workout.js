@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import Checkbox from './new-workout-checkbox';
-import config from './config'
-import MuscleGroup from './MuscleGroupQuest/muscle-group'
-import TimeQuest from './TimeQuest/time-quest'
-import TypeQuest from './TypeQuest/type-quest'
-import TokenService from './services/token-service-lf'
+import MuscleGroup from './FormQuests/muscle-group';
+import TimeQuest from './FormQuests/time-quest';
+import TypeQuest from './FormQuests/type-quest';
+import NameWorkoutQuest from './FormQuests/NameWorkoutQuest';
 import WorkoutApiService from "./services/workout-api-service";
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
 class CreateNewWorkout extends Component {
+
   constructor(props) {
     super(props)
     this._next = this._next.bind(this)
     this._prev = this._prev.bind(this)
-
+    
     this.state = {
+      error: null,
       checkboxes: OPTIONS.reduce(
         (options, option) => ({
           ...options,
@@ -23,20 +23,13 @@ class CreateNewWorkout extends Component {
         }),
         {}
       ),
-      isSubmitted: false,
-      savedWorkouts: [],
-      savedWorkoutDetails: [],
       currentStep: 1,
-      total_length: '', 
-      workout_type: '',
-      workouts_name: '',
-      data: {}
     };
   }
 
   _next() {
-    let currentStep = this.state.currentStep
-    currentStep = currentStep >= 2 ? 3 : currentStep + 1
+    let currentStep = this.state.currentStep;
+    currentStep = currentStep >= 3 ? 4 : currentStep + 1;
     this.setState({
       currentStep: currentStep
     })
@@ -68,7 +61,7 @@ class CreateNewWorkout extends Component {
   get nextButton() {
     console.log(this.state)
     let currentStep = this.state.currentStep;
-    if (currentStep < 3) {
+    if (currentStep < 4) {
       return (
         <button
           className="btn btn-primary"
@@ -80,41 +73,6 @@ class CreateNewWorkout extends Component {
     }
     return null
   }
-
-
-  //***** Do I need this if the workout is being saved and then viewed in the Past Workouts component? */
-  // componentDidMount() {
-  //     this.updateSessionUser(sessionStorage.user_id)
-    
-  //     console.log('component SavedWorkouts is mounting')
-  //     //get workouts by user ID
-  //     let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/${TokenService.getUserId()}`;
-  //     fetch(getWorkoutUrl)
-  //         .then(response => response.json())
-  //         //map over the workouts by ID, returning each workout
-  //         //so that we can get the individual workout details for that workout (including the exercises)
-  //         .then(workouts => {
-  //             workouts.map((workout) => {
-  //                 // console.log(workout)
-  //                 //------mapping workouts to get workout details---------------------
-  //                 let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/${workout.id}`;
-  //                 fetch(getWorkoutDetailsUrl)
-  //                     .then(response => response.json())
-  //                     .then(workoutDetails => {
-  //                         this.setState({
-  //                             savedWorkoutDetails: workoutDetails
-  //                             //savedWorkoutDetails: [...this.state.savedWorkoutDetails, ...workoutDetails]
-  //                         });
-  //                           //console.log(workoutDetails)
-  //                       })
-  //                     .catch(error => this.setState({ error }))
-  //                 //---------------------------
-  //               })
-  //             this.setState({
-  //                 savedWorkouts: workouts
-  //             });
-  //           })
-  //   }
 
   selectAllCheckboxes = isSelected => {
     Object.keys(this.state.checkboxes).forEach(checkbox => {
@@ -138,32 +96,16 @@ class CreateNewWorkout extends Component {
     }));
   };
 
-  handleChange(event) {
-    const {name, value} = event.target
-    this.setState({
+  handleChange = (e) => {
+    const {name, value} = e.target
+    this.setState(prevState => ({
+      ...prevState,
       [name]: value
-    })    
+    }))    
   }
 
-  // handleTimeChange = (e) => {
-  //   this.setState({ 
-  //     workoutTimeValue: e.target.value
-  //   })
-  // }
-
-  // handleTypeChange = (e) => {
-  //   this.setState({
-  //     workoutTypeValue: e.target.value
-  //   })
-  // }
-
-  // handleNameChange = (e) => {
-  //   this.setState({
-  //     workoutNameValue: e.target.value
-  //   })
-  // }
-
   checkString(inputString) {
+    console.log({inputString});
     let outputText = inputString;
     if (inputString === undefined) {
         outputText = "";
@@ -178,96 +120,75 @@ class CreateNewWorkout extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
 
-    Object.keys(this.state.checkboxes)
-      .filter(checkbox => this.state.checkboxes[checkbox])
-      .forEach(checkbox => {
-        //console.log(checkbox, "is selected.");
-    });
-
-    //create an object to store the search filters
-    const data = this.state.checkboxes
-    //get all the from data from the form component
-    const formData = new FormData(e.target)
-
-     //for each of the keys in form data populate it with form value
-     for (let value of formData) {
-        data[value[0]] = value[1]
-      }
-    console.log({data})
-    
     let payload = {
-      is_advanced: this.checkString(data.Advanced),
-      is_arms: this.checkString(data.Arms),
-      is_back: this.checkString(data.Back),
-      is_cardio: this.checkString(data.Cardio),
-      is_chest: this.checkString(data.Chest),
-      is_core: this.checkString(data.Core),
-      is_legs: this.checkString(data.Legs),
-      total_length: data.workoutTimeValue, 
-      workout_type: data.workoutTypeValue,
-      workouts_name: data.workoutNameValue
+      is_advanced: this.state.checkboxes.Advanced,
+      is_arms: this.state.checkboxes.Arms,
+      is_back: this.state.checkboxes.Back,
+      is_cardio: this.state.checkboxes.Cardio,
+      is_chest: this.state.checkboxes.Chest,
+      is_core: this.state.checkboxes.Core,
+      is_legs: this.state.checkboxes.Legs,
+      total_length: this.state.workoutTimeValue, 
+      workout_type: this.state.workoutTypeValue,
+      workouts_name: this.state.workoutNameValue
     }
 
-    console.log(payload)
+    console.log({payload})
   
     WorkoutApiService.postWorkout(payload)
+      .then(res => {
+        console.log('postWorkout response', res);
+        this.props.onSubmitSuccess();
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
   };
-
-  // createCheckbox = option => (
-  //   <Checkbox
-  //     label={option}
-  //     isSelected={this.state.checkboxes[option]}
-  //     onCheckboxChange={this.handleCheckboxChange}
-  //     key={option}
-  //   />
-  // );
-
-  // createCheckboxes = () => OPTIONS.map(this.createCheckbox);
 
   render() {
     //console.log(this.state.savedWorkouts)
     //console.log(this.state.savedWorkoutDetails)
     //const showWorkouts = 
-    this.state.savedWorkouts.map((workout, id) => {
-    return (
-      <div className="workouts-list" key={id}>
-        <h2 className="workouts-list-name"> {workout.workouts_name} </h2>
-          <p> {workout.total_length} minutes</p>
-          <p> {workout.workout_type} </p>
-      </div>)
-    });
+    // this.state.savedWorkouts.map((workout, id) => {
+    // return (
+    //   <div className="workouts-list" key={id}>
+    //     <h2 className="workouts-list-name"> {workout.workouts_name} </h2>
+    //       <p> {workout.total_length} minutes</p>
+    //       <p> {workout.workout_type} </p>
+    //   </div>)
+    // });
 
-    let showWorkoutDetails = []
-    for (let i = 0; i < this.state.savedWorkoutDetails.length; i++) {
-        showWorkoutDetails.push(this.state.savedWorkoutDetails[i])
-    }
+    // let showWorkoutDetails = []
+    // for (let i = 0; i < this.state.savedWorkoutDetails.length; i++) {
+    //     showWorkoutDetails.push(this.state.savedWorkoutDetails[i])
+    // }
 
-    console.log(showWorkoutDetails)
+    // console.log(showWorkoutDetails)
 
-    if (showWorkoutDetails.length !== 0) {
-      showWorkoutDetails = showWorkoutDetails.map(workoutDetail => {
-        let workoutDetailTitle = workoutDetail.title
-        let workoutDetailReps = workoutDetail.exercise_reps
-        let workoutDetailDescription = workoutDetail.description
-        return (
-            <div className="workout-details">
-                <h2 key="reps" className="exercise-reps"> {workoutDetailReps} </h2>
-                <h3 key="title" className="exercise-title"> {workoutDetailTitle} </h3>
-                <h3 key="desc" className="exercise-desc"> {workoutDetailDescription} </h3>
-            </div>
-        )
-      });
+    // if (showWorkoutDetails.length !== 0) {
+    //   showWorkoutDetails = showWorkoutDetails.map(workoutDetail => {
+    //     let workoutDetailTitle = workoutDetail.title
+    //     let workoutDetailReps = workoutDetail.exercise_reps
+    //     let workoutDetailDescription = workoutDetail.description
+    //     return (
+    //         <div className="workout-details">
+    //             <h2 key="reps" className="exercise-reps"> {workoutDetailReps} </h2>
+    //             <h3 key="title" className="exercise-title"> {workoutDetailTitle} </h3>
+    //             <h3 key="desc" className="exercise-desc"> {workoutDetailDescription} </h3>
+    //         </div>
+    //     )
+    //   });
 
-      console.log(showWorkoutDetails)
+    //   console.log({showWorkoutDetails})
 
-    }
-    else {
-      showWorkoutDetails = `
-        <div className="workout-details">
-          <h3 key="title" className="exercise-title"> No Workout Details </h3>
-        </div>
-      `
-    }
+    // }
+    // else {
+    //   showWorkoutDetails = `
+    //     <div className="workout-details">
+    //       <h3 key="title" className="exercise-title"> No Workout Details </h3>
+    //     </div>
+    //   `
+    // }
     
     return (
       <div className="App">
@@ -323,6 +244,11 @@ class CreateNewWorkout extends Component {
                 />
 
                 <TypeQuest 
+                  currentStep={this.state.currentStep}
+                  handleChange={this.handleChange}
+                />
+
+                <NameWorkoutQuest
                   currentStep={this.state.currentStep}
                   handleChange={this.handleChange}
                 />
