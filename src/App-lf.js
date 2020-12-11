@@ -10,7 +10,7 @@ import Header from './header';
 import LoginRoute from './login-route';
 import SignUpRoute from './sign-up-route';
 import ViewPastWorkout from './view-past-workout-lf';
-import CreateNewWorkout from './create-new-workout-lf';
+import CreateWorkoutRoute from './create-workout-route';
 import NotFoundPage from './not-found-page';
 
 // import config from './config';
@@ -89,7 +89,7 @@ class App extends Component {
                         <Route 
                             exact
                             path='/create-workout'
-                            component={CreateNewWorkout}
+                            component={CreateWorkoutRoute}
                         />
                         <Route 
                             exact

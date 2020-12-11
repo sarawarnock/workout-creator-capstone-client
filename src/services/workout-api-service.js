@@ -36,6 +36,30 @@ const WorkoutApiService = {
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
         )
+    },
+
+    postWorkout(workout) {
+        return fetch(`${config.API_ENDPOINT}/workouts`, {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+              'authorization': `bearer ${TokenService.getAuthToken()}`
+            },
+            body: JSON.stringify(workout),
+          })
+            // if the api returns data ...
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Something went wrong, please try again later.')
+                }
+                 // ... convert it to json
+                 return res.json()
+            })
+            .catch(err => {
+              this.setState({
+                error: err.message
+            })
+          })
     }
 }
 

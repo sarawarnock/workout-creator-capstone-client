@@ -1,33 +1,37 @@
 import React, { Component } from "react";
 import Checkbox from './new-workout-checkbox';
 import config from './config'
+import MuscleGroup from './MuscleGroupQuest/muscle-group'
+import TimeQuest from './TimeQuest/time-quest'
+import TypeQuest from './TypeQuest/type-quest'
+import TokenService from './services/token-service-lf'
+import WorkoutApiService from "./services/workout-api-service";
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
 class CreateNewWorkout extends Component {
-  state = {
-    checkboxes: OPTIONS.reduce(
-      (options, option) => ({
-        ...options,
-        [option]: false
-      }),
-      {}
-    ),
-    workoutTimeValue: '',
-    workoutTypeValue: '',
-    workoutNameValue: '',
-    isSubmitted: false,
-    savedWorkouts: [],
-    savedWorkoutDetails: [],
-    sessionUser: '',
-    currentStep: 0
+  constructor(props) {
+    super(props)
+    this._next = this._next.bind(this)
+    this._prev = this._prev.bind(this)
 
-  };
-
-  updateSessionUser(userId) {
-    this.setState({
-      sessionUser: userId
-    })
+    this.state = {
+      checkboxes: OPTIONS.reduce(
+        (options, option) => ({
+          ...options,
+          [option]: false
+        }),
+        {}
+      ),
+      isSubmitted: false,
+      savedWorkouts: [],
+      savedWorkoutDetails: [],
+      currentStep: 1,
+      total_length: '', 
+      workout_type: '',
+      workouts_name: '',
+      data: {}
+    };
   }
 
   _next() {
@@ -62,6 +66,7 @@ class CreateNewWorkout extends Component {
   }
 
   get nextButton() {
+    console.log(this.state)
     let currentStep = this.state.currentStep;
     if (currentStep < 3) {
       return (
@@ -78,38 +83,38 @@ class CreateNewWorkout extends Component {
 
 
   //***** Do I need this if the workout is being saved and then viewed in the Past Workouts component? */
-  componentDidMount() {
-      this.updateSessionUser(sessionStorage.user_id)
+  // componentDidMount() {
+  //     this.updateSessionUser(sessionStorage.user_id)
     
-      console.log('component SavedWorkouts is mounting')
-      //get workouts by user ID
-      let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/${TokenService.getUserId()}`;
-      fetch(getWorkoutUrl)
-          .then(response => response.json())
-          //map over the workouts by ID, returning each workout
-          //so that we can get the individual workout details for that workout (including the exercises)
-          .then(workouts => {
-              workouts.map((workout) => {
-                  // console.log(workout)
-                  //------mapping workouts to get workout details---------------------
-                  let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/${workout.id}`;
-                  fetch(getWorkoutDetailsUrl)
-                      .then(response => response.json())
-                      .then(workoutDetails => {
-                          this.setState({
-                              savedWorkoutDetails: workoutDetails
-                              //savedWorkoutDetails: [...this.state.savedWorkoutDetails, ...workoutDetails]
-                          });
-                            //console.log(workoutDetails)
-                        })
-                      .catch(error => this.setState({ error }))
-                  //---------------------------
-                })
-              this.setState({
-                  savedWorkouts: workouts
-              });
-            })
-    }
+  //     console.log('component SavedWorkouts is mounting')
+  //     //get workouts by user ID
+  //     let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/${TokenService.getUserId()}`;
+  //     fetch(getWorkoutUrl)
+  //         .then(response => response.json())
+  //         //map over the workouts by ID, returning each workout
+  //         //so that we can get the individual workout details for that workout (including the exercises)
+  //         .then(workouts => {
+  //             workouts.map((workout) => {
+  //                 // console.log(workout)
+  //                 //------mapping workouts to get workout details---------------------
+  //                 let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/${workout.id}`;
+  //                 fetch(getWorkoutDetailsUrl)
+  //                     .then(response => response.json())
+  //                     .then(workoutDetails => {
+  //                         this.setState({
+  //                             savedWorkoutDetails: workoutDetails
+  //                             //savedWorkoutDetails: [...this.state.savedWorkoutDetails, ...workoutDetails]
+  //                         });
+  //                           //console.log(workoutDetails)
+  //                       })
+  //                     .catch(error => this.setState({ error }))
+  //                 //---------------------------
+  //               })
+  //             this.setState({
+  //                 savedWorkouts: workouts
+  //             });
+  //           })
+  //   }
 
   selectAllCheckboxes = isSelected => {
     Object.keys(this.state.checkboxes).forEach(checkbox => {
@@ -133,23 +138,30 @@ class CreateNewWorkout extends Component {
     }));
   };
 
-  handleTimeChange = (e) => {
-    this.setState({ 
-      workoutTimeValue: e.target.value
-    })
+  handleChange(event) {
+    const {name, value} = event.target
+    this.setState({
+      [name]: value
+    })    
   }
 
-  handleTypeChange = (e) => {
-    this.setState({
-      workoutTypeValue: e.target.value
-    })
-  }
+  // handleTimeChange = (e) => {
+  //   this.setState({ 
+  //     workoutTimeValue: e.target.value
+  //   })
+  // }
 
-  handleNameChange = (e) => {
-    this.setState({
-      workoutNameValue: e.target.value
-    })
-  }
+  // handleTypeChange = (e) => {
+  //   this.setState({
+  //     workoutTypeValue: e.target.value
+  //   })
+  // }
+
+  // handleNameChange = (e) => {
+  //   this.setState({
+  //     workoutNameValue: e.target.value
+  //   })
+  // }
 
   checkString(inputString) {
     let outputText = inputString;
@@ -173,15 +185,15 @@ class CreateNewWorkout extends Component {
     });
 
     //create an object to store the search filters
-    const data = {}
+    const data = this.state.checkboxes
     //get all the from data from the form component
     const formData = new FormData(e.target)
 
      //for each of the keys in form data populate it with form value
      for (let value of formData) {
         data[value[0]] = value[1]
-    }
-    console.log(data)
+      }
+    console.log({data})
     
     let payload = {
       is_advanced: this.checkString(data.Advanced),
@@ -193,66 +205,24 @@ class CreateNewWorkout extends Component {
       is_legs: this.checkString(data.Legs),
       total_length: data.workoutTimeValue, 
       workout_type: data.workoutTypeValue,
-      workouts_name: data.workoutNameValue,
-      user_id: sessionStorage.user_id
+      workouts_name: data.workoutNameValue
     }
 
     console.log(payload)
   
-    fetch(`${config.API_ENDPOINT}/workouts`, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      })
-        // if the api returns data ...
-        .then(res => {
-            if (!res.ok) {
-                throw new Error('Something went wrong, please try again later.')
-            }
-             // ... convert it to json
-             return res.json()
-        })
-            // use the json api output
-        .then(data => {
-          //check if there is meaningfull data
-          console.log(data);
-          // check if there are no results
-          if (data.totalItems === 0) {
-            throw new Error('No data found')
-          }
-          this.setState({
-              savedWorkouts: [...this.state.savedWorkouts, data.workout],
-              savedWorkoutDetails: data.workoutDetails
-          });
-          this.props.saveNewWorkout(data);
-          window.location = `/past-workouts`
-      })
-        .catch(err => {
-          this.setState({
-            error: err.message
-        })
-      })
-
-      this.setState({
-        workoutNameValue: data.workoutNameValue,
-        workoutTimeValue: data.workoutTimeValue,
-        workoutTypeValue: data.workoutTypeValue,
-        isSubmitted: true
-      })
+    WorkoutApiService.postWorkout(payload)
   };
 
-  createCheckbox = option => (
-    <Checkbox
-      label={option}
-      isSelected={this.state.checkboxes[option]}
-      onCheckboxChange={this.handleCheckboxChange}
-      key={option}
-    />
-  );
+  // createCheckbox = option => (
+  //   <Checkbox
+  //     label={option}
+  //     isSelected={this.state.checkboxes[option]}
+  //     onCheckboxChange={this.handleCheckboxChange}
+  //     key={option}
+  //   />
+  // );
 
-  createCheckboxes = () => OPTIONS.map(this.createCheckbox);
+  // createCheckboxes = () => OPTIONS.map(this.createCheckbox);
 
   render() {
     //console.log(this.state.savedWorkouts)
@@ -342,19 +312,24 @@ class CreateNewWorkout extends Component {
                 </div> */}
                 <MuscleGroup
                   currentStep={this.state.currentStep}
+                  checkboxes={this.state.checkboxes}
+                  handleCheckboxChange={this.handleCheckboxChange}
+                  handleChange={this.handleChange}
                 />
 
                 <TimeQuest 
                   currentStep={this.state.currentStep}
+                  handleChange={this.handleChange}
                 />
 
                 <TypeQuest 
                   currentStep={this.state.currentStep}
+                  handleChange={this.handleChange}
                 />
 
                 <br />
                 {/* Need logic that says - "if logged in, name workout" */}
-                <h2>Name Your Workout:</h2>
+                {/* <h2>Name Your Workout:</h2>
                 <div className="workouts-name">
                   <input 
                     name="workoutNameValue"
@@ -363,10 +338,11 @@ class CreateNewWorkout extends Component {
                     placeholder="Example: Workout 1"
                     onChange={this.handleNameChange}
                   />
-                </div>
+                </div> */}
                 {this.previousButton}
                 {this.nextButton}
                 <br />
+                
                 <button type="submit" className="big-btn">
                   Submit
                 </button>
