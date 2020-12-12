@@ -4,16 +4,18 @@ import TimeQuest from './FormQuests/time-quest';
 // import TypeQuest from './FormQuests/type-quest';
 import NameWorkoutQuest from './FormQuests/NameWorkoutQuest';
 import WorkoutApiService from "./services/workout-api-service";
+import WorkoutContext from './context';
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
 class CreateNewWorkout extends Component {
 
+  static contextType = WorkoutContext;
+
   constructor(props) {
     super(props)
     this._next = this._next.bind(this)
     this._prev = this._prev.bind(this)
-    
     this.state = {
       error: null,
       checkboxes: OPTIONS.reduce(
@@ -54,8 +56,7 @@ class CreateNewWorkout extends Component {
           Previous
         </button>
       )
-    }
-    return null;
+    } return null;
   }
 
   get nextButton() {
@@ -69,8 +70,7 @@ class CreateNewWorkout extends Component {
           Next
         </button>
       )
-    }
-    return null
+    } return null
   }
 
   get submitButton() {
@@ -146,7 +146,7 @@ class CreateNewWorkout extends Component {
     WorkoutApiService.postWorkout(payload)
       .then(res => {
         console.log('postWorkout response', res);
-        this.props.onSubmitSuccess();
+        this.props.onSubmitSuccess(res.workout.id);
       })
       .catch(res => {
         this.setState({ error: res.error });
@@ -155,7 +155,6 @@ class CreateNewWorkout extends Component {
 
   render() {
     return (
-      <div className="App">
         <div className="row">
           <div className="col-sm-12">
             <form onSubmit={this.handleFormSubmit}>
@@ -165,17 +164,14 @@ class CreateNewWorkout extends Component {
                   handleCheckboxChange={this.handleCheckboxChange}
                   handleChange={this.handleChange}
                 />
-
                 <TimeQuest 
                   currentStep={this.state.currentStep}
                   handleChange={this.handleChange}
                 />
-
                 {/* <TypeQuest 
                   currentStep={this.state.currentStep}
                   handleChange={this.handleChange}
                 /> */}
-
                 <NameWorkoutQuest
                   currentStep={this.state.currentStep}
                   handleChange={this.handleChange}
@@ -186,7 +182,6 @@ class CreateNewWorkout extends Component {
             </form>
           </div>
         </div>
-      </div>
     );
   }
 }

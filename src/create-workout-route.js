@@ -10,9 +10,9 @@ export default class CreateWorkoutRoute extends Component {
         }
     }
  
-    handleSubmitSuccess = () => {
+    handleSubmitSuccess = (id) => {
         const { location, history } = this.props;
-        const destination = (location.state || {}).from || '/past-workouts';
+        const destination = (location.state || {}).from || `/past-workouts/${id}`;
         history.push(destination);
     }
 
