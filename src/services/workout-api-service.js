@@ -19,7 +19,6 @@ const WorkoutApiService = {
                 : res.json()    
         );
     },
-
     getWorkoutDetails(id) {
         console.log('getworkoutDetails fetching with id:', id);
         let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/${id}`;
@@ -37,7 +36,6 @@ const WorkoutApiService = {
                 : res.json()
         )
     },
-
     postWorkout(workout) {
         return fetch(`${config.API_ENDPOINT}/workouts`, {
             method: 'POST',
@@ -60,6 +58,15 @@ const WorkoutApiService = {
                 error: err.message
             })
           })
+    },
+    deleteWorkout(id) {
+        return fetch(`${config.API_ENDPOINT}/workouts/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            }
+        });
     }
 }
 

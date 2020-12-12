@@ -14,6 +14,15 @@ export default class PastWorkouts extends React.Component {
             .catch(this.context.setError);
     }
 
+    handleDelete = (id) => {
+        WorkoutApiService.deleteWorkout(id)
+            .then(res => {
+                WorkoutApiService.getWorkoutsById()
+                    .then(this.context.setWorkOutsList)
+                    .catch(this.context.setError)
+            })
+    }
+
     render() {
         const { workouts } = this.context
         console.log('workouts', workouts);
@@ -48,6 +57,7 @@ export default class PastWorkouts extends React.Component {
                                         View
                                     </Link>
                                 </td>
+                                <td onClick={this.handleDelete(workout.id)}>x</td>
                             </tr>
                         )})}
                     </tbody>
