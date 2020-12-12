@@ -22,7 +22,7 @@ export default class WorkoutItem extends Component {
         return(
             <tr key={workout.id}>
                 <td>{workout.workouts_name}</td>
-                <td> {workout.id} </td>
+                {/* <td> {workout.id} </td> */}
                 <td>
                     <Link 
                         to={`/past-workouts/${workout.id}`}
@@ -30,8 +30,10 @@ export default class WorkoutItem extends Component {
                         View
                     </Link>
                 </td>
-                <button className="delete button"
-                    onClick={this.handleDelete}>x</button>
+                <td>
+                    <button className="delete button"
+                        onClick={this.handleDelete}>x</button>
+                </td>
             </tr>
         )
     }

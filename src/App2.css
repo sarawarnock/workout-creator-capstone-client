@@ -85,6 +85,7 @@ main p {
     padding: 10px 40px;
     font-size: 24px;
     line-height: 29px;
+    margin-top: 40px;
 }
 
 /* LOGIN / SIGN UP */
@@ -118,6 +119,11 @@ main p {
     background-color: #C4C4C4;
 }
 
+/* WORKOUTS LIST */
+.workouts-header {
+    margin-bottom: 20px;
+}
+
 .menu {
     text-align: center;
     padding: 0;
@@ -126,6 +132,29 @@ main p {
 .row {
     display: grid;
     grid-area: main;
+}
+
+/* WORKOUT INSTRUCTIONS */
+.ic {
+    display: flex;
+    align-items: center;
+}
+
+.dt {
+    font-size: 1.8rem;
+}
+
+.left {
+    text-align: left;
+}
+
+.up-c-left {
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.num {
+    font-size: 1.5rem;
 }
 
 .nav-link {

@@ -20,20 +20,24 @@ export default class WorkoutsList extends React.Component {
         console.log('workouts', workouts);
         if (workouts.length === 0) {
             return (
-                <div>
-                    Loading
-                </div>
+                <>
+                    <Link to="/create-workout"
+                        className="create-link link">
+                        Create New Workout
+                    </Link>
+                </>
             )
         }
         return (
             <>
-                <h2>Past Workouts</h2>
+                <h2>Workouts</h2>
                 <table className="workouts-table">
                     <thead>
                         <tr>
                             <th className="tb-name">Name</th>
-                            <th className="tb-id">Workout ID</th>
-                            <th className="tb-view">View Workout</th>
+                            {/* <th className="tb-id">Workout ID</th> */}
+                            <th className="tb-view">Saved Workouts</th>
+                            <th>Remove</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,7 +50,7 @@ export default class WorkoutsList extends React.Component {
                     </tbody>
                 </table>
                 <Link to="/create-workout"
-                    className="try-it-link link">
+                    className="create-link link">
                     New Workout
                 </Link>
             </>

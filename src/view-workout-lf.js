@@ -36,15 +36,30 @@ export default class ViewWorkout extends React.Component {
 
         return ( 
             <>
-                {workout.map((detail, index) => {
-                    return (
-                        <div key={index}>
-                            <h2 key="reps">{detail.exercise_reps}</h2>
-                            <h3 key="title">{detail.title}</h3>
-                            <h3 key="desc">{detail.description}</h3>
-                        </div>
-                    )}
-                )}
+                <table className="workouts-table">
+                    <thead>
+                        <tr>
+                            <td className="left"><h3>Name</h3></td>
+                            <td><h3>Reps</h3></td>
+                            <td><h2>Instructions</h2></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {workout.map((detail, index) => {
+                            return (
+                                // <div className="ic" key={index}>
+                                <tr key={index}>
+                                    <td><h4 className="dt up-c-left" key="title">{detail.title}</h4></td>
+                                    <td><h4 className="num" key="reps">{detail.exercise_reps}</h4></td>
+                                    <td className="up-c-left"><h4 key="desc">{detail.description}</h4></td>
+                                </tr>
+                                    
+                                // </div>
+                            )}
+                        )}
+                    </tbody>
+                </table>
+                
             </>
         )
     }
