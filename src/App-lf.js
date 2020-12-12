@@ -5,11 +5,11 @@ import './App2.css';
 
 import LandingPage from './landing-page';
 import PersonalizedHomePage from './personalized-home-page';
-import PastWorkouts from './past-workouts-sw';
+import WorkoutsList from './workouts-list-sw';
 import Header from './header';
 import LoginRoute from './login-route';
 import SignUpRoute from './sign-up-route';
-import ViewPastWorkout from './view-past-workout-lf';
+import ViewWorkout from './view-workout-lf';
 import CreateWorkoutRoute from './create-workout-route';
 import NotFoundPage from './not-found-page';
 
@@ -94,12 +94,12 @@ class App extends Component {
                         <Route 
                             exact
                             path={`/past-workouts`}
-                            component={PastWorkouts}
+                            component={WorkoutsList}
                         />
                         <Route 
                             exact
                             path='/past-workouts/:workout_id'
-                            component={ViewPastWorkout}
+                            component={ViewWorkout}
                         />
                         <Route 
                             component={NotFoundPage}

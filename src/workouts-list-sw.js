@@ -1,26 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import WorkOutContext from './context';
-import WorkoutApiService from './services/workout-api-service'
+import WorkoutApiService from './services/workout-api-service';
 // import ViewPastWorkout from './view-past-workout'
+import WorkoutItem from './workout-item-lf';
 
-export default class PastWorkouts extends React.Component {
-    static contextType = WorkOutContext
+export default class WorkoutsList extends React.Component {
+    static contextType = WorkOutContext;
 
     componentDidMount() {
-        this.context.clearError()
+        this.context.clearError();
         WorkoutApiService.getWorkoutsById()
             .then(this.context.setWorkOutsList)
             .catch(this.context.setError);
-    }
-
-    handleDelete = (id) => {
-        WorkoutApiService.deleteWorkout(id)
-            .then(res => {
-                WorkoutApiService.getWorkoutsById()
-                    .then(this.context.setWorkOutsList)
-                    .catch(this.context.setError)
-            })
     }
 
     render() {
@@ -45,21 +37,12 @@ export default class PastWorkouts extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {workouts.map(workout => {
-                            return (
-                            <tr key={workout.id}>
-                                <td>{workout.workouts_name}</td>
-                                <td> {workout.id} </td>
-                                <td>
-                                    <Link 
-                                        to={`/past-workouts/${workout.id}`}
-                                    >
-                                        View
-                                    </Link>
-                                </td>
-                                <td onClick={this.handleDelete(workout.id)}>x</td>
-                            </tr>
-                        )})}
+                        {workouts.map(workout => 
+                            <WorkoutItem 
+                                key={workout.id}
+                                workout={workout}
+                            />
+                        )}
                     </tbody>
                 </table>
                 <Link to="/create-workout"

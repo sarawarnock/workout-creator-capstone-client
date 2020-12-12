@@ -3,7 +3,7 @@ import React from 'react';
 import WorkOutContext from './context';
 import WorkoutApiService from './services/workout-api-service';
 
-export default class ViewPastWorkout extends React.Component {
+export default class ViewWorkout extends React.Component {
     static defaultProps = {
         match: { params: {} },
     }
