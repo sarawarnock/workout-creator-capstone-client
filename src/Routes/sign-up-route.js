@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SignUpForm from './sign-up-form';
+import SignUpForm from '../Components/sign-up-form';
 
 export default class SignUpRoute extends Component {
     static defaultProps = {

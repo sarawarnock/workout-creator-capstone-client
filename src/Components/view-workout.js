@@ -1,7 +1,7 @@
 import React from 'react';
 // import WorkOutDetail from './WorkOutDetail';
-import WorkOutContext from './context';
-import WorkoutApiService from './services/workout-api-service';
+import WorkOutContext from '../context';
+import WorkoutApiService from '../Services/workout-api-service';
 
 export default class ViewWorkout extends React.Component {
     static defaultProps = {

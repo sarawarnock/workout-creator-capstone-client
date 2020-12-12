@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import MuscleGroup from './FormQuests/muscle-group';
-import TimeQuest from './FormQuests/time-quest';
+import MuscleGroup from '../Components/FormQuests/muscle-group';
+import TimeQuest from '../Components/FormQuests/time-quest';
 // import TypeQuest from './FormQuests/type-quest';
-import NameWorkoutQuest from './FormQuests/NameWorkoutQuest';
-import WorkoutApiService from "./services/workout-api-service";
-import WorkoutContext from './context';
+import NameWorkout from '../Components/FormQuests/name-workout-quest';
+import WorkoutApiService from "../Services/workout-api-service";
+import WorkoutContext from '../context';
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
@@ -172,7 +172,7 @@ class CreateNewWorkout extends Component {
                   currentStep={this.state.currentStep}
                   handleChange={this.handleChange}
                 /> */}
-                <NameWorkoutQuest
+                <NameWorkout
                   currentStep={this.state.currentStep}
                   handleChange={this.handleChange}
                 />

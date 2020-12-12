@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import TokenService from './services/token-service-lf';
+import TokenService from '../Services/token-service-lf';
 
 export default class Header extends Component {
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class TypeQuest extends React.Component {
+export default class NameQuest extends React.Component {
     render() {
         if (this.props.currentStep !== 3) { // Prop: The current step
             return null

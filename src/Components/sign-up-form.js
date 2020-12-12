@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import WorkOutContext from './context';
-import AuthApiService from './services/auth-api-service-lf';
+import WorkOutContext from '../context';
+import AuthApiService from '../Services/auth-api-service';
 
 export default class SignUpForm extends Component {
     static defaultProps = {

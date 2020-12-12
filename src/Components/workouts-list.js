@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import WorkOutContext from './context';
-import WorkoutApiService from './services/workout-api-service';
+import WorkOutContext from '../context';
+import WorkoutApiService from '../Services/workout-api-service';
 // import ViewPastWorkout from './view-past-workout'
-import WorkoutListItem from './workout-list-item-lf';
+import WorkoutListItem from './workout-list-item';
 
 export default class WorkoutsList extends React.Component {
     static contextType = WorkOutContext;
