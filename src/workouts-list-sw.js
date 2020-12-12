@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import WorkOutContext from './context';
 import WorkoutApiService from './services/workout-api-service';
 // import ViewPastWorkout from './view-past-workout'
-import WorkoutItem from './workout-item-lf';
+import WorkoutListItem from './workout-list-item-lf';
 
 export default class WorkoutsList extends React.Component {
     static contextType = WorkOutContext;
@@ -30,19 +30,19 @@ export default class WorkoutsList extends React.Component {
         }
         return (
             <>
-                <h2>Workouts</h2>
+                <h2>Saved Workouts</h2>
                 <table className="workouts-table">
                     <thead>
                         <tr>
-                            <th className="tb-name">Name</th>
+                            <th className="left tb-name">Name</th>
                             {/* <th className="tb-id">Workout ID</th> */}
-                            <th className="tb-view">Saved Workouts</th>
-                            <th>Remove</th>
+                            <th className="tb-view center"></th>
+                            <th className="tb-del right">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
                         {workouts.map(workout => 
-                            <WorkoutItem 
+                            <WorkoutListItem 
                                 key={workout.id}
                                 workout={workout}
                             />

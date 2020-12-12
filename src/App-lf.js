@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, withRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import './App2.css';
+import './App.css';
 
 import LandingPage from './landing-page';
 import PersonalizedHomePage from './personalized-home-page';

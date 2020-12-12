@@ -21,16 +21,16 @@ export default class WorkoutItem extends Component {
         const { workout } = this.props
         return(
             <tr key={workout.id}>
-                <td>{workout.workouts_name}</td>
+                <td className="left">{workout.workouts_name}</td>
                 {/* <td> {workout.id} </td> */}
                 <td>
-                    <Link 
+                    <Link className="view-link"
                         to={`/past-workouts/${workout.id}`}
                     >
                         View
                     </Link>
                 </td>
-                <td>
+                <td className="right">
                     <button className="delete button"
                         onClick={this.handleDelete}>x</button>
                 </td>
