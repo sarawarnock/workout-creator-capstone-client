@@ -53,7 +53,7 @@ class CreateNewWorkout extends Component {
           className="btn btn-secondary"
           type="button" onClick={this._prev}
         >
-          Previous
+          {'<'}
         </button>
       )
     } return null;
@@ -67,7 +67,7 @@ class CreateNewWorkout extends Component {
           className="btn btn-primary"
           type="button" onClick={this._next}
         >
-          Next
+         {'>'}
         </button>
       )
     } return null
@@ -77,7 +77,7 @@ class CreateNewWorkout extends Component {
     let currentStep = this.state.currentStep;
     if (currentStep === 3) {
       return (
-        <button type="submit" className="big-btn">
+        <button className="btn" type="submit">
           Submit
         </button>
       )

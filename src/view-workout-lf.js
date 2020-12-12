@@ -41,7 +41,7 @@ export default class ViewWorkout extends React.Component {
                         <tr>
                             <td className="left"><h3>Name</h3></td>
                             <td><h3>Reps</h3></td>
-                            <td><h2>Instructions</h2></td>
+                            <td><h2 className="inst">Instructions</h2></td>
                         </tr>
                     </thead>
                     <tbody>

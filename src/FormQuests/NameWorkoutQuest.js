@@ -11,10 +11,11 @@ export default class TypeQuest extends React.Component {
                 <h2>Name Your Workout:</h2>
                 <div className="workouts-name">
                     <input 
+                        className="name-wo"
                         name="workoutNameValue"
                         type="text" 
                         id="workouts-name-input"
-                        placeholder="Example: Workout 1"
+                        placeholder="Example: Arms and Legs"
                         onChange={this.props.handleChange}
                     />
                 </div>
