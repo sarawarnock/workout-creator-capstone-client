@@ -1,7 +1,7 @@
 import React from 'react';
-// import WorkOutDetail from './WorkOutDetail';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
+import CircleButton from './CircleButton/circle-button';
 
 export default class ViewWorkout extends React.Component {
     static defaultProps = {
@@ -11,7 +11,6 @@ export default class ViewWorkout extends React.Component {
     static contextType = WorkOutContext;
 
     componentDidMount() {
-        console.log('view workout context', this.context);
         const { workout_id } = this.props.match.params;
         this.context.clearError();
         WorkoutApiService.getWorkoutDetails(workout_id)
@@ -47,19 +46,15 @@ export default class ViewWorkout extends React.Component {
                     <tbody>
                         {workout.map((detail, index) => {
                             return (
-                                // <div className="ic" key={index}>
                                 <tr key={index}>
                                     <td><h4 className="dt up-c-left" key="title">{detail.title}</h4></td>
                                     <td><h4 className="num" key="reps">{detail.exercise_reps}</h4></td>
                                     <td className="up-c-left"><h4 key="desc">{detail.description}</h4></td>
                                 </tr>
-                                    
-                                // </div>
                             )}
                         )}
                     </tbody>
                 </table>
-                
             </>
         )
     }

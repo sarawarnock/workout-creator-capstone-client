@@ -11,7 +11,7 @@ export default class Header extends Component {
   renderLogOutLink() {
     return (
       <>
-        <Link to="/past-workouts" 
+        <Link to="/workouts" 
           className="workouts header-links"
         >
           Workouts
@@ -25,6 +25,24 @@ export default class Header extends Component {
       </>
     )
   }
+
+  // renderCreateWorkout() {
+  //   return (
+  //     <>
+  //       <Link to="/workouts" 
+  //         className="workouts header-links"
+  //       >
+  //         New Workout
+  //       </Link>
+  //       <Link to="/" 
+  //         className="logout header-links"
+  //         onClick={this.handleLogOut}
+  //       >
+  //         Logout
+  //       </Link>
+  //     </>
+  //   )
+  // }
 
   renderLogInLink() {
     return (

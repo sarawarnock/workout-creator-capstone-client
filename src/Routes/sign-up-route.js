@@ -10,22 +10,19 @@ export default class SignUpRoute extends Component {
     }
 
     handleSubmitSuccess = () => {
-        console.log('running habndleSubmitSuccess');
         const { location, history } = this.props;
-        const destination = (location.state || {}).from || '/home';
+        const destination = (location.state || {}).from || '/workouts';
         history.push(destination);
     }
 
     render() {
         return (
-            <>
-                <section className="sign-up-section">
-                    <h2>Create Account</h2>
-                    <SignUpForm 
-                        onSubmitSuccess={this.handleSubmitSuccess}
-                    />
-                </section>
-            </>
+            <div className="form-container">
+                <h2>Create Account</h2>
+                <SignUpForm 
+                    onSubmitSuccess={this.handleSubmitSuccess}
+                />
+            </div>
         );
     }
 }

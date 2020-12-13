@@ -44,15 +44,15 @@ export default class SignUpForm extends Component {
     }
 
     render() {
-        // const { error } = this.state;
+        const { error } = this.state;
         return (
             <>
                 <form
-                    className="sign-up-form"
+                    className="signup-form"
                     onSubmit={this.handleSubmit}
                 >
-                    {/* <div role='alert'>{error && <p className='error'>{error}</p>}</div> */}
-                    <div className="sign-up-email">
+                    <div role='alert'>{error && <p className='error'>{error}</p>}</div>
+                    <div className="inp-cont">
                         <label className ="user-label" htmlFor="email">Username</label>
                         <input 
                             name="signUpEmail"
@@ -61,8 +61,8 @@ export default class SignUpForm extends Component {
                             required
                         />
                     </div>
-                    <div className="sign-up-password">
-                        <label className ="user-label" htmlFor="password">Password (one capital letter and one number needed)</label>
+                    <div className=" inp-cont">
+                        <label className ="user-label" htmlFor="password">Password</label>
                         <input 
                             name="signUpPassword"
                             type="password" 
@@ -71,7 +71,7 @@ export default class SignUpForm extends Component {
                             required
                         /> 
                     </div>
-                    <div className="sign-up-name">
+                    <div className="inp-cont">
                         <label className ="user-label" htmlFor="fname">First Name</label>
                         <input 
                             name="signUpFirstName"
@@ -81,7 +81,7 @@ export default class SignUpForm extends Component {
                             required
                         /> 
                     </div>
-                    <button className="small-btn" type="submit">Register</button>
+                    <button className="submit btn" type="submit">Register</button>
                 </form>
                 <div>
                     <h3>Already have an account?</h3>

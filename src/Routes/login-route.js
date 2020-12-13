@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Login from './log-in';
 import LoginForm from '../Components/login-form';
 
 export default class LoginRoute extends Component {
@@ -12,7 +11,7 @@ export default class LoginRoute extends Component {
  
     handleSubmitSuccess = () => {
         const { location, history } = this.props;
-        const destination = (location.state || {}).from || '/past-workouts';
+        const destination = (location.state || {}).from || '/workouts';
         history.push(destination);
     }
 

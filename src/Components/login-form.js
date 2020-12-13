@@ -53,7 +53,7 @@ export default class LoginForm extends Component {
                             required
                         />
                     </div>
-                    <button className="submit" type="submit"> Log In </button>
+                    <button className="submit btn" type="submit"> Log In </button>
                 </form>
             </>
         )
