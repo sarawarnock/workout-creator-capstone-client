@@ -35,21 +35,27 @@ export default class ViewWorkout extends React.Component {
 
         return ( 
             <>
+                <h2>EMOM for {this.context.workout[0].total_length} minutes</h2>
                 <table className="workouts-table">
                     <thead>
-                        <tr>
-                            <td className="left"><h3>Name</h3></td>
-                            <td><h3>Reps</h3></td>
+                        <tr className="tbh">
+                            <td className="left"><h3>Exercise Name</h3></td>
+                            <td><h3>Number of Reps</h3></td>
                             <td><h2 className="inst">Instructions</h2></td>
                         </tr>
                     </thead>
                     <tbody>
                         {workout.map((detail, index) => {
+                            // round up for even number reps
+                            if (detail.exercise_reps % 2 !== 0) 
+                                detail.exercise_reps = detail.exercise_reps + 1;
+
                             return (
-                                <tr key={index}>
+                                <tr className="tr"
+                                    key={index}>
                                     <td><h4 className="dt up-c-left" key="title">{detail.title}</h4></td>
                                     <td><h4 className="num" key="reps">{detail.exercise_reps}</h4></td>
-                                    <td className="up-c-left"><h4 key="desc">{detail.description}</h4></td>
+                                    <td className="up-c-left detail"><h4 key="desc">{detail.description}</h4></td>
                                 </tr>
                             )}
                         )}

@@ -5,9 +5,10 @@ import './App.css';
 import PublicRoute from './Routes/public-route'
 import PrivateRoute from './Routes/private-route'
 import LandingPage from './Components/landing-page';
-// import PersonalizedHomePage from './Components/personalized-home-page';
+
+import Header from './Components/NavBars/header';
+import HeaderWorkouts from './Components/NavBars/header-workouts';
 import WorkoutsList from './Components/workouts-list';
-import Header from './Components/header';
 import LoginRoute from './Routes/login-route';
 import SignUpRoute from './Routes/sign-up-route';
 import ViewWorkout from './Components/view-workout';
@@ -62,7 +63,9 @@ class App extends Component {
   render() {
     return (
         <div className="App">
+            
             <Header />
+            {/* <HeaderWorkouts /> */}
             <main className="main-pages">
                 <Switch>        
                     <Route 

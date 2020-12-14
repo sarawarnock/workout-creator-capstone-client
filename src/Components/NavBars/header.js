@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import TokenService from '../Services/token-service-lf';
+import TokenService from '../../Services/token-service-lf';
 
 export default class Header extends Component {
 
@@ -25,24 +25,6 @@ export default class Header extends Component {
       </>
     )
   }
-
-  // renderCreateWorkout() {
-  //   return (
-  //     <>
-  //       <Link to="/workouts" 
-  //         className="workouts header-links"
-  //       >
-  //         New Workout
-  //       </Link>
-  //       <Link to="/" 
-  //         className="logout header-links"
-  //         onClick={this.handleLogOut}
-  //       >
-  //         Logout
-  //       </Link>
-  //     </>
-  //   )
-  // }
 
   renderLogInLink() {
     return (

@@ -13,7 +13,7 @@ export default class LandingPage extends React.Component {
           <p>Create an account to save your workouts and keep track of your progress</p>
           <p>Choose what muscle groups you want to work and the duration of your workout, and a unique workout with instructions will be created.</p> 
         </div>
-        {/* <Link to="/create-workout"
+        {/* <Link to="/sign-up"
           className="try-it-link link">Let's try it</Link> */}
         </main>
     );

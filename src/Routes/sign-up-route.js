@@ -11,7 +11,7 @@ export default class SignUpRoute extends Component {
 
     handleSubmitSuccess = () => {
         const { location, history } = this.props;
-        const destination = (location.state || {}).from || '/workouts';
+        const destination = (location.state || {}).from || '/create-workout';
         history.push(destination);
     }
 
