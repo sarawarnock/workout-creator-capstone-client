@@ -63,7 +63,7 @@ nav {
 
 /* MAIN PAGE */
 main {
-  padding: 10px;
+  padding: 20px 40px;
 }
 
 .landing-text {
@@ -161,6 +161,29 @@ main p {
   font-size: 1.8rem;
 }
 
+.arr {
+  color:#7b7b7b 
+}
+
+.arr:hover{
+  background: #E5E5E5;
+  transform: scale(1.2);
+  color: #676666;
+}
+
+.f-left {
+  float: left;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.lrg {
+  font-size: 28px;
+  font-weight: 600;
+}
+
 .left {
   text-align: left;
 }
@@ -200,7 +223,7 @@ main p {
 .workouts-table {
   margin: 0 auto;
   table-layout: fixed;
-  padding: 20px 40px;
+  padding: 30px 0;
   
 }
 
@@ -278,15 +301,18 @@ text-shadow:0px 1px 0px #C4C4C4;
 }
 a:hover, button:hover {
 background-color: #a2a2a2;
+transition: .3s;
 }
 a:active, button:active {
 position:relative;
 top:1px;
+transition: .3s;
 }
 
 .view-link:hover {
   text-decoration: underline;
   background-color:  #E5E5E5;
+  transform:scale(1.2)
 }
 
 .name-wo {

@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
-import CircleButton from './CircleButton/circle-button';
+import NextArrow from './ArrowLinks/NextArrow';
 
 export default class ViewWorkout extends React.Component {
     static defaultProps = {
@@ -35,6 +36,11 @@ export default class ViewWorkout extends React.Component {
 
         return ( 
             <>
+                <Link className="ib"
+                    to="/workouts">
+                    <span className="arrow left-arrow"></span>
+                </Link>
+                
                 <h2>EMOM for {this.context.workout[0].total_length} minutes</h2>
                 <table className="workouts-table">
                     <thead>

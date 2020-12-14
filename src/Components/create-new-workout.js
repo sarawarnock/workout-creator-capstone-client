@@ -28,7 +28,7 @@ class CreateNewWorkout extends Component {
       currentStep: 1,
     };
   }
-
+  // render next/prev buttons according to current page
   _next() {
     let currentStep = this.state.currentStep;
     currentStep = currentStep >= 2 ? 3 : currentStep + 1;
@@ -83,7 +83,7 @@ class CreateNewWorkout extends Component {
       )
     } return null;
   }
-
+  
   selectAllCheckboxes = isSelected => {
     Object.keys(this.state.checkboxes).forEach(checkbox => {
       this.setState(prevState => ({
@@ -126,7 +126,6 @@ class CreateNewWorkout extends Component {
     return outputText;
   }
 
-  //POST to '/api/workouts' but randomize the data given the choices
   handleFormSubmit = (e) => {
     e.preventDefault();
 
