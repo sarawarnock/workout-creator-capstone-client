@@ -224,7 +224,7 @@ main p {
   margin: 0 auto;
   table-layout: fixed;
   padding: 30px 0;
-  
+  min-width: 550px;
 }
 
 .tr {

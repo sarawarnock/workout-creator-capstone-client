@@ -21,10 +21,7 @@ export default class WorkoutsList extends React.Component {
         if (workouts.length === 0) {
             return (
                 <>
-                    <Link to="/create-workout"
-                        className="create-link link">
-                        Create New Workout
-                    </Link>
+                    <h2>No Workouts!</h2>
                 </>
             )
         }
@@ -35,7 +32,6 @@ export default class WorkoutsList extends React.Component {
                     <thead>
                         <tr>
                             <th className="left tb-name">Name</th>
-                            {/* <th className="tb-id">Workout ID</th> */}
                             <th className="tb-view center"></th>
                             <th className="tb-del right">Remove</th>
                         </tr>

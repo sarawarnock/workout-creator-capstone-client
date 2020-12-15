@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
-import NextArrow from './ArrowLinks/NextArrow';
 
 export default class ViewWorkout extends React.Component {
     static defaultProps = {
@@ -16,6 +15,9 @@ export default class ViewWorkout extends React.Component {
         this.context.clearError();
         WorkoutApiService.getWorkoutDetails(workout_id)
             .then(this.context.setWorkout)
+            .catch(this.context.setError);
+        WorkoutApiService.getWorkoutsById()
+            .then(this.context.setWorkOutsList)
             .catch(this.context.setError);
     }
 
