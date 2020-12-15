@@ -106,7 +106,7 @@ class App extends Component {
                     />
                     <PrivateRoute 
                         expact
-                        path='/start/:workout_id'
+                        path='/workouts/start/:workout_id'
                         component={StartWorkout}
                     />
                     <Route 
