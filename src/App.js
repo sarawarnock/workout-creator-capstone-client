@@ -14,6 +14,7 @@ import LoginRoute from './Routes/login-route';
 import SignUpRoute from './Routes/sign-up-route';
 import ViewWorkout from './Components/view-workout';
 import CreateWorkoutRoute from './Routes/create-workout-route';
+import StartWorkout from './Components/start-workout';
 import NotFoundPage from './Components/not-found-page';
 
 import TokenService from './Services/token-service-lf';
@@ -102,6 +103,11 @@ class App extends Component {
                         exact
                         path='/workouts/:workout_id'
                         component={ViewWorkout}
+                    />
+                    <PrivateRoute 
+                        expact
+                        path='/start/:workout_id'
+                        component={StartWorkout}
                     />
                     <Route 
                         component={NotFoundPage}

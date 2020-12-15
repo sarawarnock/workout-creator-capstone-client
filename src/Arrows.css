@@ -1,9 +1,8 @@
-.ib {
+.la, .ra {
     display: grid;
     place-items: center;
     place-content: center;
     color: #fff;
-    float: left;
     background-color: #262626;
     border-radius: 50%;
     border: none;
@@ -11,7 +10,7 @@
     transition: .3s;
 }
 
-.ib:hover {
+.la:hover, .ra:hover {
     background: #0070ff
 }
 
@@ -28,11 +27,13 @@
 }
 
 .up-arrow {
-    --direction: 135deg
+    --direction: 135deg;
 }
 
 .right-arrow {
-    --direction: 225deg
+    --direction: 225deg;
+    position: relative;
+    right: 2px;
 }
 
 .down-arrow {

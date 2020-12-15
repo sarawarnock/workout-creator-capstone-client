@@ -26,6 +26,7 @@ export default class ViewWorkout extends React.Component {
     }
 
     renderWorkOut() {
+        const { workout_id } = this.props.match.params;
         const { workout } = this.context;
         console.log(workout);
         if (workout.length === 0) {
@@ -38,12 +39,18 @@ export default class ViewWorkout extends React.Component {
 
         return ( 
             <>
-                <Link className="ib"
-                    to="/workouts">
-                    <span className="arrow left-arrow"></span>
-                </Link>
-                
-                <h2>EMOM for {this.context.workout[0].total_length} minutes</h2>
+                <div className="flex-cnt">
+                    <Link className="la"
+                        to="/workouts">
+                        <span className="arrow left-arrow"></span>
+                    </Link>
+                    <h2>EMOM for {this.context.workout[0].total_length} minutes</h2>
+                    <Link className="ra"
+                        to={`start/${workout_id}`}>
+                        <span className="arrow right-arrow"></span>
+                    </Link>
+                </div>
+
                 <table className="workouts-table">
                     <thead>
                         <tr className="tbh">
