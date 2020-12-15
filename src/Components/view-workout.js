@@ -21,14 +21,10 @@ export default class ViewWorkout extends React.Component {
             .catch(this.context.setError);
     }
 
-    componentWillUnmount() {
-        this.context.clearWorkOut();
-    }
-
     renderWorkOut() {
+        console.log('props', this.props);
         const { workout_id } = this.props.match.params;
         const { workout } = this.context;
-        console.log(workout);
         if (workout.length === 0) {
             return (
                 <div>

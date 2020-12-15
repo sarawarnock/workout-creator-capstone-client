@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link,  } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
+
 export default class StartWorkout extends React.Component{
     static defaultProps = {
         match: { params: {} },
@@ -10,11 +11,11 @@ export default class StartWorkout extends React.Component{
     static contextType = WorkOutContext;
 
     componentDidMount() {
-        const { workout_id } = this.props.match.params
+        // const { workout_id } = useParams();
         this.context.clearError();
-        WorkoutApiService.getWorkoutDetails(workout_id)
-            .then(this.context.setWorkout)
-            .catch(this.context.setError);
+        // WorkoutApiService.getWorkoutDetails(workout_id)
+        //     .then(this.context.setWorkout)
+        //     .catch(this.context.setError);
         WorkoutApiService.getWorkoutsById()
             .then(this.context.setWorkOutsList)
             .catch(this.context.setError);
@@ -25,27 +26,20 @@ export default class StartWorkout extends React.Component{
     }
 
     renderWorkOut() {
-        const { workout_id } = this.props.match.params
         const { workout } = this.context; 
-        console.log('props', this.props);
-
-        if (workout.length === 0) {
-            return <div>Loading</div>
-        }
-
         console.log('start workout:', workout);
         return (
             <>
                 <div className="flex-cnt">
-                    <Link className="la"
-                        to={`/workouts/${workout_id}`}>
+                    {/* <Link className="la"
+                        to="/workouts">
                         <span className="arrow left-arrow"></span>
                     </Link>
-                    <h2>{workout[0].total_length} minutes</h2>
+                    <h2>EMOM for {this.context.workout[0].total_length} minutes</h2>
                     <Link className="ra"
-                        to={`/workouts/${workout_id}`}>
+                        to={`start/${workout_id}`}>
                         <span className="arrow right-arrow"></span>
-                    </Link>
+                    </Link> */}
                 </div>
             </>
         )
