@@ -148,14 +148,17 @@ class CreateNewWorkout extends Component {
         this.props.onSubmitSuccess(res.workout.id);
       })
       .catch(res => {
+        console.log(res.error)
         this.setState({ error: res.error });
       });
   };
 
   render() {
+    const { error } = this.state
     return (
         <div className="row">
           <div className="col-sm-12">
+            <div>{error}</div>
             <form onSubmit={this.handleFormSubmit}>
                 <MuscleGroup
                   currentStep={this.state.currentStep}

@@ -25,7 +25,6 @@
     width: var(--size);
     height: var(--size);
     transform: rotate(var(--direction, 0));
-
 }
 
 .up-arrow {
