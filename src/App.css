@@ -128,6 +128,42 @@ main p {
   color: rgb(130, 0, 0);
 }
 
+/* CREATE WORKOUT */
+label {
+  display: grid;
+  align-self: center;
+  border: 1px solid white;
+  margin: 10px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.user-label {
+  border: none;
+}
+
+input:checked + label {
+  background-color: #C4C4C4;
+  font-weight: bolder;
+  border: 1px solid #C4C4C4;
+}
+
+.selected-checkbox {
+  background-color: #C4C4C4;
+  font-weight: bolder;
+  height: auto;
+  margin: 10px;
+  border: 1px solid #C4C4C4;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
 /* WORKOUTS LIST */
 .workouts-header {
   margin-bottom: 20px;
@@ -141,6 +177,50 @@ main p {
 .row {
   display: grid;
   grid-area: main;
+}
+
+button, .view-link {
+background-color: #C4C4C4;
+border-radius:6px;
+border:1px solid #C4C4C4;
+display:inline-block;
+cursor:pointer;
+color:black;
+font-family:Arial;
+font-weight:bold;
+padding:6px 24px;
+text-decoration:none;
+text-shadow:0px 1px 0px #C4C4C4;
+}
+a:hover, button:hover {
+background-color: #a2a2a2;
+transition: .3s;
+}
+a:active, button:active {
+position:relative;
+top:1px;
+transition: .3s;
+}
+
+.view-link:hover {
+  background-color:   #a2a2a2;
+}
+
+.name-wo {
+  padding: 5px;
+  font-size: 24px;
+  border-radius: 4px;
+  width: 30rem;
+  margin  : 10px;
+}
+
+.btn {
+  margin: 10px;
+  font-size: 18px
+}
+
+.workouts-list {
+  font-size: 24px;
 }
 
 /* VIEW WORKOUT */
@@ -251,88 +331,6 @@ main p {
   font-size: 20px;
 }
 
-label {
-  display: grid;
-  align-self: center;
-  border: 1px solid white;
-  margin: 10px;
-  padding: 10px;
-  font-size: 18px;
-}
-
-.user-label {
-  border: none;
-}
-
-input:checked + label {
-  background-color: #C4C4C4;
-  font-weight: bolder;
-  border: 1px solid #C4C4C4;
-}
-
-.selected-checkbox {
-  background-color: #C4C4C4;
-  font-weight: bolder;
-  height: auto;
-  margin: 10px;
-  border: 1px solid #C4C4C4;
-}
-
-input[type="checkbox"] {
-  display: none;
-}
-
-input[type="radio"] {
-  display: none;
-}
-
-button {
-background-color: #C4C4C4;
-border-radius:6px;
-border:1px solid #C4C4C4;
-display:inline-block;
-cursor:pointer;
-color:black;
-font-family:Arial;
-font-weight:bold;
-padding:6px 24px;
-text-decoration:none;
-text-shadow:0px 1px 0px #C4C4C4;
-}
-a:hover, button:hover {
-background-color: #a2a2a2;
-transition: .3s;
-}
-a:active, button:active {
-position:relative;
-top:1px;
-transition: .3s;
-}
-
-.view-link:hover {
-  text-decoration: underline;
-  background-color:  #E5E5E5;
-  transform:scale(1.2)
-}
-
-.name-wo {
-  padding: 5px;
-  font-size: 24px;
-  border-radius: 4px;
-  width: 30rem;
-  margin  : 10px;
-}
-
-.btn {
-  margin: 10px;
-  font-size: 18px
-}
-
-.workouts-list {
-  font-size: 24px;
-}
-
-
 .workout-details {
   font-size: 20px;
   padding: 10px;
@@ -343,7 +341,6 @@ transition: .3s;
   color: white;
   font-size: 24px;
 }
-
 
 .exercise-desc {
   font-size: 18px;

@@ -22,7 +22,6 @@ export default class WorkoutItem extends Component {
         return(
             <tr key={workout.id}>
                 <td className="left">{workout.workouts_name}</td>
-                {/* <td> {workout.id} </td> */}
                 <td>
                     <Link className="view-link"
                         to={`/workouts/${workout.id}`}
