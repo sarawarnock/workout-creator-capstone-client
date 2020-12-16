@@ -3,6 +3,8 @@ import { Link,  } from 'react-router-dom';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
 import StartExercise from './start-exercise';
+import Stopwatch from './Stopwatch';
+
 export default class StartWorkout extends React.Component{
     static defaultProps = {
         match: { params: {} },
@@ -74,12 +76,15 @@ export default class StartWorkout extends React.Component{
 
         console.log('start workout:', workout);
         return (
-            <StartExercise 
-                clickNext={this._next}
-                clickPrev={this._prev}
-                exercise={exercise}
-                currentStep={currentStep}
-            />
+            <>
+                <StartExercise 
+                    clickNext={this._next}
+                    clickPrev={this._prev}
+                    exercise={exercise}
+                    currentStep={currentStep}
+                />
+                <Stopwatch />
+            </>
         )
     }
 
