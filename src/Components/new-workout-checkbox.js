@@ -2,7 +2,7 @@ import React from "react";
 
 const Checkbox = ({ label, isSelected, onCheckboxChange }) => (
   <div className="row">
-    <label className={isSelected ? 'selected-checkbox' : ''}>
+    <label className={isSelected ? 'selected-checkbox check' : 'check'}>
       <input
         type="checkbox"
         name={label}

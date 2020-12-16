@@ -53,7 +53,7 @@ export default class SignUpForm extends Component {
                 >
                     <div role='alert'>{error && <p className='error'>{error}</p>}</div>
                     <div className="inp-cont">
-                        <label className ="user-label" htmlFor="email">Username</label>
+                        <label className ="form-label" htmlFor="email">Username</label>
                         <input 
                             name="signUpEmail"
                             type="text" 
@@ -62,7 +62,7 @@ export default class SignUpForm extends Component {
                         />
                     </div>
                     <div className=" inp-cont">
-                        <label className ="user-label" htmlFor="password">Password</label>
+                        <label className ="form-label" htmlFor="password">Password</label>
                         <input 
                             name="signUpPassword"
                             type="password" 
