@@ -21,7 +21,7 @@ export default class WorkoutItem extends Component {
         const { workout } = this.props
         return(
             <tr key={workout.id}>
-                <td className="left">{workout.workouts_name}</td>
+                <td className="wo-name left">{workout.workouts_name}</td>
                 <td>
                     <Link className="view-link"
                         to={`/workouts/${workout.id}`}

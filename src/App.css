@@ -81,6 +81,19 @@ nav {
   border: solid 1px #006BFF;
 }
 
+/* .logout {
+  background-color: #fff;
+  color: #006BFF;
+  border: solid 1.5px #006BFF;
+}
+
+.logout:hover {
+  background-color: #006BFF;
+  color: white;
+  border: solid 1.5px #006BFF;
+} */
+
+
 /* MAIN PAGE */
 main {
   margin: 0 auto;
@@ -210,6 +223,19 @@ input[type="radio"] {
   display: none;
 }
 
+.name-wo {
+  padding: 5px;
+  font-size: 24px;
+  border-radius: 4px;
+  width: 30rem;
+  margin  : 10px;
+  border: solid 2px rgb(14, 74, 159);
+}
+
+.name-wo::placeholder {
+  color: #C4C4C4;
+}
+
 .arr {
   color: #fff;
   border: solid 1.5px rgb(14, 74, 159);
@@ -260,14 +286,6 @@ top:1px;
 transition: .3s;
 }
 
-.name-wo {
-  padding: 5px;
-  font-size: 24px;
-  border-radius: 4px;
-  width: 30rem;
-  margin  : 10px;
-}
-
 .btn {
   margin: 10px;
   font-size: 18px
@@ -281,27 +299,25 @@ transition: .3s;
   margin: 0 auto;
   table-layout: fixed;
   padding: 30px 0;
-  min-width: 600px;
+  min-width: 720px;
 }
 
 .tr {
   border-bottom: .5px solid black;
 }
 
-.tb-name {
+.tb-name, .tb-del  {
   width: 30%;
-}
-
-.tb-date {
-  width: 30%;
+  font-size: 20px;
 }
 
 .tb-view {
   width: 30%;
+  margin: 0 40px;
 }
 
-.tb-del {
-  width: 30%;
+.wo-name {
+  font-size: 22px;
 }
 
 .create-link {
