@@ -50,7 +50,7 @@ class CreateNewWorkout extends Component {
     if (currentStep !== 1) {
       return (
         <button
-          className="btn btn-secondary"
+          className="btn arr"
           type="button" onClick={this._prev}
         >
           {'<'}
@@ -64,7 +64,7 @@ class CreateNewWorkout extends Component {
     if (currentStep < 3) {
       return (
         <button
-          className="btn btn-primary"
+          className="btn arr"
           type="button" onClick={this._next}
         >
          {'>'}
@@ -77,7 +77,7 @@ class CreateNewWorkout extends Component {
     let currentStep = this.state.currentStep;
     if (currentStep === 3) {
       return (
-        <button className="btn" type="submit">
+        <button className="btn arr" type="submit">
           Submit
         </button>
       )
@@ -156,34 +156,34 @@ class CreateNewWorkout extends Component {
   render() {
     const { error } = this.state
     return (
-        <div className="row">
-          <div className="col-sm-12">
-            <div>{error}</div>
-            <form onSubmit={this.handleFormSubmit}>
-                <MuscleGroup
-                  currentStep={this.state.currentStep}
-                  checkboxes={this.state.checkboxes}
-                  handleCheckboxChange={this.handleCheckboxChange}
-                  handleChange={this.handleChange}
-                />
-                <TimeQuest 
-                  currentStep={this.state.currentStep}
-                  handleChange={this.handleChange}
-                />
-                {/* <TypeQuest 
-                  currentStep={this.state.currentStep}
-                  handleChange={this.handleChange}
-                /> */}
-                <NameWorkout
-                  currentStep={this.state.currentStep}
-                  handleChange={this.handleChange}
-                />
-                {this.previousButton}
-                {this.nextButton}
-                {this.submitButton}                
-            </form>
-          </div>
-        </div>
+      <>
+        <div>{error}</div>
+        <form className="create-form"
+          onSubmit={this.handleFormSubmit}>
+            <MuscleGroup
+              currentStep={this.state.currentStep}
+              checkboxes={this.state.checkboxes}
+              handleCheckboxChange={this.handleCheckboxChange}
+              handleChange={this.handleChange}
+            />
+            <TimeQuest 
+              currentStep={this.state.currentStep}
+              handleChange={this.handleChange}
+            />
+            {/* <TypeQuest 
+              currentStep={this.state.currentStep}
+              handleChange={this.handleChange}
+            /> */}
+            <NameWorkout
+              currentStep={this.state.currentStep}
+              handleChange={this.handleChange}
+            />
+            {this.previousButton}
+            {this.nextButton}
+            {this.submitButton}                
+        </form>      
+      </>
+
     );
   }
 }

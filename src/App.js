@@ -8,7 +8,7 @@ import PublicRoute from './Routes/public-route'
 import PrivateRoute from './Routes/private-route'
 import LandingPage from './Components/landing-page';
 
-import Header from './Components/NavBars/header';
+import Header from './Components/header';
 import WorkoutsList from './Components/workouts-list';
 import LoginRoute from './Routes/login-route';
 import SignUpRoute from './Routes/sign-up-route';

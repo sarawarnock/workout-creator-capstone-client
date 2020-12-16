@@ -1,59 +1,29 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import WorkOutContext from '../context';
-import WorkoutApiService from '../Services/workout-api-service';
 
-export default class StartWorkout extends React.Component{
-    static defaultProps = {
-        match: { params: {} },
-    }
+export default function StartExercise(props) {
+    const { currentStep, exercise } = props;
+    console.log('currentStep', currentStep);
+    console.log('exercise', exercise);
 
-    static contextType = WorkOutContext;
+    return (
+        <>
+            <div className="flex-cnt">
+                <button className="la"
+                    onClick={props.clickPrev}>
+                    <span className="arrow left-arrow"></span>
+                </button>
 
-    componentDidMount() {
-        // const { workout_id } = useParams();
-        this.context.clearError();
-        // WorkoutApiService.getWorkoutDetails(workout_id)
-        //     .then(this.context.setWorkout)
-        //     .catch(this.context.setError);
-        WorkoutApiService.getWorkoutsById()
-            .then(this.context.setWorkOutsList)
-            .catch(this.context.setError);
-    }
+                <h2 className="cap">{exercise.title}</h2>
 
-    componentWillUnmount() {
-        this.context.clearWorkOut();
-    }
-
-    renderWorkOut() {
-        const { workout } = this.context; 
-        console.log('start workout:', workout);
-        return (
-            <>
-                <div className="flex-cnt">
-                    {/* <Link className="la"
-                        to="/workouts">
-                        <span className="arrow left-arrow"></span>
-                    </Link>
-                    <h2>EMOM for {this.context.workout[0].total_length} minutes</h2>
-                    <Link className="ra"
-                        to={`start/${workout_id}`}>
-                        <span className="arrow right-arrow"></span>
-                    </Link> */}
-                </div>
-            </>
-        )
-    }
-
-    render() {
-        const { error } = this.context;
-        return ( 
-            <>
-                {error
-                    ? <h2>There was an error try again</h2>
-                    : this.renderWorkOut()
-                }
-            </>
-        )
-    }
-}
+                <button className="ra"
+                    onClick={props.clickNext}>
+                    <span className="arrow right-arrow"></span>
+                </button>
+            </div>
+            <div className="ex-cont">
+                <h3 className="ex-desc cap left">{exercise.description}</h3>
+                <h3 className="ex-reps cap">{exercise.exercise_reps}x</h3>
+            </div>
+        </>
+    )
+};
