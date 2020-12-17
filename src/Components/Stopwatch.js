@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 
 
 export default function StopWatch(props) {
-    const { workout } = props;
+    const { workout, length } = props;
     console.log('stopwatch workout:', workout);
 
-    const [time, setTime] = useState({ ms: 0, sec: 60, min: 30 });
+    const minutes = length
+
+    const [time, setTime] = useState({ ms: 0, sec: 60, min: minutes });
     const [interv, setInterv] = useState();
 
     // status if you want to hide start button after stopping
@@ -41,7 +43,7 @@ export default function StopWatch(props) {
     const _reset = () => {
         clearInterval(interv);
         setStatus(0);
-        setTime({ ms: 0, sec: 60, min: 30 });
+        setTime({ ms: 0, sec: 60, min: minutes });
     };
 
     const _resume = () => _start();

@@ -84,6 +84,7 @@ export default class StartWorkout extends React.Component{
                 />
                 <Stopwatch 
                     workout={workout}
+                    length={workout[0].total_length}
                 />
             </>
         )
