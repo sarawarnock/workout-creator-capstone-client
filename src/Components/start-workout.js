@@ -4,6 +4,7 @@ import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
 import StartExercise from './start-exercise';
 import Stopwatch from './Stopwatch';
+import FinishedWorkout from './finished-workout'
 
 export default class StartWorkout extends React.Component{
     static defaultProps = {
@@ -63,6 +64,14 @@ export default class StartWorkout extends React.Component{
         this.context.clearWorkOut();
     }
 
+    renderFinished() {
+        return ( 
+            <FinishedWorkout 
+                //workout={workout}
+            /> 
+        )
+    }
+
     renderWorkOut() {
         console.log('props', this.props);
         const { workout } = this.context;
@@ -85,6 +94,9 @@ export default class StartWorkout extends React.Component{
                 <Stopwatch 
                     workout={workout}
                     length={workout[0].total_length}
+                    clickNext={this._next}
+                    clickPrev={this._prev}
+                    renderFinished={this.renderFinished}
                 />
             </>
         )

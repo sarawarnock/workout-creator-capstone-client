@@ -9,6 +9,7 @@ export default function StopWatch(props) {
 
     const [time, setTime] = useState({ ms: 0, sec: 60, min: minutes });
     const [interv, setInterv] = useState();
+    //const updatedMin = useState({ minutes })
 
     // status if you want to hide start button after stopping
     // 0 = Not started, 1 = Started, 2 = Paused
@@ -26,10 +27,14 @@ export default function StopWatch(props) {
         if (updatedSec === 0) {
             updatedSec = 60;
             updatedMin--;
+            props.clickNext();
         }
         if (updatedMS === 100) {
             updatedMS = 0;
             updatedSec--;
+        }
+        if (updatedMin === 0) {
+            props.renderFinished();
         }
         updatedMS++;
         return setTime({ ms: updatedMS, sec: updatedSec, min: updatedMin });
