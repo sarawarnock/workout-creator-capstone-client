@@ -74,7 +74,6 @@ export default class StartWorkout extends React.Component{
             return <div>Loading</div>
         }
 
-        console.log('start workout:', workout);
         return (
             <>
                 <StartExercise 
@@ -83,7 +82,9 @@ export default class StartWorkout extends React.Component{
                     exercise={exercise}
                     currentStep={currentStep}
                 />
-                <Stopwatch />
+                <Stopwatch 
+                    workout={workout}
+                />
             </>
         )
     }

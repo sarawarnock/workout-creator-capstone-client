@@ -442,6 +442,25 @@ transition: .3s;
   font-size: 28px;
 }
 
+/* STOPWATCH */
+.sw-cont {
+  margin: 40px;
+}
+
+.sw-cont h4{
+  margin: 10px;
+  font-size: 6rem;
+}
+
+h5 {
+  margin: 40px;
+  font-size: 2rem;
+}
+
+.btn-cont  button{
+  margin: 0 5px;
+}
+
 /* @media screen and (max-width: 600px) {
   .App {
       display: grid;
