@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 
 
 export default function StopWatch(props) {
-    const { workout } = props;
-    console.log('stopwatch workout:', workout);
+    const { workout, length } = props;
 
-    const [time, setTime] = useState({ ms: 0, sec: 60, min: 30 });
+    const [time, setTime] = useState({ ms: 0, sec: 60, min: length  });
     const [interv, setInterv] = useState();
 
     // status if you want to hide start button after stopping
@@ -24,11 +23,15 @@ export default function StopWatch(props) {
         if (updatedSec === 0) {
             updatedSec = 60;
             updatedMin--;
+            props.clickNext();
         }
         if (updatedMS === 100) {
             updatedMS = 0;
             updatedSec--;
         }
+        // if (updatedMin === 0) {
+        //     props.renderFinished();
+        // }
         updatedMS++;
         return setTime({ ms: updatedMS, sec: updatedSec, min: updatedMin });
     };
@@ -41,7 +44,7 @@ export default function StopWatch(props) {
     const _reset = () => {
         clearInterval(interv);
         setStatus(0);
-        setTime({ ms: 0, sec: 60, min: 30 });
+        setTime({ ms: 0, sec: 60, min: length });
     };
 
     const _resume = () => _start();

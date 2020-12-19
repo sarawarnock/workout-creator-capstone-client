@@ -18,6 +18,9 @@ export default class StartWorkout extends React.Component{
         this._prev = this._prev.bind(this);
         this.state = {
             currentStep: 1,
+            // ms: 0, 
+            // sec: 60, 
+            // min: this.context.workout[0].total_length
         }
     }
 
@@ -67,8 +70,8 @@ export default class StartWorkout extends React.Component{
         console.log('props', this.props);
         const { workout } = this.context;
         const { currentStep } = this.state; 
-        const num = currentStep - 1;
-        const exercise = workout[num];
+        const i = currentStep - 1;
+        const exercise = workout[i];
 
         if (workout.length === 0) {
             return <div>Loading</div>
@@ -83,7 +86,10 @@ export default class StartWorkout extends React.Component{
                     currentStep={currentStep}
                 />
                 <Stopwatch 
+                    clickNext={this._next}
+                    clickPrev={this._prev}
                     workout={workout}
+                    length={workout[0].total_length}
                 />
             </>
         )
