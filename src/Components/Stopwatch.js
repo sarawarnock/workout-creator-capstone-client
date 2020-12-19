@@ -23,15 +23,13 @@ export default function StopWatch(props) {
         if (updatedSec === 0) {
             updatedSec = 60;
             updatedMin--;
+            props.updateMin();
             props.clickNext();
         }
         if (updatedMS === 100) {
             updatedMS = 0;
             updatedSec--;
         }
-        // if (updatedMin === 0) {
-        //     props.renderFinished();
-        // }
         updatedMS++;
         return setTime({ ms: updatedMS, sec: updatedSec, min: updatedMin });
     };
@@ -81,7 +79,7 @@ export default function StopWatch(props) {
         </div>
         <h5>
             <span>
-                { (time.min >= 10) ? time.min : "0" + time.min }
+                { (time.min >= 5) ? time.min : "0" + time.min }
             </span>
             <span> minutes</span>
         </h5>
