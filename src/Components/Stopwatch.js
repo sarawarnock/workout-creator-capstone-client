@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 export default function StopWatch(props) {
     const { workout } = props;
-    console.log('stopwatch workout:', workout);
+    //console.log('stopwatch workout:', workout);
 
     // const minutes = length
 

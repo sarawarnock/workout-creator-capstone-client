@@ -26,10 +26,10 @@ export default class StartWorkout extends React.Component {
                 ms: 0,
                 sec: 60,
                 min: 5,
+                //min: this.context.workout.total_length[0]
             },
             status: 0,
             interv: 0,
-            //finishedMin: this.context.workout.total_length[0]
         }
     }
 
@@ -65,9 +65,10 @@ export default class StartWorkout extends React.Component {
     }
 
     _run = () => {
-        let finishedLength = this.context.workout.total_length
-        
+        let finishedLength = this.context.workout[0].total_length
+        console.log('Finished Length', finishedLength)
         if (finishedLength === 0) {
+            this._pause();
             return this.renderFinished();
         }
         else if (this.state.time.sec === 0) {
@@ -138,7 +139,7 @@ export default class StartWorkout extends React.Component {
     }
 
     renderWorkOut() {
-        console.log('props', this.props);
+        //console.log('props', this.props);
         const { workout } = this.context;
         const { currentStep } = this.state; 
         const num = currentStep - 1;
