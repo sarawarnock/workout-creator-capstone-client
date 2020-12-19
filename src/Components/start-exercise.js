@@ -1,10 +1,7 @@
 import React from 'react';
 
 export default function StartExercise(props) {
-    const { currentStep, exercise } = props;
-    // console.log('currentStep', currentStep);
-    // console.log('exercise', exercise);
-
+    const { exercise } = props;
     return (
         <>
             <div className="flex-cnt">

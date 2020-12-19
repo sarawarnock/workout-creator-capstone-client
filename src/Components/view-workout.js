@@ -22,7 +22,7 @@ export default class ViewWorkout extends React.Component {
     }
 
     renderWorkOut() {
-        console.log('props', this.props);
+        // console.log('props', this.props);
         const { workout_id } = this.props.match.params;
         const { workout } = this.context;
         if (workout.length === 0) {

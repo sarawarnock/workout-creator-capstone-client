@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link,  } from 'react-router-dom';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
 import FinishedWorkout from './finished-workout';
@@ -19,12 +18,12 @@ export default class StartWorkout extends React.Component{
         this._prev = this._prev.bind(this);
         this.state = {
             currentStep: 1,
-            minutes: 30
+            minutes: 30,
+            name: ''
         }
     }
 
     _next = () => {
-        console.log('trigger next:', this.state.currentStep);
         let currentStep = this.state.currentStep;
         const { workout } = this.context;
         if (currentStep < workout.length) {
@@ -40,7 +39,6 @@ export default class StartWorkout extends React.Component{
     }
 
     _prev = () => {
-        console.log('trigger prev:', this.state.currentStep);
         let currentStep = this.state.currentStep;
         const { workout } = this.context;
         if (currentStep <= workout.length && currentStep > 1) {
@@ -61,6 +59,8 @@ export default class StartWorkout extends React.Component{
 
     componentDidMount() {
         const { workout_id } = this.props.match.params;
+        const { workouts } = this.context;
+        console.log('workouts', workouts);
         this.context.clearError();
         WorkoutApiService.getWorkoutDetails(workout_id)
             .then(this.context.setWorkout)
@@ -76,14 +76,10 @@ export default class StartWorkout extends React.Component{
     }
 
     renderWorkOut() {
-        console.log('props', this.props);
-        console.log('state', this.state);
         const { workout } = this.context;
         const { currentStep } = this.state; 
         const i = currentStep - 1;
         const exercise = workout[i];
-
-        console.log(this.context.workouts);
 
         if (workout.length === 0) {
             return <div>Loading</div>
@@ -99,7 +95,6 @@ export default class StartWorkout extends React.Component{
                     clickNext={this._next}
                     clickPrev={this._prev}
                     exercise={exercise}
-                    currentStep={currentStep}
                 />
                 <Stopwatch 
                     clickNext={this._next}

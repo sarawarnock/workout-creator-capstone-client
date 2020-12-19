@@ -115,7 +115,6 @@ class CreateNewWorkout extends Component {
   }
 
   checkString(inputString) {
-    console.log({inputString});
     let outputText = inputString;
     if (inputString === undefined) {
         outputText = "";

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 
 export default function StopWatch(props) {
-    const { workout, length } = props;
+    const { length } = props;
 
     const [time, setTime] = useState({ ms: 0, sec: 60, min: length  });
     const [interv, setInterv] = useState();
@@ -79,7 +79,7 @@ export default function StopWatch(props) {
         </div>
         <h5>
             <span>
-                { (time.min >= 5) ? time.min : "0" + time.min }
+                { time.min }
             </span>
             <span> minutes</span>
         </h5>

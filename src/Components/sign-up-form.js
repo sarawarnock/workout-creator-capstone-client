@@ -24,7 +24,7 @@ export default class SignUpForm extends Component {
         }
         AuthApiService.postUser(newUser)
         .then(res => {
-            console.log(`sign up form sending user to context`, res)
+            console.log(`create user res`, res)
             this.context.setUser(res)
             AuthApiService.postLogin({
                 email: signUpEmail.value,

@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
-// import ViewPastWorkout from './view-past-workout'
 import WorkoutListItem from './workout-list-item';
 
 export default class WorkoutsList extends React.Component {
@@ -17,7 +16,6 @@ export default class WorkoutsList extends React.Component {
 
     render() {
         const { workouts } = this.context
-        console.log('workouts', workouts);
         if (workouts.length === 0) {
             return (
                 <>

@@ -10,7 +10,6 @@ export default class WorkoutItem extends Component {
         const { workout } = this.props;
         WorkoutApiService.deleteWorkout(workout.id)
             .then(res => {
-                console.log('handleDelete res:', res);
                 WorkoutApiService.getWorkoutsById()
                     .then(this.context.setWorkOutsList)
                     .catch(this.context.setError)
