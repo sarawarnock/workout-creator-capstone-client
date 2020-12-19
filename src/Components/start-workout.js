@@ -6,21 +6,36 @@ import StartExercise from './start-exercise';
 import Stopwatch from './Stopwatch';
 import FinishedWorkout from './finished-workout'
 
-export default class StartWorkout extends React.Component{
+export default class StartWorkout extends React.Component {
     static defaultProps = {
         match: { params: {} },
     }
 
     static contextType = WorkOutContext;
-
+    
     constructor(props) {
         super(props);
         this._next = this._next.bind(this);
         this._prev = this._prev.bind(this);
+        this._start = this._start.bind(this);
+        this._pause = this._pause.bind(this)
+        this._run = this._run.bind(this)
         this.state = {
             currentStep: 1,
+            time: {
+                ms: 0,
+                sec: 60,
+                min: 5,
+            },
+            status: 0,
+            interv: 0,
+            //finishedMin: this.context.workout.total_length[0]
         }
     }
+
+    // updatedMS = this.state.time.ms
+    // updatedSec = this.state.time.sec 
+    // updatedMin = this.state.time.min
 
     _next = () => {
         console.log('trigger next:', this.state.currentStep);
@@ -49,7 +64,56 @@ export default class StartWorkout extends React.Component{
         }
     }
 
+    _run = () => {
+        let finishedLength = this.context.workout.total_length
+        
+        if (finishedLength === 0) {
+            return this.renderFinished();
+        }
+        else if (this.state.time.sec === 0) {
+            //this.setState({ time: { sec: 60 } })
+            this.state.time.sec = 60;
+            //this.setState({ time: { min: this.state.min-- } })
+            this.state.time.min--;
+            this._next();
+        }
+        else if (this.state.time.ms === 100) {
+            //this.setState({ time: { ms: 0 } })
+            //this.setState({ time: { sec: this.state.sec-- } })
+            this.state.time.ms = 0;
+            this.state.time.sec--;
+        }
+        else {
+            finishedLength--
+            //this.setState({ finishedMin: this.state.finishedMin--})
+            //this.setState({ time: { ms: this.state.ms++ } })
+            this.state.time.ms++;
+            return this.setState({ ms: this.state.time.ms, sec: this.state.time.sec, min: this.state.time.min });
+        }
+    };
+
+    _start = () => {
+        this._run();
+        this.setState({ status: 1 })
+        this.setState({interv: setInterval(this._run, 10)});
+    };
+
+    _pause = () => {
+        clearInterval(this.state.interv);
+        this.setState({ status: 2 });
+    };
+
+    _reset = () => {
+        clearInterval(this.state.interv);
+        this.setState({ status: 0 });
+        this.setState({ ms: 0, sec: 60, min: this.state.time.min });
+    };
+
+    _resume = () => this._start();
+
+
     componentDidMount() {
+        console.log(this.context)
         const { workout_id } = this.props.match.params
         this.context.clearError();
         WorkoutApiService.getWorkoutDetails(workout_id)
@@ -65,9 +129,10 @@ export default class StartWorkout extends React.Component{
     }
 
     renderFinished() {
+        const { workout } = this.context;
         return ( 
             <FinishedWorkout 
-                //workout={workout}
+                name={workout.workouts_name}
             /> 
         )
     }
@@ -93,10 +158,19 @@ export default class StartWorkout extends React.Component{
                 />
                 <Stopwatch 
                     workout={workout}
-                    length={workout[0].total_length}
-                    clickNext={this._next}
-                    clickPrev={this._prev}
+                    //length={workout[0].total_length}
+                    //clickNext={this._next}
+                    //clickPrev={this._prev}
                     renderFinished={this.renderFinished}
+                    _start={this._start}
+                    _pause={this._pause}
+                    _reset={this._reset}
+                    _resume={this._resume}
+                    _run={this._run}
+                    status={this.state.status}
+                    min={this.state.time.min}
+                    ms={this.state.time.ms}
+                    sec={this.state.time.sec}
                 />
             </>
         )
