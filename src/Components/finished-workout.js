@@ -1,8 +1,9 @@
 import React from 'react';
 
 const FinishedWorkout = (props) => {
+    console.log(props)
     return (
-       <h2>Great job!! You completed {props.workout.workout_name}! </h2> 
+       <h2>Great job!! You completed {props.name}! </h2> 
     )
 }
 

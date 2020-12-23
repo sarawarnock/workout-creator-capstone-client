@@ -86,7 +86,7 @@ export default class StartWorkout extends React.Component{
         }
 
         if (this.state.minutes === 0) {
-            return <FinishedWorkout workout={workout}/>
+            return <FinishedWorkout name={workout[0].workouts_name}/>
         }
 
         return (
