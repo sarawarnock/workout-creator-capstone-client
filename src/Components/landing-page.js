@@ -5,7 +5,7 @@ export default class LandingPage extends React.Component {
   render() {
     return (
       <main className="main">
-        <h2>Create A Personalized EMOM Workout</h2>
+        <h2>EMOM Workout Creator</h2>
         <div className="landing-text">
           <p>What is an EMOM? 
             <br /> 
