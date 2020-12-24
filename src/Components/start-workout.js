@@ -63,29 +63,18 @@ export default class StartWorkout extends React.Component{
 
         WorkoutApiService.getWorkoutDetails(workout_id)
             .then(this.context.setWorkout)
-            // .then(this.setState({ minutes: workout[0].total_length}))
             .catch(this.context.setError);
         WorkoutApiService.getWorkoutsById()
             .then(this.context.setWorkOutsList)
             .catch(this.context.setError);
 
-        
-        console.log('start-workout context', this.context);
-        console.log('start-workout state', this.state);
-        console.log('workout', workout);
+        if (workout.length > 0) {
+            this.setState({ minutes: this.context.workouts[0].total_length })
+        }
+    }
     
-        // this.setState({ minutes: this.context.workouts[0].total_length })
-    }
-
-    componentDidUpdate(prevProps, prevState) {
+    renderWorkOut() {        
         const { workout } = this.context;
-        console.log('componentDidUpdate workout', workout);
-        console.log('prevProps', prevProps);
-        console.log('prevState', prevState);
-        
-    }
-
-    renderWorkOut() {        const { workout } = this.context;
         const { currentStep } = this.state; 
         const i = currentStep - 1;
         const exercise = workout[i];
