@@ -28,6 +28,13 @@ class CreateNewWorkout extends Component {
       currentStep: 1,
     };
   }
+
+  componentDidMount() {
+    this.context.clearError();
+    WorkoutApiService.getWorkoutsById()
+      .then(this.context.setWorkOutsList)
+      .catch(this.context.setError);
+  }
   // render next/prev buttons according to current page
   _next() {
     let currentStep = this.state.currentStep;

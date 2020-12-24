@@ -1,7 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import WorkOutContext from '../context';
+import WorkoutApiService from '../Services/workout-api-service';
 
 export default class LandingPage extends React.Component {
+  static contextType = WorkOutContext;
+
+  componentDidMount() {
+    this.context.clearError();
+    WorkoutApiService.getWorkoutsById()
+      .then(this.context.setWorkOutsList)
+      .catch(this.context.setError);
+  }
+
   render() {
     return (
       <main className="main">

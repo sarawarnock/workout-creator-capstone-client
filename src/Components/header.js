@@ -19,7 +19,7 @@ export default class Header extends Component {
           <Link to="/create-workout" 
             className="header-links workouts"
           >
-            Create Workout
+            Create
           </Link>
           <Link to="/" 
             className="logout header-links"
