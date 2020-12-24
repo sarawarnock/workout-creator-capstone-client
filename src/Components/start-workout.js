@@ -18,7 +18,7 @@ export default class StartWorkout extends React.Component{
         this._prev = this._prev.bind(this);
         this.state = {
             currentStep: 1,
-            minutes: 30,
+            minutes: null,
             name: ''
         }
     }
@@ -49,7 +49,6 @@ export default class StartWorkout extends React.Component{
     }
 
     updateMin = () => {
-        console.log('updateMin triggered');
         let minutes = this.state.minutes;
         this.setState(prevState => ({
             ...prevState,
@@ -58,25 +57,35 @@ export default class StartWorkout extends React.Component{
     }
 
     componentDidMount() {
-        const { workout_id } = this.props.match.params;
-        const { workouts } = this.context;
-        console.log('workouts', workouts);
         this.context.clearError();
+        const { workout_id } = this.props.match.params;
+        const { workout } = this.context;
+
         WorkoutApiService.getWorkoutDetails(workout_id)
             .then(this.context.setWorkout)
+            // .then(this.setState({ minutes: workout[0].total_length}))
             .catch(this.context.setError);
         WorkoutApiService.getWorkoutsById()
             .then(this.context.setWorkOutsList)
             .catch(this.context.setError);
-        this.setState({ minutes: this.context.workout[0].total_length })
+
+        
+        console.log('start-workout context', this.context);
+        console.log('start-workout state', this.state);
+        console.log('workout', workout);
+    
+        // this.setState({ minutes: this.context.workouts[0].total_length })
     }
 
-    componentWillUnmount() {
-        this.context.clearWorkOut();
-    }
-
-    renderWorkOut() {
+    componentDidUpdate(prevProps, prevState) {
         const { workout } = this.context;
+        console.log('componentDidUpdate workout', workout);
+        console.log('prevProps', prevProps);
+        console.log('prevState', prevState);
+        
+    }
+
+    renderWorkOut() {        const { workout } = this.context;
         const { currentStep } = this.state; 
         const i = currentStep - 1;
         const exercise = workout[i];

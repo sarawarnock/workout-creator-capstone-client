@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import WorkOutContext from '../context';
+import TokenService from '../Services/token-service-lf';
 import WorkoutApiService from '../Services/workout-api-service';
 
 export default class LandingPage extends React.Component {
@@ -8,9 +8,11 @@ export default class LandingPage extends React.Component {
 
   componentDidMount() {
     this.context.clearError();
-    WorkoutApiService.getWorkoutsById()
-      .then(this.context.setWorkOutsList)
-      .catch(this.context.setError);
+    if (TokenService.hasAuthToken) {
+      WorkoutApiService.getWorkoutsById()
+        .then(this.context.setWorkOutsList)
+        .catch(this.context.setError);
+    }
   }
 
   render() {

@@ -12,6 +12,7 @@ const WorkOutContext = React.createContext({
     userWorkouts: [],
     workouts: nullWorkouts,
     active: false,
+    minutes: null,
     setError: () => {},
     clearError: () => {},
     setWorkout: () => {},
@@ -21,6 +22,7 @@ const WorkOutContext = React.createContext({
     setWorkOutsList: () => {},
     clearWorkOutsList: () => {},
     toggleActive: () => {},
+    setMinutes: () => {}
 });
 
 export default WorkOutContext;
@@ -32,7 +34,8 @@ export class WorkOutProvider extends Component {
         workout: nullWorkOut,
         userWorkouts: [],
         workouts: nullWorkouts,
-        active: false
+        active: false,
+        minutes: null
     }
 
     setError = error => {
@@ -79,6 +82,11 @@ export class WorkOutProvider extends Component {
         this.setState({ active: !this.state.active });
     };
 
+    setMinutes = minutes => {
+        console.log('setting context minutes', minutes);
+        this.setState({ minutes: minutes })
+    }
+
     render() {
         const value = {
             error: this.state.error,
@@ -87,6 +95,7 @@ export class WorkOutProvider extends Component {
             userWorkouts: this.state.userWorkouts,
             workouts: this.state.workouts,
             active: this.state.active,
+            minutes: this.state.minutes,
             setError: this.setError,
             clearError: this.clearError,
             setWorkout: this.setWorkout,
@@ -95,7 +104,8 @@ export class WorkOutProvider extends Component {
             clearUser: this.clearUser,
             setWorkOutsList: this.setWorkOutsList,
             clearWorkOutsList: this.clearWorkOutsList,
-            toggleActive: this.toggleActive
+            toggleActive: this.toggleActive,
+            setMinutes: this.setMinutes
         };
 
         return (
