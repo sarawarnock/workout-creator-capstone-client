@@ -69,10 +69,10 @@ export default class StartWorkout extends React.Component{
             .catch(this.context.setError);
 
         if (workout.length > 0) {
-            this.setState({ minutes: this.context.workouts[0].total_length })
+            this.setState({ minutes: this.context.workout[0].total_length })
         }
     }
-    
+
     renderWorkOut() {        
         const { workout } = this.context;
         const { currentStep } = this.state; 
