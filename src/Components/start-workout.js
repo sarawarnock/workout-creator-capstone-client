@@ -4,6 +4,7 @@ import WorkoutApiService from '../Services/workout-api-service';
 import FinishedWorkout from './finished-workout';
 import StartExercise from './start-exercise';
 import Stopwatch from './Stopwatch';
+import Loaders from './loaders'
 
 export default class StartWorkout extends React.Component{
     static defaultProps = {
@@ -60,27 +61,27 @@ export default class StartWorkout extends React.Component{
         this.context.clearError();
         const { workout_id } = this.props.match.params;
         const { workout } = this.context;
-
+        if (workout.length > 0) {
+            console.log('setting minutes to state...');
+            this.setState({ minutes: workout[0].total_length })
+        }
         WorkoutApiService.getWorkoutDetails(workout_id)
             .then(this.context.setWorkout)
             .catch(this.context.setError);
         WorkoutApiService.getWorkoutsById()
             .then(this.context.setWorkOutsList)
             .catch(this.context.setError);
-
-        if (workout.length > 0) {
-            this.setState({ minutes: this.context.workout[0].total_length })
-        }
     }
-
+    
     renderWorkOut() {        
+        console.log('state', this.state);
         const { workout } = this.context;
         const { currentStep } = this.state; 
         const i = currentStep - 1;
         const exercise = workout[i];
 
         if (workout.length === 0) {
-            return <div>Loading</div>
+            return <Loaders />
         }
 
         if (this.state.minutes === 0) {

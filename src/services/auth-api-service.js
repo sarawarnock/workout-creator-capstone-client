@@ -1,8 +1,10 @@
 import config from '../config';
 import TokenService from './token-service-lf';
 import IdleService from './idle-service';
+// import WorkOutContext from '../context';
 
 const AuthApiService = {
+
     postUser(user) {
         // console.log('auth-api-service posting user:', user);
         return fetch(`${config.API_ENDPOINT}/users`, {
@@ -72,7 +74,8 @@ const AuthApiService = {
             return res;
         })
         .catch(err => {
-            this.context.setError(err);
+            console.log('Refresh token request error')
+            console.error(err)
         });
     },
 }

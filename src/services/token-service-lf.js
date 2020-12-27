@@ -2,7 +2,7 @@ import config from '../config';
 import jwtDecode from 'jwt-decode';
 
 let _timeoutId;
-const _TEN_SECONDS_IN_MS = 10000;
+const _THIRTY_SECONDS_IN_MS = 30000;
 
 const TokenService = {
     saveAuthToken(token) {
@@ -44,7 +44,7 @@ const TokenService = {
         the callback is passed in as an argument so could be anything,
             in this app, the callback is for calling the refresh endpoint
         */
-        _timeoutId = setTimeout(callback, msUntilExpiry - _TEN_SECONDS_IN_MS);
+        _timeoutId = setTimeout(callback, msUntilExpiry - _THIRTY_SECONDS_IN_MS);
     },
     clearCallbackBeforeExpiry() {
         clearTimeout(_timeoutId);

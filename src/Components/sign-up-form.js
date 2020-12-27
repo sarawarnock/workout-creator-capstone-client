@@ -66,6 +66,7 @@ export default class SignUpForm extends Component {
                             type="password" 
                             id="password" 
                             placeholder="Password"
+                            autoComplete="on"
                             required
                         /> 
                     </div>
