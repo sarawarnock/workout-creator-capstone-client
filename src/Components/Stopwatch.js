@@ -30,16 +30,21 @@ export default function StopWatch(props) {
             updatedMS = 0;
             updatedSec--;
         }
+        if (updatedMin === 0) {
+            _reset();
+        }
         updatedMS++;
         return setTime({ ms: updatedMS, sec: updatedSec, min: updatedMin });
     };
 
     const _pause = () => {
+        console.log('running pause stopwatch');
         clearInterval(interv);
         setStatus(2);
     };
 
     const _reset = () => {
+        console.log('running reset stopwatch');
         clearInterval(interv);
         setStatus(0);
         setTime({ ms: 0, sec: 60, min: length });
@@ -47,41 +52,73 @@ export default function StopWatch(props) {
 
     const _resume = () => _start();
 
-    return ( <>
-        <div className="sw-cont">
-            <h4>
-                <span>
-                    { (time.sec >= 10) ? time.sec : "0" + time.sec }
-                </span>
-            </h4>
-            <div className="btn-cont">
-                { (status === 0) 
-                    ?   <button onClick={_start}
-                            id="start">START</button>
-                    :   ""
-                }
-                { (status === 1)
-                    ?   <><button onClick={_pause}
-                            id="pause">PAUSE</button>
-                        <button onClick={_reset}
-                            id="reset">RESET</button></>
-                    : ""
-                }   
-                { (status === 2)
-                    ?   <><button onClick={_resume}
-                                id="pause">RESUME</button>
-                        <button onClick={_reset}
-                            id="reset">RESET</button></>
-                    :   ""
-                }
-                
+    if (time.min > 1) {
+        return (<>
+            <div className="sw-cont">
+                <h4>
+                    <span>
+                        { (time.sec >= 10) ? time.sec : "0" + time.sec }
+                    </span>
+                </h4>
+                <div className="btn-cont">
+                    { (status === 0) 
+                        ?   <button onClick={_start}
+                                id="start">START</button>
+                        :   ""
+                    }
+                    { (status === 1)
+                        ?   <><button onClick={_pause}
+                                id="pause">PAUSE</button>
+                            <button onClick={_reset}
+                                id="reset">RESET</button></>
+                        : ""
+                    }   
+                    { (status === 2)
+                        ?   <><button onClick={_resume}
+                                    id="pause">RESUME</button>
+                            <button onClick={_reset}
+                                id="reset">RESET</button></>
+                        :   ""
+                    }
+                    
+                </div>
             </div>
-        </div>
-        <h5>
-            <span>
-                { time.min }
-            </span>
-            <span> minutes</span>
-        </h5>
-    </>)
+            <h5>
+                <span>
+                    { time.min }
+                </span>
+                <span> minutes</span>
+            </h5>
+        </>)
+    }
+    return (<>
+            <div className="sw-cont">
+                <h4>
+                    <span>
+                        { (time.sec >= 10) ? time.sec : "0" + time.sec }
+                    </span>
+                </h4>
+                <div className="btn-cont">
+                    { (status === 0) 
+                        ?   <button onClick={_start}
+                                id="start">START</button>
+                        :   ""
+                    }
+                    { (status === 1)
+                        ?   <><button onClick={_pause}
+                                id="pause">PAUSE</button>
+                            <button onClick={_reset}
+                                id="reset">RESET</button></>
+                        : ""
+                    }   
+                    { (status === 2)
+                        ?   <><button onClick={_resume}
+                                    id="pause">RESUME</button>
+                            <button onClick={_reset}
+                                id="reset">RESET</button></>
+                        :   ""
+                    }
+                </div>
+            </div>
+        </>)
 }

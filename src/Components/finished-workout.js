@@ -6,8 +6,9 @@ const FinishedWorkout = (props) => {
     return (
        <>       
         <h2>Great job!</h2>
-        <h3>Go another round?</h3> 
-        <Link to={`workouts/start/${workout.workouts_id}`}>Start Over</Link>
+        <h3>Go another round?</h3>
+        <Link className="logout"
+            to={`workouts/start/${workout.workouts_id}`}><h3>Start Over</h3></Link>
        </>
     )
 }

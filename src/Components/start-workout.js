@@ -83,8 +83,8 @@ export default class StartWorkout extends React.Component{
         if (workout.length === 0) {
             return <Loaders />
         }
-
-        if (this.state.minutes === 0) {
+        // Take into account for when user refreshes. Minutes will start at null and not update
+        if (this.state.minutes === 0  || this.state.minutes === -workout[0].total_length ) {
             return <FinishedWorkout workout={workout}/>
         }
 
