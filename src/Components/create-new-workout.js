@@ -163,9 +163,9 @@ class CreateNewWorkout extends Component {
     const { error } = this.state
     return (
       <>
-        <div>{error}</div>
         <form className="create-form"
           onSubmit={this.handleFormSubmit}>
+            <div role='alert'>{error && <p className='error'>{error}</p>}</div>
             <MuscleGroup
               currentStep={this.state.currentStep}
               checkboxes={this.state.checkboxes}
