@@ -30,9 +30,9 @@ export default function StopWatch(props) {
             updatedMS = 0;
             updatedSec--;
         }
-        if (updatedMin === 0) {
-            _reset();
-        }
+        // if (updatedMin === 0) {
+        //     _reset();
+        // }
         updatedMS++;
         return setTime({ ms: updatedMS, sec: updatedSec, min: updatedMin });
     };
