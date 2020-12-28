@@ -1,63 +1,561 @@
 .App {
   text-align: center;
+  color: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.error {
+  color: rgb(130, 0, 0);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* HEADER AREA */
+header {
+  display: fixed;
+  top: 0;
+  width: 100%;
+  padding: 40px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header nav {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+h1 {
+  font-family: Helvetica Neue;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 59px;
+}
+
+.home-link {
+  width: 300px;
+  text-align: left;
+}
+
+.home-link:hover {
+  background-color:  #E5E5E5;
+}
+
+h2 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 57px;
+}
+
+nav {
+  display: grid;
+  grid-area: nav;
+  justify-self: center;
+}
+
+.header-links {
+  height: 50px;
+  width: 120px;
+  border-radius: 30px;
+  background-color: #C4C4C4;
+  padding: 10px 20px;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.signup, .workouts {
+  margin-right: 50px;
+}
+
+.workouts:hover {
+  background: #006BFF;
+  color: #fff;
+}
+
+.logout {
+  background: #006BFF;
+  color: #fff;
+}
+
+.logout:hover {
+  background:#fff;
+  color: #006BFF;
+  border: solid 1px #006BFF;
+}
+
+/* .logout {
+  background-color: #fff;
+  color: #006BFF;
+  border: solid 1.5px #006BFF;
+}
+
+.logout:hover {
+  background-color: #006BFF;
   color: white;
+  border: solid 1.5px #006BFF;
+} */
+
+
+/* MAIN PAGE */
+main {
+  margin: 0 auto;
+  padding: 0 40px;
+  max-width: 1080px;
 }
 
-.App-link {
-  color: #61dafb;
+.landing-text {
+  margin: 25px auto 85px;
+  width: 589px;
+  text-align: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+main p {
+  font-family: Helvetica Neue;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  margin-bottom: 25px;
 }
 
-.nav-link {
-  list-style-type: none;
+.link {
+  width: 200px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #C4C4C4;
+  padding: 10px 40px;
+  font-size: 24px;
+  line-height: 29px;
+  margin-top: 40px;
+}
+
+/* LOGIN / SIGN UP */
+.form-container {
+  margin: 0 auto;
+}
+
+.inp-cont {
+  margin: 0 auto;
+}
+
+.form-label {
+  font-size: 24px;
+  line-height: 29px;
+  border: none;
+}
+
+.login-form input, .signup-form input {
+  width: 403px;
+  height: 80px;
+  background:#E7F0FC;
+  opacity: 0.9;
+  font-size: 24px;
+  line-height: 29px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+.login-form input:-webkit-autofill,  .signup-form input:-webkit-autofill {
+  background-color: #C4C4C4;
+  font-size: 24px;
+}
+
+.user-label {
+  border: none;
+}
+
+
+/* CREATE WORKOUT */
+.create-form {
+  text-align: center;
+}
+
+.row {
+  /* text-align: center; */
+  margin: 0 auto;
+  max-width: 500px;
+}
+/* 
+#C4C4C4 
+#5a98f0
+#006BFF
+*/
+
+label {
+  display: grid;
+  align-self: center;
+  margin: 10px;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bolder;
+  border: 1px solid rgb(14, 74, 159);
+  color: rgb(14, 74, 159);
+  border-radius: 4px;
+}
+
+.check {
+  background-color: #fff;
+}
+
+input:checked + label {
+  background-color: rgb(14, 74, 159);;
+  font-weight: bolder;
+  border: 1px solid rgb(14, 74, 159);
+  color: #fff;
+}
+
+.checkbox-input {
+  background-color: #fff;
+  border: 1px solid rgb(14, 74, 159);
+  color: rgb(14, 74, 159);
+}
+
+.selected-checkbox {
+  background-color:rgb(14, 74, 159);
+  font-weight: bolder;
+  height: auto;
+  margin: 10px;
+  border: 1.5px solid rgb(14, 74, 159);
+  color: #fff;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.name-wo {
+  padding: 5px;
+  font-size: 24px;
+  border-radius: 4px;
+  width: 30rem;
+  margin  : 10px;
+  border: solid 2px rgb(14, 74, 159);
+}
+
+.name-wo::placeholder {
+  color: #C4C4C4;
+}
+
+.arr {
+  color: #fff;
+  border: solid 1.5px rgb(14, 74, 159);
+  background-color: rgb(14, 74, 159);
+}
+
+.arr:hover{
+  background: rgb(14, 74, 159);
+  transform: scale(1.1);
+  border: solid 1.5px rgb(14, 74, 159);
+}
+
+/* WORKOUTS LIST */
+.workouts-header {
+  margin-bottom: 20px;
+}
+
+.menu {
+  text-align: center;
+  padding: 0;
+}
+
+.row {
+  display: grid;
+  grid-area: main;
+}
+
+button, .view-link {
+background-color: #C4C4C4;
+border-radius:6px;
+border:1px solid #C4C4C4;
+display:inline-block;
+cursor:pointer;
+color:black;
+font-family:Arial;
+font-weight:bold;
+padding:6px 24px;
+text-decoration:none;
+text-shadow:0px 1px 0px #C4C4C4;
+}
+a:hover, button:hover {
+background-color: #a2a2a2;
+transition: .3s;
+}
+a:active, button:active {
+position:relative;
+top:1px;
+transition: .3s;
+}
+
+.btn {
+  margin: 10px;
+  font-size: 18px
+}
+
+.workouts-list {
+  font-size: 24px;
 }
 
 .workouts-table {
-  margin-left: auto; 
-  margin-right: auto;
+  margin: 0 auto;
   table-layout: fixed;
-  padding: 20px;
+  padding: 30px 0;
+  min-width: 720px;
 }
 
-.tb-name {
-  width: 30%;
+.tr {
+  border-bottom: .5px solid black;
 }
 
-.tb-date {
+.tb-name, .tb-del  {
   width: 30%;
+  font-size: 20px;
 }
 
 .tb-view {
   width: 30%;
+  margin: 0 40px;
 }
 
-/* color ideas: #EB46C2, #2439D6, #32F5B1 */
+.wo-name {
+  font-size: 22px;
+}
+
+.create-link {
+  margin-top: 10px;
+}
+
+.create-link:hover {
+  background: #006BFF;
+  color: #fff;
+}
+
+/* VIEW WORKOUT */
+.flex-cnt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tbh {
+  vertical-align: top;
+}
+
+.inst {
+  font-size: 1.8rem
+}
+
+.ic {
+  display: flex;
+  align-items: center;
+}
+
+.dt {
+  font-size: 1.8rem;
+}
+
+.f-left {
+  float: left;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.lrg {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.up-c-left {
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.num {
+  font-size: 1.5rem;
+}
+
+.desc {
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  list-style-type: none;
+  color: white;
+}
+
+.navbar {
+  color: white;
+  align-self: start;
+}
+
+.nav {
+  text-align: center;
+  padding: 20px;
+}
+
+.detail {
+  font-size: 20px;
+}
+
+.workout-details {
+  font-size: 20px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.exercise-reps {
+  color: white;
+  font-size: 24px;
+}
+
+.exercise-desc {
+  font-size: 18px;
+}
+
+/* Exercise Screens */
+.cap {
+  text-transform: uppercase;
+}
+
+.ex-cont {
+  margin: 20px auto;
+  max-width: 560px;
+  display: flex;
+}
+
+.ex-desc {
+  margin: 0 10px 0 0;
+  font-size: 24px;
+}
+
+.ex-reps {
+  margin: 0 0 0 10px;
+  font-size: 3rem;
+}
+
+/* STOPWATCH */
+.sw-cont {
+  margin: 40px;
+}
+
+.sw-cont h4{
+  margin: 10px;
+  font-size: 6rem;
+}
+
+h5 {
+  margin: 40px;
+  font-size: 2rem;
+}
+
+.btn-cont  button{
+  margin: 0 5px;
+}
+
+/* @media screen and (max-width: 600px) {
+  .App {
+      display: grid;
+      grid-template-columns: 15% 35% 35% 15%;
+      grid-template-areas: 
+      ". nav nav ."
+      ". header header ."
+      ". main main ."
+  }
+
+  header {
+      grid-area: header;
+  }
+
+  nav {
+      display: grid;
+      grid-area: nav;
+      justify-self: center;
+  }
+
+  main {
+      display: grid;
+      grid-area: main;
+      padding: 10px;
+  }
+
+  .row {
+      display: grid;
+      grid-area: main;
+  }
+
+  .nav-link {
+      list-style-type: none;
+      color: white;
+  }
+
+  .nav label {
+      display: inline-block;
+      width: 100%; 
+      color: white;
+  }
+
+  .nav ul li {
+      display: block;
+      cursor: pointer;
+  }
+
+  label {
+      display: grid;
+      align-self: center;
+      border: 1px solid white;
+      margin: 10px;
+      padding: 10px;
+      font-size: 18px;
+  }
+}  */
+
+/* @media screen and (min-width: 600px) {
+  .App {
+      display: grid;
+      grid-template-columns: 15% 35% 35% 15%;
+      grid-template-areas: 
+      "header header . ."
+      "sidebar main main ."
+  }
+
+  .nav-link {
+      list-style-type: none;
+      color: white;
+  }
+
+  .menu {
+      text-align: center;
+  }
+  
+  .navbar {
+      color: white;
+      align-self: start;
+  }
+
+  main {
+      display: grid;
+      grid-area: main;
+      padding: 10px;
+  }
+
+  .row {
+      display: grid;
+      grid-area: main;
+  }
+
+  label {
+      display: grid;
+      align-self: center;
+  }
+} */

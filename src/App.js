@@ -1,131 +1,122 @@
-import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
-import './App2.css';
+import React, { Component } from 'react';
+import { Switch, withRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import './App.css';
+import './Arrows.css';
 
-import LandingPage from './landing-page';
-import PersonalizedHomePage from './personalized-home-page';
-import PastWorkouts from './past-workouts';
-import Header from './header';
-// import Login from './log-in';
-import LoginRoute from './login-route';
-// import SignUp from './sign-up';
-import SignUpRoute from './sign-up-route';
-import ViewPastWorkout from './view-past-workout';
-import CreateNewWorkout from './create-new-workout';
-import NotFoundPage from './not-found-page';
+import PublicRoute from './Routes/public-route'
+import PrivateRoute from './Routes/private-route'
+import LandingPage from './Components/landing-page';
 
-import config from './config';
-import TokenService from './services/token-service-lf';
+import Header from './Components/header';
+import WorkoutsList from './Components/workouts-list';
+import LoginRoute from './Routes/login-route';
+import SignUpRoute from './Routes/sign-up-route';
+import ViewWorkout from './Components/view-workout';
+import CreateWorkoutRoute from './Routes/create-workout-route';
+import StartWorkout from './Components/start-workout';
+import NotFoundPage from './Components/not-found-page';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      first_name: '',
-      appSavedWorkouts: [],
-      appSavedWorkoutDetails: []
+import TokenService from './Services/token-service-lf';
+import AuthApiService from './Services/auth-api-service';
+import IdleService from './Services/idle-service';
+
+import WorkoutContext from './context';
+
+class App extends Component {
+
+    static contextType = WorkoutContext;
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            loggedIn: false,
+            error: false,
+        };
     }
-  }
+  
+    static getDerivedStateFromError(error) {
+        return { error: true };
+    }
 
-  componentDidMount(){
-    //get workouts by user ID
-    //if the user has not logged in, get all past workouts, once user logs in, get their past workouts
-    let getWorkoutUrl = ''
-    if (sessionStorage.user_id == undefined) {
-      getWorkoutUrl = `${config.API_ENDPOINT}/workouts`
-    } else 
-    getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/${TokenService.getUserId()}`;
-    console.log(sessionStorage.user_id)
-    fetch(getWorkoutUrl)
-        .then(response => response.json())
-        //map over the workouts by ID, returning each workout
-        //so that we can get the individual workout details for that workout (including the exercises)
-        .then(workouts => {
-            this.setState({
-                appSavedWorkouts: workouts
+    componentDidMount(){
+        localStorage.clear();
+        IdleService.setIdleCallback(this.logoutFromIdle);
+        if (TokenService.hasAuthToken()) {
+            IdleService.regiserIdleTimerResets();
+            TokenService.queueCallbackBeforeExpiry(() => {
+                AuthApiService.postRefreshToken();
             });
-      })
-      //get all workout details for all workouts to use in Past Workouts component
-      let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/`;
-        fetch(getWorkoutDetailsUrl)
-        .then(response => response.json())
-        .then(workoutDetails => {
-            this.setState({
-              appSavedWorkoutDetails: workoutDetails
-            });
-        })
-        .catch(error => this.setState({ error }))
-  }
+        } 
+    }
 
-  updateAppSavedWorkouts = newWorkout => {
-    this.setState({
-      appSavedWorkouts: [...this.state.appSavedWorkouts, newWorkout]
-    })
-  }
+    componentWillUnmount() {
+        IdleService.unRegisterIdleResets();
+        TokenService.clearCallbackBeforeExpiry();
+    }
 
-  //renders all of the routes 
-  renderMainPages = () => {
-    return (
-      <div className="main-pages">
-      <Switch>        
-        <Route 
-          exact
-          path='/'
-          component={LandingPage}
-        />
-        <Route 
-          exact
-          path={`/home`}
-          component={PersonalizedHomePage}
-        />
-        <Route 
-          exact
-          path='/create-workout'
-          render={(props) => <CreateNewWorkout {...props} saveNewWorkout={this.updateAppSavedWorkouts} />}
-        />
-        <Route 
-          exact
-          path={`/past-workouts`}
-          render={(props) => <PastWorkouts {...props} appSavedWorkouts={this.state.appSavedWorkouts} 
-            appSavedWorkoutDetails={this.state.appSavedWorkoutDetails}
-          />}
-        />
-        <Route 
-          exact
-          path='/login'
-          component={LoginRoute}
-        />
-        <Route 
-          exact
-          path='/sign-up'
-          component={SignUp}
-        />
-        <Route 
-          exact
-          path='/past-workouts/:workout_id'
-          render={(props) => <ViewPastWorkout {...props}
-          appSavedWorkoutDetails={this.state.appSavedWorkoutDetails} />}
-        />
-        <Route 
-          component={NotFoundPage}
-        />
-      </Switch>
-      </div>
-    )
-  }
+    logoutFromIdle = () => {
+        TokenService.clearAuthToken();
+        TokenService.clearCallbackBeforeExpiry();
+        IdleService.unRegisterIdleResets();
+        this.forceUpdate();
+    }
 
   render() {
     return (
-      <div className="App">
-        <Header />
-        <main>
-          {this.renderMainPages()}
-        </main>
-      </div>
+        <div className="App">
+            
+            <Header />
+            <main className="main-pages">
+                <Switch>        
+                    <Route 
+                        exact
+                        path='/'
+                        component={LandingPage}
+                    />
+                    {/* <PrivateRoute 
+                        exact
+                        path={`/home`}
+                        component={PersonalizedHomePage}
+                    /> */}
+                    <PublicRoute 
+                        exact
+                        path='/login'
+                        component={LoginRoute}
+                    />
+                    <PublicRoute 
+                        exact
+                        path='/sign-up'
+                        component={SignUpRoute}
+                    />
+                    <PrivateRoute 
+                        exact
+                        path='/create-workout'
+                        component={CreateWorkoutRoute}
+                    />
+                    <PrivateRoute 
+                        exact
+                        path={`/workouts`}
+                        component={WorkoutsList}
+                    />
+                    <PrivateRoute 
+                        exact
+                        path='/workouts/:workout_id'
+                        component={ViewWorkout}
+                    />
+                    <PrivateRoute 
+                        expact
+                        path='/workouts/start/:workout_id'
+                        component={StartWorkout}
+                    />
+                    <Route 
+                        component={NotFoundPage}
+                    />
+                </Switch>
+            </main>
+        </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

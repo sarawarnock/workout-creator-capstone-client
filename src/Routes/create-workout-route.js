@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // import Login from './log-in';
-import LoginForm from './login-form';
+import CreateNewWorkout from '../Components/create-new-workout';
 
-export default class LoginRoute extends Component {
+export default class CreateWorkoutRoute extends Component {
     static defaultProps = {
         location: {},
         history: {
@@ -10,17 +10,17 @@ export default class LoginRoute extends Component {
         }
     }
  
-    handleSubmitSuccess = () => {
+    handleSubmitSuccess = (id) => {
         const { location, history } = this.props;
-        const destination = (location.state || {}).from || '/home';
+        const destination = (location.state || {}).from || `/workouts/${id}`;
         history.push(destination);
     }
 
     render() {
         return (
             <div className="form-container">
-                <h2>Login</h2>
-                <LoginForm 
+                {/* <h2>Create New Workout</h2> */}
+                <CreateNewWorkout 
                     onSubmitSuccess={this.handleSubmitSuccess}
                 />
             </div>

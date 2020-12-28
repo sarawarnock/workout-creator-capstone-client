@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 
 export const nullUser = {};
-export const nullWorkOut = {};
+export const nullWorkOut = [];
 export const nullUserWorkOuts = [];
+export const nullWorkouts = [];
 
 const WorkOutContext = React.createContext({
     error: null,
     user: nullUser,
     workout: nullWorkOut,
-    userWorkouts: nullUserWorkOuts,
-    workouts: [],
+    userWorkouts: [],
+    workouts: nullWorkouts,
     active: false,
+    minutes: null,
     setError: () => {},
     clearError: () => {},
     setWorkout: () => {},
@@ -20,6 +22,7 @@ const WorkOutContext = React.createContext({
     setWorkOutsList: () => {},
     clearWorkOutsList: () => {},
     toggleActive: () => {},
+    setMinutes: () => {}
 });
 
 export default WorkOutContext;
@@ -29,24 +32,29 @@ export class WorkOutProvider extends Component {
         error: null,
         user: nullUser,
         workout: nullWorkOut,
-        userWorkouts: nullUserWorkOuts,
-        workouts: [],
-        active: false
+        userWorkouts: [],
+        workouts: nullWorkouts,
+        active: false,
+        minutes: null
     }
 
     setError = error => {
+        console.log('setting context error:', error);
         this.setState({ error });
     };
 
     clearError = () => {
+        console.log('clearing context error');
         this.setState({ error: null });
     };
 
     setWorkout = workout => {
+        console.log('setting context workout:', workout); 
         this.setState({ workout });
     };
 
     clearWorkOut = () => {
+        console.log('clearing context workout');
         this.setWorkout(nullWorkOut);
     };
 
@@ -67,12 +75,17 @@ export class WorkOutProvider extends Component {
 
     clearWorkOutsList = () => {
         console.log('clearing workouts list');
-        this.setWorkOutsList({ nullUserWorkOuts });
+        this.setWorkOutsList({ nullWorkouts });
     };
 
     toggleActive = () => {
         this.setState({ active: !this.state.active });
     };
+
+    setMinutes = minutes => {
+        console.log('setting context minutes', minutes);
+        this.setState({ minutes: minutes })
+    }
 
     render() {
         const value = {
@@ -82,15 +95,17 @@ export class WorkOutProvider extends Component {
             userWorkouts: this.state.userWorkouts,
             workouts: this.state.workouts,
             active: this.state.active,
+            minutes: this.state.minutes,
             setError: this.setError,
             clearError: this.clearError,
             setWorkout: this.setWorkout,
             clearWorkOut: this.clearWorkOut,
             setUser: this.setUser,
             clearUser: this.clearUser,
-            setWorkoutsList: this.setWorkOutsList,
+            setWorkOutsList: this.setWorkOutsList,
             clearWorkOutsList: this.clearWorkOutsList,
-            toggleActive: this.toggleActive
+            toggleActive: this.toggleActive,
+            setMinutes: this.setMinutes
         };
 
         return (

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AuthApiService from './services/auth-api-service-lf';
+import AuthApiService from '../Services/auth-api-service';
 
 export default class LoginForm extends Component {
     static defaultProps = {
@@ -26,14 +26,14 @@ export default class LoginForm extends Component {
     }
 
     render() {
-        // const { error } = this.state;
+        const { error } = this.state;
         return (
             <>
                 <form
                     className="login-form"
                     onSubmit={this.handleSubmitJwtAuth}
                 >
-                    {/* <div role='alert'>{error && <p className='error'>{error}</p>}</div> */}
+                    <div role='alert'>{error && <p className='error'>{error}</p>}</div>
                     <div className="user-inp inp-cont">
                         <label className ="form-label" htmlFor="email">Username</label>
                         <input 
@@ -49,10 +49,11 @@ export default class LoginForm extends Component {
                             name="loginPassword"
                             type="password" 
                             id="password"
+                            autoComplete="on"
                             required
                         />
                     </div>
-                    <button className="submit" type="submit"> Log In </button>
+                    <button className="submit btn" type="submit"> Log In </button>
                 </form>
             </>
         )

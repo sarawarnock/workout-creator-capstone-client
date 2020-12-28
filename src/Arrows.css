@@ -1,0 +1,47 @@
+.la, .ra {
+    display: grid;
+    place-items: center;
+    place-content: center;
+    color: #fff;
+    background-color: #262626;
+    border-radius: 50%;
+    border: none;
+    padding: 1.2rem;
+    transition: .3s;
+}
+
+.la:hover, .ra:hover {
+    background: #006aff
+}
+
+.arrow {
+    --border-size: .25rem;
+    --size: calc(var(--border-size) * 4);
+    --color: #fff;
+
+    border-left: var(--border-size) solid var(--color);
+    border-bottom: var(--border-size) solid var(--color);
+    width: var(--size);
+    height: var(--size);
+    transform: rotate(var(--direction, 0));
+}
+
+.up-arrow {
+    --direction: 135deg;
+}
+
+.right-arrow {
+    --direction: 225deg;
+    position: relative;
+    right: 2px;
+}
+
+.down-arrow {
+    --direction: -45deg;
+}
+
+.left-arrow {
+    --direction: 45deg;
+    position: relative;
+    left: 2px;
+}

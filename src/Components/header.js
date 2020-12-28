@@ -1,17 +1,38 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import TokenService from './services/token-service-lf';
+import WorkOutContext from '../context';
+import TokenService from '../Services/token-service-lf';
 
 export default class Header extends Component {
+
+  static contextType = WorkOutContext
 
   handleLogOut = () => {
     TokenService.clearAuthToken();
   }
 
   renderLogOutLink() {
+    const { workouts } = this.context;
+    if (workouts.length === 0) {
+      return (
+        <>
+          <Link to="/create-workout" 
+            className="header-links workouts"
+          >
+            Create
+          </Link>
+          <Link to="/" 
+            className="logout header-links"
+            onClick={this.handleLogOut}
+          >
+            Logout
+          </Link>
+        </>
+      )
+    }
     return (
       <>
-        <Link to="/past-workouts" 
+        <Link to="/workouts" 
           className="workouts header-links"
         >
           Workouts
