@@ -1,10 +1,12 @@
 import config from '../config';
 import TokenService from './token-service-lf';
 import IdleService from './idle-service';
+// import WorkOutContext from '../context';
 
 const AuthApiService = {
+
     postUser(user) {
-        console.log('auth-api-service posting user:', user);
+        // console.log('auth-api-service posting user:', user);
         return fetch(`${config.API_ENDPOINT}/users`, {
             method: 'POST',
             headers: {
@@ -17,9 +19,6 @@ const AuthApiService = {
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
             )
-            .catch(err => {
-                console.log('error:', err)
-            })
     },
     postLogin(credentials) {
         return fetch(`${config.API_ENDPOINT}/auth/login`, {
@@ -50,7 +49,7 @@ const AuthApiService = {
         });
     },
     postRefreshToken() {
-        console.log('auth-api-service refreshing token');
+        // console.log('auth-api-service refreshing token');
         return fetch(`${config.API_ENDPOINT}/auth/refresh`, {
             method: 'POST',
             headers: {
@@ -75,9 +74,10 @@ const AuthApiService = {
             return res;
         })
         .catch(err => {
-            this.context.setError(err);
+            console.log('Refresh token request error')
+            console.error(err)
         });
     },
 }
 
-export default AuthApiService
+export default AuthApiService;

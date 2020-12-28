@@ -10,7 +10,6 @@ export default class SignUpForm extends Component {
 
     static contextType = WorkOutContext;
 
-
     state = { error: null };
 
     handleSubmit = ev => {
@@ -24,12 +23,10 @@ export default class SignUpForm extends Component {
         }
         AuthApiService.postUser(newUser)
         .then(res => {
-            console.log(`create user res`, res)
             this.context.setUser(res)
             AuthApiService.postLogin({
                 email: signUpEmail.value,
-                password: signUpPassword.value,
-                first_name: signUpFirstName.value
+                password: signUpPassword.value
             })
             .then(user => {
                 signUpEmail.value = ''
@@ -39,6 +36,7 @@ export default class SignUpForm extends Component {
             })
         })
         .catch(res => {
+            // console.log('setting error to state', res.error )
             this.setState({ error: res.error })
         });
     }
@@ -68,6 +66,7 @@ export default class SignUpForm extends Component {
                             type="password" 
                             id="password" 
                             placeholder="Password"
+                            autoComplete="on"
                             required
                         /> 
                     </div>
