@@ -20,8 +20,11 @@ export default class LandingPage extends React.Component {
       <main className="main">
         <h2>Create An EMOM Style Workout</h2>
         <div className="landing-text">
-          <p>What is an EMOM? EMOM stands for 'Every Minute On the Minute' - a style of workout 
-              where you do a different exercise each minute (and repeat for a given number of minutes)! 
+          <p>What is an EMOM? 
+              <br />
+              EMOM stands for 'Every Minute On the Minute' - a style of workout 
+              where you do a different exercise starting at the top of each minute and resting after you finish that exercise, before moving on to the next exercise in the next minute.
+               
               This style is a type of MetCon. MetCon is short for metabolic conditioning; a term that 
               incorporates short bouts of higher-intensity training designed to increase metabolic demand 
               and increase energy usage.</p>
