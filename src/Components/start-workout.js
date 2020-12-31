@@ -23,6 +23,24 @@ export default class StartWorkout extends React.Component{
             name: ''
         }
     }
+    
+    componentDidMount() {
+        this.context.clearError();
+        const { workout_id } = this.props.match.params;
+        WorkoutApiService.getWorkoutDetails(workout_id)
+            .then(this.context.setWorkout)
+            .catch(this.context.setError);
+        WorkoutApiService.getWorkoutsById()
+            .then(this.context.setWorkOutsList)
+            .catch(this.context.setError);
+    }
+
+    componentDidUpdate() {
+        const { workout } = this.context;
+        if (workout.length > 0 && this.state.minutes === null) {
+            this.setState({minutes: workout[0].total_length})
+        }
+    }
 
     _next = () => {
         let currentStep = this.state.currentStep;
@@ -56,26 +74,12 @@ export default class StartWorkout extends React.Component{
             minutes: minutes - 1
         })) 
     }
-
-    componentDidMount() {
-        this.context.clearError();
-        const { workout_id } = this.props.match.params;
-        const { workout } = this.context;
-        if (workout.length > 0) {
-            console.log('setting minutes to state...');
-            this.setState({ minutes: workout[0].total_length })
-        }
-        WorkoutApiService.getWorkoutDetails(workout_id)
-            .then(this.context.setWorkout)
-            .catch(this.context.setError);
-        WorkoutApiService.getWorkoutsById()
-            .then(this.context.setWorkOutsList)
-            .catch(this.context.setError);
-    }
     
     renderWorkOut() {        
         console.log('state', this.state);
-        const { workout } = this.context;
+        const { workout, workouts } = this.context;
+        console.log('workout context', workout);
+        console.log('workoutsss context', workouts)
         const { currentStep } = this.state; 
         const i = currentStep - 1;
         const exercise = workout[i];
@@ -83,8 +87,8 @@ export default class StartWorkout extends React.Component{
         if (workout.length === 0) {
             return <Loaders />
         }
-        // Take into account for when user refreshes. Minutes will start at null and not update
-        if (this.state.minutes === 0  || this.state.minutes === -workout[0].total_length ) {
+        
+        if (this.state.minutes === 0) {
             return <FinishedWorkout workout={workout}/>
         }
 

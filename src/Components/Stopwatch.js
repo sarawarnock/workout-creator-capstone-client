@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 export default function StopWatch(props) {
     const { length } = props;
 
@@ -30,11 +29,19 @@ export default function StopWatch(props) {
             updatedMS = 0;
             updatedSec--;
         }
-        // if (updatedMin === 0) {
-        //     _reset();
-        // }
+        if (updatedMin === 0) {
+            _stop();
+        }
         updatedMS++;
         return setTime({ ms: updatedMS, sec: updatedSec, min: updatedMin });
+    };
+
+    let _stop = () => {
+        console.log('running stop');
+        clearInterval(interv);
+        // setStatus(0);
+        setTime({ ms: 0, sec: 60, min: length });
+        _stop = function(){};
     };
 
     const _pause = () => {
