@@ -14,12 +14,8 @@ header {
   top: 0;
   width: 100%;
   padding: 30px;
-  /* padding: 40px; */
   box-shadow: 0 2px 3px #a9bfcd;
-
   background: #9AE3C0;
-  /* background: #C8FFE4; */
-  /* background: #fff; */
 }
 
 header nav {
@@ -42,7 +38,6 @@ h1 {
 }
 
 .home-link:hover {
-  /* background-color:  #E5E5E5; */
   background: #9AE3C0;
 }
 
@@ -77,54 +72,30 @@ nav {
   background-color: #fff;
   border: solid 2px #24851b;
   color: #2a851b;
-  /* background-color: #C4C4C4; */
-  /* background: #AFE2FF; */
-  /* background: #C8FFE4; */
-  /* background: #36B1F6; */
 }
 
 .signup:hover, .workouts:hover {
-  /* background: #006BFF; */
   background: #24851b;
   border: solid 2px #24851b;
   color: #fff;
 }
 
 .login, .logout {
-  /* background: #AFE2FF; */
-  /* background: #9AE3C0; */
   background:#fff;
   color: #006BFF;
   border: solid 2px #006BFF;
 }
 
 .login:hover, .logout:hover {
-  /* background:#fff;
-  color: #006BFF;
-  border: solid 1px #006BFF; */
   background: #006BFF;
   color: #fff;
 }
-
-/* .logout {
-  background-color: #fff;
-  color: #006BFF;
-  border: solid 1.5px #006BFF;
-}
-
-.logout:hover {
-  background-color: #006BFF;
-  color: white;
-  border: solid 1.5px #006BFF;
-} */
-
 
 /* MAIN PAGE */
 main {
   margin: 0 auto;
   padding: 40px;
   max-width: 1080px;
-  /* background-color: #fff; */
 }
 
 .landing-text {
@@ -146,8 +117,6 @@ main p {
   width: 200px;
   height: 50px;
   border-radius: 30px;
-  /* background-color: #C4C4C4; */
-  /* background-color: #36B1F6; */
 
   padding: 10px 40px;
   font-size: 24px;
@@ -188,7 +157,6 @@ main p {
 }
 
 .login-form input:-webkit-autofill,  .signup-form input:-webkit-autofill {
-  /* background-color: #C4C4C4; */
   background: #fff;
   font-size: 24px;
 }
@@ -215,15 +183,8 @@ main p {
 }
 
 .row {
-  /* text-align: center; */
-  margin: 0 auto;
   max-width: 500px;
 }
-/* 
-#C4C4C4 
-#5a98f0
-#006BFF
-*/
 
 label {
   display: grid;
@@ -313,12 +274,6 @@ input[type="radio"] {
 }
 
 button, .view-link {
-/* 
-background-color: #C4C4C4;
-border:1px solid #C4C4C4;
-text-shadow:0px 1px 0px #C4C4C4; 
-color:black;
-*/
 background: #fff;
 border-radius:6px;
 display:inline-block;
@@ -342,19 +297,11 @@ text-decoration:none;
 }
 
 .delete {
-  /* background: #202526;
-  border: solid 2px #202526;
-  color: #fff; */
-
   background: #fff;
   border: solid 2px #202526;
-
-  /* border: solid 2px #ce453b;
-  color: #ce453b; */
 }
 
 .delete:hover {
-  /* transform: scale(1.1); */
   background: #202526;
   border: solid 2px #202526;
   color: #fff;
@@ -367,15 +314,8 @@ button:active {
 }
 
 a:hover, button:hover {
-/* background-color: #a2a2a2; */
-transition: .3s;
+transition: .2s;
 }
-
-/* a:active {
-position:relative;
-top:1px;
-transition: .3s;
-} */
 
 .btn {
   margin: 10px;
@@ -419,7 +359,6 @@ transition: .3s;
 }
 
 .create-link:hover {
-  /* background: #006BFF; */
   background: #ce453b;;
   border: solid 2px #ce453b;;
   color: #fff;
@@ -549,6 +488,7 @@ transition: .3s;
   padding-top: 70px;
   min-width: 450px;
   min-height: 450px;
+  box-shadow: 1.2px 2.4px 3px rgb(44, 65, 96);
 }
 
 .sw-cont h4{
@@ -559,6 +499,7 @@ transition: .3s;
   display: inline-block;
   padding: 0 40px;
   background: #fff;
+  box-shadow: .6px 1.2px 2px rgb(44, 65, 96);
 }
 
 h5 {
@@ -598,100 +539,3 @@ h5 {
 .finished-link:hover {
   background-color: #00b05e
 }
-
-/* @media screen and (max-width: 600px) {
-  .App {
-      display: grid;
-      grid-template-columns: 15% 35% 35% 15%;
-      grid-template-areas: 
-      ". nav nav ."
-      ". header header ."
-      ". main main ."
-  }
-
-  header {
-      grid-area: header;
-  }
-
-  nav {
-      display: grid;
-      grid-area: nav;
-      justify-self: center;
-  }
-
-  main {
-      display: grid;
-      grid-area: main;
-      padding: 10px;
-  }
-
-  .row {
-      display: grid;
-      grid-area: main;
-  }
-
-  .nav-link {
-      list-style-type: none;
-      color: white;
-  }
-
-  .nav label {
-      display: inline-block;
-      width: 100%; 
-      color: white;
-  }
-
-  .nav ul li {
-      display: block;
-      cursor: pointer;
-  }
-
-  label {
-      display: grid;
-      align-self: center;
-      border: 1px solid white;
-      margin: 10px;
-      padding: 10px;
-      font-size: 18px;
-  }
-}  */
-
-/* @media screen and (min-width: 600px) {
-  .App {
-      display: grid;
-      grid-template-columns: 15% 35% 35% 15%;
-      grid-template-areas: 
-      "header header . ."
-      "sidebar main main ."
-  }
-
-  .nav-link {
-      list-style-type: none;
-      color: white;
-  }
-
-  .menu {
-      text-align: center;
-  }
-  
-  .navbar {
-      color: white;
-      align-self: start;
-  }
-
-  main {
-      display: grid;
-      grid-area: main;
-      padding: 10px;
-  }
-
-  .row {
-      display: grid;
-      grid-area: main;
-  }
-
-  label {
-      display: grid;
-      align-self: center;
-  }
-} */
