@@ -533,17 +533,21 @@ transition: .3s;
 }
 
 .sw-cont h4{
-  margin: 10px;
+  margin: 20px;
   font-size: 6rem;
+  border: solid 2.5px black;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 0 60px;
 }
 
 h5 {
-  margin: 40px;
+  margin-top: 20px;
   font-size: 2rem;
 }
 
 .btn-cont  button{
-  margin: 0 5px;
+  margin: 20px 5px;
 }
 
 .finished-link {
