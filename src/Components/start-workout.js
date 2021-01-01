@@ -23,7 +23,7 @@ export default class StartWorkout extends React.Component{
             name: ''
         }
     }
-    
+
     componentDidMount() {
         this.context.clearError();
         const { workout_id } = this.props.match.params;
@@ -77,9 +77,9 @@ export default class StartWorkout extends React.Component{
     
     renderWorkOut() {        
         console.log('state', this.state);
-        const { workout, workouts } = this.context;
-        console.log('workout context', workout);
-        console.log('workoutsss context', workouts)
+        const { workout } = this.context;
+        // console.log('workout context', workout);
+        // console.log('workoutsss context', workouts)
         const { currentStep } = this.state; 
         const i = currentStep - 1;
         const exercise = workout[i];
@@ -106,6 +106,7 @@ export default class StartWorkout extends React.Component{
                     length={workout[0].total_length}
                     updateMin={this.updateMin}
                 />
+                {/* <FinishedWorkout workout={workout}/> */}
             </>
         )
     }

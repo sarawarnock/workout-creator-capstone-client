@@ -466,6 +466,23 @@ h5 {
   margin: 0 5px;
 }
 
+.finished-link {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #04d775;
+  border-radius: 30px;
+  margin: 10px;
+  color: white;
+}
+
+#start, #pause, #reset {
+  font-size: 24px;
+}
+
+.finished-link:hover {
+  background-color: #00b05e
+}
+
 /* @media screen and (max-width: 600px) {
   .App {
       display: grid;
