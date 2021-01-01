@@ -13,7 +13,11 @@ header {
   display: fixed;
   top: 0;
   width: 100%;
-  padding: 40px;
+  padding: 30px;
+  /* padding: 40px; */
+  background: #9AE3C0;
+  /* background: #C8FFE4; */
+  /* background: #fff; */
 }
 
 header nav {
@@ -36,7 +40,8 @@ h1 {
 }
 
 .home-link:hover {
-  background-color:  #E5E5E5;
+  /* background-color:  #E5E5E5; */
+  background: #9AE3C0;
 }
 
 h2 {
@@ -56,7 +61,7 @@ nav {
   height: 50px;
   width: 120px;
   border-radius: 30px;
-  background-color: #C4C4C4;
+
   padding: 10px 20px;
   font-size: 24px;
   line-height: 29px;
@@ -66,20 +71,37 @@ nav {
   margin-right: 50px;
 }
 
+.workouts {
+  background-color: #fff;
+  border: solid 2px #24851b;
+  color: #2a851b;
+  /* background-color: #C4C4C4; */
+  /* background: #AFE2FF; */
+  /* background: #C8FFE4; */
+  /* background: #36B1F6; */
+}
+
 .workouts:hover {
-  background: #006BFF;
+  /* background: #006BFF; */
+  background: #24851b;
+  border: solid 2px #24851b;
   color: #fff;
 }
 
 .logout {
-  background: #006BFF;
-  color: #fff;
+  /* background: #AFE2FF; */
+  /* background: #9AE3C0; */
+  background:#fff;
+  color: #006BFF;
+  border: solid 2px #006BFF;
 }
 
 .logout:hover {
-  background:#fff;
+  /* background:#fff;
   color: #006BFF;
-  border: solid 1px #006BFF;
+  border: solid 1px #006BFF; */
+  background: #006BFF;
+  color: #fff;
 }
 
 /* .logout {
@@ -98,8 +120,9 @@ nav {
 /* MAIN PAGE */
 main {
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 40px;
   max-width: 1080px;
+  /* background-color: #fff; */
 }
 
 .landing-text {
@@ -121,7 +144,9 @@ main p {
   width: 200px;
   height: 50px;
   border-radius: 30px;
-  background-color: #C4C4C4;
+  /* background-color: #C4C4C4; */
+  background-color: #36B1F6;
+
   padding: 10px 40px;
   font-size: 24px;
   line-height: 29px;
@@ -188,9 +213,10 @@ label {
   padding: 10px;
   font-size: 18px;
   font-weight: bolder;
-  border: 1px solid rgb(14, 74, 159);
   color: rgb(14, 74, 159);
+  border: 2px solid rgb(14, 74, 159);
   border-radius: 4px;
+  background-color: #fff;
 }
 
 .check {
@@ -242,14 +268,14 @@ input[type="radio"] {
 
 .arr {
   color: #fff;
-  border: solid 1.5px rgb(14, 74, 159);
+  border: solid 2px rgb(14, 74, 159);
   background-color: rgb(14, 74, 159);
 }
 
 .arr:hover{
   background: rgb(14, 74, 159);
   transform: scale(1.1);
-  border: solid 1.5px rgb(14, 74, 159);
+  border: solid 2px rgb(14, 74, 159);
 }
 
 /* WORKOUTS LIST */
@@ -268,27 +294,69 @@ input[type="radio"] {
 }
 
 button, .view-link {
+/* 
 background-color: #C4C4C4;
-border-radius:6px;
 border:1px solid #C4C4C4;
+text-shadow:0px 1px 0px #C4C4C4; 
+color:black;
+*/
+background: #fff;
+border-radius:6px;
 display:inline-block;
 cursor:pointer;
-color:black;
 font-family:Arial;
 font-weight:bold;
 padding:6px 24px;
 text-decoration:none;
-text-shadow:0px 1px 0px #C4C4C4;
 }
+
+.view-link {
+  background: #fff;
+  border: solid 2px #2a851b;
+  color: #2a851b;
+}
+
+.view-link:hover {
+  background: #2a851b;  
+  border: solid 2px #2a851b;
+  color: #fff;
+}
+
+.delete {
+  /* background: #202526;
+  border: solid 2px #202526;
+  color: #fff; */
+
+  background: #fff;
+  border: solid 2px #202526;
+
+  /* border: solid 2px #ce453b;
+  color: #ce453b; */
+}
+
+.delete:hover {
+  /* transform: scale(1.1); */
+  background: #202526;
+  border: solid 2px #202526;
+  color: #fff;
+}
+
+button:active {
+  position:relative;
+  top:1px;
+  transition: .3s;
+}
+
 a:hover, button:hover {
-background-color: #a2a2a2;
+/* background-color: #a2a2a2; */
 transition: .3s;
 }
-a:active {
+
+/* a:active {
 position:relative;
 top:1px;
 transition: .3s;
-}
+} */
 
 .btn {
   margin: 10px;
@@ -326,10 +394,15 @@ transition: .3s;
 
 .create-link {
   margin-top: 10px;
+  background: #fff;
+  border: solid 2px #ce453b;
+  color: #ce453b;
 }
 
 .create-link:hover {
-  background: #006BFF;
+  /* background: #006BFF; */
+  background: #ce453b;;
+  border: solid 2px #ce453b;;
   color: #fff;
 }
 
@@ -450,6 +523,13 @@ transition: .3s;
 /* STOPWATCH */
 .sw-cont {
   margin: 40px;
+  background: #fff;
+  border: solid 5px #202526;
+  border-radius: 50%;
+  display: inline-block;
+  padding-top: 65px;
+  min-width: 450px;
+  min-height: 450px;
 }
 
 .sw-cont h4{

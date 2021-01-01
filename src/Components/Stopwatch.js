@@ -87,15 +87,14 @@ export default function StopWatch(props) {
                                 id="reset">RESET</button></>
                         :   ""
                     }
-                    
                 </div>
+                <h5>
+                    <span>
+                        { time.min }
+                    </span>
+                    <span> minutes</span>
+                </h5>
             </div>
-            <h5>
-                <span>
-                    { time.min }
-                </span>
-                <span> minutes</span>
-            </h5>
         </>)
     }
     return (<>

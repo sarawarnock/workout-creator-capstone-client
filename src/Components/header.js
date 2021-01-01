@@ -64,7 +64,7 @@ export default class Header extends Component {
         <header>
           <nav>
             <Link className="home-link" to='/'>
-              <h1>MyMetcon</h1>
+              <h1>EMOM Workouts</h1>
             </Link>
             <div className="app-nav">
                 {TokenService.hasAuthToken()

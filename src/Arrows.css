@@ -11,7 +11,8 @@
 }
 
 .la:hover, .ra:hover {
-    background: #006aff
+    background: #006aff;
+    /* background: #24851b; */
 }
 
 .arrow {
