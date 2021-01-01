@@ -33,8 +33,9 @@ h1, h2, h3, p, li {
 }
 
 a {
-  color: black;
+  color: rgb(14, 74, 159);
   text-decoration: none;
+  font-size: 18px;
 }
 
 input:-webkit-autofill,

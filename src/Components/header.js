@@ -52,7 +52,7 @@ export default class Header extends Component {
       <>
         <Link className="header-links signup"
           to='/sign-up'>Sign Up</Link>
-        <Link className="header-links"
+        <Link className="login header-links"
           to='/login'>Login</Link>
       </>
     )
