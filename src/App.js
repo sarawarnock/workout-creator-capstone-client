@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, withRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import './App.css';
+import './MediaQueries.css';
 import './Arrows.css';
 
 import PublicRoute from './Routes/public-route'
@@ -74,11 +75,6 @@ class App extends Component {
                         path='/'
                         component={LandingPage}
                     />
-                    {/* <PrivateRoute 
-                        exact
-                        path={`/home`}
-                        component={PersonalizedHomePage}
-                    /> */}
                     <PublicRoute 
                         exact
                         path='/login'

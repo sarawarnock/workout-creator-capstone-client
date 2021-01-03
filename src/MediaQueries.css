@@ -1,0 +1,21 @@
+@media(max-width: 800px) {
+    h1 {
+        font-size: 36px;
+    }
+    h2 {
+        font-size: 30px;
+    }
+    p {
+        font-size: 18px;
+    }
+    /* .app-nav {
+        display: flex;
+        flex-direction: column;
+    } */
+    .header-links {
+        font-size: 18px;
+    }
+    .workouts {
+        margin-right: 10px;
+    }
+  }

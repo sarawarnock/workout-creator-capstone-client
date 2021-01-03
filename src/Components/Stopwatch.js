@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+// import bell from "../Sounds/percussive-bell_C_major.wav";
+// import bell from "../Sounds/church-bell_C_major.wav";
+import bell from "../Sounds/bellcrush_E_minor.wav";
 
 export default function StopWatch(props) {
     const { length } = props;
@@ -12,10 +15,16 @@ export default function StopWatch(props) {
     
     let updatedMS = time.ms, updatedSec = time.sec, updatedMin = time.min;
 
+    const playSound = () => {
+        const audio = new Audio(bell);
+        return audio.play();
+    }
+
     const _start = () => {
         _run();
         setStatus(1);
         setInterv(setInterval(_run, 10));
+        playSound();
     };
 
     const _run = () => {
@@ -24,6 +33,7 @@ export default function StopWatch(props) {
             updatedMin--;
             props.updateMin();
             props.clickNext();
+            console.log('still running...');
         }
         if (updatedMS === 100) {
             updatedMS = 0;
@@ -36,19 +46,13 @@ export default function StopWatch(props) {
         return setTime({ ms: updatedMS, sec: updatedSec, min: updatedMin });
     };
 
-    let _stop = () => {
-        console.log('running stop');
-        clearInterval(interv);
-        // setStatus(0);
-        setTime({ ms: 0, sec: 60, min: length });
-        _stop = function(){};
-    };
-
     const _pause = () => {
         console.log('running pause stopwatch');
         clearInterval(interv);
         setStatus(2);
     };
+
+    const _resume = () => _start();
 
     const _reset = () => {
         console.log('running reset stopwatch');
@@ -57,7 +61,21 @@ export default function StopWatch(props) {
         setTime({ ms: 0, sec: 60, min: length });
     };
 
-    const _resume = () => _start();
+    const once = function(fn, context) {
+        let result;
+        return function() { 
+            if(fn) {
+                result = fn.apply(context || this, arguments);
+                fn = null;
+            }
+            return result;
+        };
+    }
+
+    const _stop = once(function() {
+        console.log('running stop');
+        _reset();
+    });
 
     if (time.min > 1) {
         return (<>

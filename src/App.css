@@ -485,7 +485,7 @@ transition: .2s;
   border: solid 5px #202526;
   border-radius: 50%;
   display: inline-block;
-  padding-top: 70px;
+  padding-top: 75px;
   min-width: 450px;
   min-height: 450px;
   box-shadow: 1.2px 2.4px 3px rgb(44, 65, 96);
@@ -503,7 +503,7 @@ transition: .2s;
 }
 
 h5 {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 2rem;
 }
 

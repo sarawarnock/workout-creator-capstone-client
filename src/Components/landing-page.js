@@ -16,8 +16,7 @@ export default class LandingPage extends React.Component {
   }
 
   render() {
-    return (
-      <main className="main">
+    return (<>
         <h2>Create An EMOM Style Workout</h2>
         <div className="landing-text">
           <p>What is an EMOM? 
@@ -45,7 +44,6 @@ export default class LandingPage extends React.Component {
         </div>
         {/* <Link to="/sign-up"
           className="try-it-link link">Let's try it</Link> */}
-        </main>
-    );
+    </>);
   }
 }

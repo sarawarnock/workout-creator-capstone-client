@@ -1,10 +1,13 @@
 import React from 'react';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
-import FinishedWorkout from './finished-workout';
 import StartExercise from './start-exercise';
 import Stopwatch from './Stopwatch';
-import Loaders from './loaders'
+import Loaders from './loaders';
+// import bell from "../Sounds/percussive-bell_C_major.wav";
+// import bell from "../Sounds/church-bell_C_major.wav";
+import bell from "../Sounds/bellcrush_E_minor.wav";
+
 
 export default class StartWorkout extends React.Component{
     static defaultProps = {
@@ -20,7 +23,6 @@ export default class StartWorkout extends React.Component{
         this.state = {
             currentStep: 1,
             minutes: null,
-            name: ''
         }
     }
 
@@ -40,6 +42,11 @@ export default class StartWorkout extends React.Component{
         if (workout.length > 0 && this.state.minutes === null) {
             this.setState({minutes: workout[0].total_length})
         }
+    }
+
+    playSound = () => {
+        const audio = new Audio(bell);
+        return audio.play();
     }
 
     _next = () => {
@@ -73,12 +80,13 @@ export default class StartWorkout extends React.Component{
             ...prevState,
             minutes: minutes - 1
         })) 
+        this.playSound();
     }
     
     renderWorkOut() {        
         console.log('state', this.state);
         const { workout } = this.context;
-        // console.log('workout context', workout);
+        console.log('workout context', workout);
         // console.log('workoutsss context', workouts)
         const { currentStep } = this.state; 
         const i = currentStep - 1;
@@ -89,7 +97,8 @@ export default class StartWorkout extends React.Component{
         }
         
         if (this.state.minutes === 0) {
-            return <FinishedWorkout workout={workout}/>
+            // hackey solution to getting stopwatch to stop running...
+            window.location.reload();
         }
 
         return (
@@ -106,7 +115,6 @@ export default class StartWorkout extends React.Component{
                     length={workout[0].total_length}
                     updateMin={this.updateMin}
                 />
-                {/* <FinishedWorkout workout={workout}/> */}
             </>
         )
     }
