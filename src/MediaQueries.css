@@ -1,21 +1,63 @@
 @media(max-width: 800px) {
+    /* LANDING PAGE AND HEADERS */
     h1 {
         font-size: 36px;
     }
     h2 {
         font-size: 30px;
     }
-    p {
-        font-size: 18px;
-    }
     /* .app-nav {
         display: flex;
         flex-direction: column;
     } */
     .header-links {
-        font-size: 18px;
+        font-size: 22px;
     }
-    .workouts {
+    .workouts, .signup {
         margin-right: 10px;
     }
-  }
+    .landing-text p, ul li {
+        font-size: 18px;
+    }
+
+    /* FORMS */
+    .form-container {
+        width: 450px;
+    }
+    .name-wo {
+        width: 22.5rem;
+    }
+
+    /* SAVED WORKOUTS */
+    .workouts-table {
+        min-width: 540px;
+    }
+    .create-link {
+        font-size: 22px;
+    }
+
+    /* VIEW WORKOUT */
+    tr > td > h3, tr > td > h4 {
+        font-size: 1.35rem;
+    }
+    .ex-desc { 
+        font-size: 18px;
+    }
+    .ex-reps {
+        font-size: 3rem;
+    }
+
+    /* STOPWATCH */
+    .sw-cont {
+        min-height: 337px;
+        min-width: 337px;
+        padding-top: 56.25px;
+        margin: 30px;
+    }
+    .sw-cont > h4 {
+        font-size: 4.5rem;
+    }
+    #start, #pause, #reset {
+        font-size: 20px;
+    }
+}

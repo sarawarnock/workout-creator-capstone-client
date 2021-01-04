@@ -46,3 +46,9 @@
     position: relative;
     left: 2px;
 }
+
+@media(max-width: 800px) {
+    .arrow {
+        --border-size: .1875rem;
+    }
+}

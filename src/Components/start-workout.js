@@ -2,11 +2,10 @@ import React from 'react';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
 import StartExercise from './start-exercise';
-import Stopwatch from './Stopwatch';
+// import Stopwatch from './Stopwatch';
+import StopwatchClass from "./Stopwatch-class";
+import FinishedWorkout from './finished-workout';
 import Loaders from './loaders';
-// import bell from "../Sounds/percussive-bell_C_major.wav";
-// import bell from "../Sounds/church-bell_C_major.wav";
-import bell from "../Sounds/bellcrush_E_minor.wav";
 
 
 export default class StartWorkout extends React.Component{
@@ -22,7 +21,7 @@ export default class StartWorkout extends React.Component{
         this._prev = this._prev.bind(this);
         this.state = {
             currentStep: 1,
-            minutes: null,
+            minutes: null
         }
     }
 
@@ -32,22 +31,19 @@ export default class StartWorkout extends React.Component{
         WorkoutApiService.getWorkoutDetails(workout_id)
             .then(this.context.setWorkout)
             .catch(this.context.setError);
+
         WorkoutApiService.getWorkoutsById()
             .then(this.context.setWorkOutsList)
             .catch(this.context.setError);
     }
 
-    componentDidUpdate() {
-        const { workout } = this.context;
-        if (workout.length > 0 && this.state.minutes === null) {
-            this.setState({minutes: workout[0].total_length})
-        }
-    }
-
-    playSound = () => {
-        const audio = new Audio(bell);
-        return audio.play();
-    }
+    // componentDidUpdate() {
+    //     const { workout } = this.context;
+    //     if (workout.length > 0 && this.state.minutes === null) {
+    //         this.setState({ minutes: workout[0].total_length })
+    //         // this.context.set_total_length(workout[0].total_length)
+    //     }
+    // }
 
     _next = () => {
         let currentStep = this.state.currentStep;
@@ -79,26 +75,24 @@ export default class StartWorkout extends React.Component{
         this.setState(prevState => ({
             ...prevState,
             minutes: minutes - 1
-        })) 
-        this.playSound();
+        }))
     }
     
     renderWorkOut() {        
-        console.log('state', this.state);
         const { workout } = this.context;
-        console.log('workout context', workout);
-        // console.log('workoutsss context', workouts)
         const { currentStep } = this.state; 
         const i = currentStep - 1;
         const exercise = workout[i];
+
+        console.log('start-workout state', this.state);
+        console.log('context', this.context);
 
         if (workout.length === 0) {
             return <Loaders />
         }
         
         if (this.state.minutes === 0) {
-            // hackey solution to getting stopwatch to stop running...
-            window.location.reload();
+            return <FinishedWorkout />
         }
 
         return (
@@ -108,7 +102,7 @@ export default class StartWorkout extends React.Component{
                     clickPrev={this._prev}
                     exercise={exercise}
                 />
-                <Stopwatch 
+                <StopwatchClass
                     clickNext={this._next}
                     clickPrev={this._prev}
                     workout={workout}
