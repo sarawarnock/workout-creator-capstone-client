@@ -1,6 +1,5 @@
 import React from 'react';
 import WorkOutContext from '../context';
-import TokenService from '../Services/token-service-lf';
 import WorkoutApiService from '../Services/workout-api-service';
 
 export default class LandingPage extends React.Component {
@@ -8,14 +7,15 @@ export default class LandingPage extends React.Component {
 
   componentDidMount() {
     this.context.clearError();
-    if (TokenService.hasAuthToken) {
+    const { workouts } = this.context;
+    if (workouts.length === 0) {
       WorkoutApiService.getWorkoutsById()
         .then(this.context.setWorkOutsList)
         .catch(this.context.setError);
     }
   }
 
-  render() {
+    render() {
     return (<>
         <h2>Create An EMOM Style Workout</h2>
         <div className="landing-text">

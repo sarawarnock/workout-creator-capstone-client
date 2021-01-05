@@ -2,11 +2,10 @@ import React from 'react';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
 import StartExercise from './start-exercise';
-// import Stopwatch from './Stopwatch';
+import Stopwatch from './Stopwatch';
 import StopwatchClass from "./Stopwatch-class";
 import FinishedWorkout from './finished-workout';
 import Loaders from './loaders';
-
 
 export default class StartWorkout extends React.Component{
     static defaultProps = {
@@ -37,16 +36,15 @@ export default class StartWorkout extends React.Component{
             .catch(this.context.setError);
     }
 
-    // componentDidUpdate() {
-    //     const { workout } = this.context;
-    //     if (workout.length > 0 && this.state.minutes === null) {
-    //         this.setState({ minutes: workout[0].total_length })
-    //         // this.context.set_total_length(workout[0].total_length)
-    //     }
-    // }
+    componentDidUpdate() {
+        const { workout } = this.context;
+        if (workout.length > 0 && this.state.minutes === null) {
+            this.setState({ minutes: workout[0].total_length })
+        }
+    }
 
     _next = () => {
-        let currentStep = this.state.currentStep;
+        let currentStep = this.context.currentStep;
         const { workout } = this.context;
         if (currentStep < workout.length) {
             this.setState({
@@ -80,12 +78,12 @@ export default class StartWorkout extends React.Component{
     
     renderWorkOut() {        
         const { workout } = this.context;
-        const { currentStep } = this.state; 
+        const { currentStep } = this.state;
         const i = currentStep - 1;
         const exercise = workout[i];
 
-        console.log('start-workout state', this.state);
-        console.log('context', this.context);
+        // console.log('state', this.state);
+        // console.log('context', this.context);
 
         if (workout.length === 0) {
             return <Loaders />
@@ -102,7 +100,7 @@ export default class StartWorkout extends React.Component{
                     clickPrev={this._prev}
                     exercise={exercise}
                 />
-                <StopwatchClass
+                <Stopwatch
                     clickNext={this._next}
                     clickPrev={this._prev}
                     workout={workout}
