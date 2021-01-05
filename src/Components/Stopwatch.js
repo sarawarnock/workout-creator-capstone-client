@@ -5,12 +5,10 @@ export default function StopWatch(props) {
     const { length } = props;
     const [time, setTime] = useState({ ms: 0, sec: 60, min: length });
     const [interv, setInterv] = useState();
-    console.log('interv', interv);
 
-    // status for hiding start button
+    // status for hiding stopwatch buttons
     // 0 = Not started, 1 = Started, 2 = Paused
     const [status, setStatus] = useState(0);
-
     let updatedMS = time.ms, updatedSec = time.sec, updatedMin = time.min;
 
     const playSound = () => {
@@ -32,21 +30,19 @@ export default function StopWatch(props) {
             props.updateMin();
             props.clickNext();
             playSound();
-            console.log('still running...');
         }
         if (updatedMS === 100) {
             updatedMS = 0;
             updatedSec--;
         }
         if (updatedMin === 0) {
-            _stop();
+            window.location.reload();
         }
         updatedMS++;
         return setTime({ ms: updatedMS, sec: updatedSec, min: updatedMin });
     };
 
     const _pause = () => {
-        console.log('running pause stopwatch');
         clearInterval(interv);
         setStatus(2);
     };
@@ -54,36 +50,18 @@ export default function StopWatch(props) {
     const _resume = () => _start();
 
     const _reset = () => {
-        console.log('running reset stopwatch');
         clearInterval(interv);
         setStatus(0);
         setTime({ ms: 0, sec: 60, min: length });
     };
 
-    // call reset once to stop at end of workout
-    const once = function(fn, context) {
-        let result;
-        return function() {
-            if(fn) {
-                result = fn.apply(context || this, arguments);
-                fn = null;
-            }
-            return result;
-        };
-    }
-
-    const _stop = once(function() {
-        console.log('running stop');
-        _reset();
-    });
-
+    //hacky solution for unmounting component while stopwatch is running
+    //stopwatch is a child component and will not stop _run function when unmounting
     useEffect(() => {
-        console.log('useEffect called');
         return () => {
-            console.log('unmounting component...');
-            _stop();
+            window.location.reload();
         }
-    }, [_stop])
+    }, [])
 
     if (time.min > 1) {
         return (<>

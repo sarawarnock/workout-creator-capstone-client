@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import LoginForm from '../Components/login-form';
-import WorkOutContext from "../context";
 
 export default class LoginRoute extends Component {
     static defaultProps = {

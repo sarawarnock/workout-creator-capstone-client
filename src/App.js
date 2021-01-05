@@ -18,7 +18,7 @@ import CreateWorkoutRoute from './Routes/create-workout-route';
 import StartWorkout from './Components/start-workout';
 import NotFoundPage from './Components/not-found-page';
 
-import TokenService from './Services/token-service-lf';
+import TokenService from './Services/token-service';
 import AuthApiService from './Services/auth-api-service';
 import IdleService from './Services/idle-service';
 
@@ -44,7 +44,7 @@ class App extends Component {
         localStorage.clear();
         IdleService.setIdleCallback(this.logoutFromIdle);
         if (TokenService.hasAuthToken()) {
-            IdleService.regiserIdleTimerResets();
+            IdleService.registerIdleTimerResets();
             TokenService.queueCallbackBeforeExpiry(() => {
                 AuthApiService.postRefreshToken();
             });

@@ -3,8 +3,6 @@ import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
 import StartExercise from './start-exercise';
 import Stopwatch from './Stopwatch';
-import StopwatchClass from "./Stopwatch-class";
-import FinishedWorkout from './finished-workout';
 import Loaders from './loaders';
 
 export default class StartWorkout extends React.Component{
@@ -82,15 +80,8 @@ export default class StartWorkout extends React.Component{
         const i = currentStep - 1;
         const exercise = workout[i];
 
-        // console.log('state', this.state);
-        // console.log('context', this.context);
-
         if (workout.length === 0) {
             return <Loaders />
-        }
-        
-        if (this.state.minutes === 0) {
-            return <FinishedWorkout />
         }
 
         return (
