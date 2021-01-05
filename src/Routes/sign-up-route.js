@@ -9,13 +9,10 @@ export default class SignUpRoute extends Component {
             push: () => {}
         }
     }
-
-    static contextType = WorkOutContext;
-
+    
     handleSubmitSuccess = () => {
         const { location, history } = this.props;
         const destination = (location.state || {}).from || '/create-workout';
-        this.context.setLoggedIn(true);
         history.push(destination);
     }
 

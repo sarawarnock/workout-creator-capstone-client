@@ -9,10 +9,8 @@ export default class LoginRoute extends Component {
             push: () => {}
         }
     }
-    static contextType = WorkOutContext;
 
     handleSubmitSuccess = () => {
-        this.context.setLoggedIn(true);
         const { location, history } = this.props;
         const destination = (location.state || {}).from || '/workouts';
         history.push(destination);

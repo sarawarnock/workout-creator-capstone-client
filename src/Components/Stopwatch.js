@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import bell from "../Sounds/bellcrush_E_minor.wav";
 
 export default function StopWatch(props) {
     const { length } = props;
     const [time, setTime] = useState({ ms: 0, sec: 60, min: length });
     const [interv, setInterv] = useState();
-
     console.log('interv', interv);
+
     // status for hiding start button
     // 0 = Not started, 1 = Started, 2 = Paused
     const [status, setStatus] = useState(0);
@@ -76,6 +76,14 @@ export default function StopWatch(props) {
         console.log('running stop');
         _reset();
     });
+
+    useEffect(() => {
+        console.log('useEffect called');
+        return () => {
+            console.log('unmounting component...');
+            _stop();
+        }
+    }, [_stop])
 
     if (time.min > 1) {
         return (<>
