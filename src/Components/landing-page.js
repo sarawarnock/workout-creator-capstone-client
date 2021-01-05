@@ -1,14 +1,14 @@
 import React from 'react';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
+import TokenService from "../Services/token-service";
 
 export default class LandingPage extends React.Component {
   static contextType = WorkOutContext;
 
   componentDidMount() {
     this.context.clearError();
-    const { workouts } = this.context;
-    if (workouts.length === 0) {
+    if (TokenService.hasAuthToken()) {
       WorkoutApiService.getWorkoutsById()
         .then(this.context.setWorkOutsList)
         .catch(this.context.setError);
@@ -42,8 +42,6 @@ export default class LandingPage extends React.Component {
               </li>
             </ul>
         </div>
-        {/* <Link to="/sign-up"
-          className="try-it-link link">Let's try it</Link> */}
     </>);
   }
 }
