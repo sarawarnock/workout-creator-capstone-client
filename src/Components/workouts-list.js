@@ -18,13 +18,13 @@ export default class WorkoutsList extends React.Component {
         const { workouts } = this.context
         if (workouts.length === 0) {
             return (
-                <>
+                <div className="container">
                     <h2>No Workouts!</h2>
-                </>
+                </div>
             )
         }
         return (
-            <>
+            <div className="container">
                 <h2>Saved Workouts</h2>
                 <table className="workouts-table">
                     <thead>
@@ -47,7 +47,7 @@ export default class WorkoutsList extends React.Component {
                     className="create-link link">
                     New Workout
                 </Link>
-            </>
+            </div>
         )
     }
 }

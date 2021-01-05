@@ -1,11 +1,32 @@
+#root {
+  background-color: #fff;
+}
+
 .App {
   text-align: center;
   color: black;
+  background-color: #DDF1FD;
+  border-radius: 221px;
+  padding: 20px 80px;
+  min-height: 100vh;
 }
 
-.error {
-  color: rgb(130, 0, 0);
-  margin: 10px;
+/* LANDING PAGE */
+
+.container {
+  background-color: #fff;
+  border-radius: 15px;
+  margin: 0 auto;
+  padding: 40px 60px;
+  box-shadow: 1px 2px 2px #696969;
+  /*border: solid 1px #1A975B;*/
+}
+
+.lh {
+  margin-bottom: 20px;
+  color: #05733E;
+  font-size: 36px;
+  font-weight: 600;
 }
 
 /* HEADER AREA */
@@ -13,8 +34,8 @@ header {
   top: 0;
   width: 100%;
   padding: 30px;
-  box-shadow: 0 2px 3px #a9bfcd;
-  background: #9AE3C0;
+  /*box-shadow: 0 2px 3px #a9bfcd;*/
+  /*background: #9AE3C0;*/
 }
 
 header nav {
@@ -24,7 +45,8 @@ header nav {
 }
 
 h1 {
-  font-family: Helvetica Neue, sans-serif;
+  font-family: 'Saira Stencil One', cursive, sans-serif;
+  color: #1D668F;
   font-style: normal;
   font-weight: 500;
   font-size: 48px;
@@ -34,10 +56,6 @@ h1 {
 .home-link {
   width: 300px;
   text-align: left;
-}
-
-.home-link:hover {
-  background: #9AE3C0;
 }
 
 h2 {
@@ -57,7 +75,6 @@ nav {
   height: 50px;
   width: 120px;
   border-radius: 30px;
-
   padding: 10px 20px;
   font-size: 24px;
   line-height: 29px;
