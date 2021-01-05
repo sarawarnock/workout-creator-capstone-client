@@ -32,8 +32,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loggedIn: false,
-            error: false,
+            error: false
         };
     }
   
@@ -64,58 +63,108 @@ class App extends Component {
         this.forceUpdate();
     }
 
-  render() {
-    return (
-        <div className="ext">
-            <Sidebar />
-            <div className="App">
-                <Header />
-                <main className="main-pages">
-                    <Switch>
-                        <Route
-                            exact
-                            path='/'
-                            component={LandingPage}
-                        />
-                        <PublicRoute
-                            exact
-                            path='/login'
-                            component={LoginRoute}
-                        />
-                        <PublicRoute
-                            exact
-                            path='/sign-up'
-                            component={SignUpRoute}
-                        />
-                        <PrivateRoute
-                            exact
-                            path='/create-workout'
-                            component={CreateWorkoutRoute}
-                        />
-                        <PrivateRoute
-                            exact
-                            path={`/workouts`}
-                            component={WorkoutsList}
-                        />
-                        <PrivateRoute
-                            exact
-                            path='/workouts/:workout_id'
-                            component={ViewWorkout}
-                        />
-                        <PrivateRoute
-                            expact
-                            path='/workouts/start/:workout_id'
-                            component={StartWorkout}
-                        />
-                        <Route
-                            component={NotFoundPage}
-                        />
-                    </Switch>
-                </main>
+    render() {
+        if(TokenService.hasAuthToken()) {
+            return (
+                    <div className="App full">
+                        <Header />
+                        <main className="main-pages">
+                            <Switch>
+                                <Route
+                                    exact
+                                    path='/'
+                                    component={LandingPage}
+                                />
+                                <PublicRoute
+                                    exact
+                                    path='/login'
+                                    component={LoginRoute}
+                                />
+                                <PublicRoute
+                                    exact
+                                    path='/sign-up'
+                                    component={SignUpRoute}
+                                />
+                                <PrivateRoute
+                                    exact
+                                    path='/create-workout'
+                                    component={CreateWorkoutRoute}
+                                />
+                                <PrivateRoute
+                                    exact
+                                    path={`/workouts`}
+                                    component={WorkoutsList}
+                                />
+                                <PrivateRoute
+                                    exact
+                                    path='/workouts/:workout_id'
+                                    component={ViewWorkout}
+                                />
+                                <PrivateRoute
+                                    expact
+                                    path='/workouts/start/:workout_id'
+                                    component={StartWorkout}
+                                />
+                                <Route
+                                    component={NotFoundPage}
+                                />
+                            </Switch>
+                        </main>
+                    </div>
+            );
+        }
+
+        return (
+            <div className="ext">
+                <Sidebar />
+                <div className="App split">
+                    <Header />
+                    <main className="main-pages">
+                        <Switch>
+                            <Route
+                                exact
+                                path='/'
+                                component={LandingPage}
+                            />
+                            <PublicRoute
+                                exact
+                                path='/login'
+                                component={LoginRoute}
+                            />
+                            <PublicRoute
+                                exact
+                                path='/sign-up'
+                                component={SignUpRoute}
+                            />
+                            <PrivateRoute
+                                exact
+                                path='/create-workout'
+                                component={CreateWorkoutRoute}
+                            />
+                            <PrivateRoute
+                                exact
+                                path={`/workouts`}
+                                component={WorkoutsList}
+                            />
+                            <PrivateRoute
+                                exact
+                                path='/workouts/:workout_id'
+                                component={ViewWorkout}
+                            />
+                            <PrivateRoute
+                                expact
+                                path='/workouts/start/:workout_id'
+                                component={StartWorkout}
+                            />
+                            <Route
+                                component={NotFoundPage}
+                            />
+                        </Switch>
+                    </main>
+                </div>
             </div>
-        </div>
-    );
-  }
+        );
+    }
 }
 
 export default withRouter(App);

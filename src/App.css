@@ -2,10 +2,17 @@
   text-align: center;
   color: black;
   background-color: #DDF1FD;
-  border-radius: 221px;
   padding: 20px 80px;
   min-height: 100vh;
-  width: 67%;
+}
+
+.full {
+  width: 100%;
+}
+
+.split {
+  min-width: 67%;
+  border-radius: 221px;
 }
 
 .ext {
@@ -13,6 +20,10 @@
 }
 
 /* Sidebar */
+.hide {
+  display: none;
+}
+
 .sidebar {
   width: 33%;
   /*padding: 60px 10px 0 20px;*/
@@ -20,7 +31,6 @@
 }
 
 .sidebar h3 {
-  font-family: Helvetica, sans-serif;
   font-size: 34px;
   font-weight: 700;
   font-style: italic;
@@ -34,7 +44,7 @@
   line-height: 30px;
   font-size: 32px;
   font-weight: 600;
-  color: #00b35d;
+  color: #05733E;
 }
 
 .sidebar p {
@@ -55,14 +65,32 @@ main {
   margin: 0 auto;
   padding: 40px 60px;
   box-shadow: 1px 2px 2px #696969;
-  width: 700px;
+  min-width: 700px;
   /*border: solid 1px #1A975B;*/
 }
 
+.lh {
+  margin-bottom: 20px;
+  color: #05733E;
+  font-size: 36px;
+  font-weight: 600;
+}
+
 .landing-text {
-  margin: 25px auto 85px;
-  width: 589px;
+  margin: 25px auto;
+/*  width: 589px;*/
   text-align: left;
+}
+
+.lt-h3 {
+  font-size: 34px;
+  font-weight: 700;
+  font-style: italic;
+  color: #05733E;
+}
+
+.landing-text ul li {
+  margin-left: 20px;
 }
 
 main p {
@@ -78,18 +106,20 @@ main p {
   width: 200px;
   height: 50px;
   border-radius: 30px;
-
   padding: 10px 40px;
   font-size: 24px;
   line-height: 29px;
   margin-top: 40px;
 }
 
-.lh {
-  margin-bottom: 20px;
-  color: #05733E;
-  font-size: 36px;
-  font-weight: 600;
+.try-it {
+  background: #1D668F;
+  color: #ffffff;
+  font-size: 24px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  position: relative;
+  left: 180px;
 }
 
 /* HEADER AREA */
@@ -135,56 +165,56 @@ nav {
 }
 
 .header-links {
-  height: 50px;
-  width: 120px;
+  height: 48px;
+  width: 118px;
   border-radius: 30px;
   padding: 10px 20px;
   font-size: 24px;
   line-height: 29px;
 }
 
-/*.signup, .workouts {*/
-/*  background-color: #fff;*/
-/*  border: solid 2px #24851b;*/
-/*  color: #2a851b;*/
-/*  margin-right: 50px;*/
-/*}*/
-
-/*.signup:hover, .workouts:hover {*/
-/*  background: #24851b;*/
-/*  border: solid 2px #24851b;*/
-/*  color: #fff;*/
-/*}*/
-
 .signup, .workouts {
+  background-color: #fff;
+  border: solid 2px #24851b;
+  color: #2a851b;
   margin-right: 50px;
-  background: #00D870;
-  color: #ffffff;
 }
 
 .signup:hover, .workouts:hover {
-  background: #00b35d;
+  background: #24851b;
+  border: solid 2px #24851b;
+  color: #fff;
 }
-
-  /*.login, .logout {*/
-/*  background:#fff;*/
-/*  color: #006BFF;*/
-/*  border: solid 2px #006BFF;*/
-/*}*/
 
 .login, .logout {
-  background: #36B1F6;
-  color: #ffffff;
+  background:#fff;
+  color: #006BFF;
+  border: solid 2px #006BFF;
 }
-
-/*.login:hover, .logout:hover {*/
-/*  background: #006BFF;*/
-/*  color: #fff;*/
-/*}*/
 
 .login:hover, .logout:hover {
-  background: #2c96d2;
+  background: #006BFF;
+  color: #fff;
 }
+
+/*.signup, .workouts {*/
+/*  margin-right: 50px;*/
+/*  background: #00D870;*/
+/*  color: #ffffff;*/
+/*}*/
+
+/*.signup:hover, .workouts:hover {*/
+/*  background: #00b35d;*/
+/*}*/
+
+/*.login, .logout {*/
+/*  background: #36B1F6;*/
+/*  color: #ffffff;*/
+/*}*/
+
+/*.login:hover, .logout:hover {*/
+/*  background: #2c96d2;*/
+/*}*/
 
 /* LOGIN / SIGN UP */
 .form-container {
