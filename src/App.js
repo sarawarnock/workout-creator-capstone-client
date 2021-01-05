@@ -16,6 +16,7 @@ import SignUpRoute from './Routes/sign-up-route';
 import ViewWorkout from './Components/view-workout';
 import CreateWorkoutRoute from './Routes/create-workout-route';
 import StartWorkout from './Components/start-workout';
+import Sidebar from "./Components/sidebar";
 import NotFoundPage from './Components/not-found-page';
 
 import TokenService from './Services/token-service';
@@ -65,50 +66,53 @@ class App extends Component {
 
   render() {
     return (
-        <div className="App">
-            <Header />
-            <main className="main-pages">
-                <Switch>        
-                    <Route 
-                        exact
-                        path='/'
-                        component={LandingPage}
-                    />
-                    <PublicRoute 
-                        exact
-                        path='/login'
-                        component={LoginRoute}
-                    />
-                    <PublicRoute 
-                        exact
-                        path='/sign-up'
-                        component={SignUpRoute}
-                    />
-                    <PrivateRoute 
-                        exact
-                        path='/create-workout'
-                        component={CreateWorkoutRoute}
-                    />
-                    <PrivateRoute 
-                        exact
-                        path={`/workouts`}
-                        component={WorkoutsList}
-                    />
-                    <PrivateRoute 
-                        exact
-                        path='/workouts/:workout_id'
-                        component={ViewWorkout}
-                    />
-                    <PrivateRoute 
-                        expact
-                        path='/workouts/start/:workout_id'
-                        component={StartWorkout}
-                    />
-                    <Route 
-                        component={NotFoundPage}
-                    />
-                </Switch>
-            </main>
+        <div className="ext">
+            <Sidebar />
+            <div className="App">
+                <Header />
+                <main className="main-pages">
+                    <Switch>
+                        <Route
+                            exact
+                            path='/'
+                            component={LandingPage}
+                        />
+                        <PublicRoute
+                            exact
+                            path='/login'
+                            component={LoginRoute}
+                        />
+                        <PublicRoute
+                            exact
+                            path='/sign-up'
+                            component={SignUpRoute}
+                        />
+                        <PrivateRoute
+                            exact
+                            path='/create-workout'
+                            component={CreateWorkoutRoute}
+                        />
+                        <PrivateRoute
+                            exact
+                            path={`/workouts`}
+                            component={WorkoutsList}
+                        />
+                        <PrivateRoute
+                            exact
+                            path='/workouts/:workout_id'
+                            component={ViewWorkout}
+                        />
+                        <PrivateRoute
+                            expact
+                            path='/workouts/start/:workout_id'
+                            component={StartWorkout}
+                        />
+                        <Route
+                            component={NotFoundPage}
+                        />
+                    </Switch>
+                </main>
+            </div>
         </div>
     );
   }

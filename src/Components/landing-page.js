@@ -17,7 +17,7 @@ export default class LandingPage extends React.Component {
 
     render() {
     return (
-        <div className="container">
+          <div className="container">
             <h2 className="left lh">EMOM Creator</h2>
             <ul>
               <li className="left">
@@ -31,7 +31,7 @@ export default class LandingPage extends React.Component {
                   and a unique workout with instructions will be created.</p>
               </li>
             </ul>
-        </div>
+          </div>
     );
   }
 }
