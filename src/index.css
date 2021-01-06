@@ -13,8 +13,6 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  /* background-color:  rgb(234, 233, 229); */
-  background-color: #E5E5E5;
 }
 
 code {
@@ -22,13 +20,20 @@ code {
     monospace;
 }
 
-h1, h2, h3, p, li {
+h1, h2, h3, p, ul, li {
   margin: 0;
+  padding: 0;
 }
 
 a {
-  color: black;
+  color: rgb(14, 74, 159);
   text-decoration: none;
+  font-size: 18px;
+}
+
+.error {
+  color: rgb(130, 0, 0);
+  margin: 10px;
 }
 
 input:-webkit-autofill,
@@ -43,7 +48,9 @@ select:-webkit-autofill:focus {
   border: 1px solid black;
   -webkit-text-fill-color: black;
   /* -webkit-box-shadow: 0 0 0px 1000px #000 inset; */
-  background-color: #C4C4C4;
+  /* background-color: #C4C4C4; */
+  /* background-color: #36B1F6; */
+
   /* transition: background-color 5000s ease-in-out 0s; */
 
 }

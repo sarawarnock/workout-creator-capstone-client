@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default class TimeQuest extends React.Component {
     render() {
@@ -9,8 +9,8 @@ export default class TimeQuest extends React.Component {
             <div className="form-group">
                 <h2 className="workout-question-2">How long do you want to workout for?</h2>
                 <div className="workout-time answer-2">
-                <input type="radio" id="time-1"name="workoutTimeValue" value="5" onClick={this.props.handleChange} />
-                <label htmlFor="time-1">5 minutes</label>
+                <input type="radio" id="time-1"name="workoutTimeValue" value="6" onClick={this.props.handleChange} />
+                <label htmlFor="time-1">6 minutes</label>
 
                 <input type="radio" id="time-2" name="workoutTimeValue" value="10" onClick={this.props.handleChange} />
                 <label htmlFor="time-2">10 minutes</label>

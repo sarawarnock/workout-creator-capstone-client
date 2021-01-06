@@ -11,7 +11,8 @@
 }
 
 .la:hover, .ra:hover {
-    background: #006aff
+    background: #006aff;
+    /* background: #24851b; */
 }
 
 .arrow {
@@ -44,4 +45,10 @@
     --direction: 45deg;
     position: relative;
     left: 2px;
+}
+
+@media(max-width: 800px) {
+    .arrow {
+        --border-size: .1875rem;
+    }
 }
