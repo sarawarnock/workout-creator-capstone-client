@@ -178,10 +178,9 @@ main p {
 /* CREATE WORKOUT */
 .create-form {
   text-align: center;
-}
-
-.row {
-  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 label {
@@ -193,8 +192,9 @@ label {
   font-weight: bolder;
   color: rgb(14, 74, 159);
   border: 2px solid rgb(14, 74, 159);
-  border-radius: 4px;
+  border-radius: 30px;
   background-color: #fff;
+
 }
 
 .check {
@@ -204,7 +204,7 @@ label {
 input:checked + label {
   background-color: rgb(14, 74, 159);;
   font-weight: bolder;
-  border: 1px solid rgb(14, 74, 159);
+  border: 2px solid rgb(14, 74, 159);
   color: #fff;
 }
 
