@@ -3,7 +3,7 @@ import TokenService from './token-service'
 
 const WorkoutApiService = {
     getWorkoutsById() {
-        let getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/loggedin`;
+        const getWorkoutUrl = `${config.API_ENDPOINT}/workouts/user/loggedin`;
         return fetch(getWorkoutUrl, {
             method: 'GET',
             headers: {
@@ -18,7 +18,7 @@ const WorkoutApiService = {
         );
     },
     getWorkoutDetails(id) {
-        let getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/${id}`;
+        const getWorkoutDetailsUrl = `${config.API_ENDPOINT}/workoutdetails/workout/${id}`;
         return fetch(getWorkoutDetailsUrl, {
             method: 'GET',
             headers: {
