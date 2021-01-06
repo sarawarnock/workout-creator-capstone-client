@@ -30,7 +30,7 @@ export default class WorkoutItem extends Component {
                 </td>
                 <td className="right">
                     <button className="delete button"
-                        onClick={this.handleDelete}>x</button>
+                        onClick={this.handleDelete}>X</button>
                 </td>
             </tr>
         )

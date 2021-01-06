@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
+import Loaders from './loaders';
 
 export default class ViewWorkout extends React.Component {
     static defaultProps = {
@@ -22,14 +23,11 @@ export default class ViewWorkout extends React.Component {
     }
 
     renderWorkOut() {
-        // console.log('props', this.props);
         const { workout_id } = this.props.match.params;
         const { workout } = this.context;
         if (workout.length === 0) {
             return (
-                <div>
-                    Loading...
-                </div>
+                <Loaders />
             )
         }
 

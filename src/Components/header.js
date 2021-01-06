@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import WorkOutContext from '../context';
-import TokenService from '../Services/token-service-lf';
+import TokenService from '../Services/token-service';
 
 export default class Header extends Component {
 
@@ -52,7 +52,7 @@ export default class Header extends Component {
       <>
         <Link className="header-links signup"
           to='/sign-up'>Sign Up</Link>
-        <Link className="header-links"
+        <Link className="login header-links"
           to='/login'>Login</Link>
       </>
     )
@@ -64,7 +64,7 @@ export default class Header extends Component {
         <header>
           <nav>
             <Link className="home-link" to='/'>
-              <h1>MyMetcon</h1>
+              <h1>My Metcon</h1>
             </Link>
             <div className="app-nav">
                 {TokenService.hasAuthToken()

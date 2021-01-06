@@ -8,7 +8,7 @@ export default class LoginRoute extends Component {
             push: () => {}
         }
     }
- 
+
     handleSubmitSuccess = () => {
         const { location, history } = this.props;
         const destination = (location.state || {}).from || '/workouts';
