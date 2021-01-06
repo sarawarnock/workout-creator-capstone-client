@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Login from './log-in';
 import CreateNewWorkout from '../Components/create-new-workout';
 
 export default class CreateWorkoutRoute extends Component {
@@ -19,8 +18,7 @@ export default class CreateWorkoutRoute extends Component {
     render() {
         return (
             <div className="form-container">
-                {/* <h2>Create New Workout</h2> */}
-                <CreateNewWorkout 
+                <CreateNewWorkout
                     onSubmitSuccess={this.handleSubmitSuccess}
                 />
             </div>

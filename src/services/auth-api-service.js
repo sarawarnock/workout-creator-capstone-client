@@ -1,12 +1,9 @@
 import config from '../config';
-import TokenService from './token-service-lf';
+import TokenService from './token-service';
 import IdleService from './idle-service';
-// import WorkOutContext from '../context';
 
 const AuthApiService = {
-
     postUser(user) {
-        // console.log('auth-api-service posting user:', user);
         return fetch(`${config.API_ENDPOINT}/users`, {
             method: 'POST',
             headers: {
@@ -41,7 +38,7 @@ const AuthApiService = {
                 3. queue a call to the refresh endpoint based on the JWT's exp value
             */
             TokenService.saveAuthToken(res.authToken);
-            IdleService.regiserIdleTimerResets();
+            IdleService.registerIdleTimerResets();
             TokenService.queueCallbackBeforeExpiry(() => {
                 AuthApiService.postRefreshToken();
             });
@@ -49,7 +46,6 @@ const AuthApiService = {
         });
     },
     postRefreshToken() {
-        // console.log('auth-api-service refreshing token');
         return fetch(`${config.API_ENDPOINT}/auth/refresh`, {
             method: 'POST',
             headers: {
@@ -74,7 +70,6 @@ const AuthApiService = {
             return res;
         })
         .catch(err => {
-            console.log('Refresh token request error')
             console.error(err)
         });
     },

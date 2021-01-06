@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import MuscleGroup from '../Components/FormQuests/muscle-group';
 import TimeQuest from '../Components/FormQuests/time-quest';
-// import TypeQuest from './FormQuests/type-quest';
 import NameWorkout from '../Components/FormQuests/name-workout-quest';
 import WorkoutApiService from "../Services/workout-api-service";
 import WorkoutContext from '../context';
@@ -150,11 +149,9 @@ class CreateNewWorkout extends Component {
   
     WorkoutApiService.postWorkout(payload)
       .then(res => {
-        console.log('postWorkout response', res);
         this.props.onSubmitSuccess(res.workout.id);
       })
       .catch(res => {
-        console.log(res.error)
         this.setState({ error: res.error });
       });
   };
@@ -176,10 +173,6 @@ class CreateNewWorkout extends Component {
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
             />
-            {/* <TypeQuest 
-              currentStep={this.state.currentStep}
-              handleChange={this.handleChange}
-            /> */}
             <NameWorkout
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}

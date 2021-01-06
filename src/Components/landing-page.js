@@ -1,21 +1,21 @@
 import React from 'react';
 import WorkOutContext from '../context';
-import TokenService from '../Services/token-service-lf';
 import WorkoutApiService from '../Services/workout-api-service';
+import TokenService from "../Services/token-service";
 
 export default class LandingPage extends React.Component {
   static contextType = WorkOutContext;
 
   componentDidMount() {
     this.context.clearError();
-    if (TokenService.hasAuthToken) {
+    if (TokenService.hasAuthToken()) {
       WorkoutApiService.getWorkoutsById()
         .then(this.context.setWorkOutsList)
         .catch(this.context.setError);
     }
   }
 
-  render() {
+    render() {
     return (<>
         <h2>Create An EMOM Style Workout</h2>
         <div className="landing-text">
@@ -42,8 +42,6 @@ export default class LandingPage extends React.Component {
               </li>
             </ul>
         </div>
-        {/* <Link to="/sign-up"
-          className="try-it-link link">Let's try it</Link> */}
     </>);
   }
 }

@@ -1,31 +1,9 @@
-import React from 'react'
-import Checkbox from '../new-workout-checkbox'
+import React from 'react';
+import Checkbox from '../checkbox';
 
 const OPTIONS = ['Arms', 'Legs', 'Chest', 'Back', 'Core', 'Cardio', 'Advanced'];
 
 export default class MuscleGroup extends React.Component {
-    // selectAllCheckboxes = isSelected => {
-    //     Object.keys(this.state.checkboxes).forEach(checkbox => {
-    //       this.setState(prevState => ({
-    //         checkboxes: {
-    //           ...prevState.checkboxes,
-    //           [checkbox]: isSelected
-    //         }
-    //       }));
-    //     });
-    //   }
-      
-    // handleCheckboxChange = changeEvent => {
-    //     const { name } = changeEvent.target;
-    
-    //     this.setState(prevState => ({
-    //       checkboxes: {
-    //         ...prevState.checkboxes,
-    //         [name]: !prevState.checkboxes[name]
-    //       }
-    //     }));
-    // };
-
     createCheckbox = option => (
         <Checkbox
           label={option}

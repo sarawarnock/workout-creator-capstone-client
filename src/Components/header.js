@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import WorkOutContext from '../context';
-import TokenService from '../Services/token-service-lf';
+import TokenService from '../Services/token-service';
 
 export default class Header extends Component {
 

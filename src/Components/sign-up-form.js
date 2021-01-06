@@ -36,7 +36,6 @@ export default class SignUpForm extends Component {
             })
         })
         .catch(res => {
-            // console.log('setting error to state', res.error )
             this.setState({ error: res.error })
         });
     }
