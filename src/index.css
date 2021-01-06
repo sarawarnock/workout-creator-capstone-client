@@ -13,14 +13,6 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  /* background-color:  rgb(234, 233, 229); */
-  /* background-color: #E5E5E5; */
-  background-color: #AFE2FF;
-
-  background-color: #DDF1FD;
-
-  /* background-color: #fff; */
-  /* background-color: #9AE3C0; */
 }
 
 code {
@@ -28,14 +20,20 @@ code {
     monospace;
 }
 
-h1, h2, h3, p, li {
+h1, h2, h3, p, ul, li {
   margin: 0;
+  padding: 0;
 }
 
 a {
   color: rgb(14, 74, 159);
   text-decoration: none;
   font-size: 18px;
+}
+
+.error {
+  color: rgb(130, 0, 0);
+  margin: 10px;
 }
 
 input:-webkit-autofill,
