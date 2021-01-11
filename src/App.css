@@ -22,8 +22,17 @@ header nav {
   align-items: center;
 }
 
+/*h1 {*/
+/*  font-family: Helvetica Neue, sans-serif;*/
+/*  font-style: normal;*/
+/*  font-weight: 500;*/
+/*  font-size: 48px;*/
+/*  line-height: 59px;*/
+/*}*/
+
 h1 {
-  font-family: Helvetica Neue, sans-serif;
+  font-family: 'Saira Stencil One', sans-serif;
+  color: #1D668F;
   font-style: normal;
   font-weight: 500;
   font-size: 48px;
