@@ -193,12 +193,10 @@ label {
   color: rgb(14, 74, 159);
   border: 2px solid rgb(14, 74, 159);
   border-radius: 30px;
-  background-color: #fff;
-
 }
 
 .check {
-  background-color: #fff;
+  
 }
 
 input:checked + label {
