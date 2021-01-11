@@ -7,13 +7,17 @@
   margin: 10px;
 }
 
+.hidden {
+  display: none;
+}
+
 /* HEADER AREA */
 header {
   top: 0;
   width: 100%;
   padding: 30px;
-  box-shadow: 0 2px 3px #a9bfcd;
-  background: #9AE3C0;
+  /*box-shadow: 0 2px 3px #a9bfcd;*/
+  /*background: #9AE3C0;*/
 }
 
 header nav {
@@ -35,7 +39,7 @@ h1 {
   color: #1D668F;
   font-style: normal;
   font-weight: 500;
-  font-size: 48px;
+  font-size: 56px;
   line-height: 59px;
 }
 
@@ -44,15 +48,11 @@ h1 {
   text-align: left;
 }
 
-.home-link:hover {
-  background: #9AE3C0;
-}
-
 h2 {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 40px;
-  line-height: 57px;
+  margin-bottom: 20px;
+  color: #05733e;
+  font-size: 36px;
+  font-weight: 600;
 }
 
 nav {
@@ -65,7 +65,6 @@ nav {
   height: 50px;
   width: 120px;
   border-radius: 30px;
-
   padding: 10px 20px;
   font-size: 24px;
   line-height: 29px;
@@ -76,26 +75,22 @@ nav {
 }
 
 .signup, .workouts {
-  background-color: #fff;
-  border: solid 2px #24851b;
-  color: #2a851b;
+  /*background: #05733e;*/
+  background-color: #1A975B;
+  color: #fff;
 }
 
 .signup:hover, .workouts:hover {
-  background: #24851b;
-  border: solid 2px #24851b;
-  color: #fff;
+  background: #00b35d;
 }
 
 .login, .logout {
-  background:#fff;
-  color: #006BFF;
-  border: solid 2px #006BFF;
+  background: #1d668f;
+  color: #fff;
 }
 
-.login:hover, .logout:hover {
-  background: #006BFF;
-  color: #fff;
+.login:hover, .logout:hover, .try-it:hover {
+  background: #2c96d2;
 }
 
 /* MAIN PAGE */
@@ -105,10 +100,34 @@ main {
   max-width: 1080px;
 }
 
+.container {
+  background-color: #fff;
+  padding: 20px 80px;
+  margin: 0 auto;
+  border-radius: 50px;
+  max-width: 800px;
+  min-height: 400px;
+  box-shadow: 2px 4px 4px #C4C4C4;
+}
+
+.lt-h2 {
+  margin-bottom: 20px;
+}
+
+.lt-h3 {
+  font-size: 30px;
+  font-weight: 700;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
 .landing-text {
-  margin: 25px auto 85px;
-  width: 589px;
+  margin: 0 auto;
   text-align: left;
+}
+
+.landing-text > ul {
+  m: 10px;
 }
 
 main p {
@@ -279,37 +298,43 @@ input[type="radio"] {
 }
 
 button, .view-link {
-background: #fff;
-border-radius:6px;
-display:inline-block;
-cursor:pointer;
-  font-family: Arial, sans-serif;
-font-weight:bold;
-padding:6px 24px;
-text-decoration:none;
+  background: #fff;
+  border-radius:6px;
+  display:inline-block;
+  cursor:pointer;
+  font-family: Roboto, sans-serif;
+  font-weight:bold;
+  padding:6px 24px;
+  text-decoration:none;
 }
 
 .view-link {
-  background: #fff;
-  border: solid 2px #2a851b;
-  color: #2a851b;
+  /*background: #fff;*/
+  /*border: solid 2px #2a851b;*/
+  /*color: #2a851b;*/
+  padding: 10px 20px;
+  background-color: #167bb5;
+  border-radius: 30px;
+  color: #fff;
 }
 
 .view-link:hover {
-  background: #2a851b;  
-  border: solid 2px #2a851b;
-  color: #fff;
+  /*background: #2a851b;  */
+  /*border: solid 2px #2a851b;*/
+  /*color: #fff;*/
+  background: #38aff3;
 }
 
 .delete {
-  background: #fff;
-  border: solid 2px #202526;
+  /*background: #fff;*/
+  /*border: solid 2px #36B1F7;*/
+  background: #167bb5;
+  color: #fff;
+  border: none;
 }
 
 .delete:hover {
-  background: #202526;
-  border: solid 2px #202526;
-  color: #fff;
+  background: #38aff3;
 }
 
 button:active {
@@ -335,37 +360,45 @@ transition: .2s;
   margin: 0 auto;
   table-layout: fixed;
   padding: 30px 0;
-  min-width: 720px;
+  /*min-width: 720px;*/
 }
 
 .tr {
   border-bottom: .5px solid black;
 }
 
-.tb-name, .tb-del  {
+.tb-name, .tb-view, .tb-del  {
   width: 30%;
   font-size: 20px;
 }
 
-.tb-view {
-  width: 30%;
-  margin: 0 40px;
+.tb-del {
+  
 }
 
 .wo-name {
-  font-size: 22px;
+  font-family: 'Roboto', 'sans-serif';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
 }
 
 .create-link {
   margin-top: 10px;
-  background: #fff;
-  border: solid 2px #ce453b;
-  color: #ce453b;
+  /*background: #fff;*/
+  /*border: solid 2px #ce453b;*/
+  /*color: #ce453b;*/
+  position: relative;
+  top: 10px;
+  background-color: #1A975B;
+  color: #fff;
 }
 
 .create-link:hover {
-  background: #ce453b;;
-  border: solid 2px #ce453b;;
+  /*background: #ce453b;*/
+  /*border: solid 2px #ce453b;;*/
+  background-color: #00b35d;
   color: #fff;
 }
 

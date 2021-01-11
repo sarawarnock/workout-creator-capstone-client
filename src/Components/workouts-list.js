@@ -24,13 +24,13 @@ export default class WorkoutsList extends React.Component {
             )
         }
         return (
-            <>
+            <div className={"container"}>
                 <h2>Saved Workouts</h2>
                 <table className="workouts-table">
                     <thead>
                         <tr>
-                            <th className="left tb-name">Name</th>
-                            <th className="tb-view center"></th>
+                            <th className="left tb-name hidden">Name</th>
+                            <th className="tb-view center hidden">View</th>
                             <th className="tb-del right">Remove</th>
                         </tr>
                     </thead>
@@ -47,7 +47,7 @@ export default class WorkoutsList extends React.Component {
                     className="create-link link">
                     New Workout
                 </Link>
-            </>
+            </div>
         )
     }
 }

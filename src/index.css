@@ -13,14 +13,8 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  /* background-color:  rgb(234, 233, 229); */
-  /* background-color: #E5E5E5; */
-  background-color: #AFE2FF;
-
-  background-color: #DDF1FD;
-
-  /* background-color: #fff; */
-  /* background-color: #9AE3C0; */
+  /*background-color: #DDF1FD;*/
+  background-color: #ddf1fd;
 }
 
 code {
@@ -30,6 +24,7 @@ code {
 
 h1, h2, h3, p, li {
   margin: 0;
+  padding: 0;
 }
 
 a {
