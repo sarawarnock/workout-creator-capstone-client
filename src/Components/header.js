@@ -15,7 +15,7 @@ export default class Header extends Component {
     const { workouts } = this.context;
     if (workouts.length === 0) {
       return (
-        <>
+        <div className={'h-links'}>
           <Link to="/create-workout" 
             className="header-links workouts"
           >
@@ -27,11 +27,11 @@ export default class Header extends Component {
           >
             Logout
           </Link>
-        </>
+        </div>
       )
     }
     return (
-      <>
+      <div className={'h-links'}>
         <Link to="/workouts" 
           className="workouts header-links"
         >
@@ -43,7 +43,7 @@ export default class Header extends Component {
         >
           Logout
         </Link>
-      </>
+      </div>
     )
   }
 

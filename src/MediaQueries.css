@@ -1,15 +1,11 @@
 @media(max-width: 800px) {
     /* LANDING PAGE AND HEADERS */
     h1 {
-        font-size: 36px;
+        font-size: 42px;
     }
     h2 {
         font-size: 30px;
     }
-    /* .app-nav {
-        display: flex;
-        flex-direction: column;
-    } */
     .header-links {
         font-size: 22px;
     }
@@ -29,9 +25,6 @@
     }
 
     /* SAVED WORKOUTS */
-    .workouts-table {
-        min-width: 540px;
-    }
     .create-link {
         font-size: 22px;
     }
@@ -61,3 +54,4 @@
         font-size: 20px;
     }
 }
+
