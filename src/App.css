@@ -22,6 +22,9 @@ header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /*display: grid;*/
+  /*grid-area: nav;*/
+  /*justify-self: center;*/
 }
 
 h1 {
@@ -38,19 +41,6 @@ h1 {
   text-align: left;
 }
 
-h2 {
-  margin-bottom: 20px;
-  color: #05733e;
-  font-size: 36px;
-  font-weight: 600;
-}
-
-nav {
-  display: grid;
-  grid-area: nav;
-  justify-self: center;
-}
-
 .header-links {
   height: 50px;
   width: 120px;
@@ -65,7 +55,6 @@ nav {
 }
 
 .signup, .workouts {
-  /*background: #05733e;*/
   background-color: #1A975B;
   color: #fff;
 }
@@ -83,6 +72,14 @@ nav {
   background: #2c96d2;
 }
 
+.menu-icon {
+  display: none;
+}
+
+.fa-bars {
+  color: #1D668F;
+}
+
 /* MAIN PAGE */
 main {
   margin: 0 auto;
@@ -98,6 +95,13 @@ main {
   max-width: 800px;
   min-height: 400px;
   box-shadow: 2px 4px 4px #C4C4C4;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #05733e;
+  font-size: 36px;
+  font-weight: 600;
 }
 
 .lt-h2 {
