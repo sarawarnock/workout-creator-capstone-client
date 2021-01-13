@@ -1,120 +1,80 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import WorkOutContext from '../context';
 import TokenService from '../Services/token-service';
-import WorkOutContext from "../context";
 
 export default class Header extends Component {
-    static contextType = WorkOutContext;
 
-    state = {
-        active: false
+    static contextType = WorkOutContext
+
+    handleLogOut = () => {
+        TokenService.clearAuthToken();
     }
 
-          handleLogOut = () => {
-            TokenService.clearAuthToken();
-          }
-
-          handleCLick = () => {
-            this.setState({ active: !this.state.active })
-          }
-
-          closeMobileMenu = () => {
-            this.setState({ active: false })
-          }
-
-            handleClickAndLogout = () => {
-                this.closeMobileMenu();
-                this.handleLogOut()
-            }
-
-      renderLogOutLink() {
+    renderLogOutLink() {
         const { workouts } = this.context;
-        const { active } = this.state;
-
-          if (workouts.length === 0) {
-          return (
-              <>
-                  <div className='menu-icon' onClick={this.handleCLick}>
-                      <i className={active ? 'fas fa-times' : 'fas fa-bars'} />
-                  </div>
-                  <div className={'navlinks'}>
-                      <Link to="/create-workout"
-                            className="header-links workouts"
-                            onClick={this.closeMobileMenu}
-                      >
-                          Create
-                      </Link>
-                      <Link to="/"
-                            className="logout header-links"
-                            onClick={this.handleClickAndLogout}
-                      >
-                          Logout
-                      </Link>
-                  </div>
-              </>
-          )
-        }
-        return (
-            <>
-                <div className='menu-icon' onClick={this.handleCLick}>
-                    <i className={active ? 'fas fa-times' : 'fas fa-bars'} />
-                </div>
-                <div className={'navlinks'}>
-                    <Link to="/workouts"
-                          className="workouts header-links"
-                          onClick={this.closeMobileMenu}
+        if (workouts.length === 0) {
+            return (
+                <div className={'nav-links'}>
+                    <Link to="/create-workout"
+                          className="header-links workouts"
                     >
-                        Workouts
+                        Create
                     </Link>
                     <Link to="/"
                           className="logout header-links"
-                          onClick={this.handleClickAndLogout}
+                          onClick={this.handleLogOut}
                     >
                         Logout
                     </Link>
                 </div>
-            </>
-        )
-      }
-
-      renderLogInLink() {
-          const { active } = this.state;
-          return (
-            <>
-                <div className='menu-icon' onClick={this.handleCLick}>
-                    <i className={active ? 'fas fa-times' : 'fas fa-bars'} />
-                </div>
-                <div className={'navlinks'}>
-                    <Link
-                        onClick={this.closeMobileMenu}
-                        className="header-links signup"
-                        to='/sign-up'>Sign Up</Link>
-                    <Link
-                        onClick={this.closeMobileMenu}
-                        className="login header-links"
-                        to='/login'>Login</Link>
-                </div>
-            </>
-        )
-      }
-
-      render() {
-        const { active } = this.state;
+            )
+        }
         return (
-          <>
-            <header>
-              <nav className={active ? 'nav-menu active' : ''}>
-                <Link onClick={this.closeMobileMenu}
-                    className="home-link" to='/'>
-                  <h1>My Metcon</h1>
+            <div className={'nav-links'}>
+                <Link to="/workouts"
+                      className="workouts header-links"
+                >
+                    Workouts
                 </Link>
-                    {TokenService.hasAuthToken()
-                      ? this.renderLogOutLink()
-                      : this.renderLogInLink()
-                    }
-              </nav>
-            </header>
-          </>
+                <Link to="/"
+                      className="logout header-links"
+                      onClick={this.handleLogOut}
+                >
+                    Logout
+                </Link>
+            </div>
+        )
+    }
+
+    renderLogInLink() {
+        return (
+            <div className={'nav-links'}>
+                <Link className="header-links signup"
+                      to='/sign-up'>Register</Link>
+                <Link className="login header-links"
+                      to='/login'>Login</Link>
+            </div>
+        )
+    }
+
+    render() {
+        return (
+            <>
+                <header>
+                    <nav>
+                        <Link className="home-link" to='/'>
+                            <h1>My Metcon</h1>
+                        </Link>
+                        <div className="app-nav">
+                            {TokenService.hasAuthToken()
+                                ? this.renderLogOutLink()
+                                : this.renderLogInLink()
+                            }
+                        </div>
+                    </nav>
+                </header>
+            </>
         );
-      }
+    }
 }

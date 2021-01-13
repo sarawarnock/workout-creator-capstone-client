@@ -1,40 +1,7 @@
 @media(max-width: 800px) {
     /* LANDING PAGE AND HEADERS */
-    .nav-menu {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 90vh;
-        position: absolute;
-        top: 80px;
-        left: -100%;
-        opacity: 1;
-        transition: all 0.5s ease;
-    }
-    .nav-menu.active {
-        background: #242222;
-        left: 0;
-        opacity: 1;
-        transition: all 0.5s ease;
-        z-index: 1;
-    }
     h1 {
         font-size: 42px;
-    }
-    .menu-icon {
-        display: block;
-        position: relative;
-        bottom: 24px;
-        left: 20px;
-        transform: translate(-100%, 60%);
-        font-size: 1.8rem;
-        cursor: pointer;
-    }
-    h2 {
-        font-size: 30px;
-    }
-    .navlinks {
-        display: none;
     }
     .header-links {
         font-size: 22px;
@@ -42,8 +9,14 @@
     .workouts, .signup {
         margin-right: 10px;
     }
+    h2 {
+        font-size: 30px;
+    }
     .landing-text p, ul li {
         font-size: 18px;
+    }
+    .try-it {
+        left: 0;
     }
 
     /* FORMS */
@@ -63,7 +36,7 @@
     tr > td > h3, tr > td > h4 {
         font-size: 1.35rem;
     }
-    .ex-desc { 
+    .ex-desc {
         font-size: 18px;
     }
     .ex-reps {
@@ -82,5 +55,65 @@
     }
     #start, #pause, #reset {
         font-size: 20px;
+    }
+}
+
+@media(max-width: 600px) {
+    /*header*/
+    header {
+        padding: 10px;
+    }
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+    }
+    .header-links {
+        height: 40px;
+        width: 108px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login, .logout {
+        margin-top: 10px;
+    }
+
+    /*Main page*/
+    main {
+        padding: 10px;
+    }
+    .container {
+        padding: 10px;
+    }
+    .try-it {
+        font-size: 18px;
+        padding: 5px 10px;
+
+    }
+
+    /*Forms*/
+    .form-container {
+        width: 300px;
+    }
+    .create-form {
+        padding: 0;
+    }
+    .name-wo {
+        width: 15rem;
+        font-size: 18px;
+    }
+
+    /*Saved Workouts*/
+    .wol-container {
+        padding: 10px 10px 40px 10px;
+    }
+    .wo-name {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    /*View Workout*/
+    .dt {
+        font-size: 28px;
     }
 }

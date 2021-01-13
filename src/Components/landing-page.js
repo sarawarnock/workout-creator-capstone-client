@@ -44,10 +44,13 @@ export default class LandingPage extends React.Component {
                               and a unique workout with instructions will be created.</p>
                       </li>
                   </ul>
-                  <Link className="try-it"
-                        to='/sign-up'>
-                      Let's try it &nbsp;&nbsp;&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i>
-                  </Link>
+
+                  <div className={'try-cnt'}>
+                      <Link className="try-it"
+                            to='/sign-up'>
+                          Let's try it &nbsp;&nbsp;&nbsp;&nbsp;<i className="fas fa-long-arrow-alt-right"></i>
+                      </Link>
+                  </div>
               </div>
           </div>);
       }

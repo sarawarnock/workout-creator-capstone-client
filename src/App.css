@@ -22,9 +22,6 @@ header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /*display: grid;*/
-  /*grid-area: nav;*/
-  /*justify-self: center;*/
 }
 
 h1 {
@@ -151,14 +148,16 @@ main p {
   margin-bottom: 40px;
 }
 
+.try-cnt {
+  text-align: center;
+}
+
 .try-it {
   background: #1D668F;
   color: #ffffff;
   font-size: 24px;
   padding: 10px 20px;
   border-radius: 30px;
-  position: relative;
-  left: 360px;
 }
 
 /* LOGIN / SIGN UP */
@@ -166,7 +165,7 @@ main p {
   margin: 0 auto;
   padding: 20px;
   background: #fff;
-  width: 600px;
+  max-width: 600px;
   border-radius: 50px;
   box-shadow: 2px 4px 4px #C4C4C4;
 }
@@ -182,8 +181,8 @@ main p {
 }
 
 .login-form input, .signup-form input {
-  width: 403px;
-  height: 80px;
+  /*width: 403px;*/
+  height: 60px;
   background: #fff;
   opacity: 0.9;
   font-size: 24px;
