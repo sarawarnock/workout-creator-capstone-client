@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import TokenService from '../Services/token-service';
+import WorkOutContext from "../context";
 
 export default class Header extends Component {
+    static contextType = WorkOutContext;
+
     state = {
         active: false
     }
