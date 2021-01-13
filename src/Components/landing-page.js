@@ -15,6 +15,7 @@ export default class LandingPage extends React.Component {
         .catch(this.context.setError);
     }
   }
+
     render() {
       if (!TokenService.hasAuthToken()) {
           return (<div className={"container"}>
