@@ -46,7 +46,6 @@ export default class Header extends Component {
             </div>
         )
     }
-
     renderLogInLink() {
         return (
             <div className={'nav-links'}>
