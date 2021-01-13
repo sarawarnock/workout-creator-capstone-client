@@ -18,25 +18,25 @@ export default class WorkoutsList extends React.Component {
         const { workouts } = this.context
         if (workouts.length === 0) {
             return (
-                <div className="container">
-                    <h2>No Workouts!</h2>
-                </div>
+                <>
+                    <h2>No Workouts</h2>
+                </>
             )
         }
         return (
-            <div className="container">
-                <h2>Saved Workouts</h2>
+            <div className={"wol-container"}>
+                <h2 className={"mar-0"}>Saved Workouts</h2>
                 <table className="workouts-table">
                     <thead>
                         <tr>
-                            <th className="left tb-name">Name</th>
-                            <th className="tb-view center"></th>
-                            <th className="tb-del right">Remove</th>
+                            <th className="left tb-name op-0">Name</th>
+                            <th className="tb-view center op-0">View</th>
+                            <th className="tb-del right op-0">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {workouts.map(workout => 
-                            <WorkoutListItem 
+                        {workouts.map(workout =>
+                            <WorkoutListItem
                                 key={workout.id}
                                 workout={workout}
                             />

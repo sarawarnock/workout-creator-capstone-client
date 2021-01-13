@@ -70,7 +70,7 @@ export default class SignUpForm extends Component {
                         /> 
                     </div>
                     <div className="inp-cont">
-                        <label className ="user-label" htmlFor="fname">First Name</label>
+                        <label className ="user-label form-label" htmlFor="fname">First Name</label>
                         <input 
                             name="signUpFirstName"
                             type="text" 

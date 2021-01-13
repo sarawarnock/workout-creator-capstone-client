@@ -1,23 +1,22 @@
 @media(max-width: 800px) {
     /* LANDING PAGE AND HEADERS */
     h1 {
-        font-size: 36px;
+        font-size: 42px;
     }
-    h2 {
-        font-size: 30px;
-    }
-    /* .app-nav {
-        display: flex;
-        flex-direction: column;
-    } */
     .header-links {
         font-size: 22px;
     }
     .workouts, .signup {
         margin-right: 10px;
     }
+    h2 {
+        font-size: 30px;
+    }
     .landing-text p, ul li {
         font-size: 18px;
+    }
+    .try-it {
+        left: 0;
     }
 
     /* FORMS */
@@ -29,9 +28,6 @@
     }
 
     /* SAVED WORKOUTS */
-    .workouts-table {
-        min-width: 540px;
-    }
     .create-link {
         font-size: 22px;
     }
@@ -40,7 +36,7 @@
     tr > td > h3, tr > td > h4 {
         font-size: 1.35rem;
     }
-    .ex-desc { 
+    .ex-desc {
         font-size: 18px;
     }
     .ex-reps {
@@ -59,5 +55,65 @@
     }
     #start, #pause, #reset {
         font-size: 20px;
+    }
+}
+
+@media(max-width: 600px) {
+    /*header*/
+    header {
+        padding: 10px;
+    }
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+    }
+    .header-links {
+        height: 40px;
+        width: 108px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login, .logout {
+        margin-top: 10px;
+    }
+
+    /*Main page*/
+    main {
+        padding: 10px;
+    }
+    .container {
+        padding: 10px;
+    }
+    .try-it {
+        font-size: 18px;
+        padding: 5px 10px;
+
+    }
+
+    /*Forms*/
+    .form-container {
+        width: 300px;
+    }
+    .create-form {
+        padding: 0;
+    }
+    .name-wo {
+        width: 15rem;
+        font-size: 18px;
+    }
+
+    /*Saved Workouts*/
+    .wol-container {
+        padding: 10px 10px 40px 10px;
+    }
+    .wo-name {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    /*View Workout*/
+    .dt {
+        font-size: 28px;
     }
 }

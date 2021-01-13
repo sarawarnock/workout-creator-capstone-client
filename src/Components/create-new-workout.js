@@ -56,7 +56,7 @@ class CreateNewWorkout extends Component {
     if (currentStep !== 1) {
       return (
         <button
-          className="btn arr"
+          className="btn arr l-arr"
           type="button" onClick={this._prev}
         >
           {'<'}
@@ -70,7 +70,7 @@ class CreateNewWorkout extends Component {
     if (currentStep < 3) {
       return (
         <button
-          className="btn arr"
+          className="btn arr r-arr"
           type="button" onClick={this._next}
         >
          {/*{'>'}*/}
@@ -84,7 +84,7 @@ class CreateNewWorkout extends Component {
     let currentStep = this.state.currentStep;
     if (currentStep === 3) {
       return (
-        <button className="btn arr" type="submit">
+        <button className="btn arr cw-sub" type="submit">
           Submit
         </button>
       )
@@ -178,9 +178,11 @@ class CreateNewWorkout extends Component {
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
             />
-            {this.previousButton}
-            {this.nextButton}
-            {this.submitButton}                
+            <div className={'arrow-btns'}>
+              {this.previousButton}
+              {this.nextButton}
+              {this.submitButton}
+            </div>
         </form>      
       </>
 

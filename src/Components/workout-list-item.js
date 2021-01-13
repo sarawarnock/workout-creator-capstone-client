@@ -17,18 +17,18 @@ export default class WorkoutItem extends Component {
     }
 
     render() {
-        const { workout } = this.props
+        const { workout } = this.props;
         return(
             <tr key={workout.id}>
-                <td className="wo-name left">{workout.workouts_name}</td>
-                <td>
+                <td className="wo-name left mar-40">{workout.workouts_name}</td>
+                <td className={"mar-40"}>
                     <Link className="view-link"
                         to={`/workouts/${workout.id}`}
                     >
-                        View
+                        <p className={'label success new-label'}><span>View</span></p>
                     </Link>
                 </td>
-                <td className="right">
+                <td className="right mar-40">
                     <button className="delete button"
                         onClick={this.handleDelete}>X</button>
                 </td>
