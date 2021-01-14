@@ -70,7 +70,8 @@ export default class StartWorkout extends React.Component{
         let minutes = this.state.minutes;
         this.setState(prevState => ({
             ...prevState,
-            minutes: minutes - 1
+            minutes: minutes - 1,
+            currentStep: this.state.currentStep + 1
         }))
     }
     
