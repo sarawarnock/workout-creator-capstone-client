@@ -10,9 +10,7 @@ export default function StopWatch(props) {
     // 0 = Not started, 1 = Started, 2 = Paused
     const [status, setStatus] = useState(0);
     let updatedMS = time.ms, updatedSec = time.sec, updatedMin = time.min;
-
-    console.log('updatedMin', updatedMin);
-
+    
     const playSound = () => {
         const audio = new Audio(bell);
         return audio.play();
@@ -29,7 +27,6 @@ export default function StopWatch(props) {
         if (updatedSec === 0) {
             updatedSec = 60;
             updatedMin--;
-            // props.updateMin();
             props.clickNext();
             playSound();
         }
