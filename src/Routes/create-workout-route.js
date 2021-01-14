@@ -17,7 +17,7 @@ export default class CreateWorkoutRoute extends Component {
 
     render() {
         return (
-            <div className="form-container">
+            <div className="form-container create-container">
                 <CreateNewWorkout
                     onSubmitSuccess={this.handleSubmitSuccess}
                 />
