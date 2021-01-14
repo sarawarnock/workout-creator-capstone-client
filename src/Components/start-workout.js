@@ -42,7 +42,7 @@ export default class StartWorkout extends React.Component{
     }
 
     _next = () => {
-        let currentStep = this.context.currentStep;
+        let currentStep = this.state.currentStep;
         const { workout } = this.context;
         if (currentStep < workout.length) {
             this.setState({
