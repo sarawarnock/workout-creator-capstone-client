@@ -73,7 +73,8 @@ class CreateNewWorkout extends Component {
           className="btn arr r-arr"
           type="button" onClick={this._next}
         >
-         {'>'}
+         {/*{'>'}*/}
+         <i className="fas fa-long-arrow-alt-right"></i>
         </button>
       )
     } return null
