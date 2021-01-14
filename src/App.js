@@ -116,7 +116,6 @@ class App extends Component {
 
         return (
             <div className="ext">
-                <Sidebar />
                 <div className="App split">
                     <Header />
                     <main className="main-pages">
