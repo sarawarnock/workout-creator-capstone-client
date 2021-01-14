@@ -2,7 +2,7 @@ import React from 'react';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
 import StartExercise from './start-exercise';
-import Stopwatch from './Stopwatch';
+import Stopwatch from './stopwatch';
 import Loaders from './loaders';
 
 export default class StartWorkout extends React.Component{
@@ -18,7 +18,6 @@ export default class StartWorkout extends React.Component{
         this._prev = this._prev.bind(this);
         this.state = {
             currentStep: 1,
-            minutes: null
         }
     }
 
@@ -32,13 +31,6 @@ export default class StartWorkout extends React.Component{
         WorkoutApiService.getWorkoutsById()
             .then(this.context.setWorkOutsList)
             .catch(this.context.setError);
-    }
-
-    componentDidUpdate() {
-        const { workout } = this.context;
-        if (workout.length > 0 && this.state.minutes === null) {
-            this.setState({ minutes: workout[0].total_length })
-        }
     }
 
     _next = () => {
@@ -65,15 +57,6 @@ export default class StartWorkout extends React.Component{
             })
         }
     }
-
-    updateMin = () => {
-        let minutes = this.state.minutes;
-        this.setState(prevState => ({
-            ...prevState,
-            minutes: minutes - 1,
-            currentStep: this.state.currentStep + 1
-        }))
-    }
     
     renderWorkOut() {        
         const { workout } = this.context;
@@ -87,7 +70,7 @@ export default class StartWorkout extends React.Component{
 
         return (
             <>
-                <StartExercise 
+                <StartExercise
                     clickNext={this._next}
                     clickPrev={this._prev}
                     exercise={exercise}
@@ -97,7 +80,6 @@ export default class StartWorkout extends React.Component{
                     clickPrev={this._prev}
                     workout={workout}
                     length={workout[0].total_length}
-                    updateMin={this.updateMin}
                 />
             </>
         )
