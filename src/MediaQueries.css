@@ -94,6 +94,7 @@
     /*Forms*/
     .form-container {
         width: 300px;
+        padding: 10px;
     }
     .create-form {
         padding: 0;
