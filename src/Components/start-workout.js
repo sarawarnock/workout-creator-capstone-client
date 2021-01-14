@@ -81,6 +81,8 @@ export default class StartWorkout extends React.Component{
         const i = currentStep - 1;
         const exercise = workout[i];
 
+        console.log('exercise', exercise)
+
         if (workout.length === 0) {
             return <Loaders />
         }
