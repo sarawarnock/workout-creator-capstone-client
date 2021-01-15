@@ -97,7 +97,10 @@ Create Workout Page
 ![Create Workout Page](/github-images/screenshots/create-workout.png) 
 Past Workouts Page
 ![Past Workouts Page](/github-images/screenshots/past-workouts.png) 
-
+View Invdividual Workout
+![Indvidual Workouts Page](/github-images/screenshots/indi-workout.png)
+Start Workout
+![Start Workout Page](/github-images/screenshots/start-workout.png)
 
 ## Functionality
 The app's functionality includes:
