@@ -1,5 +1,4 @@
 # Workout Creator Capstone Client
-
 This app creates workouts based on user selected muscle group, time domain and workout type. 
 
 ## Working Prototype
