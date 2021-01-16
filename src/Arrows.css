@@ -8,6 +8,7 @@
     border: none;
     padding: 1.2rem;
     transition: .3s;
+    outline: none;
 }
 
 .la:hover, .ra:hover {
