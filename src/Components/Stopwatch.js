@@ -10,7 +10,7 @@ export default function StopWatch(props) {
     // 0 = Not started, 1 = Started, 2 = Paused
     const [status, setStatus] = useState(0);
     let updatedMS = time.ms, updatedSec = time.sec, updatedMin = time.min;
-    
+
     const playSound = () => {
         const audio = new Audio(bell);
         return audio.play();
@@ -18,6 +18,7 @@ export default function StopWatch(props) {
 
     const _start = () => {
         _run();
+        updatedMin = updatedMin-1;
         setStatus(1);
         setInterv(setInterval(_run, 10));
         playSound();
@@ -34,7 +35,7 @@ export default function StopWatch(props) {
             updatedMS = 0;
             updatedSec--;
         }
-        if (updatedMin === 0) {
+        if (updatedMin === 1) {
             window.location.reload();
             _pause();
         }
@@ -63,7 +64,7 @@ export default function StopWatch(props) {
         }
     }, [])
 
-    if (time.min > 1) {
+    if (time.min >= 1) {
         return (<>
             <div className="sw-cont">
                 <h4>
