@@ -35,9 +35,8 @@ export default function StopWatch(props) {
             updatedMS = 0;
             updatedSec--;
         }
-        if (updatedMin === 0) {
-            _reset();
-            window.location.reload();
+        if (updatedMin === -1) {
+            reload_page();
         }
         updatedMS++;
         return setTime({ ms: updatedMS, sec: updatedSec, min: updatedMin });
@@ -56,6 +55,11 @@ export default function StopWatch(props) {
         setStatus(0);
         setTime({ ms: 0, sec: 60, min: length });
     };
+
+    const reload_page = () => {
+        return window.location.reload();
+
+    }
 
     //hacky solution for unmounting component while stopwatch is running
     //stopwatch is a child component and will not stop _run function when unmounting
