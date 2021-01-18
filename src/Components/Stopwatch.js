@@ -18,6 +18,7 @@ export default function StopWatch(props) {
 
     const _start = () => {
         _run();
+        updatedMin = updatedMin -1 ;
         setStatus(1);
         setInterv(setInterval(_run, 10));
         playSound();
@@ -27,7 +28,6 @@ export default function StopWatch(props) {
         if (updatedSec === 0) {
             updatedSec = 60;
             updatedMin--;
-            props.updateMin();
             props.clickNext();
             playSound();
         }
@@ -35,8 +35,9 @@ export default function StopWatch(props) {
             updatedMS = 0;
             updatedSec--;
         }
-        if (updatedMin === 0) {
-            window.location.reload();
+        if (updatedMin === -1) {
+            return window.location.reload();
+
         }
         updatedMS++;
         return setTime({ ms: updatedMS, sec: updatedSec, min: updatedMin });
@@ -46,6 +47,7 @@ export default function StopWatch(props) {
         clearInterval(interv);
         setStatus(2);
     };
+
 
     const _resume = () => _start();
 
@@ -63,7 +65,7 @@ export default function StopWatch(props) {
         }
     }, [])
 
-    if (time.min > 1) {
+    if (time.min >= 1) {
         return (<>
             <div className="sw-cont">
                 <h4>
