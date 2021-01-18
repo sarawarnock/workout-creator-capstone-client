@@ -2,7 +2,7 @@ import React from 'react';
 import WorkOutContext from '../context';
 import WorkoutApiService from '../Services/workout-api-service';
 import StartExercise from './start-exercise';
-import Stopwatch from './stopwatch';
+import Stopwatch from './Stopwatch';
 import Loaders from './loaders';
 
 export default class StartWorkout extends React.Component{
