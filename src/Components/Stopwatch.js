@@ -37,7 +37,6 @@ export default function StopWatch(props) {
         }
         if (updatedMin === -1) {
             return window.location.replace('https://workout-creator-capstone-client.vercel.app/workouts');
-
         }
         updatedMS++;
         return setTime({ ms: updatedMS, sec: updatedSec, min: updatedMin });
