@@ -33,6 +33,11 @@ a {
   font-size: 18px;
 }
 
+.error {
+  color: rgb(130, 0, 0);
+  margin: 10px;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus,
