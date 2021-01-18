@@ -25,7 +25,6 @@ export default function StopWatch(props) {
     };
 
     const _run = () => {
-        console.log(updatedMin);
         if (updatedSec === 0) {
             updatedSec = 60;
             updatedMin--;
